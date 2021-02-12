@@ -36,7 +36,7 @@ app.use(passport.session());
 app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
-app.use('/api/auth', require('./authRoutes/auth.js'));
+app.use('/api/auth', require('./routes/AuthRoute'));
 app.use(
   '/',
   expressStaticGzip('client/dist', {
