@@ -1,7 +1,7 @@
 const express = require("express");
+
 const app = express();
-const fs = require("fs");
-const path = require("path");
+
 const expressStaticGzip = require("express-static-gzip");
 
 const port = 3000;

@@ -2,7 +2,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 const zlib = require("zlib");
 
 module.exports = {
-  entry: ["@babel/polyfill", __dirname + "/client/index.js"],
+  entry: ["@babel/polyfill", `${__dirname}/client/index.js`],
   plugins: [
     new CompressionPlugin({
       filename: "[path][base].br",
@@ -47,7 +47,7 @@ module.exports = {
   },
   output: {
     filename: "bundle.js",
-    path: __dirname + "/client/dist",
+    path: `${__dirname}/client/dist`,
   },
   mode: "development",
   // mode: "production",
