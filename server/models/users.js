@@ -17,8 +17,9 @@ const ThirdPartyProviderSchema = new mongoose.Schema({
 
 const UserSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
+      default: null,
     },
     email: {
       type: String,
@@ -31,11 +32,32 @@ const UserSchema = new mongoose.Schema(
     },
     password: {
       type: String,
+      required: true,
     },
     third_party_auth: [ThirdPartyProviderSchema],
     date: {
       type: Date,
       default: Date.now,
+    },
+    photoUrl: {
+      type: String,
+      default: null,
+    },
+    suscriptionTier: {
+      type: Number,
+      default: 0,
+    },
+    subscriptionRenewDate: {
+      type: Date,
+      default: null,
+    },
+    remainingBooksThisMonth: {
+      type: Number,
+      default: 0,
+    },
+    books: {
+      type: Array,
+      default: [],
     },
   },
   { strict: false }

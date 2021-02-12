@@ -2,13 +2,14 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
+//handles registration and login
 router.post("/register_login", (req, res, next) => {
   passport.authenticate("local", function (err, user, info) {
     if (err) {
       return res.status(400).send(err);
     }
     if (!user) {
-      return res.status(400).send("No user found");
+      return res.status(400).send(info);
     }
     req.logIn(user, function (err) {
       if (err) {

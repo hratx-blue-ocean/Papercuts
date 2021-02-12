@@ -7,15 +7,18 @@ const passport = require("./passport/setup.js");
 const auth = require("./authRoutes/auth.js");
 require("dotenv").config();
 
+//Vars
 const app = express();
 const port = 3000;
 const dbURI = `mongodb+srv://jfleming9357:${process.env.MONGO_PASS}@cluster0.v4rli.mongodb.net/papercut?retryWrites=true&w=majority`;
 
+//db connection
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(console.log(`MongoDB connected ${dbURI}`))
   .catch((err) => console.log(err));
 
+//Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -39,7 +42,7 @@ app.use(
     },
   })
 );
-//Middleware
+
 // app.use(express.static("client/dist"));
 app.use(
   "/",
