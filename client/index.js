@@ -1,4 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
-
-render(<h1>Hello there</h1>, document.getElementById('root'));
+import { App } from './App.jsx';
+import { AppProvider } from './context/context.jsx';
+render(
+  <AppProvider>
+    <App />
+  </AppProvider>,
+  document.getElementById('root')
+);
