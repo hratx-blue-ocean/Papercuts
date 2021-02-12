@@ -8,6 +8,7 @@ node_modules/
 
 # bundle
 /client/dist/bundle.js
+/client/dist/bundle.js.br
 
 # testing
 /coverage
