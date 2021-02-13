@@ -16,7 +16,11 @@ const port = process.env.PORT || 3000;
 
 //db connection
 mongoose
-  .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(dbURI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(console.log(`MongoDB connected ${dbURI}`))
   .catch((err) => console.log(err));
 
@@ -50,6 +54,24 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.send('hello from server');
+});
+
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
+});
+
+const isAuthenticated = (req, res, next) => {
+  if (req.user) return next();
+  else return res.status(401).send('User is not authenticated');
+};
+
+app.get('/checkauth', isAuthenticated, function (req, res) {
+  delete req.user._doc.password;
+  res.status(200).send(req.user);
+});
+
+app.get('*', function (req, res) {
+  res.redirect('/');
 });
