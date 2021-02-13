@@ -4,17 +4,29 @@ import {
   Route,
   Link,
   useRouteMatch, //use if needed
-  useParams // use if needed
+  useParams, // use if needed
 } from "react-router-dom";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import BookClub from './components/bookClubPage/BookClub.jsx'
-import React, { useContext } from 'react';
-import { AppContext } from './context/context.jsx';
+import "bootstrap/dist/css/bootstrap.min.css";
+import BookClub from "./components/bookClubPage/BookClub.jsx";
+import React, { useState, useContext } from "react";
+import { AppContext } from "./context/context.jsx";
+import BookDetail from "./components/global/BookDetail.jsx";
+import { Button } from "react-bootstrap";
 
 export const App = () => {
-  const {exampleClubs} = useContext(AppContext);
+  const { exampleClubs } = useContext(AppContext);
+  const [show, setShow] = useState(true);
   return (
     <Router>
+      <Button variant="primary" onClick={() => setShow(true)}>
+        Open Example Book Detail Modal
+      </Button>
+      <BookDetail
+        handleClose={() => {
+          setShow(false);
+        }}
+        show={show}
+      />
       {/* @Jason, put this logic into a navbar at some point */}
       <div>
         <ul>
