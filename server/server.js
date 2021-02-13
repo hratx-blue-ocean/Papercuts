@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
@@ -54,9 +53,6 @@ app.use(
     },
   })
 );
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
 
 app.get('/', (req, res) => {
   res.send('hello from server');
@@ -77,5 +73,5 @@ app.get('/checkauth', isAuthenticated, (req, res) => {
 });
 
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  res.redirect('/');
 });
