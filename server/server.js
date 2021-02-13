@@ -4,7 +4,6 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
-const auth = require('./authRoutes/auth.js');
 require('dotenv').config();
 
 //Vars
@@ -32,20 +31,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-<<<<<<< HEAD
-app.use('/api/auth', auth);
-app.use(
-  '/',
-  expressStaticGzip('client/dist', {
-    enableBrotli: true,
-    orderPreference: ['br'],
-    setHeaders: function (res, path) {
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
-    },
-  })
-);
-=======
->>>>>>> 06dd635c0b98dcf1c73f2a87e52bbeadaed8c32f
 
 // Routes
 app.use('/bookclub', require('./routes/BookclubRoute'));
@@ -63,13 +48,10 @@ app.use(
   })
 );
 
-<<<<<<< HEAD
 app.get('/', (req, res) => {
   res.send('hello from server');
 });
 
-=======
->>>>>>> 06dd635c0b98dcf1c73f2a87e52bbeadaed8c32f
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });

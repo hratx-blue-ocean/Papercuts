@@ -11,28 +11,55 @@ import BookClub from './components/bookClubPage/bookClub.jsx';
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
 import { AuthContext } from './context/authContext.jsx';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
+import Button from 'react-bootstrap/Button';
+import logout from './components/global/logout.js';
 
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
   return (
     <Router>
-      {/* @Jason, put this logic into a navbar at some point */}
       <div>
-        <ul>
-          <li>
+        <ListGroup horizontal>
+          <ListGroup.Item>
             <Link to="/">Home</Link>
-          </li>
-          <li>
+          </ListGroup.Item>
+          <ListGroup.Item>
             <Link to="/profile">Profile</Link>
-          </li>
-          <li>
+          </ListGroup.Item>
+          <ListGroup.Item>
             <Link to="/clubs">Book Clubs</Link>
-          </li>
-          <li>
+          </ListGroup.Item>
+          <ListGroup.Item>
             <Link to="/clubs/detail">Club Details (Temporary)</Link>
-          </li>
-        </ul>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <Link to="/subscriptions">Subscriptions</Link>
+          </ListGroup.Item>
+          <div>
+            {!user ? (
+              <ListGroup horizontal>
+                <ListGroup.Item>
+                  <LoginModal />
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <RegisterModal />
+                </ListGroup.Item>
+              </ListGroup>
+            ) : (
+              <ListGroup horizontal>
+                <ListGroup.Item>{user.email}</ListGroup.Item>
+                <ListGroup.Item>
+                  <Link to="/">
+                    <Button onClick={logout}>Logout</Button>
+                  </Link>
+                </ListGroup.Item>
+              </ListGroup>
+            )}
+          </div>
+        </ListGroup>
 
         <hr />
 
@@ -56,6 +83,7 @@ export const App = () => {
           <Route path="/clubs/detail">
             <BookClub />
           </Route>
+          <Route path="/subscriptions">{/* subscriptions path */}</Route>
         </Switch>
       </div>
     </Router>
