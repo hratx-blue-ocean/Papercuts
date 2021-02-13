@@ -7,6 +7,7 @@ import {
   useParams // use if needed
 } from "react-router-dom";
 import BookClub from './components/bookClubPage/bookClub.jsx'
+import Profile from './components/profilePage.jsx'
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
 
@@ -42,7 +43,7 @@ export const App = () => {
             {/* Cayla, put in your component here when ready */}
           </Route>
           <Route path="/profile">
-            {/* Sean, Jerrick, put in your component here when ready */}
+            <Profile />
           </Route>
           <Route path="/clubs">
             <BookClub />
