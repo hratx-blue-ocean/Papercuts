@@ -39,17 +39,32 @@ const HomePage = (props) => {
 
   return (
 
+    // <div>
+    //   <div className="grid-container">
+    //     <div className="Navbar-placeholder">I AM THE NAVBAR</div>
+    //     <div className="BOTM"><BOTM /></div>
+    //     <div className="SiteDesc"><SiteDesc /></div>
+    //     <div className="LogInSignUp"><LogInSignUp /></div>
+    //     <div className="TrendingCaro"><TrendingCaro /></div>
+    //     <div className="GenreCaro"><GenreCaro /></div>
+    //     <div className="MonthlySubscr"><MonthlySubscr /></div>
+    //     <div className="Footer">I AM THE FOOTER</div>
+    //   </div>
+    // </div>
+
     <div>
-      <div className="grid-container">
-        <div className="Navbar-placeholder">I AM THE NAVBAR</div>
-        <div className="BOTM"><BOTM /></div>
-        <div className="SiteDesc"><SiteDesc /></div>
-        <div className="LogInSignUp"><LogInSignUp /></div>
-        <div className="TrendingCaro"><TrendingCaro /></div>
-        <div className="GenreCaro"><GenreCaro /></div>
-        <div className="MonthlySubscr"><MonthlySubscr /></div>
-        <div className="Footer">I AM THE FOOTER</div>
-      </div>
+      <Container className="cc-homePage-topLevelContainer">
+        <Container className="cc-homePage-leftMainCol">
+          <BOTM />
+          <TrendingCaro />
+          <GenreCaro />
+        </Container>
+        <Container className="cc-homePage-rightMainCol">
+          <SiteDesc />
+          <LogInSignUp />
+          <MonthlySubscr />
+        </Container>
+      </Container>
     </div>
 
   )

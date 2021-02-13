@@ -1,83 +1,135 @@
-.cc-homepage-main {
-  position: absolute;
-  left: -0.73%;
-  right: -0.73%;
-  top: 1.65%;
-  bottom: -2.96%;
+.cc-homePage-topLevelContainer {
   background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
-  border-radius: 12px 12px 0px 0px;
+  display: flex;
+  flex-direction:row;
+  border: 1px black solid;
+  padding: 10px;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 0.4fr 1.6fr 1fr 1fr 0.3fr 0.3fr 1.5fr 1.9fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    "Navbar-placeholder Navbar-placeholder Navbar-placeholder Navbar-placeholder Navbar-placeholder"
-    "BOTM BOTM BOTM SiteDesc SiteDesc"
-    "BOTM BOTM BOTM LogInSignUp LogInSignUp"
-    "BOTM BOTM BOTM LogInSignUp LogInSignUp"
-    ". . . LogInSignUp LogInSignUp"
-    "TrendingCaro TrendingCaro TrendingCaro . ."
-    "TrendingCaro TrendingCaro TrendingCaro MonthlySubscr MonthlySubscr"
-    "GenreCaro GenreCaro GenreCaro MonthlySubscr MonthlySubscr"
-    "Footer Footer Footer Footer Footer";
-    background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
+.cc-homePage-leftMainCol {
+  display: flex;
+  flex: 1.5;
+  flex-direction: column;
+  border: 1px black solid;
+  padding: 10px;
 }
 
-.Navbar-placeholder { grid-area: Navbar-placeholder; }
-
-.BOTM {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    ". . ."
-    ". . ."
-    ". . .";
-  grid-area: BOTM;
+.cc-homePage-rightMainCol {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  border: 1px black solid;
+  padding: 10px;
 }
 
-.SiteDesc { grid-area: SiteDesc; }
+.cc-BOTM {
+  display: flex;
+  flex-direction: row;
+  flex: 2;
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: stretch;
+  border: 1px black solid;
+  padding: 10px;
+}
 
-.LogInSignUp { grid-area: LogInSignUp; }
-
-.TrendingCaro { grid-area: TrendingCaro; }
-
-.GenreCaro { grid-area: GenreCaro; }
-
-.MonthlySubscr { grid-area: MonthlySubscr; }
-
-.Footer { grid-area: Footer; }
-
-
-
-.cc-title {
+.cc-BOTM-img-container {
+  display: flex;
+  flex: 1;
+  border: 1px black solid;
+  padding: 10px;
+}
+.cc-BOTM-mainBookInfo-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border: 1px black solid;
+  padding: 10px;
+}
+.cc-BOTM-mainBookInfo-title-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  border: 1px black solid;
+  padding: 10px;
+}
+.cc-BOTM-mainBookInfo-header {
   position: absolute;
-  width: 355px;
-  height: 37px;
-  left: 1204px;
-  top: 58px;
+  display: flex;
+  flex: 1;
   font-family: Roboto;
   font-style: normal;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 42px;
+  font-size: 24px;
   color: #000000;
+  border: 1px black solid;
+  padding: 10px;
 }
-
-.cc-text {
+.cc-BOTM-mainBookInfo-bookTitle {
   position: absolute;
-  width: 467px;
-  height: 226px;
-  left: 1205px;
-  top: 128px;
+  display: flex;
+  flex: 1;
   font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
+  font-style: bold;
   font-size: 20px;
-  line-height: 28px;
   color: #000000;
+  border: 1px black solid;
+  padding: 10px;
 }
+.cc-BOTM-mainBookInfo-author {
+  position: absolute;
+  display: flex;
+  flex: 1;
+  font-family: Roboto;
+  font-style: italic;
+  font-size: 20px;
+  color: #000000;
+  border: 1px black solid;
+  padding: 10px;
+}
+.cc-BOTM-mainBookInfo-priceCardsContainer {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border: 1px black solid;
+  padding: 10px;
+}
+
+
+.cc-TrendingCaro {
+  display: flex;
+  flex: 2;
+  border: 1px black solid;
+  padding: 10px;
+}
+
+.cc-GenreCaro {
+  display: flex;
+  flex: 2;
+  border: 1px black solid;
+  padding: 10px;
+}
+.cc-SiteDesc {
+  display: flex;
+  flex: 1;
+  border: 1px black solid;
+  padding: 10px;
+}
+
+.cc-LogInSignUp {
+  display: flex;
+  flex: 1;
+  border: 1px black solid;
+  padding: 10px;
+}
+
+.cc-MonthlySubscr {
+  display: flex;
+  flex: 1;
+  border: 1px black solid;
+  padding: 10px;
+}
+
+
