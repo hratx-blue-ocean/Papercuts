@@ -22,43 +22,35 @@ export const App = () => {
   return (
     <Router>
       <div>
-        <ListGroup horizontal>
-          <ListGroup.Item>
-            <Link to="/">Home</Link>
+        <ListGroup className="navList" horizontal>
+          <ListGroup.Item to="/" as={Link} action variant="dark">
+            Home
           </ListGroup.Item>
-          <ListGroup.Item>
-            <Link to="/profile">Profile</Link>
+          <ListGroup.Item to="/clubs" as={Link} action variant="dark">
+            Book Clubs
           </ListGroup.Item>
-          <ListGroup.Item>
-            <Link to="/clubs">Book Clubs</Link>
+          <ListGroup.Item to="/clubs/detail" as={Link} action variant="dark">
+            Club Details (Temporary)
           </ListGroup.Item>
-          <ListGroup.Item>
-            <Link to="/clubs/detail">Club Details (Temporary)</Link>
+          <ListGroup.Item as={Link} to="/subscriptions" action variant="dark">
+            Subscriptions
           </ListGroup.Item>
-          <ListGroup.Item>
-            <Link to="/subscriptions">Subscriptions</Link>
-          </ListGroup.Item>
-          <div>
-            {!user ? (
-              <ListGroup horizontal>
-                <ListGroup.Item>
-                  <LoginModal />
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <RegisterModal />
-                </ListGroup.Item>
-              </ListGroup>
-            ) : (
-              <ListGroup horizontal>
-                <ListGroup.Item>{user.email}</ListGroup.Item>
-                <ListGroup.Item>
-                  <Link to="/">
-                    <Button onClick={logout}>Logout</Button>
-                  </Link>
-                </ListGroup.Item>
-              </ListGroup>
-            )}
-          </div>
+          {!user ? (
+            <ListGroup horizontal>
+              <LoginModal as={Link} />
+              <RegisterModal as={Link} />
+            </ListGroup>
+          ) : (
+            <ListGroup horizontal>
+              <ListGroup.Item as={Link} to="/profile" action variant="dark">
+                {user.email}
+              </ListGroup.Item>
+
+              <ListGroup.Item action variant="dark" onClick={logout}>
+                Logout
+              </ListGroup.Item>
+            </ListGroup>
+          )}
         </ListGroup>
 
         <hr />
