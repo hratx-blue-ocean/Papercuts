@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 export const LoginModal = () => {
   const [show, setShow] = useState(false);
@@ -14,9 +15,9 @@ export const LoginModal = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <ListGroup.Item onClick={handleShow} action variant="dark">
         Login
-      </Button>
+      </ListGroup.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -34,7 +35,6 @@ export const LoginModal = () => {
               <Form.Control
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  console.log(email);
                 }}
                 type="email"
                 placeholder="Enter email"
@@ -91,9 +91,9 @@ export const RegisterModal = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <ListGroup.Item onClick={handleShow} action variant="dark">
         Register
-      </Button>
+      </ListGroup.Item>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
