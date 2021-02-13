@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function BookClub() {
-  return (
-    <div>
-      Hello this is the Book Club Page
-    </div>
-  )
+  return <div>Hello this is the Book Club Page</div>;
 }

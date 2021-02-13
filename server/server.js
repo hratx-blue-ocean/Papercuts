@@ -1,11 +1,11 @@
-const express = require("express");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
-const mongoose = require("mongoose");
-const expressStaticGzip = require("express-static-gzip");
-const passport = require("./passport/setup.js");
-const auth = require("./authRoutes/auth.js");
-require("dotenv").config();
+const express = require('express');
+const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+const mongoose = require('mongoose');
+const expressStaticGzip = require('express-static-gzip');
+const passport = require('./passport/setup.js');
+const auth = require('./authRoutes/auth.js');
+require('dotenv').config();
 
 //Vars
 const app = express();
@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: "aY5LZhOHMm!i",
+    secret: 'aY5LZhOHMm!i',
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -31,32 +31,32 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use("/api/auth", auth);
+app.use('/api/auth', auth);
 app.use(
-  "/",
-  expressStaticGzip("client/dist", {
+  '/',
+  expressStaticGzip('client/dist', {
     enableBrotli: true,
-    orderPreference: ["br"],
+    orderPreference: ['br'],
     setHeaders: function (res, path) {
-      res.setHeader("Cache-Control", "public, max-age=31536000");
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
     },
   })
 );
 
 // app.use(express.static("client/dist"));
 app.use(
-  "/",
-  expressStaticGzip("client/dist", {
+  '/',
+  expressStaticGzip('client/dist', {
     enableBrotli: true,
-    orderPreference: ["br"],
+    orderPreference: ['br'],
     setHeaders: function (res, path) {
-      res.setHeader("Cache-Control", "public, max-age=31536000");
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
     },
   })
 );
 
-app.get("/", (req, res) => {
-  res.send("hello from server");
+app.get('/', (req, res) => {
+  res.send('hello from server');
 });
 
 app.listen(port, () => {
@@ -65,10 +65,10 @@ app.listen(port, () => {
 
 const isAuthenticated = (req, res, next) => {
   if (req.user) return next();
-  else return res.status(401).send("User is not authenticated");
+  else return res.status(401).send('User is not authenticated');
 };
 
-app.get("/checkauth", isAuthenticated, function (req, res) {
+app.get('/checkauth', isAuthenticated, function (req, res) {
   delete req.user._doc.password;
   res.status(200).send(req.user);
 });

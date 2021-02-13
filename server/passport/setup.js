@@ -1,8 +1,8 @@
-const bcrypt = require("bcryptjs");
-const User = require("../models/users.js");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
-const GoogleStrategy = require("passport-google-oauth").OAuthStrategy;
+const bcrypt = require('bcryptjs');
+const User = require('../models/users.js');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
 
 //grabs specified content (user.id) from the user object and stores it on the session object (req.session.passport.user)
 passport.serializeUser((user, done) => {
@@ -18,7 +18,7 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.use(
-  new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+  new LocalStrategy({ usernameField: 'email' }, (email, password, done) => {
     User.findOne({ email: email })
       .then((user) => {
         if (!user) {
@@ -51,7 +51,7 @@ passport.use(
             if (isMatch) {
               return done(null, user);
             } else {
-              return done(null, false, { message: "Wrong password" });
+              return done(null, false, { message: 'Wrong password' });
             }
           });
         }
