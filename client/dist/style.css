@@ -1,0 +1,83 @@
+.cc-homepage-main {
+  position: absolute;
+  left: -0.73%;
+  right: -0.73%;
+  top: 1.65%;
+  bottom: -2.96%;
+  background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
+  border-radius: 12px 12px 0px 0px;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.4fr 1.6fr 1fr 1fr 0.3fr 0.3fr 1.5fr 1.9fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "Navbar-placeholder Navbar-placeholder Navbar-placeholder Navbar-placeholder Navbar-placeholder"
+    "BOTM BOTM BOTM SiteDesc SiteDesc"
+    "BOTM BOTM BOTM LogInSignUp LogInSignUp"
+    "BOTM BOTM BOTM LogInSignUp LogInSignUp"
+    ". . . LogInSignUp LogInSignUp"
+    "TrendingCaro TrendingCaro TrendingCaro . ."
+    "TrendingCaro TrendingCaro TrendingCaro MonthlySubscr MonthlySubscr"
+    "GenreCaro GenreCaro GenreCaro MonthlySubscr MonthlySubscr"
+    "Footer Footer Footer Footer Footer";
+    background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
+}
+
+.Navbar-placeholder { grid-area: Navbar-placeholder; }
+
+.BOTM {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . ."
+    ". . .";
+  grid-area: BOTM;
+}
+
+.SiteDesc { grid-area: SiteDesc; }
+
+.LogInSignUp { grid-area: LogInSignUp; }
+
+.TrendingCaro { grid-area: TrendingCaro; }
+
+.GenreCaro { grid-area: GenreCaro; }
+
+.MonthlySubscr { grid-area: MonthlySubscr; }
+
+.Footer { grid-area: Footer; }
+
+
+
+.cc-title {
+  position: absolute;
+  width: 355px;
+  height: 37px;
+  left: 1204px;
+  top: 58px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 42px;
+  color: #000000;
+}
+
+.cc-text {
+  position: absolute;
+  width: 467px;
+  height: 226px;
+  left: 1205px;
+  top: 128px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  color: #000000;
+}

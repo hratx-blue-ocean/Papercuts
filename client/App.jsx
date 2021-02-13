@@ -6,6 +6,7 @@ import {
   useRouteMatch, //use if needed
   useParams // use if needed
 } from "react-router-dom";
+import HomePage from './components/homePage/HomePage.jsx'
 import BookClub from './components/bookClubPage/BookClub.jsx'
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
@@ -39,7 +40,7 @@ export const App = () => {
         */}
         <Switch>
           <Route exact path="/">
-            {/* Cayla, put in your component here when ready */}
+            <HomePage />
           </Route>
           <Route path="/profile">
             {/* Sean, Jerrick, put in your component here when ready */}
