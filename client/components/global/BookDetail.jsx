@@ -1,15 +1,6 @@
-import React, { useState, useEffect } from "react";
-import {
-  Modal,
-  Image,
-  Button,
-  Table,
-  Badge,
-  Spinner,
-  Row,
-  Col,
-} from "react-bootstrap";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { Modal, Image, Button, Table, Badge, Spinner, Row, Col } from 'react-bootstrap';
+import axios from 'axios';
 
 //Props: id from Google books (number), show & owned & inLibrary (boolean), handleClose & handleAddToLibrary & handlePurchase functions
 export default function BookDetail({
@@ -24,7 +15,7 @@ export default function BookDetail({
   const [data, setData] = useState({});
 
   //Temporary test constants
-  id = "0efCDwAAQBAJ";
+  id = '0efCDwAAQBAJ';
   owned = false;
   inLibrary = true;
   handlePurchase = () => {};
@@ -33,10 +24,9 @@ export default function BookDetail({
   //Temporary fetch from Google Books, will need to replaced by our own server proxy route
   useEffect(async () => {
     let info = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${id}?key=${"AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY"}`
+      `https://www.googleapis.com/books/v1/volumes/${id}?key=${'AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY'}`
     );
     setData(info.data);
-    console.log(info.data);
   }, []);
 
   return data.volumeInfo === undefined ? (
@@ -44,13 +34,7 @@ export default function BookDetail({
       <span className="sr-only">Loading...</span>
     </Spinner>
   ) : (
-    <Modal
-      size="xl"
-      show={show}
-      onHide={handleClose}
-      backdrop="static"
-      keyboard={false}
-    >
+    <Modal size="xl" show={show} onHide={handleClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{data.volumeInfo.title}</Modal.Title>
       </Modal.Header>
@@ -60,7 +44,7 @@ export default function BookDetail({
             <Image src={data.volumeInfo.imageLinks.large} fluid rounded />
           </Col>
           <Col>
-            <div>by {data.volumeInfo.authors.join(", ")}</div>
+            <div>by {data.volumeInfo.authors.join(', ')}</div>
             <p>{data.volumeInfo.description}</p>
             <Table size="sm" striped bordered variant="light">
               <tbody>
@@ -87,7 +71,7 @@ export default function BookDetail({
                       <React.Fragment key={idx}>
                         <Badge pill variant="light">
                           {category}
-                        </Badge>{" "}
+                        </Badge>{' '}
                       </React.Fragment>
                     ))}
                   </td>
@@ -101,15 +85,11 @@ export default function BookDetail({
         <Button variant="secondary" onClick={handleClose}>
           Close
         </Button>
-        <Button
-          variant="primary"
-          onClick={handleAddToLibrary}
-          disabled={inLibrary}
-        >
-          {inLibrary ? "In Library" : "Add to Library"}
+        <Button variant="primary" onClick={handleAddToLibrary} disabled={inLibrary}>
+          {inLibrary ? 'In Library' : 'Add to Library'}
         </Button>
         <Button variant="primary" onClick={handlePurchase} disabled={owned}>
-          {owned ? "Owned" : "Purchase"}
+          {owned ? 'Owned' : 'Purchase'}
         </Button>
       </Modal.Footer>
     </Modal>

@@ -2,19 +2,20 @@ const exampleClubs = [
   {
     id: 1,
     name: 'test',
-    description: 'Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero\'s De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:',
+    description:
+      "Lorem ipsum, or lipsum as it is sometimes known, is dummy text used in laying out print, graphic or web designs. The passage is attributed to an unknown typesetter in the 15th century who is thought to have scrambled parts of Cicero's De Finibus Bonorum et Malorum for use in a type specimen book. It usually begins with:",
     ownerId: 1,
     questionnaire: [
       {
         question: 'How?',
-        type: 'input'
+        type: 'input',
       },
       {
         question: 'Why?',
-        type: 'textarea'
-      }
+        type: 'textarea',
+      },
     ],
-    members: [ 1, 2, 3, 5],
+    members: [1, 2, 3, 5],
     events: [
       {
         id: 1,
@@ -48,8 +49,8 @@ const exampleClubs = [
         username: 'Danielle',
         timeSubmitted: '2021-02-12T22:06:37.473603',
       },
-    ]
-  }
+    ],
+  },
 ];
 
 export default exampleClubs;

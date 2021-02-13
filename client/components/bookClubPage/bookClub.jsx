@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
-import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
-import { AppContext } from "../../context/context.jsx";
-import Schedule from "./Schedule.jsx";
-import Comments from "./Comments.jsx";
-import Questionnaire from "./Questionnaire.jsx";
-import exampleClubs from "./exampleData.js";
-import ClubBanner from "./ClubBanner.jsx";
+import React, { useContext } from 'react';
+import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { AppContext } from '../../context/context.jsx';
+import Schedule from './Schedule.jsx';
+import Comments from './Comments.jsx';
+import Questionnaire from './Questionnaire.jsx';
+import exampleClubs from './exampleData.js';
+import ClubBanner from './ClubBanner.jsx';
 
 export default function BookClub() {
   // const {exampleClubs} = useContext(AppContext);
@@ -17,11 +17,7 @@ export default function BookClub() {
     <Container>
       <Row>
         <Col>
-          <ClubBanner
-            name={data.name}
-            description={data.description}
-            members={data.members}
-          />
+          <ClubBanner name={data.name} description={data.description} members={data.members} />
         </Col>
       </Row>
       <Row>
