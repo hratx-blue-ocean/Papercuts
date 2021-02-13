@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const ThirdPartyProviderSchema = new mongoose.Schema({
   provider_name: {
@@ -44,23 +44,45 @@ const UserSchema = new mongoose.Schema(
       default: null,
     },
     suscriptionTier: {
-      type: Number,
-      default: 0,
-    },
-    subscriptionRenewDate: {
-      type: Date,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Subscriptions',
       default: null,
     },
-    remainingBooksThisMonth: {
-      type: Number,
-      default: 0,
+    library: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Books',
+      },
+    ],
+    friends: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Users',
+      },
+    ],
+    bookPreference: {
+      type: String,
     },
-    books: {
-      type: Array,
-      default: [],
-    },
+    recommendation: [
+      {
+        summary: {
+          type: String,
+        },
+        description: {
+          type: String,
+        },
+      },
+    ],
+    bookclubs: [
+      {
+        bookclubId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Bookclubs',
+        },
+      },
+    ],
   },
   { strict: false }
 );
 
-module.exports = User = mongoose.model("Users", UserSchema);
+module.exports = User = mongoose.model('Users', UserSchema);
