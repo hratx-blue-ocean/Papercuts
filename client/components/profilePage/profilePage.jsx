@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect } from 'react';
+import { Container, Col, Row } from 'react-bootstrap';
 
 export default function Profile() {
   return (
-    <div>
-      This is the single more important component of the entire project. Fight me.
-    </div>
+    <Container>
+      <RecommendedBooks />
+    </Container>
   )
 }

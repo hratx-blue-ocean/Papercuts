@@ -7,7 +7,7 @@ import {
   useParams // use if needed
 } from "react-router-dom";
 import BookClub from './components/bookClubPage/bookClub.jsx'
-import Profile from './components/profilePage.jsx'
+import Profile from './components/profilePage/profilePage.jsx'
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
 

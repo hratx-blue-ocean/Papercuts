@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
 require('dotenv').config();
+const recommendedBooksQuery = require('../client/components/profilePage/recommendedBooks/recommendedBooksQuery.js');
+
 
 //Vars
 const app = express();
