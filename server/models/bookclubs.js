@@ -24,12 +24,8 @@ const BookclubSchema = new mongoose.Schema({
   },
   questionnaire: [
     {
-      questions: [
-        {
-          type: String,
-          required: true,
-        },
-      ],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Questionnaire',
     },
   ],
   members: [
