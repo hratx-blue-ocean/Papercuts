@@ -4,33 +4,54 @@ import {
   Route,
   Link,
   useRouteMatch, //use if needed
-  useParams // use if needed
-} from "react-router-dom";
+  useParams, // use if needed
+} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BookClub from './components/bookClubPage/BookClub.jsx'
+import BookClub from './components/bookClubPage/bookClub.jsx';
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
+import { AuthContext } from './context/authContext.jsx';
+import ListGroup from 'react-bootstrap/ListGroup';
+import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
+import Button from 'react-bootstrap/Button';
+import logout from './components/global/logout.js';
 
 export const App = () => {
-  const {exampleClubs} = useContext(AppContext);
+  const user = useContext(AuthContext);
+  const { exampleClubs } = useContext(AppContext);
   return (
     <Router>
-      {/* @Jason, put this logic into a navbar at some point */}
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/clubs">Book Clubs</Link>
-          </li>
-          <li>
-            <Link to="/clubs/detail">Club Details (Temporary)</Link>
-          </li>
-        </ul>
+        <ListGroup className="navList" horizontal>
+          <ListGroup.Item to="/" as={Link} action variant="dark">
+            Home
+          </ListGroup.Item>
+          <ListGroup.Item to="/clubs" as={Link} action variant="dark">
+            Book Clubs
+          </ListGroup.Item>
+          <ListGroup.Item to="/clubs/detail" as={Link} action variant="dark">
+            Club Details (Temporary)
+          </ListGroup.Item>
+          <ListGroup.Item as={Link} to="/subscriptions" action variant="dark">
+            Subscriptions
+          </ListGroup.Item>
+          {!user ? (
+            <ListGroup horizontal>
+              <LoginModal as={Link} />
+              <RegisterModal as={Link} />
+            </ListGroup>
+          ) : (
+            <ListGroup horizontal>
+              <ListGroup.Item as={Link} to="/profile" action variant="dark">
+                {user.email}
+              </ListGroup.Item>
+
+              <ListGroup.Item action variant="dark" onClick={logout}>
+                Logout
+              </ListGroup.Item>
+            </ListGroup>
+          )}
+        </ListGroup>
 
         <hr />
 
@@ -54,6 +75,7 @@ export const App = () => {
           <Route path="/clubs/detail">
             <BookClub />
           </Route>
+          <Route path="/subscriptions">{/* subscriptions path */}</Route>
         </Switch>
       </div>
     </Router>

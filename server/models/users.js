@@ -81,6 +81,13 @@ const UserSchema = new mongoose.Schema(
         },
       },
     ],
+    address: {
+      type: String,
+    },
+    payment: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payments',
+    },
   },
   { strict: false }
 );
