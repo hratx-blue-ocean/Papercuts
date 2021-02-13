@@ -45,6 +45,7 @@ router.post('/', async (req, res) => {
 // @route   GET /bookclub/:id
 // @access  Private
 router.post('/join/:id', async (req, res) => {
+  // check if user is in the club, if yes dont add
   const club = await Bookclub.findById(req.params.id);
   const { userId } = req.body;
 
