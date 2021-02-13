@@ -16,73 +16,87 @@ const ThirdPartyProviderSchema = new mongoose.Schema({
   },
 });
 
-const UserSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    default: null,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  email_is_verified: {
-    type: Boolean,
-    default: false,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  third_party_auth: [ThirdPartyProviderSchema],
-  date: {
-    type: Date,
-    default: Date.now,
-  },
-  photoUrl: {
-    type: String,
-    default: null,
-  },
-  suscriptionTier: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Subscriptions',
-    default: null,
-  },
-  library: [
-    {
+const UserSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      default: null,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email_is_verified: {
+      type: Boolean,
+      default: false,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    third_party_auth: [ThirdPartyProviderSchema],
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+    photoUrl: {
+      type: String,
+      default: null,
+    },
+    suscriptionTier: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Books',
+      ref: 'Subscriptions',
+      default: null,
     },
-  ],
-  friends: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Users',
-    },
-  ],
-  bookPreference: {
-    type: String,
-  },
-  recommendation: [
-    {
-      summary: {
-        type: String,
-      },
-      description: {
-        type: String,
-      },
-    },
-  ],
-  bookclubs: [
-    {
-      bookclubId: {
+    library: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bookclubs',
+        ref: 'Books',
       },
+    ],
+    friends: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Users',
+      },
+    ],
+    bookPreference: {
+      type: String,
     },
-  ],
-});
+    recommendation: [
+      {
+        summary: {
+          type: String,
+        },
+        description: {
+          type: String,
+        },
+      },
+    ],
+    bookclubs: [
+      {
+        bookclubId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'Bookclubs',
+        },
+      },
+    ],
+    address: {
+      type: String,
+    },
+    payment: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payments',
+    },
+    token: {
+      type: String,
+      default: null,
+    },
+  },
+  { strict: false }
+);
+
 UserSchema.plugin(passportLocalMongoose);
 User = mongoose.model('Users', UserSchema);
-
 module.exports = User;

@@ -6,6 +6,7 @@ const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
 require('dotenv').config();
 const passportLocalMongoose = require('passport-local-mongoose');
+const path = require('path');
 
 //Vars
 const app = express();
@@ -71,6 +72,6 @@ app.get('/checkauth', isAuthenticated, (req, res) => {
   res.status(200).send(req.user);
 });
 
-app.get('*', (req, res) => {
-  res.redirect('/');
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
