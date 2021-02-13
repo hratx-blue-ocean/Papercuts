@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
 require('dotenv').config();
+const passportLocalMongoose = require('passport-local-mongoose');
 
 //Vars
 const app = express();
@@ -27,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: 'aY5LZhOHMm!i',
+    secret: process.env.SESSION_SECRET || 'aY5LZhOHMm!i',
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -46,7 +47,7 @@ app.use(
   expressStaticGzip('client/dist', {
     enableBrotli: true,
     orderPreference: ['br'],
-    setHeaders: function (res, path) {
+    setHeaders: (res, path) => {
       res.setHeader('Cache-Control', 'public, max-age=31536000');
     },
   })
@@ -65,11 +66,11 @@ const isAuthenticated = (req, res, next) => {
   else return res.status(401).send('User is not authenticated');
 };
 
-app.get('/checkauth', isAuthenticated, function (req, res) {
+app.get('/checkauth', isAuthenticated, (req, res) => {
   delete req.user._doc.password;
   res.status(200).send(req.user);
 });
 
-app.get('*', function (req, res) {
+app.get('*', (req, res) => {
   res.redirect('/');
 });

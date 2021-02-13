@@ -45,7 +45,6 @@ export const App = () => {
               <ListGroup.Item as={Link} to="/profile" action variant="dark">
                 {user.email}
               </ListGroup.Item>
-
               <ListGroup.Item action variant="dark" onClick={logout}>
                 Logout
               </ListGroup.Item>
