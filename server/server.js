@@ -1,10 +1,11 @@
-const express = require('express');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const mongoose = require('mongoose');
-const expressStaticGzip = require('express-static-gzip');
-const passport = require('./passport/setup.js');
-require('dotenv').config();
+const express = require("express");
+const session = require("express-session");
+const path = require("path");
+const MongoStore = require("connect-mongo")(session);
+const mongoose = require("mongoose");
+const expressStaticGzip = require("express-static-gzip");
+const passport = require("./passport/setup.js");
+require("dotenv").config();
 
 //Vars
 const app = express();
@@ -23,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: 'aY5LZhOHMm!i',
+    secret: "aY5LZhOHMm!i",
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -33,20 +34,23 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/bookclub', require('./routes/BookclubRoute'));
-app.use('/user', require('./routes/UserRoute'));
-app.use('/book', require('./routes/BookRoute'));
-app.use('/api/auth', require('./routes/AuthRoute'));
+app.use("/bookclub", require("./routes/BookclubRoute"));
+app.use("/user", require("./routes/UserRoute"));
+app.use("/book", require("./routes/BookRoute"));
+app.use("/api/auth", require("./routes/AuthRoute"));
 app.use(
-  '/',
-  expressStaticGzip('client/dist', {
+  "/",
+  expressStaticGzip("client/dist", {
     enableBrotli: true,
-    orderPreference: ['br'],
+    orderPreference: ["br"],
     setHeaders: function (res, path) {
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
+      res.setHeader("Cache-Control", "public, max-age=31536000");
     },
   })
 );
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
