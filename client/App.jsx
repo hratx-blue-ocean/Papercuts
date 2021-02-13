@@ -6,14 +6,15 @@ import {
   useRouteMatch, //use if needed
   useParams, // use if needed
 } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import BookClub from './components/bookClubPage/bookClub.jsx';
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
 import { AuthContext } from './context/authContext.jsx';
 
 export const App = () => {
-  const { pie } = useContext(AppContext);
   const user = useContext(AuthContext);
+  const { exampleClubs } = useContext(AppContext);
   return (
     <Router>
       {/* @Jason, put this logic into a navbar at some point */}
@@ -23,10 +24,13 @@ export const App = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/profile">About</Link>
+            <Link to="/profile">Profile</Link>
           </li>
           <li>
-            <Link to="/clubs">Clubs</Link>
+            <Link to="/clubs">Book Clubs</Link>
+          </li>
+          <li>
+            <Link to="/clubs/detail">Club Details (Temporary)</Link>
           </li>
         </ul>
 
@@ -46,7 +50,10 @@ export const App = () => {
           <Route path="/profile">
             {/* Sean, Jerrick, put in your component here when ready */}
           </Route>
-          <Route path="/clubs">
+          <Route exact path="/clubs">
+            {/* Chris, your component here*/}
+          </Route>
+          <Route path="/clubs/detail">
             <BookClub />
           </Route>
         </Switch>

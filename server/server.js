@@ -9,8 +9,9 @@ require('dotenv').config();
 
 //Vars
 const app = express();
-const port = 3000;
 const dbURI = `mongodb+srv://jfleming9357:${process.env.MONGO_PASS}@cluster0.v4rli.mongodb.net/papercut?retryWrites=true&w=majority`;
+
+const port = process.env.PORT || 3000;
 
 //db connection
 mongoose
@@ -31,6 +32,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+<<<<<<< HEAD
 app.use('/api/auth', auth);
 app.use(
   '/',
@@ -42,8 +44,14 @@ app.use(
     },
   })
 );
+=======
+>>>>>>> 06dd635c0b98dcf1c73f2a87e52bbeadaed8c32f
 
-// app.use(express.static("client/dist"));
+// Routes
+app.use('/bookclub', require('./routes/BookclubRoute'));
+app.use('/user', require('./routes/UserRoute'));
+app.use('/book', require('./routes/BookRoute'));
+app.use('/api/auth', require('./routes/AuthRoute'));
 app.use(
   '/',
   expressStaticGzip('client/dist', {
@@ -55,10 +63,13 @@ app.use(
   })
 );
 
+<<<<<<< HEAD
 app.get('/', (req, res) => {
   res.send('hello from server');
 });
 
+=======
+>>>>>>> 06dd635c0b98dcf1c73f2a87e52bbeadaed8c32f
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
 });
