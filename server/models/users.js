@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const ThirdPartyProviderSchema = new mongoose.Schema({
   provider_name: {
@@ -63,4 +63,4 @@ const UserSchema = new mongoose.Schema(
   { strict: false }
 );
 
-module.exports = User = mongoose.model("Users", UserSchema);
+module.exports = User = mongoose.model('Users', UserSchema);
