@@ -21,7 +21,6 @@ export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
   const [show, setShow] = useState(false);
-  console.log(user);
   return (
     <Router>
       <div>
