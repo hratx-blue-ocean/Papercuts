@@ -11,6 +11,7 @@
   "author": "Matthew Budiman",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
     "compression-webpack-plugin": "^7.1.2",

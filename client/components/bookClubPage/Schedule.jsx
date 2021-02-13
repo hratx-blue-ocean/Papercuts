@@ -1,9 +1,8 @@
-import React from 'react'
-import {ListGroup, Form} from 'react-bootstrap'
-import Event from './Event.jsx'
+import React from 'react';
+import { ListGroup, Form } from 'react-bootstrap';
+import Event from './Event.jsx';
 
-export default function Schedule({events}) {
-
+export default function Schedule({ events }) {
   return (
     <div>
       <ListGroup>
@@ -14,5 +13,5 @@ export default function Schedule({events}) {
         ))}
       </ListGroup>
     </div>
-  )
+  );
 }

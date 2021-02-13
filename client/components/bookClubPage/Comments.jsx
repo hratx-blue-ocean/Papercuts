@@ -1,14 +1,16 @@
-import React from 'react'
-import {Form, ListGroup, Button} from 'react-bootstrap'
+import React from 'react';
+import { Form, ListGroup, Button } from 'react-bootstrap';
 
-export default function Comments({comments}) {
+export default function Comments({ comments }) {
   return (
     <div>
       <ListGroup>
         {comments.map((comment, idx) => (
           <ListGroup.Item key={idx}>
             <p>{comment.text}</p>
-            <p>{comment.username} at <span>{new Date(comment.timeSubmitted).toString()}</span></p>
+            <p>
+              {comment.username} at <span>{new Date(comment.timeSubmitted).toString()}</span>
+            </p>
           </ListGroup.Item>
         ))}
       </ListGroup>
@@ -22,5 +24,5 @@ export default function Comments({comments}) {
         </Button>
       </Form>
     </div>
-  )
+  );
 }
