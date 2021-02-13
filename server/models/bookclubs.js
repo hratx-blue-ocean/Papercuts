@@ -14,23 +14,20 @@ const BookclubSchema = new mongoose.Schema({
     ref: 'Users',
     required: true,
   },
+  bigImg: {
+    type: String,
+    required: true,
+  },
+  smallImg: {
+    type: String,
+    required: true,
+  },
   questionnaire: [
     {
-      question: {
-        type: String,
-        required: true,
-      },
-      answers: [
+      questions: [
         {
-          user: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Users',
-            required: true,
-          },
-          answer: {
-            type: String,
-            required: true,
-          },
+          type: String,
+          required: true,
         },
       ],
     },
@@ -46,23 +43,27 @@ const BookclubSchema = new mongoose.Schema({
   ],
   events: [
     {
-      user: {
+      event: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Events',
         required: true,
       },
     },
   ],
-  reviews: [
+  comments: [
     {
       user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users',
         required: true,
       },
-      review: {
+      comment: {
         type: String,
         required: true,
+      },
+      createdAt: {
+        type: Date,
+        default: Date.now,
       },
     },
   ],

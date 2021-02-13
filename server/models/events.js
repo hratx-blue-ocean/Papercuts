@@ -13,6 +13,9 @@ const EventSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
+  address: {
+    type: String,
+  },
 });
 
 module.exports = Event = mongoose.model('Events', EventSchema);
