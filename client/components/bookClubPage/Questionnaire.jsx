@@ -1,9 +1,7 @@
-import React from 'react'
-import {Form, Button} from 'react-bootstrap'
+import React from 'react';
+import { Form, Button } from 'react-bootstrap';
 
-export default function Questionnaire({questionnaire}) {
-
-
+export default function Questionnaire({ questionnaire }) {
   return (
     <Form>
       {questionnaire.map((question, idx) => (
@@ -16,5 +14,5 @@ export default function Questionnaire({questionnaire}) {
         Submit
       </Button>
     </Form>
-  )
+  );
 }

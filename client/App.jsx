@@ -7,18 +7,16 @@ import {
   useParams, // use if needed
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import BookClub from './components/bookClubPage/bookClub.jsx';
-import React, { useContext } from 'react';
+import BookClub from './components/bookClubPage/BookClub.jsx';
+import React, { useState, useContext } from 'react';
 import { AppContext } from './context/context.jsx';
-import { AuthContext } from './context/authContext.jsx';
-import ListGroup from 'react-bootstrap/ListGroup';
-import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
-import Button from 'react-bootstrap/Button';
-import logout from './components/global/logout.js';
+import BookDetail from './components/global/BookDetail.jsx';
+import { Button } from 'react-bootstrap';
 
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
+  const [show, setShow] = useState(true);
   return (
     <Router>
       <div>
@@ -77,6 +75,15 @@ export const App = () => {
           <Route path="/subscriptions">{/* subscriptions path */}</Route>
         </Switch>
       </div>
+      <Button variant="primary" onClick={() => setShow(true)}>
+        Open Example Book Detail Modal
+      </Button>
+      <BookDetail
+        handleClose={() => {
+          setShow(false);
+        }}
+        show={show}
+      />
     </Router>
   );
 };
