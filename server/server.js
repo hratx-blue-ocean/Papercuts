@@ -69,3 +69,7 @@ app.get('/checkauth', isAuthenticated, function (req, res) {
   delete req.user._doc.password;
   res.status(200).send(req.user);
 });
+
+app.get('*', function (req, res) {
+  res.redirect('/');
+});
