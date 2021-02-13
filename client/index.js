@@ -1,10 +1,13 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { App } from './App.jsx';
-import { AppProvider } from './context/context.jsx';
+import React from "react";
+import { render } from "react-dom";
+import { App } from "./App.jsx";
+import { AppProvider } from "./context/context.jsx";
+import { AuthProvider } from "./context/authContext.jsx";
 render(
-  <AppProvider>
-    <App />
-  </AppProvider>,
-  document.getElementById('root')
+  <AuthProvider>
+    <AppProvider>
+      <App />
+    </AppProvider>
+  </AuthProvider>,
+  document.getElementById("root")
 );

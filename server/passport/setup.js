@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const User = require("../models/users.js");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
-var GoogleStrategy = require("passport-google-oauth").OAuthStrategy;
+const GoogleStrategy = require("passport-google-oauth").OAuthStrategy;
 
 //grabs specified content (user.id) from the user object and stores it on the session object (req.session.passport.user)
 passport.serializeUser((user, done) => {

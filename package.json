@@ -33,6 +33,7 @@
     "react-login-modal": "^1.2.1",
     "react-multi-carousel": "^2.6.1",
     "react-router-dom": "^5.2.0",
+    "react-use-auth": "^2.1.0-14",
     "styled-components": "^5.2.1",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
