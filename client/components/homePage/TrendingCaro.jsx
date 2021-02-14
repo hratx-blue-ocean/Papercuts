@@ -1,46 +1,54 @@
 import React, { useContext } from 'react';
-import Carousel from 'react-bootstrap/Carousel';
+import Carousel from 'react-multi-carousel';
+import "react-multi-carousel/lib/styles.css";
+import Image from 'react-bootstrap/Image';
+import dummyData from "./dummyData.js";
 
-const TrendingCaro = (props) => {
+const TrendingCaro = () => {
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+      slidesToSlide: 1 // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2 // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1 // optional,default to 1.
+    }
+  };
 
   return (
-    <div>
-      <Carousel className="cc-TrendingCaro">
-      <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=First slide&bg=373940"
-      alt="First slide"
-    />
-    <Carousel.Caption>
-      <h3>First slide label</h3>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Second slide&bg=282c34"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Second slide label</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
-  <Carousel.Item>
-    <img
-      className="d-block w-100"
-      src="holder.js/800x400?text=Third slide&bg=20232a"
-      alt="Third slide"
-    />
-
-    <Carousel.Caption>
-      <h3>Third slide label</h3>
-      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-    </Carousel.Caption>
-  </Carousel.Item>
+    <div>Trending Books
+      <Carousel
+        className="cc-TrendingCaro"
+        swipeable={false}
+        draggable={false}
+        showDots={false}
+        responsive={responsive}
+        arrows={true}
+        infinite={true}
+        keyBoardControl={true}
+        customTransition="all .5"
+        transitionDuration={500}
+        containerClass="carousel-container"
+        dotListClass="custom-dot-list-style"
+        itemClass="carousel-item-padding-10-px">
+        {dummyData.map((book) => {
+          return (
+            <div >
+              <Image
+                style={{ width: "auto", height: "200px"}}
+                src={book.imageURL} />
+            </div>
+          )
+        })}
       </Carousel>
     </div>
   )

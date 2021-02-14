@@ -38,34 +38,43 @@ const HomePage = (props) => {
     // thumbnail image, title, author, price, description? (seems like a lot for these hovers...)
 
   return (
-
-    // <div>
-    //   <div className="grid-container">
-    //     <div className="Navbar-placeholder">I AM THE NAVBAR</div>
-    //     <div className="BOTM"><BOTM /></div>
-    //     <div className="SiteDesc"><SiteDesc /></div>
-    //     <div className="LogInSignUp"><LogInSignUp /></div>
-    //     <div className="TrendingCaro"><TrendingCaro /></div>
-    //     <div className="GenreCaro"><GenreCaro /></div>
-    //     <div className="MonthlySubscr"><MonthlySubscr /></div>
-    //     <div className="Footer">I AM THE FOOTER</div>
-    //   </div>
-    // </div>
-
+///////////  OPTION 1:  FLEX EVERYTHING:
     <div>
       <Container className="cc-homePage-topLevelContainer">
-        <Container className="cc-homePage-leftMainCol">
+        <div className="cc-homePage-leftMainCol">
           <BOTM />
           <TrendingCaro />
           <GenreCaro />
-        </Container>
-        <Container className="cc-homePage-rightMainCol">
+        </div>
+        <div className="cc-homePage-rightMainCol">
           <SiteDesc />
           <LogInSignUp />
           <MonthlySubscr />
-        </Container>
+        </div>
       </Container>
     </div>
+
+///////////  OPTION 2: GRID EVERYTHING (except what is ungriddable):
+  // <div className="cc-main-grid-container">
+  //   <div className="cc-BOTM">
+  //     <BOTM />
+  //   </div>
+  //   <div className="cc-TrendingCaro">
+  //     <TrendingCaro />
+  //   </div>
+  //   <div className="cc-GenreCaro">
+  //     <GenreCaro />
+  //   </div>
+  //   <div className="cc-Site-Desc">
+  //     <SiteDesc />
+  //   </div>
+  //   <div className="cc-LogInSignUp">
+  //     <LogInSignUp />
+  //   </div>
+  //   <div className="cc-MonthlySubscr">
+  //     <MonthlySubscr />
+  //   </div>
+  // </div>
 
   )
 

@@ -1,3 +1,4 @@
+/* OPTION 1: FLEX EVERYTHING: */
 .cc-homePage-topLevelContainer {
   background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
   display: flex;
@@ -29,80 +30,75 @@
   justify-content: flex-start;
   align-content: flex-start;
   align-items: stretch;
-  border: 1px black solid;
   padding: 10px;
 }
 
 .cc-BOTM-img-container {
-  display: flex;
-  flex: 1;
-  border: 1px black solid;
-  padding: 10px;
+
 }
 .cc-BOTM-mainBookInfo-container {
   display: flex;
   flex-direction: column;
   flex: 1;
-  border: 1px black solid;
-  padding: 10px;
 }
 .cc-BOTM-mainBookInfo-title-container {
   display: flex;
-  flex-direction: row;
-  flex: 1;
-  border: 1px black solid;
-  padding: 10px;
+  flex-direction: column;
 }
 .cc-BOTM-mainBookInfo-header {
-  position: absolute;
-  display: flex;
-  flex: 1;
-  font-family: Roboto;
+  text-align: center;
   font-style: normal;
-  font-size: 24px;
+  font-size: 22px;
   color: #000000;
-  border: 1px black solid;
-  padding: 10px;
+  padding: 5px;
 }
 .cc-BOTM-mainBookInfo-bookTitle {
-  position: absolute;
-  display: flex;
-  flex: 1;
-  font-family: Roboto;
+  text-align: center;
   font-style: bold;
-  font-size: 20px;
+  font-size: 24px;
   color: #000000;
-  border: 1px black solid;
-  padding: 10px;
+  padding: 5px;
 }
 .cc-BOTM-mainBookInfo-author {
-  position: absolute;
-  display: flex;
-  flex: 1;
-  font-family: Roboto;
+  text-align: center;
   font-style: italic;
   font-size: 20px;
   color: #000000;
-  border: 1px black solid;
-  padding: 10px;
+  padding: 5px;
 }
 .cc-BOTM-mainBookInfo-priceCardsContainer {
   display: flex;
   flex-direction: row;
-  height: 200px;
+  height: 100px;
+  width: auto;
   flex-wrap: nowrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-  border: 1px black solid;
   padding: 10px;
 }
-
+.cc-BOTM-mainBookInfo-priceCards {
+  height: 80px;
+  width: 100px;
+  text-align: center;
+  background-color: white;
+  border-radius: 6px;
+  margin: 5px;
+}
+.cc-BOTM-mainBookInfo-description {
+  font-size: 14px;
+  color: #000000;
+  padding: 5px;
+  margin: 10px;
+}
 
 .cc-TrendingCaro {
   display: flex;
   flex: 2;
   border: 1px black solid;
   padding: 10px;
+}
+
+.cc-TrendingCaro-item {
+  width: 160px;
+  height: 200px;
 }
 
 .cc-GenreCaro {
@@ -133,3 +129,144 @@
 }
 
 
+/* OPTION 2: GRID (almost) EVERYTHING: */
+/* .cc-main-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px 15px;
+  grid-template-areas:
+    "cc-BOTM cc-BOTM cc-BOTM cc-BOTM cc-Site-Desc cc-Site-Desc cc-Site-Desc"
+    "cc-BOTM cc-BOTM cc-BOTM cc-BOTM cc-Site-Desc cc-Site-Desc cc-Site-Desc"
+    "cc-BOTM cc-BOTM cc-BOTM cc-BOTM cc-LogInSignUp cc-LogInSignUp cc-LogInSignUp"
+    "cc-BOTM cc-BOTM cc-BOTM cc-BOTM cc-LogInSignUp cc-LogInSignUp cc-LogInSignUp"
+    "cc-TrendingCaro cc-TrendingCaro cc-TrendingCaro cc-TrendingCaro cc-LogInSignUp cc-LogInSignUp cc-LogInSignUp"
+    "cc-TrendingCaro cc-TrendingCaro cc-TrendingCaro cc-TrendingCaro cc-MonthlySubscr cc-MonthlySubscr cc-MonthlySubscr"
+    "cc-GenreCaro cc-GenreCaro cc-GenreCaro cc-GenreCaro cc-MonthlySubscr cc-MonthlySubscr cc-MonthlySubscr"
+    "cc-GenreCaro cc-GenreCaro cc-GenreCaro cc-GenreCaro cc-MonthlySubscr cc-MonthlySubscr cc-MonthlySubscr";
+    background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
+    border: 1px black solid;
+    padding: 10px;
+} */
+
+/* .cc-BOTM {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  grid-area: cc-BOTM;
+} */
+
+/* .BOTM-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.8fr 1.1fr 1.1fr;
+  gap: 5px 5px;
+  grid-template-areas:
+    "cc-BOTM-img cc-BOTM-img cc-BOTM-mainBookInfo-title cc-BOTM-mainBookInfo-title"
+    "cc-BOTM-img cc-BOTM-img cc-BOTM-mainBookInfo-priceCards cc-BOTM-mainBookInfo-priceCards"
+    "cc-BOTM-img cc-BOTM-img cc-BOTM-mainBookInfo-description cc-BOTM-mainBookInfo-description";
+} */
+
+/* .cc-BOTM-img {
+  grid-area: cc-BOTM-img;
+  border: 1px black solid;
+  padding: 10px;
+} */
+
+/* .cc-BOTM-mainBookInfo-title {
+  grid-area: cc-BOTM-mainBookInfo-title;
+} */
+
+/* .cc-BOTM-mainBookInfo-header {
+  font-family: Roboto;
+  font-style: normal;
+  font-size: 24px;
+  color: #000000;
+  border: 1px black solid;
+  padding: 10px;
+} */
+
+/* .cc-BOTM-mainBookInfo-bookTitle {
+  font-family: Roboto;
+  font-style: bold;
+  font-size: 20px;
+  color: #000000;
+  border: 1px black solid;
+  padding: 10px;
+} */
+/* .cc-BOTM-mainBookInfo-author {
+  font-family: Roboto;
+  font-style: italic;
+  font-size: 20px;
+  color: #000000;
+  border: 1px black solid;
+  padding: 10px;
+}  */
+
+/* .cc-BOTM-mainBookInfo-priceCards {
+  grid-area: cc-BOTM-mainBookInfo-priceCards;
+}
+
+.cc-BOTM-mainBookInfo-description {
+  grid-area: cc-BOTM-mainBookInfo-description;
+}
+
+
+.cc-TrendingCaro {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  grid-area: cc-TrendingCaro;
+} */
+
+/* .cc-GenreCaro {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  grid-area: cc-GenreCaro;
+}
+
+.cc-Site-Desc {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  grid-area: cc-Site-Desc;
+}
+
+.cc-LogInSignUp {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  grid-area: cc-LogInSignUp;
+}
+
+.cc-MonthlySubscr {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    ". . ."
+    ". . .";
+  grid-area: cc-MonthlySubscr;
+} */

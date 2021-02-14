@@ -4,39 +4,49 @@ import dummyData from "./dummyData.js";
 
 const BOTM = () => {
 
+  //// OPTION 2: GRID
+//   return (
+// <div className="BOTM-grid-container">
+//   <div className="cc-BOTM-img"></div>
+//   <div className="cc-BOTM-mainBookInfo-title"></div>
+//   <div className="cc-BOTM-mainBookInfo-priceCards"></div>
+//   <div className="cc-BOTM-mainBookInfo-description"></div>
+// </div>
+
+//   )
+
+// OPTION 1: FLEX
   return (
-    // top level container: row with 2 children:
-    <div className="cc-BOTM">
-      {/* top level child 1: book image: */}
-      <Container className="cc-BOTM-img-container">
-        <Image src={dummyData[0].imageURL} fluid/>
-      </Container>
-      <Container className="cc-BOTM-mainBookInfo-container">
-      {/* top level child 2: Title/author section, price cards, summary text: (col) */}
-        <Container className="cc-BOTM-mainBookInfo-title-container">
+    <Container className="cc-BOTM">
+      <div >
+        <Image src={dummyData[3].imageURL} fluid className=".cc-BOTM-img-container"/>
+      </div>
+      <div className="cc-BOTM-mainBookInfo-container">
+        <div className="cc-BOTM-mainBookInfo-title-container">
           <p className="cc-BOTM-mainBookInfo-header">Book of the Month</p>
-          <p className="cc-BOTM-mainBookInfo-bookTitle">{dummyData[0].title}</p>
-          <p className="cc-BOTM-mainBookInfo-author">{dummyData[0].author}</p>
-        </Container>
-        <Container className="cc-BOTM-mainBookInfo-priceCardsContainer">
-          <div>
-            <p>Hardcover:</p>
-            <p>{`$${dummyData[0].priceHardcover}`}</p>
-          </div>
-          <div>
-            <p>Paperback:</p>
-            <p>{`$${dummyData[0].pricePaperback}`}</p>
-          </div>
-          <div>
-            <p>Audio:</p>
-            <p>{`$${dummyData[0].priceAudio}`}</p>
-          </div>
-        </Container>
-        <div className="cc-BOTM-mainBookInfo-bookDescr">
-          <p className="cc-text">{dummyData[0].description}</p>
+          <p className="cc-BOTM-mainBookInfo-bookTitle">{dummyData[3].title}</p>
+          <p className="cc-BOTM-mainBookInfo-author">by {dummyData[3].author}</p>
         </div>
-      </Container>
-    </div>
+        <div className="cc-BOTM-mainBookInfo-priceCardsContainer">
+          <div className="cc-BOTM-mainBookInfo-priceCards">
+            <p>Hardcover:</p>
+            <p>{`\n$${dummyData[3].priceHardcover}`}</p>
+          </div>
+          <div className="cc-BOTM-mainBookInfo-priceCards">
+            <p>Paperback:</p>
+            <p>{`\n$${dummyData[3].pricePaperback}`}</p>
+          </div>
+          <div className="cc-BOTM-mainBookInfo-priceCards">
+            <p > Audio:</p>
+            <p>{`\n$${dummyData[3].priceAudio}`}</p>
+          </div>
+        </div>
+        <div >
+          <p className="cc-BOTM-mainBookInfo-description">{dummyData[3].description}</p>
+        </div>
+      </div>
+    </Container>
+
   )
 
 }
