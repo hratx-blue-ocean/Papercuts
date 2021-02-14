@@ -4,30 +4,52 @@ import {
   Route,
   Link,
   useRouteMatch, //use if needed
-  useParams // use if needed
-} from "react-router-dom";
-import HomePage from './components/homePage/HomePage.jsx'
-import BookClub from './components/bookClubPage/BookClub.jsx'
-import React, { useContext } from 'react';
+  useParams, // use if needed
+} from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import BookClub from './components/bookClubPage/BookClub.jsx';
+import React, { useState, useContext } from 'react';
 import { AppContext } from './context/context.jsx';
+import BookDetail from './components/global/BookDetail.jsx';
+import { Button } from 'react-bootstrap';
 
 export const App = () => {
-  const {pie} = useContext(AppContext);
+  const user = useContext(AuthContext);
+  const { exampleClubs } = useContext(AppContext);
+  const [show, setShow] = useState(true);
   return (
     <Router>
-      {/* @Jason, put this logic into a navbar at some point */}
       <div>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/profile">About</Link>
-          </li>
-          <li>
-            <Link to="/clubs">Clubs</Link>
-          </li>
-        </ul>
+        <ListGroup className="navList" horizontal>
+          <ListGroup.Item to="/" as={Link} action variant="dark">
+            Home
+          </ListGroup.Item>
+          <ListGroup.Item to="/clubs" as={Link} action variant="dark">
+            Book Clubs
+          </ListGroup.Item>
+          <ListGroup.Item to="/clubs/detail" as={Link} action variant="dark">
+            Club Details (Temporary)
+          </ListGroup.Item>
+          <ListGroup.Item as={Link} to="/subscriptions" action variant="dark">
+            Subscriptions
+          </ListGroup.Item>
+          {!user ? (
+            <ListGroup horizontal>
+              <LoginModal as={Link} />
+              <RegisterModal as={Link} />
+            </ListGroup>
+          ) : (
+            <ListGroup horizontal>
+              <ListGroup.Item as={Link} to="/profile" action variant="dark">
+                {user.email}
+              </ListGroup.Item>
+
+              <ListGroup.Item action variant="dark" onClick={logout}>
+                Logout
+              </ListGroup.Item>
+            </ListGroup>
+          )}
+        </ListGroup>
 
         <hr />
 
@@ -45,11 +67,24 @@ export const App = () => {
           <Route path="/profile">
             {/* Sean, Jerrick, put in your component here when ready */}
           </Route>
-          <Route path="/clubs">
+          <Route exact path="/clubs">
+            {/* Chris, your component here*/}
+          </Route>
+          <Route path="/clubs/detail">
             <BookClub />
           </Route>
+          <Route path="/subscriptions">{/* subscriptions path */}</Route>
         </Switch>
       </div>
+      <Button variant="primary" onClick={() => setShow(true)}>
+        Open Example Book Detail Modal
+      </Button>
+      <BookDetail
+        handleClose={() => {
+          setShow(false);
+        }}
+        show={show}
+      />
     </Router>
   );
 };
