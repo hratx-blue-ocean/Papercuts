@@ -30,20 +30,11 @@ export const App = () => {
       <main className='py-3'>
         <Container>
           <Switch>
-            <Route exact path='/'>
-              {/* Cayla, put in your component here when ready */}
-            </Route>
-            <Route path='/profile' component={MyLibrary}>
-            </Route>
-            <Route exact path='/clubs' component={BookClubs}>
-              {/* <BookClubs /> */}
-            </Route>
-            <Route path='/clubs/detail' component={BookClub}>
-              {/* <BookClub /> */}
-            </Route>
-            <Route path='/subscriptions' component={Subscriptions}>
-              {/* <Subscriptions /> */}
-            </Route>
+            <Route exact path='/' />
+            <Route path='/profile' component={MyLibrary} />
+            <Route exact path='/clubs' component={BookClubs} />
+            <Route path='/clubs/detail' component={BookClub} />
+            <Route path='/subscriptions' component={Subscriptions} />
             <Route component={Error} />
           </Switch>
         </Container>
