@@ -22,14 +22,14 @@ export default function BookClub() {
       </Row>
       <Row>
         <Col>
-          <Tabs defaultActiveKey="schedule" id="club-tabs">
-            <Tab eventKey="schedule" title="Schedule">
+          <Tabs defaultActiveKey='schedule' id='club-tabs'>
+            <Tab eventKey='schedule' title='Schedule'>
               <Schedule events={data.events} />
             </Tab>
-            <Tab eventKey="comments" title="Comments">
+            <Tab eventKey='comments' title='Comments'>
               <Comments comments={data.comments} />
             </Tab>
-            <Tab eventKey="questionnaire" title="Questionnaire">
+            <Tab eventKey='questionnaire' title='Questionnaire'>
               <Questionnaire questionnaire={data.questionnaire} />
             </Tab>
           </Tabs>

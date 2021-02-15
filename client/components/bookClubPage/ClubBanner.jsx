@@ -14,7 +14,7 @@ export default function ClubBanner({ name, description, members }) {
         <Col>
           <Row>
             <h1>
-              {name} <Button variant="outline-info" disabled>{`${numMembers} members`}</Button>
+              {name} <Button variant='outline-info' disabled>{`${numMembers} members`}</Button>
             </h1>
           </Row>
           <Row>
