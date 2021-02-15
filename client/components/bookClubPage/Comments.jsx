@@ -15,11 +15,11 @@ export default function Comments({ comments }) {
         ))}
       </ListGroup>
       <Form>
-        <Form.Group controlId="addComment">
+        <Form.Group controlId='addComment'>
           <Form.Label>Add a Comment</Form.Label>
-          <Form.Control type="textarea" placeholder="What are you thinking?" />
+          <Form.Control type='textarea' placeholder='What are you thinking?' />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant='primary' type='submit'>
           Submit
         </Button>
       </Form>

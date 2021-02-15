@@ -3,11 +3,11 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <Container className="d-flex">
+    <footer className='footer'>
+      <Container className='d-flex'>
         <Col>
           <Row>
-            <h3 className="font-weight-bold">PAPERCUTS</h3>
+            <h3 className='font-weight-bold'>PAPERCUTS</h3>
           </Row>
           <Row>Copyright &copy; Papercuts Books 2020-2021</Row>
           <Row>
@@ -18,7 +18,7 @@ const Footer = () => {
         </Col>
         <Col>
           <Row>
-            <h5 className="font-weight-bold">Product</h5>
+            <h5 className='font-weight-bold'>Product</h5>
           </Row>
           <br />
           <Row>
@@ -33,7 +33,7 @@ const Footer = () => {
         </Col>
         <Col>
           <Row>
-            <h5 className="font-weight-bold">Features</h5>
+            <h5 className='font-weight-bold'>Features</h5>
           </Row>
           <br />
           <Row>
@@ -48,7 +48,7 @@ const Footer = () => {
         </Col>
         <Col>
           <Row>
-            <h5 className="font-weight-bold">Resources</h5>
+            <h5 className='font-weight-bold'>Resources</h5>
           </Row>
           <br />
           <Row>
@@ -63,7 +63,7 @@ const Footer = () => {
         </Col>
         <Col>
           <Row>
-            <h5 className="font-weight-bold">Company</h5>
+            <h5 className='font-weight-bold'>Company</h5>
           </Row>
           <br />
           <Row>

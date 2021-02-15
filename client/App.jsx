@@ -25,7 +25,7 @@ export const App = () => {
   return (
     <Router>
       <Header user={user} />
-      <main className="py-3">
+      <main className='py-3'>
         <Container>
           {/*
           A <Switch> looks through all its children <Route>
@@ -35,26 +35,26 @@ export const App = () => {
           of them to render at a time
         */}
           <Switch>
-            <Route exact path="/">
+            <Route exact path='/'>
               {/* Cayla, put in your component here when ready */}
             </Route>
-            <Route path="/profile">
+            <Route path='/profile'>
               {/* Sean, Jerrick, put in your component here when ready */}
             </Route>
-            <Route exact path="/clubs" component={BookClubs}>
+            <Route exact path='/clubs' component={BookClubs}>
               {/* <BookClubs /> */}
             </Route>
-            <Route path="/clubs/detail" component={BookClub}>
+            <Route path='/clubs/detail' component={BookClub}>
               {/* <BookClub /> */}
             </Route>
-            <Route path="/subscriptions" component={Subscriptions}>
+            <Route path='/subscriptions' component={Subscriptions}>
               {/* <Subscriptions /> */}
             </Route>
           </Switch>
         </Container>
       </main>
       <Footer />
-      <Button variant="primary" onClick={() => setShow(true)}>
+      <Button variant='primary' onClick={() => setShow(true)}>
         Open Example Book Detail Modal
       </Button>
       <BookDetail

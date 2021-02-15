@@ -10,7 +10,7 @@ export default function Questionnaire({ questionnaire }) {
           <Form.Control type={question.type} />
         </Form.Group>
       ))}
-      <Button variant="primary" type="submit">
+      <Button variant='primary' type='submit'>
         Submit
       </Button>
     </Form>

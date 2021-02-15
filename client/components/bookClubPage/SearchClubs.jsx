@@ -16,13 +16,13 @@ const SearchClubs = ({ history }) => {
   return (
     <Form onSubmit={submitHandler} inline>
       <Form.Control
-        type="text"
-        name="q"
+        type='text'
+        name='q'
         onChange={(e) => setKeyword(e.target.value)}
-        placeholder="Search Book Clubs..."
-        className="ml-sm-5 mr-sm-2"
+        placeholder='Search Book Clubs...'
+        className='ml-sm-5 mr-sm-2'
       ></Form.Control>
-      <Button type="submit" variant="outline-success" className="p-2">
+      <Button type='submit' variant='outline-success' className='p-2'>
         Search
       </Button>
     </Form>
