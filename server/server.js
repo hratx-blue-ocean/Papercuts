@@ -1,11 +1,12 @@
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
 require('dotenv').config();
+const passportLocalMongoose = require('passport-local-mongoose');
+const path = require('path');
 
 //Vars
 const app = express();
@@ -28,7 +29,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
-    secret: 'aY5LZhOHMm!i',
+    secret: process.env.SESSION_SECRET || 'aY5LZhOHMm!i',
     resave: false,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -42,23 +43,18 @@ app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
 app.use('/api/auth', require('./routes/AuthRoute'));
-app.use(
-  '/',
-  expressStaticGzip('client/dist', {
-    enableBrotli: true,
-    orderPreference: ['br'],
-    setHeaders: function (res, path) {
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
-    },
-  })
-);
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
-
-app.get('/', (req, res) => {
-  res.send('hello from server');
-});
+app.use('/reset', require('./routes/resetRoute'));
+// app.use(
+//   '/',
+//   expressStaticGzip('client/dist', {
+//     enableBrotli: true,
+//     orderPreference: ['br'],
+//     setHeaders: (res, path) => {
+//       res.setHeader('Cache-Control', 'public, max-age=31536000');
+//     },
+//   })
+// );
+app.use(express.static('client/dist'));
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
@@ -69,11 +65,11 @@ const isAuthenticated = (req, res, next) => {
   else return res.status(401).send('User is not authenticated');
 };
 
-app.get('/checkauth', isAuthenticated, function (req, res) {
+app.get('/checkauth', isAuthenticated, (req, res) => {
   delete req.user._doc.password;
   res.status(200).send(req.user);
 });
 
-app.get('*', function (req, res) {
-  res.redirect('/');
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname + '/../client/dist/index.html'));
 });
