@@ -3,12 +3,10 @@ import { render } from 'react-dom';
 import 'normalize.css';
 import { App } from './App.jsx';
 import { AppProvider } from './context/context.jsx';
-import { AuthProvider } from './context/authContext.jsx';
+
 render(
-  <AuthProvider>
-    <AppProvider>
-      <App />
-    </AppProvider>
-  </AuthProvider>,
+  <AppProvider>
+    <App />
+  </AppProvider>,
   document.getElementById('root')
 );
