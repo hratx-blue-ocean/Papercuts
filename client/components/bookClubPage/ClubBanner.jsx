@@ -3,7 +3,8 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 import test from './test.jpg';
 
 export default function ClubBanner({ name, description, members }) {
-  const numMembers = members.length;
+  const numMembers = 0;
+  numMembers ? (numMembers = members.length) : {};
 
   return (
     <Container>

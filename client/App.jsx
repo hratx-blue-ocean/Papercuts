@@ -19,6 +19,8 @@ import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
+import Error from './components/global/Error.jsx';
+
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
@@ -45,6 +47,7 @@ export const App = () => {
             <Route exact path='/changePassword/:email/:token'>
               <ChangePasswordForm />
             </Route>
+            <Route component={Error} />
           </Switch>
         </Container>
       </main>
