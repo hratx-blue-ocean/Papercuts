@@ -10,7 +10,7 @@ const Subscription = require('../models/subscription');
 // @access  Private
 router.get('/all', async (req, res) => {
   try {
-    const users = await User.find();
+    const users = await User.find().select('email');
     res.json(users);
   } catch (error) {
     res.status(500).json({ error });
@@ -23,7 +23,7 @@ router.get('/all', async (req, res) => {
 router.post('/friends', async (req, res) => {
   const { userId } = req.body;
 
-  const { friends } = await User.findById(userId).populate('friends');
+  const { friends } = await User.findById(userId).select('friends').populate('friends', 'email');
 
   res.json(friends);
 });
@@ -136,13 +136,12 @@ router.get('/payment', async (req, res) => {
 // @route   Post /user/payment
 // @access  Private
 router.post('/payment', async (req, res) => {
-  let { userId, cardNumber, cardHolder, cardCVC, cardExpiredDate } = req.body;
+  let { userId, cardNumber, cardHolder, cardExpiredDate } = req.body;
 
   try {
     const newPayment = await new Payment({
       cardNumber,
       cardHolder,
-      cardCVC,
       cardExpiredDate,
     }).save();
 
@@ -160,14 +159,13 @@ router.post('/payment', async (req, res) => {
 // @route   Put /user/payment
 // @access  Private
 router.put('/payment', async (req, res) => {
-  let { paymentID, cardNumber, cardHolder, cardCVC, cardExpiredDate } = req.body;
+  let { paymentID, cardNumber, cardHolder, cardExpiredDate } = req.body;
 
   try {
     const currentPayment = await Payment.findById(paymentID);
 
     currentPayment.cardNumber = cardNumber;
     currentPayment.cardHolder = cardHolder;
-    currentPayment.cardCVC = cardCVC;
     currentPayment.cardExpiredDate = cardExpiredDate;
     const updatedPayment = await currentPayment.save();
 
