@@ -6,17 +6,21 @@ import {
   useRouteMatch, //use if needed
   useParams, // use if needed
 } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import BookClub from './components/bookClubPage/BookClub.jsx';
 import React, { useState, useContext } from 'react';
+import { Button, ListGroup } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppContext } from './context/context.jsx';
+import { AuthContext } from './context/authContext.jsx';
+import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
-import { Button } from 'react-bootstrap';
+import BookClub from './components/bookClubPage/bookClub.jsx';
+import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
+import logout from './components/global/logout.js';
 
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
   return (
     <Router>
       <div>
@@ -73,7 +77,9 @@ export const App = () => {
           <Route path="/clubs/detail">
             <BookClub />
           </Route>
-          <Route path="/subscriptions">{/* subscriptions path */}</Route>
+          <Route path="/subscriptions">
+            <Subscriptions />
+          </Route>
         </Switch>
       </div>
       <Button variant="primary" onClick={() => setShow(true)}>
