@@ -1,5 +1,6 @@
 const express = require('express');
 const session = require('express-session');
+const path = require('path');
 const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
@@ -36,11 +37,19 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.post('/ttt', (req, res) => {
+  console.log(req.body);
+  console.log(req.file);
+
+  res.send('Nice');
+});
+
 // Routes
 app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
 app.use('/api/auth', require('./routes/AuthRoute'));
+
 app.use(
   '/',
   expressStaticGzip('client/dist', {
@@ -52,12 +61,8 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => {
-  res.send('hello from server');
-});
-
-app.listen(port, () => {
-  console.log(`Listening on ${port}`);
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 const isAuthenticated = (req, res, next) => {
@@ -72,4 +77,8 @@ app.get('/checkauth', isAuthenticated, function (req, res) {
 
 app.get('*', function (req, res) {
   res.redirect('/');
+});
+
+app.listen(port, () => {
+  console.log(`Listening on ${port}`);
 });

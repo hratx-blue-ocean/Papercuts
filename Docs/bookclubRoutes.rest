@@ -1,9 +1,18 @@
-### Register if new, login if not
-POST http://localhost:3000/api/auth/register_login
+### Register user
+POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-    "email": "userB@test.com",
+    "email": "matt@test.com",
+    "password": "password"
+}
+
+### Login user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "userC@test.com",
     "password": "password"
 }
 
