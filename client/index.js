@@ -5,8 +5,10 @@ import { App } from './App.jsx';
 import { AppProvider } from './context/context.jsx';
 
 render(
-  <AppProvider>
-    <App />
-  </AppProvider>,
+  <AuthProvider>
+    <AppProvider>
+      <App />
+    </AppProvider>
+  </AuthProvider>,
   document.getElementById('root')
 );
