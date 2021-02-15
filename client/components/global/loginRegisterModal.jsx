@@ -15,9 +15,12 @@ export const LoginModal = () => {
 
   return (
     <>
-      <ListGroup.Item onClick={handleShow} action variant="dark">
+      <Button onClick={handleShow} action variant="outline-dark">
         Login
-      </ListGroup.Item>
+      </Button>
+      {/* <ListGroup.Item onClick={handleShow} action variant="dark">
+        Login
+      </ListGroup.Item> */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -91,9 +94,12 @@ export const RegisterModal = () => {
 
   return (
     <>
-      <ListGroup.Item onClick={handleShow} action variant="dark">
+      <Button onClick={handleShow} action variant="outline-dark">
         Register
-      </ListGroup.Item>
+      </Button>
+      {/* <ListGroup.Item onClick={handleShow} action variant="dark">
+        Register
+      </ListGroup.Item> */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
