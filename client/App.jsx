@@ -18,6 +18,7 @@ import MyLibrary from './components/profilePage/myLibrary.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
+import Error from './components/global/Error.jsx';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -43,6 +44,7 @@ export const App = () => {
             <Route path='/subscriptions' component={Subscriptions}>
               {/* <Subscriptions /> */}
             </Route>
+            <Route component={Error} />
           </Switch>
         </Container>
       </main>
