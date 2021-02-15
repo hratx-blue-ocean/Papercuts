@@ -1,0 +1,98 @@
+{
+  "kind": "books#volume",
+  "id": "0efCDwAAQBAJ",
+  "etag": "kInZsD+a4X0",
+  "selfLink": "https://www.googleapis.com/books/v1/volumes/0efCDwAAQBAJ",
+  "volumeInfo": {
+    "title": "Hello, Boys!",
+    "authors": ["Ella Wheeler Wilcox"],
+    "publisher": "Good Press",
+    "publishedDate": "2019-12-05",
+    "description": "\"Hello, Boys!\" by Ella Wheeler Wilcox. Published by Good Press. Good Press publishes a wide range of titles that encompasses every genre. From well-known classics & literary fiction and non-fiction to forgotten−or yet undiscovered gems−of world literature, we issue the books that need to be read. Each Good Press edition has been meticulously edited and formatted to boost readability for all e-readers and devices. Our goal is to produce eBooks that are user-friendly and accessible to everyone in a high-quality digital format.",
+    "industryIdentifiers": [
+      {
+        "type": "OTHER",
+        "identifier": "EAN:4064066246228"
+      }
+    ],
+    "readingModes": {
+      "text": true,
+      "image": true
+    },
+    "pageCount": 154,
+    "printedPageCount": 105,
+    "printType": "BOOK",
+    "categories": ["Poetry / General"],
+    "maturityRating": "NOT_MATURE",
+    "allowAnonLogging": false,
+    "contentVersion": "0.3.4.0.preview.3",
+    "panelizationSummary": {
+      "containsEpubBubbles": false,
+      "containsImageBubbles": false
+    },
+    "imageLinks": {
+      "smallThumbnail": "http://books.google.com/books/publisher/content?id=0efCDwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&imgtk=AFLRE72wlbamPbukztaSl750Xp2gsI4TRmNG5prBraN7GLN7tVVsp8VzKFH2ySxEteeLilecoNxDlqe9nrKyBWZYyop9ggHTXogQpwPzm89RPUe8IsvUYeZsPnr1BcpcUXEn7N2hKrJN&source=gbs_api",
+      "thumbnail": "http://books.google.com/books/publisher/content?id=0efCDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE73ufz60bQN10JoJ_VtHoWvwCcoPLzr9On1gkA2FpVw7aXcWBZoVu2c9ucEIaBO2mQI2DZih3AH8MCNrzh-Y7Jj0gg0PEBcc1XYUddNph-VmFZwsnIftJINGIT6x8dmDmYP2XEtn&source=gbs_api",
+      "small": "http://books.google.com/books/publisher/content?id=0efCDwAAQBAJ&printsec=frontcover&img=1&zoom=2&edge=curl&imgtk=AFLRE70VroceOTd6tkhhMPv-JPXy4Yklgsg7iSi8_JTLO47owLT4eHuuoFrw53PI_hiKZMLLpyn63CPjNyOGdSIt4vETNul7C5B0Dtp_JRl1G1Y3p8nzm0aZiYbcI4xaULvT37ETKMIm&source=gbs_api",
+      "medium": "http://books.google.com/books/publisher/content?id=0efCDwAAQBAJ&printsec=frontcover&img=1&zoom=3&edge=curl&imgtk=AFLRE72Yo3WyBBpEMDSxV3EaY4erBqW5VNjgExdA-PBUrVN-2cp1WWwBo0JRf15U7w0Itg5VjBiOLbHl3aTBLF6bcAsXBtV7diPV4qeYl5mKykbECw7GCpbazIEqXq8kCw-vKIIHkBcU&source=gbs_api",
+      "large": "http://books.google.com/books/publisher/content?id=0efCDwAAQBAJ&printsec=frontcover&img=1&zoom=4&edge=curl&imgtk=AFLRE72tcs1GkHODIUNwg_MvOt0d-0At-phaXz0wyfpzrnuve5xDqByQg2_Hsi0O3fGgU64ORTHlZTp5eCo-DzgWhRy4np5pPbQR5Eb5wKRzs_EJi-r38mSgwZZTdhMS4uYsyox_11h7&source=gbs_api",
+      "extraLarge": "http://books.google.com/books/publisher/content?id=0efCDwAAQBAJ&printsec=frontcover&img=1&zoom=6&edge=curl&imgtk=AFLRE73vqRZG_RcTeA7ka3WthIRzpYDjhKBZp1fm4h_97kYFPt70ayYBx2NEDqO7W97a3eALZt6nts2EMwD5Ak8_30MNfaMNo0gmbgANvsa35OiD3XdyVdRmxjN2rJtbciBf46PTKbM3&source=gbs_api"
+    },
+    "language": "en",
+    "previewLink": "http://books.google.com/books?id=0efCDwAAQBAJ&hl=&source=gbs_api",
+    "infoLink": "https://play.google.com/store/books/details?id=0efCDwAAQBAJ&source=gbs_api",
+    "canonicalVolumeLink": "https://play.google.com/store/books/details?id=0efCDwAAQBAJ"
+  },
+  "layerInfo": {
+    "layers": [
+      {
+        "layerId": "geo",
+        "volumeAnnotationsVersion": "3"
+      }
+    ]
+  },
+  "saleInfo": {
+    "country": "US",
+    "saleability": "FOR_SALE",
+    "isEbook": true,
+    "listPrice": {
+      "amount": 1.99,
+      "currencyCode": "USD"
+    },
+    "retailPrice": {
+      "amount": 1.99,
+      "currencyCode": "USD"
+    },
+    "buyLink": "https://play.google.com/store/books/details?id=0efCDwAAQBAJ&rdid=book-0efCDwAAQBAJ&rdot=1&source=gbs_api",
+    "offers": [
+      {
+        "finskyOfferType": 1,
+        "listPrice": {
+          "amountInMicros": 1990000,
+          "currencyCode": "USD"
+        },
+        "retailPrice": {
+          "amountInMicros": 1990000,
+          "currencyCode": "USD"
+        },
+        "giftable": true
+      }
+    ]
+  },
+  "accessInfo": {
+    "country": "US",
+    "viewability": "PARTIAL",
+    "embeddable": true,
+    "publicDomain": false,
+    "textToSpeechPermission": "ALLOWED",
+    "epub": {
+      "isAvailable": true
+    },
+    "pdf": {
+      "isAvailable": true
+    },
+    "webReaderLink": "http://play.google.com/books/reader?id=0efCDwAAQBAJ&hl=&printsec=frontcover&source=gbs_api",
+    "accessViewStatus": "SAMPLE",
+    "quoteSharingAllowed": false
+  }
+}
