@@ -11,6 +11,8 @@ export default function BookClub() {
   // const {exampleClubs} = useContext(AppContext);
   const data = exampleClubs[0];
 
+  const func = () => {};
+
   return (
     <Container>
       <Row>
