@@ -6,8 +6,6 @@ import {
   useRouteMatch, //use if needed
   useParams, // use if needed
 } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import BookClub from './components/bookClubPage/bookClub.jsx';
 import React, { useState, useContext } from 'react';
 import { Button, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,9 +13,9 @@ import { AppContext } from './context/context.jsx';
 import { AuthContext } from './context/authContext.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
+import BookClub from './components/bookClubPage/bookClub.jsx';
 import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
 import logout from './components/global/logout.js';
-import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -49,6 +47,7 @@ export const App = () => {
               <ListGroup.Item as={Link} to="/profile" action variant="dark">
                 {user.email}
               </ListGroup.Item>
+
               <ListGroup.Item action variant="dark" onClick={logout}>
                 Logout
               </ListGroup.Item>
@@ -80,9 +79,6 @@ export const App = () => {
           </Route>
           <Route path="/subscriptions">
             <Subscriptions />
-          </Route>
-          <Route path="/changePassword/:user/:token">
-            <ChangePasswordForm />
           </Route>
         </Switch>
       </div>

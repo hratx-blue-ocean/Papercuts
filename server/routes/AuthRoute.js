@@ -29,14 +29,14 @@ router.post('/register', (req, res, next) => {
 });
 
 const register_login = (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
+  passport.authenticate('local', function (err, user, info) {
     if (err) {
       return res.status(400).send(err);
     }
     if (!user) {
       return res.status(400).send(info);
     }
-    req.logIn(user, (err) => {
+    req.logIn(user, function (err) {
       if (err) {
         return res.status(400).send(err);
       }
@@ -45,7 +45,7 @@ const register_login = (req, res, next) => {
   })(req, res, next);
 };
 
-router.get('/logout', (req, res) => {
+router.get('/logout', function (req, res) {
   req.logout();
   res.redirect('/');
 });

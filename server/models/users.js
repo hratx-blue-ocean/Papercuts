@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const passportLocalMongoose = require('passport-local-mongoose');
 
 const ThirdPartyProviderSchema = new mongoose.Schema({
   provider_name: {
@@ -89,14 +88,8 @@ const UserSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Payments',
     },
-    token: {
-      type: String,
-      default: null,
-    },
   },
   { strict: false }
 );
 
-UserSchema.plugin(passportLocalMongoose);
-User = mongoose.model('Users', UserSchema);
-module.exports = User;
+module.exports = User = mongoose.model('Users', UserSchema);
