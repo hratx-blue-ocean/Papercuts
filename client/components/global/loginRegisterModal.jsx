@@ -15,9 +15,12 @@ export const LoginModal = () => {
 
   return (
     <>
-      <ListGroup.Item onClick={handleShow} action variant="dark">
+      <Button onClick={handleShow} action variant='outline-dark'>
         Login
-      </ListGroup.Item>
+      </Button>
+      {/* <ListGroup.Item onClick={handleShow} action variant="dark">
+        Login
+      </ListGroup.Item> */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -30,29 +33,29 @@ export const LoginModal = () => {
               sendLogin(email, password, handleClose, setErr);
             }}
           >
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                type="email"
-                placeholder="Enter email"
+                type='email'
+                placeholder='Enter email'
                 required
               />
-              <Form.Text className="text-muted">
+              <Form.Text className='text-muted'>
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId='formBasicPassword'>
               <Form.Label>Password</Form.Label>
               <Form.Control
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                type="password"
-                placeholder="Password"
+                type='password'
+                placeholder='Password'
                 required
               />
             </Form.Group>
@@ -62,13 +65,13 @@ export const LoginModal = () => {
                 <br></br>
               </span>
             ) : null}
-            <Button variant="primary" type="submit">
+            <Button variant='primary' type='submit'>
               Submit
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
@@ -91,9 +94,12 @@ export const RegisterModal = () => {
 
   return (
     <>
-      <ListGroup.Item onClick={handleShow} action variant="dark">
+      <Button onClick={handleShow} action variant='outline-dark'>
         Register
-      </ListGroup.Item>
+      </Button>
+      {/* <ListGroup.Item onClick={handleShow} action variant="dark">
+        Register
+      </ListGroup.Item> */}
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -106,45 +112,45 @@ export const RegisterModal = () => {
               sendRegister(email, password, handleClose, setErr);
             }}
           >
-            <Form.Group controlId="formBasicEmail">
+            <Form.Group controlId='formBasicEmail'>
               <Form.Label>Email address</Form.Label>
               <Form.Control
                 onChange={(e) => {
                   setEmail(e.target.value);
                   console.log(email);
                 }}
-                type="email"
-                placeholder="Enter email"
+                type='email'
+                placeholder='Enter email'
                 required
               />
-              <Form.Text className="text-muted">
+              <Form.Text className='text-muted'>
                 We'll never share your email with anyone else.
               </Form.Text>
             </Form.Group>
 
-            <Form.Group controlId="formBasicPassword">
+            <Form.Group controlId='formBasicPassword'>
               <Form.Label>Password</Form.Label>
               <Form.Control
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                type="password"
-                placeholder="Password"
+                type='password'
+                placeholder='Password'
                 required
               />
             </Form.Group>
             {noMatch && (
               <span style={{ fontSize: '14px', color: 'red' }}>Passwords do not match</span>
             )}
-            <Form.Group controlId="formBasicConfirmPassword">
+            <Form.Group controlId='formBasicConfirmPassword'>
               <Form.Label>Confirm Password</Form.Label>
               <Form.Control
                 onChange={(e) => {
                   setConfirmPassword(e.target.value);
                   e.target.value !== password ? setNoMatch(true) : setNoMatch(false);
                 }}
-                type="password"
-                placeholder="Password"
+                type='password'
+                placeholder='Password'
                 required
               />
             </Form.Group>
@@ -154,13 +160,13 @@ export const RegisterModal = () => {
                 <br></br>
               </span>
             ) : null}
-            <Button disabled={noMatch} variant="primary" type="submit">
+            <Button disabled={noMatch} variant='primary' type='submit'>
               Submit
             </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant='secondary' onClick={handleClose}>
             Close
           </Button>
         </Modal.Footer>
