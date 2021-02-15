@@ -44,16 +44,17 @@ app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
 app.use('/api/auth', require('./routes/AuthRoute'));
 app.use('/reset', require('./routes/resetRoute'));
-app.use(
-  '/',
-  expressStaticGzip('client/dist', {
-    enableBrotli: true,
-    orderPreference: ['br'],
-    setHeaders: (res, path) => {
-      res.setHeader('Cache-Control', 'public, max-age=31536000');
-    },
-  })
-);
+// app.use(
+//   '/',
+//   expressStaticGzip('client/dist', {
+//     enableBrotli: true,
+//     orderPreference: ['br'],
+//     setHeaders: (res, path) => {
+//       res.setHeader('Cache-Control', 'public, max-age=31536000');
+//     },
+//   })
+// );
+app.use(express.static('client/dist'));
 
 app.listen(port, () => {
   console.log(`Listening on ${port}`);
