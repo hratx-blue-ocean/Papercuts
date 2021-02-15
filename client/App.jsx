@@ -10,7 +10,6 @@ import React, { useState, useContext } from 'react';
 import { Button, ListGroup } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppContext } from './context/context.jsx';
-
 import { AuthContext } from './context/authContext.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
