@@ -9,6 +9,7 @@ import {
 import BookClub from './components/bookClubPage/bookClub.jsx'
 import React, { useContext } from 'react';
 import { AppContext } from './context/context.jsx';
+import MyLibrary from './components/profilePage/myLibrary.jsx';
 
 export const App = () => {
   const {pie} = useContext(AppContext);
@@ -21,7 +22,7 @@ export const App = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/profile">About</Link>
+            <Link to="/profile">Profile</Link>
           </li>
           <li>
             <Link to="/clubs">Clubs</Link>
@@ -42,7 +43,7 @@ export const App = () => {
             {/* Cayla, put in your component here when ready */}
           </Route>
           <Route path="/profile">
-            {/* Sean, Jerrick, put in your component here when ready */}
+            <MyLibrary />
           </Route>
           <Route path="/clubs">
             <BookClub />
