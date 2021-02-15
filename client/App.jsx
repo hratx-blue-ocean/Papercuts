@@ -7,8 +7,8 @@ import {
   useParams, // use if needed
 } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
+import { Button, ListGroup, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button, ListGroup } from 'react-bootstrap';
 import { AppContext } from './context/context.jsx';
 import { AuthContext } from './context/authContext.jsx';
 import Header from './components/global/Header.jsx';
@@ -18,7 +18,6 @@ import MyLibrary from './components/profilePage/myLibrary.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
-
 
 export const App = () => {
   const user = useContext(AuthContext);
