@@ -17,6 +17,7 @@ import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
 import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
 import logout from './components/global/logout.js';
+import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -79,6 +80,9 @@ export const App = () => {
           </Route>
           <Route path="/subscriptions">
             <Subscriptions />
+          </Route>
+          <Route path="/changePassword/:user/:token">
+            <ChangePasswordForm />
           </Route>
         </Switch>
       </div>

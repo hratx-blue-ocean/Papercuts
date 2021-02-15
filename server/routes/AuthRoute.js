@@ -50,6 +50,4 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
-router.get('/reset', (req, res) => {});
-
 module.exports = router;

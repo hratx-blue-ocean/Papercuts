@@ -43,6 +43,7 @@ app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
 app.use('/api/auth', require('./routes/AuthRoute'));
+app.use('/reset', require('./routes/resetRoute'));
 app.use(
   '/',
   expressStaticGzip('client/dist', {
@@ -69,5 +70,5 @@ app.get('/checkauth', isAuthenticated, (req, res) => {
 });
 
 app.get('/*', function (req, res) {
-  res.redirect('/');
+  res.sendFile(path.join(__dirname + '/../client/dist/index.html'));
 });
