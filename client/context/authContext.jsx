@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     let userData = await axios.get('/checkauth');
     return userData.data;
   };
-  const { result } = useAsync(checkAuth, []);
+  // const { result } = useAsync(checkAuth, []);
+  const result = checkAuth();
   return <AuthContext.Provider value={result}>{children}</AuthContext.Provider>;
 };

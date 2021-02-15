@@ -10,8 +10,8 @@ export default function Event({ event }) {
       {event.checkbox && (
         <Form.Check
           inline
-          type="checkbox"
-          label="Done"
+          type='checkbox'
+          label='Done'
           checked={checked}
           onChange={() => setChecked(!checked)}
         />
