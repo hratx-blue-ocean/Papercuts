@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --watch",
-    "server": "nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "test": "mocha server/test"
   },
   "keywords": [],
   "author": "Matthew Budiman",
@@ -60,7 +61,10 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
+    "mocha": "^8.3.0",
     "prettier": "^2.2.1",
-    "style-loader": "^2.0.0"
+    "should": "^13.2.3",
+    "style-loader": "^2.0.0",
+    "supertest": "^6.1.3"
   }
 }

@@ -173,8 +173,6 @@ router.put('/payment', async (req, res) => {
   } catch (error) {
     return res.status(500).json(error);
   }
-
-  // User updating info function
 });
 
 // @desc    User delete payment info
