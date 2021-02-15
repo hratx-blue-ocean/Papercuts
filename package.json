@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-template",
+  "name": "papercuts-bookstore",
   "version": "1.0.0",
-  "description": "",
+  "description": "Papercuts is a modern bookstore app that brings people together through multiple mediums and provides a forum to connect with other readers",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --watch",
@@ -9,8 +9,17 @@
   },
   "keywords": [],
   "author": "Matthew Budiman",
+  "contributors": [
+    "Sean Brazil",
+    "Shinan Sun",
+    "Daniel He",
+    "Cayla Cardiff",
+    "Chris Thackrey",
+    "Jerrick Ravelo"
+  ],
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
     "compression-webpack-plugin": "^7.1.2",
