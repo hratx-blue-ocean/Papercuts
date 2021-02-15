@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const checkAuth = async () => {
-    let userData = await axios.get('http://localhost:3000/checkauth');
+    let userData = await axios.get('/checkauth');
     return userData.data;
   };
   // const { result } = useAsync(checkAuth, []);
