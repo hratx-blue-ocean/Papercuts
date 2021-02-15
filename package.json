@@ -1,5 +1,5 @@
 {
-  "name": "papercuts-bookstore",
+  "name": "papercuts",
   "version": "1.0.0",
   "description": "Papercuts is a modern bookstore app that brings people together through multiple mediums and provides a forum to connect with other readers",
   "main": "index.js",
@@ -70,6 +70,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
     "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
     "style-loader": "^2.0.0"
   }

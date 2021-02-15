@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Container, ListGroup } from 'react-bootstrap';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 
-const Navbar = ({ title, variant, background }) => {
+const Header = ({ user, title, variant, background }) => {
   return (
     <Navbar className="nav" fixed="top" bg={background} expand="lg" collapseOnSelect>
       <Container>
@@ -58,10 +58,10 @@ const Navbar = ({ title, variant, background }) => {
   );
 };
 
-Navbar.defaultProps = {
+Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
   variant: 'light',
   background: 'light',
 };
 
-export default Navbar;
+export default Header;

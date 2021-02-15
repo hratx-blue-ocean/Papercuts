@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {} from 'react-bootstrap';
-import { AppContext } from '../context/context.jsx';
+import { AppContext } from '../../context/context.jsx';
 
 import Schedule from './Schedule.jsx';
 import Comments from './Comments.jsx';

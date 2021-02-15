@@ -7,22 +7,24 @@ import {
   useParams, // use if needed
 } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Navbar from './components/global/Navbar.jsx';
+import Header from './components/global/Header.jsx';
 import Footer from './components/global/Footer.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import React, { useState, useContext } from 'react';
 import { AppContext } from './context/context.jsx';
+import { AuthContext } from './context/authContext.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
 import { Container, Button } from 'react-bootstrap';
 
 export const App = () => {
-  const user = useContext(AuthContext);
+  // const user = useContext(AuthContext);
+  let user = 'brad';
   const { exampleClubs } = useContext(AppContext);
   const [show, setShow] = useState(true);
   return (
     <Router>
-      <Navbar />
+      <Header user={user} />
       <main className="py-3">
         <Container>
           {/*
