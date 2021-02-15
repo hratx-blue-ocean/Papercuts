@@ -5,18 +5,22 @@ const axios = require('axios');
 // @route   GET /book/bestsellers
 // @access  Public
 router.get('/bestsellers', async(req, res) => {
-  let list = req.body.listName;
+  let list = req.params.list;
   let key = req.params.apikey;
-  console.log('this is the key: ', key);
-  console.log('It made it to the router')
+  // console.log('THIS IS THE KEY: ', key)
+  console.log('these are the params: ', req.params)
+  console.log('this is the body: ', req.body)
   try {
+    // console.log('this is the key: ', key);
+    // console.log('this is the listname: ', list)
+    // console.log('It made it to the router')
     const bestSellers =
-      await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?api-key:${key}`)
-        .catch(error => { console.error(`Could not complete NYT Books API request for ${list}: `, error)});
+      await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`)
+        // .catch(error => { console.error(`Could not complete NYT Books API request for ${list}: `, error.message)});
 
     res.send(bestSellers.data)
   } catch (error) {
-    console.error('cant sit here')
+    // console.error('cant sit here')
     res.status(500).send(error)
   }
 })
