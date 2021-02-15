@@ -1,0 +1,114 @@
+@baseUrl = http://localhost:3000
+
+### Infos
+# idk@gmail = 6026f3a3029fcf77b5dc02b8
+# userA@test = 60272dc32b562508c4a69a4a
+# userB@test = 60275a77860d8630b88f7ce6
+# userC@test = 6028431dbdd29b3de815132b
+
+
+### Get all users 
+GET {{baseUrl}}/user/all
+
+### Get all users that user are friends with
+POST {{baseUrl}}/user/friends
+Content-Type: application/json
+
+{
+    "userId":"6028431dbdd29b3de815132b"
+}
+
+### Get all users that user are not friends with
+POST {{baseUrl}}/user/newfriends
+Content-Type: application/json
+
+{
+    "userId":"6028431dbdd29b3de815132b"
+}
+
+ 
+### User adds a friend 
+POST {{baseUrl}}/user/friend
+Content-Type: application/json
+
+{
+    "userId":"6026f3a3029fcf77b5dc02b8",
+    "friendId":"6028431dbdd29b3de815132b"
+} 
+
+### Update user info
+PUT {{baseUrl}}/user/info
+Content-Type: application/json
+
+{
+    "userId":"602987d27cc8de1408fc1537",
+    "password":"password"
+}
+
+### Get user payment info
+GET {{baseUrl}}/user/payment
+Content-Type: application/json
+
+{
+    "userId":"602987d27cc8de1408fc1537"
+}
+
+### User add new payment
+POST {{baseUrl}}/user/payment
+Content-Type: application/json
+
+{ 
+    "userId":"602987d27cc8de1408fc1537",
+    "cardNumber":123456,
+    "cardHolder":"Matthew",
+    "cardCVC":343,
+    "cardExpiredDate":"cardExpiredDateLol"
+}
+
+### User update payment
+PUT {{baseUrl}}/user/payment
+Content-Type: application/json
+
+{ 
+    "paymentID": "602aa3dac32f8d208c55cef2",
+    "userId":"602987d27cc8de1408fc1537",
+    "cardNumber":123456,
+    "cardHolder":"Matthew Ming",
+    "cardCVC":343,
+    "cardExpiredDate":"cardExpiredDateLol"
+}
+
+### User delete payment
+DELETE  {{baseUrl}}/user/payment
+Content-Type: application/json
+
+{  
+    "userId":"602987d27cc8de1408fc1537" 
+}
+
+### Get user sub info
+GET  {{baseUrl}}/user/subscription
+Content-Type: application/json
+
+{  
+    "userId":"602987d27cc8de1408fc1537"
+}
+
+### User joins a sub
+POST  {{baseUrl}}/user/subscription
+Content-Type: application/json
+
+{  
+    "userId":"602987d27cc8de1408fc1537",
+    "name":"Pro",
+    "description": "I like pro",
+    "voucher": 1
+}
+
+### User cancels sub
+DELETE   {{baseUrl}}/user/subscription
+Content-Type: application/json
+
+{  
+    "userId":"602987d27cc8de1408fc1537"
+}

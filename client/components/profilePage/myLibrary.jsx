@@ -42,7 +42,6 @@ export default function myLibrary() {
   let [searchInput, setSearchInput] = useState('');
   let searchBooks = function (e) {
     e.preventDefault();
-    console.log(searchInput);
     axios.get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}`)
     .then((results)=> {
       let searchResults = results.data.items.map((book) => {
@@ -62,7 +61,7 @@ export default function myLibrary() {
       <div>
       {booksOwned.map((book) => {
         return(
-          <div>
+          <div key={booksOwned.indexOf(book)}>
             <div>{book.volumeInfo.title}</div>
             <div>{book.volumeInfo.authors}</div>
             <div>{book.volumeInfo.industryIdentifiers[0].identifier}</div>

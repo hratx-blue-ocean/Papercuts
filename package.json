@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack --watch",
+    "watch": "webpack --progress --watch",
     "server": "nodemon server/server.js"
   },
   "keywords": [],
@@ -30,11 +30,12 @@
     "passport-local-mongoose": "^6.1.0",
     "passport-oauth2-client-password": "^0.1.2",
     "react": "^17.0.1",
+    "react-async-hook": "^3.6.2",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
-    "react-login-modal": "^1.2.1",
     "react-multi-carousel": "^2.6.1",
     "react-router-dom": "^5.2.0",
+    "react-use-auth": "^2.1.0-14",
     "styled-components": "^5.2.1",
     "webpack": "^5.21.2",
     "webpack-cli": "^4.5.0",
