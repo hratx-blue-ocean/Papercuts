@@ -7,8 +7,9 @@ node_modules/
 .pnp.js
 
 # bundle
-/client/dist/bundle.js
-/client/dist/bundle.js.br
+/client/dist/index.html
+/client/dist/*.js
+/client/dist/*.js.br
 
 # testing
 /coverage
