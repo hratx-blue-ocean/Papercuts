@@ -1,26 +1,34 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Carousel, Image } from 'react-bootstrap';
+import { Carousel } from 'react-bootstrap';
+import BookClubItem from './BookClubItem.jsx';
+import exampleClubs from './exampleData.js';
 
-const Carousel = () => {
+const ClubsCarousel = ({ variant, category }) => {
+  let [clubs, setClubs] = useState(exampleClubs);
+  let [topic, setTopic] = useState(category);
   useEffect(() => {}, []);
 
   return (
-    <Carousel pause='hover' className='bg-dark'>
-      {books.map((book) => (
-        <Carousel.Item key={book._id}>
-          <Link to={`/book/${book._id}`}>
-            <Image src={book.image} alt={book.name} fluid />
-            <Carousel.Caption className='carousel-caption'>
-              <h2>
-                {book.name} (${book.price})
-              </h2>
-            </Carousel.Caption>
-          </Link>
-        </Carousel.Item>
-      ))}
+    <Carousel pause='hover' variant={variant}>
+      <Carousel.Item className='d-flex'>
+        {clubs.map((club) => (
+          <BookClubItem
+            key={club.id}
+            id={club.id}
+            title={club.name}
+            desc={club.description}
+            splash={`../../assets/images/bookclubs_sample/bookclub_${club.id}.svg`}
+          />
+        ))}
+      </Carousel.Item>
     </Carousel>
   );
 };
 
-export default Carousel;
+ClubsCarousel.defaultProps = {
+  variant: 'light',
+  category: null,
+};
+
+export default ClubsCarousel;
