@@ -33,7 +33,9 @@ router.get('/email/:email', (req, res) => {
         from: 'papercutsbookstore@gmail.com',
         to: email,
         subject: 'Password Reset Requested',
-        text: `Someone has requested a password reset for this account. If this was not you, ignore this email and your password will not be changed. If this was you, click the following link:\n http://localhost:3000/reset/${token}`,
+        text: `Someone has requested a password reset for this account. If this was not you, ignore this email and your password will not be changed. If this was you, click the following link:\n ${
+          process.env.SERVER_URL || 'localhost:3000'
+        }/reset/${token}`,
       };
 
       transporter.sendMail(mailOptions, (err, info) => {

@@ -24,7 +24,7 @@ export const LoginModal = () => {
 
   return (
     <>
-      <Nav.Link onClick={handleShow} action variant='dark'>
+      <Nav.Link onClick={handleShow} variant='dark'>
         Login
       </Nav.Link>
 
@@ -142,7 +142,7 @@ export const RegisterModal = () => {
 
   return (
     <>
-      <Nav.Link onClick={handleShow} action variant='dark'>
+      <Nav.Link onClick={handleShow} variant='dark'>
         Register
       </Nav.Link>
 
