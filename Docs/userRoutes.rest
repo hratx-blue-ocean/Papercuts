@@ -16,7 +16,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId":"6028431dbdd29b3de815132b"
+    "userId":"602aea49180a1d22643e561c"
 }
 
 ### Get all users that user are not friends with
@@ -33,7 +33,7 @@ POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
-    "userId":"6026f3a3029fcf77b5dc02b8",
+    "userId":"602aea49180a1d22643e561c",
     "friendId":"6028431dbdd29b3de815132b"
 } 
 
@@ -51,7 +51,7 @@ GET {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
-    "userId":"602987d27cc8de1408fc1537"
+    "userId":"602aea49180a1d22643e561c"
 }
 
 ### User add new payment

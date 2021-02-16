@@ -30,11 +30,11 @@ export default function BookDetail({
   }, []);
 
   return data.volumeInfo === undefined ? (
-    <Spinner animation="border" role="status">
-      <span className="sr-only">Loading...</span>
+    <Spinner animation='border' role='status'>
+      <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal size="xl" show={show} onHide={handleClose} backdrop="static" keyboard={false}>
+    <Modal size='xl' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{data.volumeInfo.title}</Modal.Title>
       </Modal.Header>
@@ -46,30 +46,30 @@ export default function BookDetail({
           <Col>
             <div>by {data.volumeInfo.authors.join(', ')}</div>
             <p>{data.volumeInfo.description}</p>
-            <Table size="sm" striped bordered variant="light">
+            <Table size='sm' striped bordered variant='light'>
               <tbody>
                 <tr>
                   <td>Publisher</td>
-                  <td colSpan="2">{data.volumeInfo.publisher}</td>
+                  <td colSpan='2'>{data.volumeInfo.publisher}</td>
                 </tr>
                 <tr>
                   <td>Published Date</td>
-                  <td colSpan="2">{data.volumeInfo.publishedDate}</td>
+                  <td colSpan='2'>{data.volumeInfo.publishedDate}</td>
                 </tr>
                 <tr>
                   <td>Language</td>
-                  <td colSpan="2">{data.volumeInfo.language}</td>
+                  <td colSpan='2'>{data.volumeInfo.language}</td>
                 </tr>
                 <tr>
                   <td>Price</td>
-                  <td colSpan="2">{`$${data.saleInfo.retailPrice.amount}`}</td>
+                  <td colSpan='2'>{`$${data.saleInfo.retailPrice.amount}`}</td>
                 </tr>
                 <tr>
                   <td>Tags</td>
-                  <td colSpan="2">
+                  <td colSpan='2'>
                     {data.volumeInfo.categories.map((category, idx) => (
                       <React.Fragment key={idx}>
-                        <Badge pill variant="light">
+                        <Badge pill variant='light'>
                           {category}
                         </Badge>{' '}
                       </React.Fragment>
@@ -82,13 +82,13 @@ export default function BookDetail({
         </Row>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={handleClose}>
+        <Button variant='secondary' onClick={handleClose}>
           Close
         </Button>
-        <Button variant="primary" onClick={handleAddToLibrary} disabled={inLibrary}>
+        <Button variant='primary' onClick={handleAddToLibrary} disabled={inLibrary}>
           {inLibrary ? 'In Library' : 'Add to Library'}
         </Button>
-        <Button variant="primary" onClick={handlePurchase} disabled={owned}>
+        <Button variant='primary' onClick={handlePurchase} disabled={owned}>
           {owned ? 'Owned' : 'Purchase'}
         </Button>
       </Modal.Footer>
