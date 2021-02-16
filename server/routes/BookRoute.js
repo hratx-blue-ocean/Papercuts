@@ -5,20 +5,13 @@ const axios = require('axios');
 // @route   GET /book/bestsellers
 // @access  Public
 router.get('/bestsellers', async(req, res) => {
-  let list = req.params.list;
-  let key = req.params.apikey;
-  // console.log('THIS IS THE KEY: ', key)
-  console.log('these are the params: ', req.params)
-  console.log('this is the body: ', req.body)
+  let key = req.query.apikey;
+  let list = req.query.list;
   try {
-    // console.log('this is the key: ', key);
-    // console.log('this is the listname: ', list)
-    // console.log('It made it to the router')
-    const bestSellers =
-      await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`)
-        // .catch(error => { console.error(`Could not complete NYT Books API request for ${list}: `, error.message)});
-
-    res.send(bestSellers.data)
+    await axios
+      .get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`)
+      .then(response => { res.status(200).send(response.data); })
+      .catch(error => { console.error(`Could not complete NYT Books API request for ${req.query.listName}: `, error.message); });
   } catch (error) {
     // console.error('cant sit here')
     res.status(500).send(error)
@@ -29,16 +22,21 @@ router.get('/bestsellers', async(req, res) => {
 // @route   GET /book/trending
 // @access  Public
 router.get('/trending', async(req, res) => {
-  let isbn = req.params.isbn;
-  let key = req.params.apikey;
-  try {
-    const trenders =
-      await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${key}`)
-        .catch(error => { console.error(`Could not complete Google Books API request for ISBN ${isbn}: `, error)});
+  let isbn = req.query.bookIsbn;
+  let key = req.query.apikey;
+  console.log('this is the google isbn: ', isbn);
+  console.log('this is the google key: ', key);
 
-    res.send(trenders.data);
+  try {
+    await axios
+      .get(`https://www.googleapis.com/books/v1/volumes?q=${isbn}&key=${key}`)
+      .then(response => {
+        console.log('get response: ', response)
+        res.status(200).send(response)
+      })
+      .catch(error => { res.status(500).send(error); });
   } catch (error) {
-    res.status(500).send(error);
+    console.error(`Could not complete Google Books API request for ISBN ${isbn}: `, error);
   }
 });
 
