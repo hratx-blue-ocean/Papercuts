@@ -25,15 +25,18 @@ import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
 
+import './style.css';
+
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
   const [show, setShow] = useState(false);
+
   return (
     <Router>
       <Header user={user} />
-      <main className='py-3' style={{ marginTop: '80px', marginBottom: '150px' }}>
-        <Container>
+      <main className='p-0 m-0' style={{ marginTop: '80px', marginBottom: '150px' }}>
+        <Container className='p-1 m-1' style={{ maxWidth: '100vw' }}>
           <Switch>
             <Route exact path='/' />
             <Route path='/profile' component={mainProfilePage} />
