@@ -14,7 +14,6 @@ export default function ClubBanner({ name, description, members, image, variant 
           <strong>{name}</strong>{' '}
           <Button variant='outline-info' disabled>{`${numMembers || 29} members`}</Button>
         </h2>
-
         <p>{description}</p>
       </Container>
     </div>

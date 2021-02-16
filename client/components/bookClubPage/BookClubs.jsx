@@ -19,11 +19,11 @@ const BookClubs = () => {
         <ClubBanner />
       </Container>
       <Container className='px-1 py-1 my-1' style={{ maxWidth: '90vw' }}>
-        <h5 className='px-1 text-dark'>Category - Science Fiction</h5>
+        <h5 className='pl-1 ml-1 text-dark'>Category - Science Fiction</h5>
         <ClubsCarousel />
       </Container>
       <Container className='px-1 py-1 my-1' style={{ maxWidth: '90vw' }}>
-        <h5 className='px-1 text-dark'>Category - Space Horror</h5>
+        <h5 className='pl-1 ml-1 text-dark'>Category - Space Horror</h5>
         <ClubsCarousel />
       </Container>
     </div>

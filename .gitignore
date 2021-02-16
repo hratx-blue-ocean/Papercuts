@@ -11,7 +11,8 @@ node_modules/
 /client/dist/bundle.js.br
 /client/dist/main.*
 /client/dist/index.html
-/client/font/*
+/client/dist/font
+/client/dist/font/
 
 # testing
 /coverage
