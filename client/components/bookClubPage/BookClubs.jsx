@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {} from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
 
 import Schedule from './Schedule.jsx';
