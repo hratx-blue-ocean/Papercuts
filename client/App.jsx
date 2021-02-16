@@ -18,6 +18,7 @@ import Profile from './components/profilePage/profilePage.jsx';
 import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
 import logout from './components/global/logout.js';
 import MyLibrary from './components/profilePage/myLibrary.jsx';
+import RecommendedBooks from './components/profilePage/recommendedBooks.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
@@ -35,7 +36,7 @@ export const App = () => {
         <Container>
           <Switch>
             <Route exact path='/' />
-            <Route path='/profile' component={MyLibrary} />
+            <Route path='/profile' component={Profile} />
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
             <Route path='/clubs/detail' component={BookClub} />

@@ -1,0 +1,37 @@
+h1 {
+  font-size: 18px;
+}
+
+.recommendedBooksContainer {
+  width: 82%;
+}
+
+.recommendedCarousel {
+  width: 70%;
+}
+
+.friend-recommendations {
+  width: 100%;
+  align-items:right;
+}
+
+.recommendation-cards {
+  width: 80%;
+}
+
+.recommended-books-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, auto);
+  background-color: #2196F3;
+  max-height: 228px;
+  padding: 10px;
+  overflow: scroll;
+  grid-gap: 7px;
+}
+
+.recommended-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}

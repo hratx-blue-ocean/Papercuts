@@ -177,7 +177,7 @@ const getTrendingBooks = async () => {
 //     .catch(error => { console.error('shucks: ', error)})
 // }
 
-getTrendingBooks()
+// getTrendingBooks()
 
 
 
