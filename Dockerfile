@@ -4,7 +4,7 @@ WORKDIR /papercuts
 COPY . .
 
 RUN npm install
-RUN npm run webpack
+RUN webpack
 
 EXPOSE 3000
 
