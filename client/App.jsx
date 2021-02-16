@@ -28,30 +28,20 @@ export const App = () => {
   return (
     <Router>
       <Header user={user} />
-      <main className='py-3'>
+      <main className='py-3' style={{ marginTop: '80px', marginBottom: '150px' }}>
         <Container>
           <Switch>
-            <Route exact path='/'>
-              {/* Cayla, put in your component here when ready */}
-            </Route>
-            <Route path='/profile' component={MyLibrary}></Route>
-            <Route exact path='/clubs' component={BookClubs}>
-              {/* <BookClubs /> */}
-            </Route>
-            <Route path='/clubs/detail' component={BookClub}>
-              {/* <BookClub /> */}
-            </Route>
-            <Route path='/subscriptions' component={Subscriptions}>
-              {/* <Subscriptions /> */}
-            </Route>
-            <Route exact path='/changePassword/:email/:token'>
-              <ChangePasswordForm />
-            </Route>
+            <Route exact path='/' />
+            <Route path='/profile' component={MyLibrary} />
+            <Route exact path='/clubs' component={BookClubs} />
+            {/* need to set up dynamic routing for different book clubs based on Id */}
+            <Route path='/clubs/detail' component={BookClub} />
+            <Route path='/subscriptions' component={Subscriptions} />
+            <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
             <Route component={Error} />
           </Switch>
         </Container>
       </main>
-      <Footer />
       <Button variant='primary' onClick={() => setShow(true)}>
         Open Example Book Detail Modal
       </Button>
@@ -61,6 +51,7 @@ export const App = () => {
         }}
         show={show}
       />
+      <Footer />
     </Router>
   );
 };
