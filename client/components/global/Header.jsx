@@ -24,7 +24,7 @@ const Header = ({ user, title, variant, background }) => {
     >
       <Container style={{ maxWidth: '100vw' }}>
         <Navbar.Brand to='/' as={Link} variant={variant}>
-          <strong>{title}</strong>
+          <strong className='font-weight-bold'>{title}</strong>
         </Navbar.Brand>
 
         <Nav className='mr-auto'>
