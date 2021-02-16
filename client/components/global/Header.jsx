@@ -7,15 +7,15 @@ import search from '../images/search.svg';
 
 const Header = ({ user, title, variant, background }) => {
   return (
-    <Navbar className='nav' fixed='top' bg={background} expand='lg' collapseOnSelect>
+    <Navbar className='nav' bg={background}>
       <Container>
         <ListGroup.Item to='/' as={Link} action variant={variant}>
-          <Navbar.Brand>{title}</Navbar.Brand>
+          <h2 className='font-weight-bold'>{title}</h2>
         </ListGroup.Item>
         <i>
           <img
             src={search}
-            style={{ width: '30px', height: '30px', color: 'red' }}
+            style={{ width: '40px', height: '40px', color: 'red' }}
             className='d-inline-block align-top'
             alt='Search Icon'
           />
@@ -51,13 +51,14 @@ const Header = ({ user, title, variant, background }) => {
           </ListGroup>
         )}
       </Container>
+      <br />
     </Navbar>
   );
 };
 
 Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
-  variant: 'light',
+  variant: '',
   background: 'light',
 };
 
