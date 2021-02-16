@@ -33,8 +33,11 @@ export const App = () => {
   return (
     <Router>
       <Header user={user} />
-      <main className='p-0 m-0' style={{ marginTop: '80px', marginBottom: '150px' }}>
-        <Container className='p-1 m-1' style={{ maxWidth: '100vw' }}>
+      <main
+        className='p-0 m-0'
+        style={{ marginTop: '80px', marginBottom: '150px', maxWidth: '100vw' }}
+      >
+        <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
           <Switch>
             <Route exact path='/' />
             <Route path='/profile' component={MyLibrary} />
