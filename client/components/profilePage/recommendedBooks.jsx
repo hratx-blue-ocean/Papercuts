@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import '../../../node_modules/react-multi-carousel/lib/styles.css';
-import './styles.css';
+import './profileStyles.css';
 
 export default function RecommendedBooks() {
   const books = [];
@@ -28,22 +28,23 @@ export default function RecommendedBooks() {
   };
 
   return (
-    <div className="recommendedBooksContainer">
-      <h1>Recommended Books</h1>
-      <Carousel className="recommendedCarousel"
-        responsive={responsive}
-        swipeable={true}
-        draggable={true}
-        showDots={false}
-        renderButtonGroupOutside={true}
-        keyboard={true}
-      >
-        <img src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-        <img src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-        <img src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-        <img src="http://books.google.com/books/content?id=LiA9zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-        <img src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-      </Carousel>
-    </div>
+    <div></div>
+    // <div className="recommendedBooksContainer">
+    //   <h1>Recommended Books</h1>
+    //   <Carousel className="recommendedCarousel"
+    //     responsive={responsive}
+    //     swipeable={true}
+    //     draggable={true}
+    //     showDots={false}
+    //     renderButtonGroupOutside={true}
+    //     keyboard={true}
+    //   >
+    //     <img src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
+    //     <img src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+    //     <img src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+    //     <img src="http://books.google.com/books/content?id=LiA9zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
+    //     <img src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
+    //   </Carousel>
+    // </div>
   )
 }

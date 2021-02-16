@@ -14,11 +14,9 @@ import { AuthContext } from './context/authContext.jsx';
 import Header from './components/global/Header.jsx';
 import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
-import Profile from './components/profilePage/profilePage.jsx';
 import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
 import logout from './components/global/logout.js';
-import MyLibrary from './components/profilePage/myLibrary.jsx';
-import RecommendedBooks from './components/profilePage/recommendedBooks.jsx';
+import mainProfilePage from './components/profilePage/main.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
@@ -38,7 +36,7 @@ export const App = () => {
         <Container>
           <Switch>
             <Route exact path='/' />
-            <Route path='/profile' component={Profile} />
+            <Route path='/profile' component={mainProfilePage} />
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
             <Route path='/clubs/detail' component={BookClub} />
@@ -52,16 +50,16 @@ export const App = () => {
           </Switch>
         </Container>
       </main>
-      <Button variant='primary' onClick={() => setShow(true)}>
+      {/* <Button variant='primary' onClick={() => setShow(true)}>
         Open Example Book Detail Modal
-      </Button>
-      <BookDetail
+      </Button> */}
+      {/* <BookDetail
         handleClose={() => {
           setShow(false);
         }}
         show={show}
-      />
-      <Footer />
+      /> */}
+      {/* <Footer /> */}
     </Router>
   );
 };
