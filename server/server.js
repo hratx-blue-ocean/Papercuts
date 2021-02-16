@@ -37,11 +37,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/ttt', (req, res) => {
+app.get('/test', (req, res) => {
   console.log(req.body);
-  console.log(req.file);
 
-  res.send('Nice');
+  res.json({ msg: 'LOLOL' });
 });
 
 // Routes
@@ -49,7 +48,7 @@ app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
 app.use('/api/auth', require('./routes/AuthRoute'));
-
+app.use('/reset', require('./routes/resetRoute'));
 app.use(
   '/',
   expressStaticGzip('client/dist', {
@@ -60,10 +59,6 @@ app.use(
     },
   })
 );
-
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-});
 
 const isAuthenticated = (req, res, next) => {
   if (req.user) return next();
@@ -76,7 +71,7 @@ app.get('/checkauth', isAuthenticated, function (req, res) {
 });
 
 app.get('*', function (req, res) {
-  res.redirect('/');
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
 });
 
 app.listen(port, () => {

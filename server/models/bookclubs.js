@@ -1,72 +1,48 @@
 const mongoose = require('mongoose');
 
-const BookclubSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Users',
-    required: true,
-  },
-  bigImg: {
-    type: String,
-    required: true,
-  },
-  smallImg: {
-    type: String,
-    required: true,
-  },
-  questionnaire: [
-    {
-      questions: [
-        {
-          type: String,
-          required: true,
-        },
-      ],
+const BookclubSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
     },
-  ],
-  members: [
-    {
-      user: {
+    description: {
+      type: String,
+      required: true,
+    },
+    owner: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Users',
+      required: true,
+    },
+    smallThumbnail: String,
+    thumbnail: String,
+    questionnaire: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Questionnaire',
+      },
+    ],
+    members: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Users',
-        required: true,
       },
-    },
-  ],
-  events: [
-    {
-      event: {
+    ],
+    events: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Events',
-        required: true,
       },
-    },
-  ],
-  comments: [
-    {
-      user: {
+    ],
+    comments: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
-        required: true,
+        ref: 'Comment',
       },
-      comment: {
-        type: String,
-        required: true,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-      },
-    },
-  ],
-});
+    ],
+  },
+  { timestamps: { createdAt: 'created_at' } }
+);
 
 module.exports = Bookclub = mongoose.model('Bookclubs', BookclubSchema);
