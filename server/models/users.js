@@ -46,7 +46,6 @@ const UserSchema = new mongoose.Schema(
     suscriptionTier: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Subscriptions',
-      default: null,
     },
     library: [
       {

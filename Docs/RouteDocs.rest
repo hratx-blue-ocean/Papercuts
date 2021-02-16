@@ -1,9 +1,18 @@
-### Register if new, login if not
-POST http://localhost:3000/api/auth/register_login
+### Register user
+POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-    "email": "userB@test.com",
+    "email": "test@test.com",
+    "password": "password"
+}
+
+### Login user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "userC@test.com",
     "password": "password"
 }
 
@@ -41,3 +50,4 @@ Content-Type: application/json
     "description": "Club for manga horrors",
     "owner": "60272dc32b562508c4a69a4a"
 }
+
