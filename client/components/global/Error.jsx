@@ -4,11 +4,11 @@ import { Jumbotron, Button, Container, Alert } from 'react-bootstrap';
 
 export default function Error({ variant }) {
   return (
-    <Jumbotron fluid>
+    <Jumbotron fluid variant={variant}>
       <Alert variant={variant}>
         <h1 className='text-danger font-weight-bold'>404: Page Not Found</h1>
-        <p className='text-info font-weight-light'>Uh-oh! Looks like this doesn't exist... yet!</p>
-        <Button to='/' as={Link} action variant='primary'>
+        <p className='py-1 my-1'>Uh-oh! Looks like this doesn't exist... yet!</p>
+        <Button to='/' as={Link} action variant='dark'>
           Back to Home
         </Button>
       </Alert>
@@ -17,5 +17,5 @@ export default function Error({ variant }) {
 }
 
 Error.defaultProps = {
-  variant: 'info',
+  variant: 'warning',
 };
