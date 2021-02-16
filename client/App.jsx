@@ -43,7 +43,7 @@ export const App = () => {
             <Route path='/profile' component={MyLibrary} />
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
-            <Route path='/clubs/detail' component={BookClub} />
+            <Route path='/clubs/detail/:id' component={BookClub} />
             <Route path='/clubs/create'>
               <CreateBookClub user={user} />
             </Route>
