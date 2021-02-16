@@ -13,6 +13,15 @@ node_modules/
 /client/dist/index.html
 /client/dist/font
 /client/dist/font/
+/client/dist/font/.svg
+/client/dist/font/.png
+/client/dist/font/.gif
+/client/dist/font/.jpg
+/client/dist/font/.jpeg
+/client/dist/font/.eot
+/client/dist/font/.ttf
+/client/dist/font/.woff
+/client/dist/font/.woff2
 
 # testing
 /coverage
