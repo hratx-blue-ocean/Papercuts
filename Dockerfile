@@ -1,5 +1,4 @@
-FROM jfleming9357/blueocean:latest
-
+FROM node:lts
 WORKDIR /papercuts
 
 COPY . .
