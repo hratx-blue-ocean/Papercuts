@@ -889,7 +889,7 @@ export default function Profile() {
           </Col>
           <Col>
             <Row>
-              <div>{testlength.length}</div>
+              <div>Friends Area</div>
             </Row>
             <Row className="friend-recommendations">
               <FriendRecommendations />
