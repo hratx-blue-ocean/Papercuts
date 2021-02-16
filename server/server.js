@@ -37,11 +37,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.post('/ttt', (req, res) => {
+app.get('/test', (req, res) => {
   console.log(req.body);
-  console.log(req.file);
 
-  res.send('Nice');
+  res.json({ msg: 'LOLOL' });
 });
 
 // Routes
