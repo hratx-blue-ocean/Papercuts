@@ -15,6 +15,7 @@ import Header from './components/global/Header.jsx';
 import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
 import MyLibrary from './components/profilePage/myLibrary.jsx';
+import MyProfile from './components/profilePage/myProfile.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
@@ -25,7 +26,7 @@ export const App = () => {
   const [show, setShow] = useState(false);
   return (
     <Router>
-      <Header user={user} />
+      <MyProfile/>
       <main className='py-3'>
         <Container>
           <Switch>
