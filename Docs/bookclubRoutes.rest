@@ -112,3 +112,18 @@ Content-Type: application/json
     "zoom_link": "https://us04web.zoom.us/j/historybookclub"
 }
 
+### POST request for adding a book into the database
+POST http://localhost:3000/book
+Content-Type: application/json
+
+{
+    "title": "Harry Potter",
+    "authors": "JK rowling",
+    "isbn": "79977",
+    "description": "crazying cool",
+    "price": "10",
+    "category": "fantacy"
+}
+
+### GET request to retrieve all the books stored in the database
+GET http://localhost:3000/book

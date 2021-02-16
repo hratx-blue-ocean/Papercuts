@@ -7,7 +7,7 @@ export default function Subscriptions() {
   //Need a handlesubscribe function
   const handleSubscribe = () => {};
   return (
-    <Container>
+    <Container className='py-4 my-5'>
       <h1>Subscription &amp; Pricing Options</h1>
       <Row>
         {specifications.map((spec) => (
