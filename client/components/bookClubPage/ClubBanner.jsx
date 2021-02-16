@@ -1,11 +1,10 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
 import { LoginModal } from '../global/loginRegisterModal.jsx';
 import { AppContext } from '../../context/context.jsx';
-import test from './test.jpg';
-
+import default_splash from '../../assets/images/bookclubs_sample/marvel_splash.svg';
 export default function ClubBanner({}) {
   const user = useContext(AuthContext);
   const { selectedClubData } = useContext(AppContext);
@@ -70,4 +69,20 @@ export default function ClubBanner({}) {
       </Row>
     </Container>
   );
+}
+
+ClubBanner.defaultProps = {
+  name: 'The Comic Book Club',
+  description:
+    'Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae beatae ullam porro vel quam eligendi dignissimos sint fugiat a laudantium dolor, sed magni excepturi odio aliquam ad! Maiores, corrupti nostrum.',
+  members: 29,
+  image: default_splash,
+  variant: 'light',
+};
+
+{
+  /* <Card.Text>
+	Next Meeting: {nextMeeting} {timezone}
+</Card.Text>
+<Card.Text>Last updated 3 mins ago</Card.Text> */
 }
