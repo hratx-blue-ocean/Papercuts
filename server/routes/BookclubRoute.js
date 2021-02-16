@@ -5,6 +5,7 @@ const Bookclub = require('../models/bookclubs');
 const Questionnaire = require('../models/questionnaire');
 const Comment = require('../models/comment');
 const Event = require('../models/events');
+const User = require('../models/users');
 
 // @desc    Display all bookclubs
 // @route   GET /bookclub/all
@@ -77,6 +78,10 @@ router.post('/join/:id', async (req, res) => {
   try {
     const club = await Bookclub.findById(req.params.id);
     if (!club) return res.status(404).send('the Club is not exist, try a different club id.');
+
+    await User.findByIdAndUpdate(userId, {
+      $push: { bookclubs: club._id },
+    });
 
     club.members.addToSet(userId); //addToSet adds values to array if not already present;
     club.save();
