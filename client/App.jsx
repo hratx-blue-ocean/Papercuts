@@ -39,7 +39,6 @@ export const App = () => {
           </Switch>
         </Container>
       </main>
-      <Footer />
       <Button variant='primary' onClick={() => setShow(true)}>
         Open Example Book Detail Modal
       </Button>
@@ -49,6 +48,7 @@ export const App = () => {
         }}
         show={show}
       />
+      <Footer />
     </Router>
   );
 };
