@@ -1,0 +1,114 @@
+### Register user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "matt@test.com",
+    "password": "password"
+}
+
+### Login user
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "email": "userC@test.com",
+    "password": "password"
+}
+
+# userA id = 60272dc32b562508c4a69a4a
+# userB id = 60275a77860d8630b88f7ce6
+# userC id = 6026f3a3029fcf77b5dc02b8
+
+### Get all bookclubs
+GET http://localhost:3000/bookclub/all 
+
+
+### Get bookclub by id --GET /bookclub/bookclub_id
+GET http://localhost:3000/bookclub/6027582d28408307a8103ee9 
+
+
+### Get bookclub by its name --GET /bookclub
+GET http://localhost:3000/bookclub
+Content-Type: application/json
+
+{
+    "name": "Nonfiction Book Club"
+}
+
+### Get all the comments from a bookclub  --GET /bookclub/comment/bookclub_id
+GET http://localhost:3000/bookclub/comment/60298d9c3f52c42310b61dab
+
+
+### Get all events for a bookclub  --GET  /bookclub/event/bookclub_id
+GET http://localhost:3000/bookclub/event/602990ccbbe2a223c96e908a
+
+
+### User joins a bookclub --POST /bookclub/join/bookclub_id
+POST http://localhost:3000/bookclub/join/60285529282a78162ee35d2a 
+# request body below
+Content-Type: application/json
+
+{
+    "userId": "60275a77860d8630b88f7ce6"
+} 
+
+### User Leaves a bookclub --DELETE /bookclub/leave/bookclub_id
+DELETE http://localhost:3000/bookclub/leave/60285529282a78162ee35d2a
+Content-Type: application/json
+
+{
+    "userId": "60272dc32b562508c4a69a4a"
+}
+
+### User creates a bookclub --POST /bookclub
+POST http://localhost:3000/bookclub
+Content-Type: application/json
+
+{
+    "name": "History Book Club",
+    "description": "If you love reading and discussing great literature (novels, short stories, and plays), this may be the group for you! I often find that discussing great works with others brings fresh insights and is much more fulfilling than reading on my own. We will also sometimes go see plays or movies based on classic literature. Please join us!",
+    "owner": "60275a77860d8630b88f7ce6",
+    "smallThumbnail": "https://images.unsplash.com/photo-1421941027568-40ab08ee5592?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=150&q=80",
+    "thumbnail": "https://images.unsplash.com/photo-1421941027568-40ab08ee5592?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"
+}
+
+### User answers a questionnaire provided by the current bookclub --POST /bookclub/questionnaire/bookclub_id
+POST http://localhost:3000/bookclub/questionnaire/60298d9c3f52c42310b61dab
+Content-Type: application/json
+
+{
+    "answer_1": "10",
+    "answer_2": "Yes",
+    "answer_3": "my favorite event so far was the black history related.",
+    "answer_4": "my favorite part of this book is..",
+    "answer_5": "I wanna ask the author..",
+    "answer_6": "I have a advice that .."
+}
+
+### User post a comment for the current bookclub  --POST /bookclub/comment/bookclub_id
+POST http://localhost:3000/bookclub/comment/602990ccbbe2a223c96e908a
+Content-Type: application/json
+
+{
+    "username": "Shinan",
+    "body": "I love this history club, I am a member since the year of 2020, I really recommended to anyone who obcessed with history books. You are going to make a lot of friend here."
+}
+
+### User likes(thumbs up) a comment --PUT /bookclub/comment/like/comment_id
+PUT http://localhost:3000/bookclub/comment/like/602ada61f5293a3b665c90f1
+
+### User dislikes(thumbs down) a comment --PUT /bookclub/comment/like/comment_id
+PUT http://localhost:3000/bookclub/comment/dislike/602ada61f5293a3b665c90f1
+
+### User create event for a bookclub  --POST  /bookclub/event/bookclub_id
+POST http://localhost:3000/bookclub/event/602990ccbbe2a223c96e908a
+Content-Type: application/json
+
+{
+    "name": "The Artist Way, Creative Renewal Meetup",
+    "description": "Attendees will address limiting beliefs and fears that can inhibit the creative process, discover tools for artistic renewal, and practice exercises and activity to foster creative recovery - think 12-step program and support group for artists.",
+    "schedule": "Saturday, March 20, 2021 10:00 AM to 12:00 PM CST",
+    "zoom_link": "https://us04web.zoom.us/j/historybookclub"
+}
+

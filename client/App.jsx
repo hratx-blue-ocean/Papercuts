@@ -7,16 +7,19 @@ import {
   useParams, // use if needed
 } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
+import { Button, ListGroup, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Button, ListGroup } from 'react-bootstrap';
 import { AppContext } from './context/context.jsx';
 import { AuthContext } from './context/authContext.jsx';
 import Header from './components/global/Header.jsx';
 import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
+import MyLibrary from './components/profilePage/myLibrary.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
+import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
+import Error from './components/global/Error.jsx';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -27,20 +30,11 @@ export const App = () => {
       <Header user={user} />
       <main className='py-3'>
         <Container>
-          {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
           <Switch>
             <Route exact path='/'>
               {/* Cayla, put in your component here when ready */}
             </Route>
-            <Route path='/profile'>
-              {/* Sean, Jerrick, put in your component here when ready */}
-            </Route>
+            <Route path='/profile' component={MyLibrary}></Route>
             <Route exact path='/clubs' component={BookClubs}>
               {/* <BookClubs /> */}
             </Route>
@@ -50,6 +44,10 @@ export const App = () => {
             <Route path='/subscriptions' component={Subscriptions}>
               {/* <Subscriptions /> */}
             </Route>
+            <Route exact path='/changePassword/:email/:token'>
+              <ChangePasswordForm />
+            </Route>
+            <Route component={Error} />
           </Switch>
         </Container>
       </main>
