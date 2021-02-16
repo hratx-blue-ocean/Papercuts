@@ -6,7 +6,6 @@ import specifications from './Specifications.js';
 export default function Subscriptions() {
   //Need a handlesubscribe function
   const handleSubscribe = () => {};
-  console.log(specifications);
   return (
     <Container>
       <h1>Subscription &amp; Pricing Options</h1>

@@ -17,6 +17,22 @@ router.get('/all', async (req, res) => {
   }
 });
 
+// @desc    Delete all user's friend for testing
+// @route   Delete /user/allfriends
+// @access  Private
+router.delete('/allfriends', async (req, res) => {
+  const { userId } = req.body;
+  try {
+    const curUser = await User.findById(userId);
+    curUser.friends = [];
+    await curUser.save();
+
+    res.json({ msg: 'Friends deleted' });
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 // @desc    Display all users that user is friends wuth
 // @route   get /user/friends
 // @access  Private
@@ -50,7 +66,7 @@ router.post('/friend', async (req, res) => {
   let { userId, friendId } = req.body;
 
   try {
-    const updated = await User.updateOne(
+    await User.updateOne(
       {
         _id: userId,
       },
@@ -59,7 +75,7 @@ router.post('/friend', async (req, res) => {
       }
     );
 
-    res.json(updated);
+    res.json({ msg: 'Friend added' });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -186,8 +202,6 @@ router.put('/payment', async (req, res) => {
   } catch (error) {
     return res.status(500).json(error);
   }
-
-  // User updating info function
 });
 
 // @desc    User delete payment info
@@ -200,9 +214,9 @@ router.delete('/payment', async (req, res) => {
     const curUser = await User.findById(userId);
     curUser.payment = null;
 
-    const updatedUser = await curUser.save();
+    await curUser.save();
 
-    return res.json(updatedUser);
+    return res.json({ msg: 'Payment Deleted' });
   } catch (err) {
     return res.json({ err });
   }
