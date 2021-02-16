@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Navbar, Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <footer className='footer'>
+    <Navbar className='footer bg-light fixed-bottom'>
       <Container className='d-flex'>
         <Col>
           <Row>
@@ -22,13 +22,13 @@ const Footer = () => {
           </Row>
           <br />
           <Row>
-            <h5>Product</h5>
+            <p>Product</p>
           </Row>
           <Row>
-            <h5>Product</h5>
+            <p>Product</p>
           </Row>
           <Row>
-            <h5>Product</h5>
+            <p>Product</p>
           </Row>
         </Col>
         <Col>
@@ -37,13 +37,13 @@ const Footer = () => {
           </Row>
           <br />
           <Row>
-            <h5>Features</h5>
+            <p>Features</p>
           </Row>
           <Row>
-            <h5>Features</h5>
+            <p>Features</p>
           </Row>
           <Row>
-            <h5>Features</h5>
+            <p>Features</p>
           </Row>
         </Col>
         <Col>
@@ -52,13 +52,13 @@ const Footer = () => {
           </Row>
           <br />
           <Row>
-            <h5>Resources</h5>
+            <p>Resources</p>
           </Row>
           <Row>
-            <h5>Resources</h5>
+            <p>Resources</p>
           </Row>
           <Row>
-            <h5>Resources</h5>
+            <p>Resources</p>
           </Row>
         </Col>
         <Col>
@@ -67,17 +67,17 @@ const Footer = () => {
           </Row>
           <br />
           <Row>
-            <h5>Company</h5>
+            <p>Company</p>
           </Row>
           <Row>
-            <h5>Company</h5>
+            <p>Company</p>
           </Row>
           <Row>
-            <h5>Company</h5>
+            <p>Company</p>
           </Row>
         </Col>
       </Container>
-    </footer>
+    </Navbar>
   );
 };
 

@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 
-
 export default function myLibrary() {
   const books =
   [{
@@ -39,7 +38,7 @@ export default function myLibrary() {
 
   let searchBooks = function (e) {
     e.preventDefault();
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
     .then((results)=> {
       let searchResults = results.data.items.map((book) => {
         let bookInfo = {};
@@ -47,7 +46,7 @@ export default function myLibrary() {
         bookInfo.authors= book.volumeInfo.authors,
         bookInfo.isbn= book.volumeInfo.industryIdentifiers[0].identifier;
         bookInfo.description = book.volumeInfo.description;
-        bookInfo.image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : 'https://i.imgur.com/sJ3CT4V.gif';
+        bookInfo.image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://i.imgur.com/sJ3CT4V.gif';
         bookInfo.price = book.saleInfo.listPrice ? `$${book.saleInfo.listPrice.amount}` : 'Not Available'
         return bookInfo;
       });
@@ -55,19 +54,18 @@ export default function myLibrary() {
     })
   }
 
-
+  const tempArray = Array(15).fill(0);
   return (
     <div id='myLib'>
       <form onSubmit = {searchBooks.bind(this)}>
         <input type = 'text' placeholder = 'Search books by author' onChange = {(e)=> setSearchInput(e.target.value)}/>
         <input type = 'submit'/>
       </form>
-      <div>
+      <div id='libraryBody'>
       {booksOwned.map((book) => {
         return(
-          <div key={booksOwned.indexOf(book)}>
-            <div><img src={book.image}/></div>
-            <br/>
+          <div className='bookBody'>
+            <img className='bookImage' src={book.image}/>
           </div>
         )
       })}
