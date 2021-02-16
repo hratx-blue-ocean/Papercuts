@@ -6,7 +6,8 @@
   "scripts": {
     "watch": "webpack --progress --watch",
     "server": "nodemon server/server.js",
-    "test": "mocha server/test"
+    "test": "mocha server/test",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "Matthew Budiman",
@@ -46,6 +47,7 @@
     "react-multi-carousel": "^2.6.1",
     "react-router-dom": "^5.2.0",
     "react-use-auth": "^2.1.0-14",
+    "stripe": "^8.135.0",
     "styled-components": "^5.2.1",
     "zlib": "^1.0.5"
   },
