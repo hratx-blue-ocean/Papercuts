@@ -124,3 +124,6 @@ Content-Type: application/json
     "price": "10",
     "category": "fantacy"
 }
+
+### GET request to retrieve all the books stored in the database
+GET http://localhost:3000/book

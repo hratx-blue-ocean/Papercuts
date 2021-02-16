@@ -3,7 +3,15 @@ const Book = require('../models/books');
 // @desc    Display 7 trending books
 // @route   GET /book/trending
 // @access  Public
-router.get('/trending', (req, res) => {});
+router.get('/', async (req, res) => {
+  try {
+    const books = await Book.find();
+
+    res.json(books);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
 
 // @desc    Post a book to save in the database
 // @route   POST /book
