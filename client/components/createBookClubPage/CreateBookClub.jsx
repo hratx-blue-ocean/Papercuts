@@ -1,22 +1,22 @@
 import React, { useState, useRef } from 'react';
-import { Form, Button, Container } from 'react-bootstrap';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 import axios from 'axios';
 import { firebaseStorage } from '../../../Docs/firebase-config/firebase'; // make sure import the right path.
 
 export default function CreateBookClub({ user }) {
   const [formData, setFormData] = useState({});
+  const [show, setShow] = useState(false);
   const fileRef1 = useRef();
   const fileRef2 = useRef();
+
   const handleSubmit = () => {
+    if (!user) return setShow(true);
     const storageRef1 = firebaseStorage.ref(fileRef1.current.files[0].name);
     const storageRef2 = firebaseStorage.ref(fileRef2.current.files[0].name);
     Promise.all([
       storageRef1.put(fileRef1.current.files[0]).then((snapShot) => snapShot.ref.getDownloadURL()),
       storageRef2.put(fileRef2.current.files[0]).then((snapShot) => snapShot.ref.getDownloadURL()),
     ]).then((urls) => {
-      console.log(urls);
-      console.log(formData);
-      console.log(user);
       return axios.post('/bookclub', {
         ...formData,
         owner: user._id,
@@ -28,6 +28,12 @@ export default function CreateBookClub({ user }) {
 
   return (
     <Container>
+      {show && (
+        <Alert variant='danger' onClose={() => setShow(false)} dismissible>
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <p>Please log in to create a book club.</p>
+        </Alert>
+      )}
       <h1>Create a Book Club</h1>
       <Form>
         <Form.Group>
