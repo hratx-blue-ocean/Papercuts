@@ -20,7 +20,7 @@ const Header = ({ user, title, variant, background }) => {
       className='nav fixed-top'
       bg={background}
       fixed='top'
-      style={{ border: '1px solid #111', maxWidth: '100vw' }}
+      style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
     >
       <Container style={{ maxWidth: '100vw' }}>
         <Navbar.Brand to='/' as={Link} variant={variant}>
