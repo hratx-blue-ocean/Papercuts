@@ -42,7 +42,10 @@ Content-Type: application/json
 
 {
     "userId":"602987d27cc8de1408fc1537",
-    "password":"password"
+    "password":"password",
+    "photoUrl": "https://firebasestorage.googleapis.com/v0/b/papercuts-8b86c.appspot.com/o/sda.png?alt=media&token=0874251a-93a9-4f5c-85b3-c510e2c9471f",
+    "bookPreference": "fiction",
+    "recommendation": {"summary":"Guys!! on to the Nineteen Eighty-Four","description":"Best book I have read this year, had a lot of emotional moments with it... Also a huge fan of George Orwell, really recommend it!"}
 }
 
 ### Get user payment info
