@@ -1,7 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Form, ListGroup, Button } from 'react-bootstrap';
+import { Form, ListGroup, Button, Alert } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
 import { AppContext } from '../../context/context.jsx';
+import { LoginModal } from '../global/loginRegisterModal.jsx';
 import axios from 'axios';
 
 export default function Comments({}) {
@@ -81,9 +82,10 @@ export default function Comments({}) {
           </Button>
         </Form>
       ) : (
-        <Form>
-          <Form.Label>Sign in to submit comments.</Form.Label>
-        </Form>
+        <Alert variant='info'>
+          <Alert.Heading>Please log in to comment</Alert.Heading>
+          <LoginModal />
+        </Alert>
       )}
     </div>
   );

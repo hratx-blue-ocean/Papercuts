@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
+import { LoginModal } from '../global/loginRegisterModal.jsx';
+import { AuthContext } from '../../context/authContext.jsx';
 import { AppContext } from '../../context/context.jsx';
 
 const questionnaire = [
@@ -13,6 +15,7 @@ const questionnaire = [
 ];
 
 export default function Questionnaire({}) {
+  const user = useContext(AuthContext);
   const { selectedClubData } = useContext(AppContext);
   const [formData, setFormData] = useState({});
   const [showAlert, setShowAlert] = useState(false);
@@ -41,9 +44,16 @@ export default function Questionnaire({}) {
             />
           </Form.Group>
         ))}
-        <Button variant='primary' onClick={handleSubmitQuestionnaire}>
-          Submit
-        </Button>
+        {user ? (
+          <Button variant='primary' onClick={handleSubmitQuestionnaire}>
+            Submit
+          </Button>
+        ) : (
+          <Alert variant='info'>
+            <Alert.Heading>Please log in to answer the questionnaire</Alert.Heading>
+            <LoginModal />
+          </Alert>
+        )}
       </Form>
     </>
   );
