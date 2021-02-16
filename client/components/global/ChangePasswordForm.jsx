@@ -15,7 +15,7 @@ export const ChangePasswordForm = () => {
 
   const handleChangePassword = () => {
     axios
-      .post(`/reset/${user.user}/${user.token}/${password}`)
+      .post(`/reset/${user.email}/${user.token}/${password}`)
       .then((res) => {
         setResponse(res.data);
       })
