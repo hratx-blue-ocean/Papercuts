@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import { Modal, Button, Form, Nav } from 'react-bootstrap';
 import axios from 'axios';
-import ListGroup from 'react-bootstrap/ListGroup';
 
 export const LoginModal = () => {
   const [show, setShow] = useState(false);
@@ -27,9 +24,9 @@ export const LoginModal = () => {
 
   return (
     <>
-      <ListGroup.Item onClick={handleShow} action variant='dark'>
+      <Nav.Link onClick={handleShow} action variant='dark'>
         Login
-      </ListGroup.Item>
+      </Nav.Link>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
@@ -145,9 +142,9 @@ export const RegisterModal = () => {
 
   return (
     <>
-      <ListGroup.Item onClick={handleShow} action variant='dark'>
+      <Nav.Link onClick={handleShow} action variant='dark'>
         Register
-      </ListGroup.Item>
+      </Nav.Link>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
