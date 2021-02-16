@@ -20,6 +20,7 @@ import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
+import { SettingPage } from './components/settingPage/index.js';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -28,7 +29,14 @@ export const App = () => {
   return (
     <Router>
       <Header user={user} />
-      <main className='py-3' style={{ marginTop: '80px', marginBottom: '150px' }}>
+      <main
+        className='py-3'
+        style={{
+          marginTop: '80px',
+          marginBottom: '150px',
+          background: 'linear-gradient(131deg, rgba(205,221,244,1) 0%, rgba(205,186,250,1) 100%)',
+        }}
+      >
         <Container>
           <Switch>
             <Route exact path='/' />
@@ -37,6 +45,7 @@ export const App = () => {
             {/* need to set up dynamic routing for different book clubs based on Id */}
             <Route path='/clubs/detail' component={BookClub} />
             <Route path='/subscriptions' component={Subscriptions} />
+            <Route path='/setting' component={SettingPage} />
             <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
             <Route component={Error} />
           </Switch>

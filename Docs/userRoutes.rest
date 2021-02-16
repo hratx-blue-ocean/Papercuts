@@ -1,11 +1,11 @@
 @baseUrl = http://localhost:3000
 
 ### Infos
-# idk@gmail = 6026f3a3029fcf77b5dc02b8
-# userA@test = 60272dc32b562508c4a69a4a
-# userB@test = 60275a77860d8630b88f7ce6
-# userC@test = 6028431dbdd29b3de815132b
-# test@test = 602aea49180a1d22643e561c
+@matthew = 602be49226e7f146247321c8
+@jason = 602be49a26e7f146247321c9
+@chris = 602be49f26e7f146247321ca
+@shinan = 602be4b126e7f146247321cd
+@cayla = 602be52e26e7f146247321cf
 
 
 ### Get all users 
@@ -16,7 +16,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId":"602aea49180a1d22643e561c"
+    "userId": "{{matthew}}"
 }
 
 ### Get all users that user are not friends with
@@ -24,7 +24,7 @@ POST {{baseUrl}}/user/newfriends
 Content-Type: application/json
 
 {
-    "userId":"6028431dbdd29b3de815132b"
+    "userId":"{{matthew}}"
 }
 
  
@@ -33,8 +33,8 @@ POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
-    "userId":"602aea49180a1d22643e561c",
-    "friendId":"6028431dbdd29b3de815132b"
+    "userId":"{{matthew}}",
+    "friendId":"{{jason}}"
 } 
 
 ### Update user info
@@ -42,8 +42,8 @@ PUT {{baseUrl}}/user/info
 Content-Type: application/json
 
 {
-    "userId":"602987d27cc8de1408fc1537",
-    "password":"password"
+    "userId":"{{matthew}}",
+    "photoUrl":"matti"
 }
 
 ### Get user payment info
@@ -51,7 +51,7 @@ GET {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
-    "userId":"602aea49180a1d22643e561c"
+    "userId":"{{matthew}}"
 }
 
 ### User add new payment
@@ -59,8 +59,8 @@ POST {{baseUrl}}/user/payment
 Content-Type: application/json
 
 { 
-    "userId":"602987d27cc8de1408fc1537",
-    "cardNumber":123456,
+    "userId":"{{matthew}}",
+    "cardNumber":123456789,
     "cardHolder":"Matthew",
     "cardCVC":343,
     "cardExpiredDate":"cardExpiredDateLol"
@@ -71,8 +71,8 @@ PUT {{baseUrl}}/user/payment
 Content-Type: application/json
 
 { 
-    "paymentID": "602aa3dac32f8d208c55cef2",
-    "userId":"602987d27cc8de1408fc1537",
+    "paymentID": "602bedcc9b1f2d4518f78bee",
+    "userId":"{{matthew}}",
     "cardNumber":123456,
     "cardHolder":"Matthew Ming",
     "cardCVC":343,
@@ -84,7 +84,7 @@ DELETE  {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {  
-    "userId":"602987d27cc8de1408fc1537" 
+    "userId":"{{matthew}}" 
 }
 
 ### Get user sub info
@@ -92,7 +92,7 @@ GET  {{baseUrl}}/user/subscription
 Content-Type: application/json
 
 {  
-    "userId":"602987d27cc8de1408fc1537"
+    "userId":"{{matthew}}"
 }
 
 ### User joins a sub
@@ -100,7 +100,7 @@ POST  {{baseUrl}}/user/subscription
 Content-Type: application/json
 
 {  
-    "userId":"602987d27cc8de1408fc1537",
+    "userId":"{{matthew}}",
     "name":"Pro",
     "description": "I like pro",
     "voucher": 1
@@ -111,5 +111,30 @@ DELETE   {{baseUrl}}/user/subscription
 Content-Type: application/json
 
 {  
-    "userId":"602987d27cc8de1408fc1537"
+    "userId":"{{matthew}}"
+}
+
+### Get all books that the user owns
+GET {{baseUrl}}/user/book
+Content-Type: application/json
+
+{
+    "userId":"{{matthew}}"
+}
+
+### User add book to library
+POST  {{baseUrl}}/user/book
+Content-Type: application/json
+
+{
+    "userId":"{{matthew}}",
+    "title":"{{matthew}}",
+    "author":"{{matthew}}",
+    "ISBN":123,
+    "thubnailURL":"{{matthew}}",
+    "imageURL":"{{matthew}}",
+    "price":123,
+    "category":"{{matthew}}",
+    "rating":2,
+    "ratingCount":2
 }

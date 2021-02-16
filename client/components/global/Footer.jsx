@@ -27,18 +27,12 @@ const Footer = () => {
           <Row>
             <p>Product</p>
           </Row>
-          <Row>
-            <p>Product</p>
-          </Row>
         </Col>
         <Col>
           <Row>
             <h5 className='font-weight-bold'>Features</h5>
           </Row>
           <br />
-          <Row>
-            <p>Features</p>
-          </Row>
           <Row>
             <p>Features</p>
           </Row>
@@ -57,18 +51,12 @@ const Footer = () => {
           <Row>
             <p>Resources</p>
           </Row>
-          <Row>
-            <p>Resources</p>
-          </Row>
         </Col>
         <Col>
           <Row>
             <h5 className='font-weight-bold'>Company</h5>
           </Row>
           <br />
-          <Row>
-            <p>Company</p>
-          </Row>
           <Row>
             <p>Company</p>
           </Row>
