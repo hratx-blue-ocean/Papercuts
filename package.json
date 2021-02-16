@@ -7,7 +7,7 @@
     "watch": "webpack --progress --watch",
     "server": "nodemon server/server.js",
     "test": "mocha server/test",
-    "build": "webpack"
+    "start": "webpack && node server/server.js"
   },
   "keywords": [],
   "author": "Matthew Budiman",
