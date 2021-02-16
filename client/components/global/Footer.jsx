@@ -12,7 +12,7 @@ const Footer = () => {
           <Row>Copyright &copy; Papercuts Books 2020-2021</Row>
           <Row>
             <i>Privacy</i>
-            {' -- '}
+            {' | '}
             <i>Terms</i>
           </Row>
         </Col>
