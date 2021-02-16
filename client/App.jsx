@@ -18,6 +18,7 @@ import MyLibrary from './components/profilePage/myLibrary.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
+import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 
 export const App = () => {
@@ -35,6 +36,7 @@ export const App = () => {
             <Route exact path='/clubs' component={BookClubs} />
             <Route path='/clubs/detail' component={BookClub} />
             <Route path='/subscriptions' component={Subscriptions} />
+            <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
             <Route component={Error} />
           </Switch>
         </Container>
