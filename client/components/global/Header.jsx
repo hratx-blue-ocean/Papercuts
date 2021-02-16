@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, Container, ListGroup, Form, Image, Button } from 'react-bootstrap';
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Container,
+  ListGroup,
+  Form,
+  Image,
+  Button,
+} from 'react-bootstrap';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import search from '../images/search.svg';
@@ -17,9 +26,14 @@ const Header = ({ user, title, variant, background }) => {
           <Nav.Link to='/' as={Link} variant={variant}>
             Home
           </Nav.Link>
-          <Nav.Link to='/clubs' as={Link} variant={variant}>
-            Book Clubs
-          </Nav.Link>
+          <NavDropdown title='Book Clubs'>
+            <Nav.Link to='/clubs' as={Link} variant={variant}>
+              Browse
+            </Nav.Link>
+            <Nav.Link to='/clubs/create' as={Link} variant={variant}>
+              Create a Book Club
+            </Nav.Link>
+          </NavDropdown>
           <Nav.Link as={Link} to='/subscriptions' variant={variant}>
             Subscriptions
           </Nav.Link>
