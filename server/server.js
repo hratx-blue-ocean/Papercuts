@@ -50,6 +50,7 @@ app.use('/user', require('./routes/UserRoute'));
 app.use('/book', require('./routes/BookRoute'));
 app.use('/api/auth', require('./routes/AuthRoute'));
 app.use('/reset', require('./routes/resetRoute'));
+app.use('/checkout', require('./routes/PaymentRoute'));
 app.use(
   '/',
   expressStaticGzip('client/dist', {
