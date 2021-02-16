@@ -6,6 +6,8 @@ const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
 require('dotenv').config();
+const recommendedBooksQuery = require('../client/components/profilePage/recommendedBooks/recommendedBooksQuery.js');
+
 
 //Vars
 const app = express();
@@ -25,7 +27,7 @@ mongoose
 
 //Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
     secret: 'aY5LZhOHMm!i',
