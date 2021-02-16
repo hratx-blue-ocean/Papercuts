@@ -28,12 +28,13 @@ export const App = () => {
   return (
     <Router>
       <Header user={user} />
-      <main className='py-3'>
+      <main className='py-3' style={{ marginTop: '80px', marginBottom: '150px' }}>
         <Container>
           <Switch>
             <Route exact path='/' />
             <Route path='/profile' component={MyLibrary} />
             <Route exact path='/clubs' component={BookClubs} />
+            {/* need to set up dynamic routing for different book clubs based on Id */}
             <Route path='/clubs/detail' component={BookClub} />
             <Route path='/subscriptions' component={Subscriptions} />
             <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
