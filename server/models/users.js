@@ -62,16 +62,10 @@ const UserSchema = new mongoose.Schema(
     bookPreference: {
       type: String,
     },
-    recommendation: [
-      {
-        summary: {
-          type: String,
-        },
-        description: {
-          type: String,
-        },
-      },
-    ],
+    recommendation: {
+      summary: String,
+      description: String,
+    },
     bookclubs: [
       {
         bookclubId: {

@@ -86,7 +86,16 @@ router.post('/friend', async (req, res) => {
 // @route   Put /user/info
 // @access  Private
 router.put('/info', async (req, res) => {
-  let { userId, password, newPassword, username, email, photoUrl } = req.body;
+  let {
+    userId,
+    password,
+    newPassword,
+    username,
+    email,
+    photoUrl,
+    bookPreference,
+    recommendation,
+  } = req.body;
 
   try {
     User.findById(userId).then((user) => {
@@ -106,9 +115,11 @@ router.put('/info', async (req, res) => {
                 if (err) throw err;
 
                 user.password = hash;
-                user.username = username || user.username;
-                user.email = email || user.email;
-                user.photoImg = photoImg || user.photoImg;
+                user.username = username;
+                user.email = email;
+                user.photoUrl = photoUrl;
+                user.bookPreference = bookPreference;
+                user.recommendation = recommendation;
 
                 user.save().then((usr) => {
                   return res.json(usr);
@@ -123,6 +134,8 @@ router.put('/info', async (req, res) => {
         user.username = username || user.username;
         user.email = email || user.email;
         user.photoUrl = photoUrl || user.photoUrl;
+        user.bookPreference = bookPreference || user.bookPreference;
+        user.recommendation = recommendation || user.recommendation;
 
         user.save().then(() => {
           return res.json({ msg: 'User updated' });
