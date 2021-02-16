@@ -20,6 +20,8 @@ import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
 import Error from './components/global/Error.jsx';
 
+import './style.css';
+
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
@@ -33,8 +35,7 @@ export const App = () => {
             <Route exact path='/'>
               {/* Cayla, put in your component here when ready */}
             </Route>
-            <Route path='/profile' component={MyLibrary}>
-            </Route>
+            <Route path='/profile' component={MyLibrary}></Route>
             <Route exact path='/clubs' component={BookClubs}>
               {/* <BookClubs /> */}
             </Route>

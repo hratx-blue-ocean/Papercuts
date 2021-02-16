@@ -7,7 +7,7 @@ import search from '../images/search.svg';
 
 const Header = ({ user, title, variant, background }) => {
   return (
-    <Navbar className='nav' bg={background}>
+    <Navbar className='navbar' bg={background}>
       <Container>
         <ListGroup.Item to='/' as={Link} action variant={variant}>
           <h2 className='font-weight-bold'>{title}</h2>
