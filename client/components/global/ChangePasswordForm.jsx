@@ -15,7 +15,7 @@ export const ChangePasswordForm = () => {
 
   const handleChangePassword = () => {
     axios
-      .post(`http://localhost:3000/reset/${user.user}/${user.token}/${password}`)
+      .post(`/reset/${user.user}/${user.token}/${password}`)
       .then((res) => {
         setResponse(res.data);
       })
@@ -35,27 +35,27 @@ export const ChangePasswordForm = () => {
     >
       Reset password for: {user.user}
       <br />
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId='formBasicPassword'>
         <Form.Label>Password</Form.Label>
         <Form.Control
           onChange={(e) => {
             setPassword(e.target.value);
           }}
-          type="password"
-          placeholder="Password"
+          type='password'
+          placeholder='Password'
           required
         />
       </Form.Group>
       {noMatch && <span style={{ fontSize: '14px', color: 'red' }}>Passwords do not match</span>}
-      <Form.Group controlId="formBasicConfirmPassword">
+      <Form.Group controlId='formBasicConfirmPassword'>
         <Form.Label>Confirm Password</Form.Label>
         <Form.Control
           onChange={(e) => {
             setConfirmPassword(e.target.value);
             e.target.value !== password ? setNoMatch(true) : setNoMatch(false);
           }}
-          type="password"
-          placeholder="Password"
+          type='password'
+          placeholder='Password'
           required
         />
       </Form.Group>
@@ -65,7 +65,7 @@ export const ChangePasswordForm = () => {
           <br></br>
         </span>
       ) : null}
-      <Button disabled={noMatch} variant="primary" type="submit">
+      <Button disabled={noMatch} variant='primary' type='submit'>
         Change Password
       </Button>
     </Form>

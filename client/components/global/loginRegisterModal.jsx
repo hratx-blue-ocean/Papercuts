@@ -225,7 +225,7 @@ export const RegisterModal = () => {
 
 const sendLogin = (email, password, handleClose, setErr) => {
   axios
-    .post(`http://localhost:3000/api/auth/login?email=${email}&password=${password}`, null, {
+    .post(`/api/auth/login?email=${email}&password=${password}`, null, {
       withCredentials: true,
     })
     .then(() => {
@@ -239,7 +239,7 @@ const sendLogin = (email, password, handleClose, setErr) => {
 
 const sendRegister = (email, password, handleClose, setErr) => {
   axios
-    .post(`http://localhost:3000/api/auth/register?email=${email}&password=${password}`, null, {
+    .post(`/api/auth/register?email=${email}&password=${password}`, null, {
       withCredentials: true,
     })
     .then(() => {
@@ -253,7 +253,7 @@ const sendRegister = (email, password, handleClose, setErr) => {
 
 const sendEmail = (email, setResponse, handleClose) => {
   axios
-    .get(`http://localhost:3000/reset/email/${email}`)
+    .get(`/reset/email/${email}`)
     .then((response) => {
       setResponse(response.data);
       setTimeout(() => {
