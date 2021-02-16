@@ -2,18 +2,14 @@ const mongoose = require('mongoose');
 
 const BookSchema = new mongoose.Schema({
   title: String,
-  author: String,
+  authors: String,
+  isbn: Number,
   description: String,
-  ISBN: Number,
-  thubnailURL: String,
-  imageURL: String,
+  image: String,
   price: Number,
   category: String,
-  rating: Number,
-  ratingCount: Number,
   purchase_date: {
     type: Date,
-    default: Date.now,
   },
   reviews: [
     {
