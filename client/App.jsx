@@ -18,8 +18,10 @@ import MyLibrary from './components/profilePage/myLibrary.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
+import Checkout from './components/payments/Checkout.jsx';
 import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
+import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -36,7 +38,11 @@ export const App = () => {
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
             <Route path='/clubs/detail' component={BookClub} />
+            <Route path='/clubs/create'>
+              <CreateBookClub user={user} />
+            </Route>
             <Route path='/subscriptions' component={Subscriptions} />
+            <Route path='/checkout' component={Checkout} />
             <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
             <Route component={Error} />
           </Switch>
