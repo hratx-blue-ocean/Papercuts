@@ -1,14 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Route } from 'react-router-dom';
 import { Button, Card, Image } from 'react-bootstrap';
 import axios from 'axios';
 
 export default function Checkout() {
   // Create an instance of the Stripe object with your publishable API key
-  var stripe = Stripe(
+  const stripe = Stripe(
     'pk_test_51IHxGGEZ5KuRE6lkaPBuzzJO43X3YKlQyIHQUfZMteM0nmWG6F16S5cQ5mIb5X3g6MzrQl9NiPZ7Nzc3gUel5bme00ax86S3zT'
   );
-  var checkoutButton = document.getElementById('checkout-button');
   const handleCheckout = function () {
     axios
       .post('/checkout')
