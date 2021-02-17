@@ -3,7 +3,6 @@ import { Form } from 'react-bootstrap';
 
 export default function Event({ event }) {
   const [checked, setChecked] = useState(event.checked);
-
   return (
     <>
       <h3>{event.name}</h3>
