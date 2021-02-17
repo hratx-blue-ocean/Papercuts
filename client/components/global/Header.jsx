@@ -14,14 +14,11 @@ import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import search from '../../assets/images/search.svg';
 
+// style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }
+
 const Header = ({ user, title, variant, background }) => {
   return (
-    <Navbar
-      className='nav'
-      bg={background}
-      fixed='top'
-      style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
-    >
+    <Navbar className='nav' bg={background} sticky='top'>
       <Container style={{ maxWidth: '100vw' }}>
         <Navbar.Brand to='/' as={Link} variant={variant}>
           <strong className='font-weight-bold'>{title}</strong>
