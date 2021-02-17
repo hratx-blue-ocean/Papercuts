@@ -11,7 +11,7 @@ const BookClubs = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className='p-0 m-0 py-4 my-5'>
+    <div className='p-0 m-0'>
       <Container className='px-1 mt-1'>
         <SearchBookClubs />
       </Container>
