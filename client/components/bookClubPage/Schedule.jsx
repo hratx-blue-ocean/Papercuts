@@ -7,21 +7,21 @@ import { AppContext } from '../../context/context.jsx';
 
 export default function Schedule({}) {
   const user = useContext(AuthContext);
-  const { selectedClubData } = useContext(AppContext);
+  const { club } = useContext(AppContext);
   const [events, setEvents] = useState([]);
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
-    if (!selectedClubData._id) return;
-    axios.get(`/bookclub/event/${selectedClubData._id}`).then((res) => {
+    if (!club._id) return;
+    axios.get(`/bookclub/event/${club._id}`).then((res) => {
       setEvents(res.data);
     });
-  }, [selectedClubData]);
+  }, [club]);
 
   const handleAddEvent = () => {
     axios
-      .post(`/bookclub/event/${selectedClubData._id}`, formData)
-      .then(() => axios.get(`/bookclub/event/${selectedClubData._id}`))
+      .post(`/bookclub/event/${club._id}`, formData)
+      .then(() => axios.get(`/bookclub/event/${club._id}`))
       .then((res) => {
         setEvents(res.data);
       });
@@ -35,7 +35,7 @@ export default function Schedule({}) {
             <Event event={event} />
           </ListGroup.Item>
         ))}
-        {user && selectedClubData.owner && user._id === selectedClubData.owner._id && (
+        {user && club.owner && user._id === club.owner._id && (
           <ListGroup.Item>
             <Form>
               <h5>{`Add an Event - logged in as owner: ${user.email}`}</h5>
@@ -43,24 +43,32 @@ export default function Schedule({}) {
               <Form.Control
                 required
                 type='input'
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
               />
               <Form.Label>Description</Form.Label>
               <Form.Control
                 required
                 type='text'
-                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, description: e.target.value })
+                }
               />
               <Form.Label>Schedule</Form.Label>
               <Form.Control
                 required
                 type='datetime-local'
-                onChange={(e) => setFormData({ ...formData, schedule: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, schedule: e.target.value })
+                }
               />
               <Form.Label>Link</Form.Label>
               <Form.Control
                 type='url'
-                onChange={(e) => setFormData({ ...formData, zoom_link: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, zoom_link: e.target.value })
+                }
               />
               <Button onClick={handleAddEvent}>Add</Button>
             </Form>

@@ -11,18 +11,18 @@ const questionnaire = [
   'What is your favorite book club event you have attended so far?',
   'What was your favorite part of the book?',
   'If you could ask the author one thing, what would it be?',
-  "Anything else you'd like to let us know about your experience in our book club",
+  "Anything else you'd like to let us know about your experience in our book club"
 ];
 
 export default function Questionnaire({}) {
   const user = useContext(AuthContext);
-  const { selectedClubData } = useContext(AppContext);
+  const { club } = useContext(AppContext);
   const [formData, setFormData] = useState({});
   const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmitQuestionnaire = (e) => {
     axios
-      .post(`/bookclub/questionnaire/${selectedClubData._id}`, formData)
+      .post(`/bookclub/questionnaire/${club._id}`, formData)
       .then(() => setShowAlert(true));
   };
 
@@ -40,7 +40,12 @@ export default function Questionnaire({}) {
             <Form.Control
               required
               type='text'
-              onChange={(e) => setFormData({ ...formData, [`answer_${idx + 1}`]: e.target.value })}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  [`answer_${idx + 1}`]: e.target.value
+                })
+              }
             />
           </Form.Group>
         ))}
@@ -50,7 +55,9 @@ export default function Questionnaire({}) {
           </Button>
         ) : (
           <Alert variant='info'>
-            <Alert.Heading>Please log in to answer the questionnaire</Alert.Heading>
+            <Alert.Heading>
+              Please log in to answer the questionnaire
+            </Alert.Heading>
             <LoginModal />
           </Alert>
         )}

@@ -1,15 +1,36 @@
-import React, { useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { AppContext } from '../../context/context.jsx';
 
-const SearchBookClubs = ({ history, placeholder, variant, searchVariant }) => {
-  const [keyword, setKeyword] = useState('');
+const SearchBookClubs = ({ setFound, placeholder, variant, search }) => {
+  const {
+    club,
+    clubs,
+    keyword,
+    updateKeyword,
+    getClubByName,
+    getClubById,
+    fuzzyClubSearch
+  } = useContext(AppContext);
+
+  useEffect(() => {
+    if (keyword !== '') {
+      fuzzyClubSearch(keyword, clubs);
+    }
+  }, [keyword]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (keyword.trim()) {
-      history.push(`/clubs/search/${keyword}`);
-    } else {
-      history.push('/');
+    if (keyword !== '') {
+      getClubByName(keyword);
+
+      if (keyword === club.name) {
+        setFound(true);
+      } else {
+        getClubById(club._id);
+        setFound(false);
+      }
+      updateKeyword('');
     }
   };
 
@@ -18,11 +39,12 @@ const SearchBookClubs = ({ history, placeholder, variant, searchVariant }) => {
       <Form.Control
         type='text'
         name='q'
-        onChange={(e) => setKeyword(e.target.value)}
+        value={keyword}
+        onChange={(e) => updateKeyword(e.target.value)}
         placeholder={placeholder}
         className='ml-sm-5 mr-sm-2'
       ></Form.Control>
-      <Button type='submit' variant={searchVariant} className='p-2'>
+      <Button type='submit' variant={search} className='p-2'>
         Search
       </Button>
     </Form>
@@ -32,7 +54,7 @@ const SearchBookClubs = ({ history, placeholder, variant, searchVariant }) => {
 SearchBookClubs.defaultProps = {
   variant: 'light',
   placeholder: 'Search Book Clubs...',
-  searchVariant: 'outline-success',
+  search: 'outline-success'
 };
 
 export default SearchBookClubs;

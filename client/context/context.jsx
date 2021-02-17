@@ -1,11 +1,150 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
+import Fuse from 'fuse.js';
+import axios from 'axios';
 
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [selectedClubData, setSelectedClubData] = useState({});
+  const [book, setBook] = useState({});
+  const [club, setClub] = useState({});
+  const [event, setEvent] = useState({});
+  const [questionnaire, setQuestionnaire] = useState({});
+  const [users, setUsers] = useState([]);
+  const [members, setMembers] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [clubs, setClubs] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [questionnaires, setQuestionnaires] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  const [fuzzyClubs, setFuzzyClubs] = useState([]);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getClubById('602bff381017a68f02009b0e');
+    getClubs();
+  }, []);
+
+  // Actions
+  // Get all bookclubs
+  async function getClubs() {
+    try {
+      const res = await axios.get('/bookclub/all');
+
+      setClubs([...res.data]);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
+  // Get single bookclub by name
+  async function getClubByName(name) {
+    try {
+      const res = await axios.get(`/`, { name });
+
+      setClub(res.data);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
+  // Get single bookclub by id
+  async function getClubById(id) {
+    try {
+      const res = await axios.get(`/bookclub/${id}`);
+
+      setClub(res.data);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
+  // Join bookclub by id
+  async function joinClubById(id, userId) {
+    try {
+      await axios.post(`/bookclub/join/${id}`, {
+        userId
+      });
+
+      setMembers([...members, user._id]);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
+  // Leave bookclub by id
+  async function leaveClubById(id, userId) {
+    try {
+      await axios.post(`/bookclub/join/${id}`, {
+        userId
+      });
+
+      setMembers([...members.filter((member) => member !== user._id)]);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
+  // Leave bookclub by id
+  function updateKeyword(string) {
+    try {
+      setKeyword(string);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
+  // Leave bookclub by id
+  function fuzzyClubSearch(string, clubs) {
+    // Search Options
+    const options = {
+      includeScore: true,
+      keys: ['name']
+    };
+    // Create Fuse index
+    const index = Fuse.createIndex(options.keys, clubs);
+    // initialize Fuse with the index
+    const fuse = new Fuse(clubs, options, index);
+    const result = fuse.search(string);
+    // result.sort((a, b) => a.score > b.score);
+
+    try {
+      setFuzzyClubs(result);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
   return (
-    <AppContext.Provider value={{ selectedClubData, setSelectedClubData }}>
+    <AppContext.Provider
+      value={{
+        book,
+        club,
+        event,
+        questionnaire,
+        users,
+        members,
+        books,
+        clubs,
+        events,
+        questionnaires,
+        categories,
+        keyword,
+        fuzzyClubs,
+        error,
+        success,
+        loading,
+        getClubs,
+        getClubByName,
+        getClubById,
+        joinClubById,
+        leaveClubById,
+        updateKeyword,
+        fuzzyClubSearch
+      }}
+    >
       {children}
     </AppContext.Provider>
   );

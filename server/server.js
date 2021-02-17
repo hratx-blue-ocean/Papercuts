@@ -6,8 +6,6 @@ const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
 require('dotenv').config();
-const recommendedBooksQuery = require('../client/components/profilePage/recommendedBooks/recommendedBooksQuery.js');
-
 
 //Vars
 const app = express();
@@ -20,7 +18,7 @@ mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
+    useCreateIndex: true
   })
   .then(console.log(`MongoDB connected ${dbURI}`))
   .catch((err) => console.log(err));
@@ -33,7 +31,7 @@ app.use(
     secret: 'aY5LZhOHMm!i',
     resave: false,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 app.use(passport.initialize());
@@ -60,7 +58,7 @@ app.use(
     orderPreference: ['br'],
     setHeaders: function (res, path) {
       res.setHeader('Cache-Control', 'public, max-age=31536000');
-    },
+    }
   })
 );
 
