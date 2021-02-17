@@ -1,84 +1,26 @@
-import React, { useEffect, useReducer, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import Fuse from 'fuse.js';
 import axios from 'axios';
 
-let initState = {
-  book: {},
-  club: {},
-  event: {},
-  questionnaire: {},
-  users: [],
-  books: [],
-  clubs: [],
-  events: [],
-  questionnaires: [],
-  categories: [],
-  keyword: '',
-  fuzzyClubs: [],
-  error: null,
-  success: false,
-  loading: false,
-  dispatch: (action) => this.setState((state) => reducer(state, action))
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'GET_BOOKCLUB':
-      return {
-        ...state,
-        club: action.payload,
-        success: true
-      };
-    case 'GET_BOOKCLUBS':
-      return {
-        ...state,
-        clubs: [...state.clubs, action.payload],
-        success: true
-      };
-    case 'JOIN_BOOKCLUB':
-      return {
-        ...state,
-        members: [...state.members, action.payload],
-        success: true
-      };
-    case 'LEAVE_BOOKCLUB':
-      return {
-        ...state,
-        members: state.members.filter((member) => member !== action.payload),
-        success: true
-      };
-    case 'SEARCH_BOOKCLUB':
-      return {
-        ...state,
-        club: action.payload,
-        success: true
-      };
-    case 'FUZZY_BOOKCLUB_SEARCH':
-      return {
-        ...state,
-        fuzzyClubs: action.payload,
-        success: true
-      };
-    case 'UPDATE_KEYWORD':
-      return {
-        ...state,
-        keyword: action.payload
-      };
-    case 'SEARCH_ERROR':
-      return {
-        ...state,
-        error: action.payload,
-        success: false
-      };
-    default:
-      return state;
-  }
-};
-
-export const AppContext = createContext(initState);
+export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initState);
+  const [book, setBook] = useState({});
+  const [club, setClub] = useState({});
+  const [event, setEvent] = useState({});
+  const [questionnaire, setQuestionnaire] = useState({});
+  const [users, setUsers] = useState([]);
+  const [members, setMembers] = useState([]);
+  const [books, setBooks] = useState([]);
+  const [clubs, setClubs] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [questionnaires, setQuestionnaires] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [keyword, setKeyword] = useState('');
+  const [fuzzyClubs, setFuzzyClubs] = useState([]);
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
@@ -91,15 +33,9 @@ export const AppProvider = ({ children }) => {
     try {
       const res = await axios.get('/bookclub/all');
 
-      dispatch({
-        type: 'GET_BOOKCLUBS',
-        payload: res.data
-      });
+      setClubs([...res.data]);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
@@ -108,15 +44,9 @@ export const AppProvider = ({ children }) => {
     try {
       const res = await axios.get(`/`, { name });
 
-      dispatch({
-        type: 'GET_BOOKCLUB',
-        payload: res.data
-      });
+      setClub(res.data);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
@@ -125,15 +55,9 @@ export const AppProvider = ({ children }) => {
     try {
       const res = await axios.get(`/bookclub/${id}`);
 
-      dispatch({
-        type: 'SEARCH_BOOKCLUB',
-        payload: res.data
-      });
+      setClub(res.data);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
@@ -144,15 +68,9 @@ export const AppProvider = ({ children }) => {
         userId
       });
 
-      dispatch({
-        type: 'JOIN_BOOKCLUB',
-        payload: user._id
-      });
+      setMembers([...members, user._id]);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
@@ -163,30 +81,18 @@ export const AppProvider = ({ children }) => {
         userId
       });
 
-      dispatch({
-        type: 'LEAVE_BOOKCLUB',
-        payload: user._id
-      });
+      setMembers([...members.filter((member) => member !== user._id)]);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
   // Leave bookclub by id
   function updateKeyword(string) {
     try {
-      dispatch({
-        type: 'UPDATE_KEYWORD',
-        payload: string
-      });
+      setKeyword(string);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
@@ -198,34 +104,38 @@ export const AppProvider = ({ children }) => {
       keys: ['name']
     };
     // Create Fuse index
-    const index = Fuse.createIndex(options.keys, clubs[0]);
+    const index = Fuse.createIndex(options.keys, clubs);
     // initialize Fuse with the index
-    const fuse = new Fuse(clubs[0], options, index);
+    const fuse = new Fuse(clubs, options, index);
     const result = fuse.search(string);
     // result.sort((a, b) => a.score > b.score);
 
     try {
-      dispatch({
-        type: 'FUZZY_BOOKCLUB_SEARCH',
-        payload: result
-      });
+      setFuzzyClubs(result);
     } catch (err) {
-      dispatch({
-        type: 'SEARCH_ERROR',
-        payload: err.response.data.error
-      });
+      setError(err.response.data.error);
     }
   }
 
   return (
     <AppContext.Provider
       value={{
-        club: state.club,
-        clubs: state.clubs,
-        keyword: state.keyword,
-        fuzzyClubs: state.fuzzyClubs,
-        error: state.error,
-        loading: state.loading,
+        book,
+        club,
+        event,
+        questionnaire,
+        users,
+        members,
+        books,
+        clubs,
+        events,
+        questionnaires,
+        categories,
+        keyword,
+        fuzzyClubs,
+        error,
+        success,
+        loading,
         getClubs,
         getClubByName,
         getClubById,
