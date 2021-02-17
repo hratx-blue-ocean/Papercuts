@@ -123,22 +123,20 @@ GET {{baseUrl}}/user/book
 Content-Type: application/json
 
 {
-    "userId":"{{matthew}}"
+    "userId":"{{jason}}"
 }
 
-### User add book to library
+### User add book to library 7ef
 POST  {{baseUrl}}/user/book
 Content-Type: application/json
 
 {
-    "userId":"{{matthew}}",
-    "title":"{{matthew}}",
+    "userId":"{{jason}}",
+    "title":"Pine",
     "author":"{{matthew}}",
-    "ISBN":123,
+    "isbn":525,
     "thubnailURL":"{{matthew}}",
     "imageURL":"{{matthew}}",
     "price":123,
-    "category":"{{matthew}}",
-    "rating":2,
-    "ratingCount":2
+    "category":"{{matthew}}"
 }

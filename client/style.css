@@ -34,3 +34,16 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
+#bodyContainer {
+  position: relative;
+  min-height: 100vh;
+}
+
+#footer {
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}

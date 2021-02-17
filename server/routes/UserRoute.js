@@ -1,6 +1,7 @@
 const Subscription = require('../models/subscription');
 const Payment = require('../models/payments');
 const router = require('express').Router();
+const Review = require('../models/review');
 const Book = require('../models/books');
 const User = require('../models/users');
 const mongoose = require('mongoose');
@@ -305,37 +306,52 @@ router.get('/book', async (req, res) => {
 // @route   Post /user/book
 // @access  Private
 router.post('/book', async (req, res) => {
-  let {
-    userId,
-    title,
-    author,
-    ISBN,
-    thubnailURL,
-    imageURL,
-    price,
-    category,
-    rating,
-    ratingCount,
-  } = req.body;
+  let { userId, title, authors, isbn, image, price, category } = req.body;
 
   try {
-    const newBook = await new Book({
-      title,
-      author,
-      ISBN,
-      thubnailURL,
-      imageURL,
-      price,
-      category,
-      rating,
-      ratingCount,
-    }).save();
+    // check if book is in book colletion
+
+    let book = await Book.findOne({ isbn });
+
+    if (!book) {
+      console.log('ADDING BOOK');
+      book = await new Book({
+        title,
+        authors,
+        isbn,
+        image,
+        price,
+        category,
+      }).save();
+    }
 
     await User.findByIdAndUpdate(userId, {
-      $push: { library: newBook._id },
+      $push: { library: book._id },
     });
 
     return res.json({ msg: 'Book added successfully' });
+  } catch (err) {
+    return res.json({ err });
+  }
+});
+
+// @desc    User add review to their book
+// @route   Post /user/reivew/:bookID
+// @access  Private
+router.post('/review', async (req, res) => {
+  let { bookId, username, comment } = req.body;
+
+  try {
+    const newReview = await new Review({
+      username,
+      comment,
+    }).save();
+
+    await Book.findByIdAndUpdate(bookId, {
+      $push: { reviews: newReview._id },
+    });
+
+    return res.json({ msg: 'Review added successfully' });
   } catch (err) {
     return res.json({ err });
   }

@@ -10,6 +10,7 @@ const BookSchema = new mongoose.Schema({
   category: String,
   purchase_date: {
     type: Date,
+    default: Date.now,
   },
   reviews: [
     {

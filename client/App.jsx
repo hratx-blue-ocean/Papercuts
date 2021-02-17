@@ -24,6 +24,8 @@ import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
 
 import './style.css';
+import { SettingPage } from './components/settingPage/index.js';
+import { NewFooter } from './components/global/NewFooter.js';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -31,39 +33,44 @@ export const App = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <Router>
-      <Header user={user} />
-      <main
-        // className='p-0 m-0'
-        style={{ paddingTop: '75px', paddingBottom: '150px', maxWidth: '100vw' }}
-      >
-        <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
-          <Switch>
-            <Route exact path='/' />
-            <Route path='/profile' component={MyLibrary} />
-            <Route exact path='/clubs' component={BookClubs} />
-            {/* need to set up dynamic routing for different book clubs based on Id */}
-            <Route path='/clubs/detail/:id' component={BookClub} />
-            <Route path='/clubs/create'>
-              <CreateBookClub user={user} />
-            </Route>
-            <Route path='/subscriptions' component={Subscriptions} />
-            <Route path='/checkout' component={Checkout} />
-            <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
-            <Route component={Error} />
-          </Switch>
-        </Container>
-      </main>
-      <Button variant='primary' onClick={() => setShow(true)}>
-        Open Example Book Detail Modal
-      </Button>
-      <BookDetail
-        handleClose={() => {
-          setShow(false);
-        }}
-        show={show}
-      />
-      <Footer />
-    </Router>
+    <div id='bodyContainer'>
+      <Router>
+        <Header user={user} />
+        <main
+          // className='p-0 m-0'
+          style={{ paddingBottom: '150px' }}
+        >
+          <Container className='p-1 m-1'>
+            <Switch>
+              <Route exact path='/' />
+              <Route path='/profile' component={MyLibrary} />
+              <Route exact path='/clubs' component={BookClubs} />
+              {/* need to set up dynamic routing for different book clubs based on Id */}
+              <Route path='/clubs/detail/:id' component={BookClub} />
+              <Route path='/clubs/create'>
+                <CreateBookClub user={user} />
+              </Route>
+              <Route path='/subscriptions' component={Subscriptions} />
+              <Route path='/checkout' component={Checkout} />
+              <Route path='/setting' component={SettingPage} />
+
+              <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
+              <Route component={Error} />
+            </Switch>
+          </Container>
+        </main>
+        <Button variant='primary' onClick={() => setShow(true)}>
+          Open Example Book Detail Modal
+        </Button>
+        <BookDetail
+          handleClose={() => {
+            setShow(false);
+          }}
+          show={show}
+        />
+        {/* <Footer /> */}
+        <NewFooter />
+      </Router>
+    </div>
   );
 };
