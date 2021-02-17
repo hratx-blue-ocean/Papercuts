@@ -1,27 +1,39 @@
 {
-  "name": "react-webpack-template",
+  "name": "papercuts",
   "version": "1.0.0",
-  "description": "",
+  "description": "Papercuts is a modern bookstore app that brings people together through multiple mediums and provides a forum to connect with other readers",
   "main": "index.js",
   "scripts": {
     "watch": "webpack --progress --watch",
-    "server": "nodemon server/server.js"
+    "server": "nodemon server/server.js",
+    "test": "mocha server/test",
+    "start": "webpack && node server/server.js",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "Matthew Budiman",
+  "contributors": [
+    "Sean Brazil",
+    "Shinan Sun",
+    "Daniel He",
+    "Cayla Cardiff",
+    "Chris Thackrey",
+    "Jerrick Ravelo"
+  ],
   "license": "MIT",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
-    "compression-webpack-plugin": "^7.1.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "compression-webpack-plugin": "^6.1.1",
     "connect-mongo": "^3.2.0",
     "dotenv": "^8.2.0",
-    "enzyme": "^3.11.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express-static-gzip": "^2.1.1",
+    "firebase": "^8.2.7",
     "jest": "^26.6.3",
     "mongoose": "^5.11.15",
     "nodemailer": "^6.4.18",
@@ -37,9 +49,8 @@
     "react-multi-carousel": "^2.6.1",
     "react-router-dom": "^5.2.0",
     "react-use-auth": "^2.1.0-14",
+    "stripe": "^8.135.0",
     "styled-components": "^5.2.1",
-    "webpack": "^5.21.2",
-    "webpack-cli": "^4.5.0",
     "zlib": "^1.0.5"
   },
   "devDependencies": {
@@ -48,8 +59,10 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
+    "babili-webpack-plugin": "^0.1.2",
     "css-loader": "^5.0.1",
     "dotenv": "^8.2.0",
+    "enzyme": "^3.11.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-node": "^4.1.0",
@@ -61,7 +74,28 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.6.3",
+    "mocha": "^8.3.0",
+    "nodemon": "^2.0.7",
     "prettier": "^2.2.1",
-    "style-loader": "^2.0.0"
+    "should": "^13.2.3",
+    "style-loader": "^2.0.0",
+    "supertest": "^6.1.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

@@ -46,7 +46,6 @@ const UserSchema = new mongoose.Schema(
     suscriptionTier: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Subscriptions',
-      default: null,
     },
     library: [
       {
@@ -63,22 +62,14 @@ const UserSchema = new mongoose.Schema(
     bookPreference: {
       type: String,
     },
-    recommendation: [
-      {
-        summary: {
-          type: String,
-        },
-        description: {
-          type: String,
-        },
-      },
-    ],
+    recommendation: {
+      summary: String,
+      description: String,
+    },
     bookclubs: [
       {
-        bookclubId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Bookclubs',
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bookclubs',
       },
     ],
     address: {

@@ -6,90 +6,71 @@ import {
   useRouteMatch, //use if needed
   useParams, // use if needed
 } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import BookClub from './components/bookClubPage/bookClub.jsx';
-import HomePage from './components/homePage/HomePage.jsx';
 import React, { useState, useContext } from 'react';
+import { Button, ListGroup, Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { AppContext } from './context/context.jsx';
 import { AuthContext } from './context/authContext.jsx';
+import Header from './components/global/Header.jsx';
+import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
-import { Button } from 'react-bootstrap';
-import { ListGroup } from 'react-bootstrap';
-import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
-import logout from './components/global/logout.js';
+import MyLibrary from './components/profilePage/myLibrary.jsx';
+import BookClub from './components/bookClubPage/BookClub.jsx';
+import BookClubs from './components/bookClubPage/BookClubs.jsx';
+import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
+import Checkout from './components/payments/Checkout.jsx';
+import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
+import Error from './components/global/Error.jsx';
+import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
+
+import './style.css';
+import { SettingPage } from './components/settingPage/index.js';
+import { NewFooter } from './components/global/NewFooter.js';
 
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+
   return (
-    <Router>
-      <div>
-        <ListGroup className="navList" horizontal>
-          <ListGroup.Item to="/" as={Link} action variant="dark">
-            Home
-          </ListGroup.Item>
-          <ListGroup.Item to="/clubs" as={Link} action variant="dark">
-            Book Clubs
-          </ListGroup.Item>
-          <ListGroup.Item to="/clubs/detail" as={Link} action variant="dark">
-            Club Details (Temporary)
-          </ListGroup.Item>
-          <ListGroup.Item as={Link} to="/subscriptions" action variant="dark">
-            Subscriptions
-          </ListGroup.Item>
-          {!user ? (
-            <ListGroup horizontal>
-              <LoginModal as={Link} />
-              <RegisterModal as={Link} />
-            </ListGroup>
-          ) : (
-            <ListGroup horizontal>
-              <ListGroup.Item as={Link} to="/profile" action variant="dark">
-                {user.email}
-              </ListGroup.Item>
+    <div id='bodyContainer'>
+      <Router>
+        <Header user={user} />
+        <main
+          // className='p-0 m-0'
+          style={{ paddingBottom: '150px' }}
+        >
+          <Container className='p-1 m-1'>
+            <Switch>
+              <Route exact path='/' />
+              <Route path='/profile' component={MyLibrary} />
+              <Route exact path='/clubs' component={BookClubs} />
+              {/* need to set up dynamic routing for different book clubs based on Id */}
+              <Route path='/clubs/detail/:id' component={BookClub} />
+              <Route path='/clubs/create'>
+                <CreateBookClub user={user} />
+              </Route>
+              <Route path='/subscriptions' component={Subscriptions} />
+              <Route path='/checkout' component={Checkout} />
+              <Route path='/setting' component={SettingPage} />
 
-              <ListGroup.Item action variant="dark" onClick={logout}>
-                Logout
-              </ListGroup.Item>
-            </ListGroup>
-          )}
-        </ListGroup>
-
-        <hr />
-
-        {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
-        <Switch>
-        <Route exact path="/">
-            <HomePage />
-          </Route>
-          <Route path="/profile">
-            {/* Sean, Jerrick, put in your component here when ready */}
-          </Route>
-          <Route exact path="/clubs">
-            {/* Chris, your component here*/}
-          </Route>
-          <Route path="/clubs/detail">
-            <BookClub />
-          </Route>
-          <Route path="/subscriptions">{/* subscriptions path */}</Route>
-        </Switch>
-      </div>
-      <Button variant="primary" onClick={() => setShow(true)}>
-        Open Example Book Detail Modal
-      </Button>
-      <BookDetail
-        handleClose={() => {
-          setShow(false);
-        }}
-        show={show}
-      />
-    </Router>
+              <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
+              <Route component={Error} />
+            </Switch>
+          </Container>
+        </main>
+        <Button variant='primary' onClick={() => setShow(true)}>
+          Open Example Book Detail Modal
+        </Button>
+        <BookDetail
+          handleClose={() => {
+            setShow(false);
+          }}
+          show={show}
+        />
+        {/* <Footer /> */}
+        <NewFooter />
+      </Router>
+    </div>
   );
 };
