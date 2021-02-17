@@ -53,31 +53,8 @@ const HomePage = (props) => {
         </div>
       </Container>
     </div>
-
-///////////  OPTION 2: GRID EVERYTHING (except what is ungriddable):
-  // <div className="cc-main-grid-container">
-  //   <div className="cc-BOTM">
-  //     <BOTM />
-  //   </div>
-  //   <div className="cc-TrendingCaro">
-  //     <TrendingCaro />
-  //   </div>
-  //   <div className="cc-GenreCaro">
-  //     <GenreCaro />
-  //   </div>
-  //   <div className="cc-Site-Desc">
-  //     <SiteDesc />
-  //   </div>
-  //   <div className="cc-LogInSignUp">
-  //     <LogInSignUp />
-  //   </div>
-  //   <div className="cc-MonthlySubscr">
-  //     <MonthlySubscr />
-  //   </div>
-  // </div>
-
   )
-
 }
 
 export default HomePage;
+

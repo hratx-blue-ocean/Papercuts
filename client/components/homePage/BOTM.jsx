@@ -3,18 +3,6 @@ import { Container, Image, Button, Cards } from 'react-bootstrap';
 import dummyData from "./dummyData.js";
 
 const BOTM = () => {
-
-  //// OPTION 2: GRID
-//   return (
-// <div className="BOTM-grid-container">
-//   <div className="cc-BOTM-img"></div>
-//   <div className="cc-BOTM-mainBookInfo-title"></div>
-//   <div className="cc-BOTM-mainBookInfo-priceCards"></div>
-//   <div className="cc-BOTM-mainBookInfo-description"></div>
-// </div>
-
-//   )
-
 // OPTION 1: FLEX
   return (
     <Container className="cc-BOTM">
