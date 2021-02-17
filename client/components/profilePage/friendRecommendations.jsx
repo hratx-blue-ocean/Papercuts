@@ -1,4 +1,4 @@
-import React from 'React';
+import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 
 export default function FriendRecommendations() {
