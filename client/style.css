@@ -47,3 +47,206 @@ body {
   width: 100%;
   text-align: center;
 }
+
+/* OPTION 1: FLEX EVERYTHING: */
+.cc-homePage-topLevelContainer {
+  background: linear-gradient(225deg, #CDDDF4 3.26%, #CDBAFA 100%);
+  display: flex;
+  flex-direction:row;
+  /* border: 1px black solid; */
+  padding: 10px;
+  margin-left: -15px;
+  margin-right: -15px;
+  /* max-width:max-content; */
+}
+
+.cc-homePage-leftMainCol {
+  display: flex;
+  /* flex: 1.5; */
+  flex-direction: column;
+  /* border: 1px black solid; */
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 55%
+}
+
+.cc-homePage-rightMainCol {
+  display: flex;
+  /* flex: 1; */
+  flex-direction: column;
+  /* border: 1px black solid; */
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 45%
+}
+
+.cc-BOTM {
+  display: flex;
+  flex-direction: row;
+  /* flex: 2; */
+  justify-content: flex-start;
+  align-content: flex-start;
+  align-items: stretch;
+  /* padding: 10px; */
+}
+
+.cc-BOTM-img-container {
+
+}
+.cc-BOTM-mainBookInfo-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 10px;
+}
+.cc-BOTM-mainBookInfo-title-container {
+  display: flex;
+  flex-direction: column;
+  vertical-align: top;
+}
+.cc-BOTM-mainBookInfo-header {
+  text-align: center;
+  font-style: normal;
+  font-size: 2vw;
+  color: #000000;
+  padding: 0px;
+  font-family: PT Sans;
+  /* letter-spacing: -0.015em; */
+}
+
+.cc-BOTM-mainBookInfo-bookTitle {
+  text-align: center;
+  font-style: bold;
+  font-size: 2.5vw;
+  padding: 0px;
+  font-family: PT Sans;
+  font-style: normal;
+  text-align: center;
+  color: #000000;
+}
+.cc-BOTM-mainBookInfo-author {
+  text-align: center;
+  font-style: italic;
+  color: #000000;
+  padding: 0px;
+  font-family: PT Sans;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 2vw;
+}
+.cc-BOTM-mainBookInfo-priceCardsContainer {
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: auto;
+  flex-wrap: nowrap;
+  /* padding: 10px; */
+}
+.cc-BOTM-mainBookInfo-priceCards {
+  height: 80px;
+  width: 100px;
+  text-align: center;
+  background-color: white;
+  font-family: PT Sans;
+  border-radius: 6px;
+  margin: 5px;
+}
+.cc-BOTM-mainBookInfo-description {
+  font-size: 1vw;
+  color: #000000;
+  /* padding: 5px; */
+  margin: 10px;
+}
+
+.cc-TrendingCaro {
+  display: flex;
+  flex: 2;
+  /* border: 1px black solid; */
+  margin: 10px;
+  /* width: 100%; */
+}
+
+.cc-GenreCaro {
+  display: flex;
+  flex: 2;
+  /* border: 1px black solid; */
+  margin: 10px;
+}
+.cc-SiteDesc {
+  display: flex;
+  flex: 1;
+  /* border: 1px black solid; */
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 40px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right:10px;
+  margin-bottom: 30px;
+}
+
+.cc-LogInSignUp {
+  display: flex;
+  flex: 1;
+  /* border: 1px black solid; */
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 40px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right:10px;
+  margin-bottom: 30px;
+}
+
+.cc-MonthlySubscr {
+  display: flex;
+  flex: 1;
+  /* border: 1px black solid; */
+  padding-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 40px;
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right:10px;
+  margin-bottom: 30px;
+}
+
+.cc-homePage-rightMainCol-titles {
+  text-align: left;
+  font-style: normal;
+  font-size: 2vw;
+  color: #000000;
+  padding: 0px;
+  font-family: PT Sans;
+}
+
+.cc-homePage-rightMainCol-text {
+  font-size: 1vw;
+  color: #000000;
+  /* padding: 5px; */
+  /* margin: 10px; */
+}
+
+.cc-LogIngSignUp-Button {
+
+}
+
+.navList {
+  text-align: center;
+  vertical-align: middle;
+}
