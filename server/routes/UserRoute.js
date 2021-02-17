@@ -40,7 +40,9 @@ router.delete('/allfriends', async (req, res) => {
 router.post('/friends', async (req, res) => {
   const { userId } = req.body;
 
-  const { friends } = await User.findById(userId).select('friends').populate('friends', 'email');
+  const { friends } = await User.findById(userId)
+    .select('friends')
+    .populate('friends', 'email recommendation');
 
   res.json(friends);
 });
