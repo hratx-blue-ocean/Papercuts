@@ -37,11 +37,11 @@ const Header = ({ user, title, variant, background }) => {
           <Nav.Link as={Link} to='/subscriptions' variant={variant}>
             Subscriptions
           </Nav.Link>
-          {/* {user && ( */}
+          {user && (
             <Nav.Link as={Link} to='/profile' variant={variant}>
               Profile
             </Nav.Link>
-          {/* )} */}
+          )}
         </Nav>
 
         <Nav className='ml-auto'>
