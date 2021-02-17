@@ -27,7 +27,12 @@ export default function AllUsers({
         <Row>
           <Col>
             {allUsers.map((user) => {
-              return <div key={user._id}>{user.email}</div>
+              return (
+              <div key={user._id}>
+                <span className='thumbBody'><img className='thumbImage' src = {user.photoUrl}/></span>
+                <span>{user.username}</span>
+              </div>
+              )
             })}
           </Col>
         </Row>

@@ -14,11 +14,12 @@ export default function myFriends({user}) {
     subscription: 'platinum subscription'
   }
   const [show, setShow] = useState(false);
+  console.log(user);
 
   return(
     <div id='myProfile'>
       <div id='userHeader'>
-        <div>{currentUser.username}</div>
+        <div>{user.username}</div>
         <div>{currentUser.subscription}</div>
       </div>
       <div id='friendsLinks'>
@@ -29,7 +30,8 @@ export default function myFriends({user}) {
       </div>
       <div id='myFriends'>
         {
-        currentUser.friends.map((friend) => {
+        user.friends.map((friend) => {
+
           return (
             <div className = 'friendsDiv' key = {friend.username}>
               <div><img src={image1}></img></div>
@@ -39,7 +41,7 @@ export default function myFriends({user}) {
         })
         }
       </div>
-      <FriendRecommendations/>
+      <FriendRecommendations user = {user}/>
       <UserBookClubs user = {user}/>
 
     </div>
