@@ -8,7 +8,7 @@
 # test@test = 602aea49180a1d22643e561c
 
 
-### Get all users 
+### Get all users
 GET {{baseUrl}}/user/all
 
 ### Get all users that user are friends with
@@ -16,7 +16,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId":"602aea49180a1d22643e561c"
+    "userId":"602be49226e7f146247321c8"
 }
 
 ### Get all users that user are not friends with
@@ -27,15 +27,15 @@ Content-Type: application/json
     "userId":"6028431dbdd29b3de815132b"
 }
 
- 
-### User adds a friend 
+
+### User adds a friend
 POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
     "userId":"602aea49180a1d22643e561c",
     "friendId":"6028431dbdd29b3de815132b"
-} 
+}
 
 ### Update user info
 PUT {{baseUrl}}/user/info
@@ -61,7 +61,7 @@ Content-Type: application/json
 POST {{baseUrl}}/user/payment
 Content-Type: application/json
 
-{ 
+{
     "userId":"602987d27cc8de1408fc1537",
     "cardNumber":123456,
     "cardHolder":"Matthew",
@@ -73,7 +73,7 @@ Content-Type: application/json
 PUT {{baseUrl}}/user/payment
 Content-Type: application/json
 
-{ 
+{
     "paymentID": "602aa3dac32f8d208c55cef2",
     "userId":"602987d27cc8de1408fc1537",
     "cardNumber":123456,
@@ -86,15 +86,15 @@ Content-Type: application/json
 DELETE  {{baseUrl}}/user/payment
 Content-Type: application/json
 
-{  
-    "userId":"602987d27cc8de1408fc1537" 
+{
+    "userId":"602987d27cc8de1408fc1537"
 }
 
 ### Get user sub info
 GET  {{baseUrl}}/user/subscription
 Content-Type: application/json
 
-{  
+{
     "userId":"602987d27cc8de1408fc1537"
 }
 
@@ -102,7 +102,7 @@ Content-Type: application/json
 POST  {{baseUrl}}/user/subscription
 Content-Type: application/json
 
-{  
+{
     "userId":"602987d27cc8de1408fc1537",
     "name":"Pro",
     "description": "I like pro",
@@ -113,6 +113,6 @@ Content-Type: application/json
 DELETE   {{baseUrl}}/user/subscription
 Content-Type: application/json
 
-{  
+{
     "userId":"602987d27cc8de1408fc1537"
 }

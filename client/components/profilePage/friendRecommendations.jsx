@@ -4,6 +4,11 @@ import { Card, Col, Row } from 'react-bootstrap';
 export default function FriendRecommendations() {
   return (
     <div>
+      <Row>
+        <Col>
+        <p>What friend's are recommending</p>
+        </Col>
+      </Row>
       <Col className="friend-recommendations">
         <Row>
           {/* <Col className="friend-recommendations"> */}
@@ -19,6 +24,11 @@ export default function FriendRecommendations() {
           <Card className="recommendation-cards">
             <p>Jason Fleming recommends...</p>
           </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+        <p>What friend's are recommending</p>
         </Col>
       </Row>
     </div>

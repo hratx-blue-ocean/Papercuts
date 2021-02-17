@@ -16,7 +16,7 @@ import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
 import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
 import logout from './components/global/logout.js';
-import mainProfilePage from './components/profilePage/main.jsx';
+import MainProfilePage from './components/profilePage/main.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
@@ -29,6 +29,7 @@ export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
   const [show, setShow] = useState(false);
+  console.log('from App', user);
   return (
     <Router>
       <Header user={user} />
@@ -36,7 +37,9 @@ export const App = () => {
         <Container>
           <Switch>
             <Route exact path='/' />
-            <Route path='/profile' component={mainProfilePage} />
+            <Route path='/profile'>
+              <MainProfilePage user = {user}/>
+            </Route>
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
             <Route path='/clubs/detail' component={BookClub} />

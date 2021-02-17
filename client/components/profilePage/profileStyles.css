@@ -1,12 +1,13 @@
 #profileMain {
   position: relative;
+  top: 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
 #libraryBody {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   overflow: scroll;
   grid-gap: 5px;
   margin: 5px 5px 5px 0;
@@ -25,6 +26,26 @@
   width: 100%;
 }
 
+#myFriends {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 90px;
+  overflow-x: scroll;
+  grid-gap: 5px;
+  margin: 5px 5px 5px 0;
+  max-width: 375px;
+  max-height: 120px;
+}
+
+#userHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#friendsLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
 /* --------------------------------------------- */
 
@@ -42,7 +63,7 @@ h1 {
 
 .friend-recommendations {
   width: 100%;
-  align-items:right;
+  align-items: right;
 }
 
 .recommendation-cards {
@@ -52,7 +73,7 @@ h1 {
 .recommended-books-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, auto);
-  background-color: #2196F3;
+  background-color: #2196f3;
   max-height: 228px;
   padding: 10px;
   overflow: scroll;

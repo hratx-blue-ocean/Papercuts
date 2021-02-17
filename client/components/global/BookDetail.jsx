@@ -11,42 +11,46 @@ export default function BookDetail({
   handleAddToLibrary,
   handleClose,
   show,
+  book,
 }) {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
 
   //Temporary test constants
-  id = '0efCDwAAQBAJ';
-  owned = false;
-  inLibrary = true;
-  handlePurchase = () => {};
-  handleAddToLibrary = () => {};
+  // id = '0efCDwAAQBAJ';
+  // owned = false;
+  // inLibrary = true;
+  // handlePurchase = () => {};
+  // handleAddToLibrary = () => {};
 
   //Temporary fetch from Google Books, will need to replaced by our own server proxy route
-  useEffect(async () => {
-    let info = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${id}?key=${'AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY'}`
-    );
-    setData(info.data);
-  }, []);
+  // useEffect(async () => {
+  //   let info = await axios.get(
+  //     `https://www.googleapis.com/books/v1/volumes/${id}?key=${'AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY'}`
+  //   );
+  //   setData(info.data);
+  // }, []);
 
-  return data.volumeInfo === undefined ? (
+  return book === undefined ? (
     <Spinner animation='border' role='status'>
       <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal size='xl' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
+    <Modal size='l' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
-        <Modal.Title>{data.volumeInfo.title}</Modal.Title>
+        <Modal.Title>{book.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Row>
           <Col>
-            <Image src={data.volumeInfo.imageLinks.large} fluid rounded />
+            <Image src={book.image} fluid rounded />
           </Col>
           <Col>
-            <div>by {data.volumeInfo.authors.join(', ')}</div>
-            <p>{data.volumeInfo.description}</p>
-            <Table size='sm' striped bordered variant='light'>
+            <div>by {book.authors.join(', ')}</div>
+            <p>{book.price}</p>
+            <br/>
+            <br/>
+            <p>{book.description}</p>
+            {/* <Table size='sm' striped bordered variant='light'>
               <tbody>
                 <tr>
                   <td>Publisher</td>
@@ -77,7 +81,7 @@ export default function BookDetail({
                   </td>
                 </tr>
               </tbody>
-            </Table>
+            </Table> */}
           </Col>
         </Row>
       </Modal.Body>
@@ -86,10 +90,10 @@ export default function BookDetail({
           Close
         </Button>
         <Button variant='primary' onClick={handleAddToLibrary} disabled={inLibrary}>
-          {inLibrary ? 'In Library' : 'Add to Library'}
+          {'Add to Library'}
         </Button>
         <Button variant='primary' onClick={handlePurchase} disabled={owned}>
-          {owned ? 'Owned' : 'Purchase'}
+          {'Purchase'}
         </Button>
       </Modal.Footer>
     </Modal>

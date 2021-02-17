@@ -6,14 +6,13 @@ import RecommendedBookClubs from './recommendedBookClubs.jsx';
 import React from 'react';
 import css from './profileStyles.css';
 
-export default function mainProfilePage () {
+export default function mainProfilePage ({user}) {
+  console.log('from main profile page', user);
   return(
     <div id='profileMain'>
-      <MyLibrary />
-      <MyProfile />
-      <RecommendedBooks />
-      <FriendRecommendations />
-      <RecommendedBookClubs />
+      <MyLibrary user = {user}/>
+      <MyProfile user = {user}/>
+      <RecommendedBooks user = {user}/>
     </div>
   )
 }

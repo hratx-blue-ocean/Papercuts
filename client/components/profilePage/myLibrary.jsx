@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import { Button, ListGroup, Container } from 'react-bootstrap';
+import BookDetail from '../global/BookDetail.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function myLibrary() {
   const books =
   [{
       title: 'Green Eggs & Ham',
-      authors: 'Dr. Seuss',
+      authors: ['Dr. Seuss'],
       isbn: 7891036757892,
       description: 'I do not like my green eggs & ham, Sam I am',
       isbn: '9780375850967',
@@ -19,7 +22,7 @@ export default function myLibrary() {
     },
     {
       title: 'One Fish, Two Fish',
-      authors: 'Dr. Seuss',
+      authors: ['Dr. Seuss'],
       isbn: 7891036457892,
       description: 'One Fish, Two Fish, Red Fish, Blue Fish',
       isbn: '5760375843767',
@@ -35,6 +38,7 @@ export default function myLibrary() {
 
   const [booksOwned, setBooksOwned] = useState(books);
   const [searchInput, setSearchInput] = useState('');
+  const [clickedBook, setClickedBook] = useState();
 
   let searchBooks = function (e) {
     e.preventDefault();
@@ -54,9 +58,10 @@ export default function myLibrary() {
     })
   }
 
-  const tempArray = Array(15).fill(0);
+  const [show, setShow] = useState(false);
   return (
     <div id='myLib'>
+      <div>My Library</div>
       <form onSubmit = {searchBooks.bind(this)}>
         <input type = 'text' placeholder = 'Search books by author' onChange = {(e)=> setSearchInput(e.target.value)}/>
         <input type = 'submit'/>
@@ -65,7 +70,13 @@ export default function myLibrary() {
       {booksOwned.map((book) => {
         return(
           <div className='bookBody'>
-            <img className='bookImage' src={book.image}/>
+            <img className='bookImage' variant='primary' onClick={() => {
+              setClickedBook(book);
+              setShow(true);
+              }
+              } src={book.image} >
+            </img>
+            <BookDetail handleClose={() => { setShow(false) }} show={show} book = {clickedBook}/>
           </div>
         )
       })}
