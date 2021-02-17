@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useReducer, createContext } from 'react';
+import React, { useEffect, useReducer, createContext } from 'react';
+import Fuse from 'fuse.js';
 import axios from 'axios';
 
 let initState = {
@@ -12,6 +13,8 @@ let initState = {
   events: [],
   questionnaires: [],
   categories: [],
+  keyword: '',
+  fuzzyClubs: [],
   error: null,
   success: false,
   loading: false,
@@ -50,6 +53,17 @@ const reducer = (state, action) => {
         club: action.payload,
         success: true
       };
+    case 'FUZZY_BOOKCLUB_SEARCH':
+      return {
+        ...state,
+        fuzzyClubs: action.payload,
+        success: true
+      };
+    case 'UPDATE_KEYWORD':
+      return {
+        ...state,
+        keyword: action.payload
+      };
     case 'SEARCH_ERROR':
       return {
         ...state,
@@ -65,7 +79,6 @@ export const AppContext = createContext(initState);
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initState);
-  const [selectedClubData, setSelectedClubData] = useState({});
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
@@ -127,7 +140,7 @@ export const AppProvider = ({ children }) => {
   // Join bookclub by id
   async function joinClubById(id, userId) {
     try {
-      const res = await axios.post(`/bookclub/join/${id}`, {
+      await axios.post(`/bookclub/join/${id}`, {
         userId
       });
 
@@ -146,7 +159,7 @@ export const AppProvider = ({ children }) => {
   // Leave bookclub by id
   async function leaveClubById(id, userId) {
     try {
-      const res = await axios.post(`/bookclub/join/${id}`, {
+      await axios.post(`/bookclub/join/${id}`, {
         userId
       });
 
@@ -162,18 +175,64 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  // Leave bookclub by id
+  function updateKeyword(string) {
+    try {
+      dispatch({
+        type: 'UPDATE_KEYWORD',
+        payload: string
+      });
+    } catch (err) {
+      dispatch({
+        type: 'SEARCH_ERROR',
+        payload: err.response.data.error
+      });
+    }
+  }
+
+  // Leave bookclub by id
+  function fuzzyClubSearch(string, clubs) {
+    // Search Options
+    const options = {
+      includeScore: true,
+      keys: ['name']
+    };
+    // Create Fuse index
+    const index = Fuse.createIndex(options.keys, clubs[0]);
+    // initialize Fuse with the index
+    const fuse = new Fuse(clubs[0], options, index);
+    const result = fuse.search(string);
+    // result.sort((a, b) => a.score > b.score);
+
+    try {
+      dispatch({
+        type: 'FUZZY_BOOKCLUB_SEARCH',
+        payload: result
+      });
+    } catch (err) {
+      dispatch({
+        type: 'SEARCH_ERROR',
+        payload: err.response.data.error
+      });
+    }
+  }
+
   return (
     <AppContext.Provider
       value={{
         club: state.club,
         clubs: state.clubs,
+        keyword: state.keyword,
+        fuzzyClubs: state.fuzzyClubs,
         error: state.error,
         loading: state.loading,
         getClubs,
         getClubByName,
         getClubById,
         joinClubById,
-        leaveClubById
+        leaveClubById,
+        updateKeyword,
+        fuzzyClubSearch
       }}
     >
       {children}

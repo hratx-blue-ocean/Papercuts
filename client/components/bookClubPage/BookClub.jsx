@@ -9,8 +9,7 @@ import { AppContext } from '../../context/context.jsx';
 
 export default function BookClub() {
   let { id } = useParams();
-  const { club, getClubById } = useContext(AppContext);
-  console.log({ club });
+  const { getClubById } = useContext(AppContext);
 
   useEffect(() => {
     getClubById(id);

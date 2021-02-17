@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
