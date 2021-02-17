@@ -40,7 +40,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/test', (req, res) => {
-  console.log(req.body);
+  let { main } = req.body;
+  console.log(main);
 
   res.json({ msg: 'LOLOL' });
 });

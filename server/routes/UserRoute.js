@@ -1,16 +1,20 @@
+const Subscription = require('../models/subscription');
 const Payment = require('../models/payments');
 const router = require('express').Router();
+const Review = require('../models/review');
+const Book = require('../models/books');
 const User = require('../models/users');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const Subscription = require('../models/subscription');
 
 // @desc    Display all users
 // @route   get /user/all
 // @access  Private
 router.get('/all', async (req, res) => {
   try {
-    const users = await User.find().select('email');
+    const users = await User.find().select(
+      'email username photoUrl friends library recommendation bookclubs bookPreference'
+    );
     res.json(users);
   } catch (error) {
     res.status(500).json({ error });
@@ -39,7 +43,12 @@ router.delete('/allfriends', async (req, res) => {
 router.post('/friends', async (req, res) => {
   const { userId } = req.body;
 
-  const { friends } = await User.findById(userId).select('friends').populate('friends', 'email');
+  const { friends } = await User.findById(userId)
+    .select('friends')
+    .populate(
+      'friends',
+      'email recommendation friends library bookclubs bookPreference photoUrl username'
+    );
 
   res.json(friends);
 });
@@ -54,7 +63,7 @@ router.post('/newfriends', async (req, res) => {
   const newfriends = await User.find({
     friends: { $ne: userObj },
     _id: { $ne: userObj },
-  });
+  }).select('-password -third_party_auth -date -token -__v -email_is_verified payment');
 
   res.json(newfriends);
 });
@@ -136,8 +145,8 @@ router.put('/info', async (req, res) => {
         user.bookPreference = bookPreference || user.bookPreference;
         user.recommendation = recommendation || user.recommendation;
 
-        user.save().then((usr) => {
-          return res.json(usr);
+        user.save().then(() => {
+          return res.json({ msg: 'User updated' });
         });
       }
     });
@@ -270,9 +279,79 @@ router.delete('/subscription', async (req, res) => {
     const curUser = await User.findById(userId);
     curUser.suscriptionTier = null;
 
-    const updatedUser = await curUser.save();
+    await curUser.save();
 
-    return res.json(updatedUser);
+    return res.json({ msg: 'Sub canceled' });
+  } catch (err) {
+    return res.json({ err });
+  }
+});
+
+// @desc    Get all books that the user owns
+// @route   Get /user/book
+// @access  Private
+router.get('/book', async (req, res) => {
+  let { userId } = req.body;
+
+  try {
+    const userBooks = await User.findById(userId).populate('library').select('library');
+
+    return res.json(userBooks);
+  } catch (err) {
+    return res.json({ err });
+  }
+});
+
+// @desc    User add book to their library
+// @route   Post /user/book
+// @access  Private
+router.post('/book', async (req, res) => {
+  let { userId, title, authors, isbn, image, price, category } = req.body;
+
+  try {
+    // check if book is in book colletion
+
+    let book = await Book.findOne({ isbn });
+
+    if (!book) {
+      console.log('ADDING BOOK');
+      book = await new Book({
+        title,
+        authors,
+        isbn,
+        image,
+        price,
+        category,
+      }).save();
+    }
+
+    await User.findByIdAndUpdate(userId, {
+      $push: { library: book._id },
+    });
+
+    return res.json({ msg: 'Book added successfully' });
+  } catch (err) {
+    return res.json({ err });
+  }
+});
+
+// @desc    User add review to their book
+// @route   Post /user/reivew/:bookID
+// @access  Private
+router.post('/review', async (req, res) => {
+  let { bookId, username, comment } = req.body;
+
+  try {
+    const newReview = await new Review({
+      username,
+      comment,
+    }).save();
+
+    await Book.findByIdAndUpdate(bookId, {
+      $push: { reviews: newReview._id },
+    });
+
+    return res.json({ msg: 'Review added successfully' });
   } catch (err) {
     return res.json({ err });
   }

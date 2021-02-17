@@ -3,7 +3,10 @@ WORKDIR /papercuts
 
 COPY . .
 
-RUN npm install
+RUN apt-get update && apt-get install -y &&\
+ npm install && \
+ npm run build
+
 
 EXPOSE 3000
 
