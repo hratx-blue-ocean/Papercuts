@@ -35,14 +35,17 @@ export const App = () => {
   return (
     <Router>
       <Header user={user} />
-      <main className='p-0 m-0' style={{ marginTop: '80px', marginBottom: '150px' }}>
-        <Container className='p-1 m-1' style={{ maxWidth: '100vw' }}>
+      <main
+        className='p-0 m-0'
+        style={{ marginTop: '80px', marginBottom: '150px', maxWidth: '100vw' }}
+      >
+        <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
           <Switch>
             <Route exact path='/' />
             <Route path='/profile' component={mainProfilePage} />
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
-            <Route path='/clubs/detail' component={BookClub} />
+            <Route path='/clubs/detail/:id' component={BookClub} />
             <Route path='/clubs/create'>
               <CreateBookClub user={user} />
             </Route>

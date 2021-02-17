@@ -1,17 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
-import { AppContext } from '../../context/context.jsx';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 import Schedule from './Schedule.jsx';
 import Comments from './Comments.jsx';
 import Questionnaire from './Questionnaire.jsx';
-import exampleClubs from './exampleData.js';
 import ClubBanner from './ClubBanner.jsx';
+import { AppContext } from '../../context/context.jsx';
 
 export default function BookClub() {
-  // const {exampleClubs} = useContext(AppContext);
-  const data = exampleClubs[0];
-
-  const func = () => {};
+  let { id } = useParams();
+  const { selectedClubData, setSelectedClubData } = useContext(AppContext);
+  const data = selectedClubData;
+  useEffect(() => {
+    axios.get(`/bookclub/${id}`).then((res) => {
+      setSelectedClubData(res.data);
+    });
+  }, []);
 
   return (
     <Container>
@@ -24,13 +29,13 @@ export default function BookClub() {
         <Col>
           <Tabs defaultActiveKey='schedule' id='club-tabs'>
             <Tab eventKey='schedule' title='Schedule'>
-              <Schedule events={data.events} />
+              <Schedule />
             </Tab>
             <Tab eventKey='comments' title='Comments'>
-              <Comments comments={data.comments} />
+              <Comments />
             </Tab>
             <Tab eventKey='questionnaire' title='Questionnaire'>
-              <Questionnaire questionnaire={data.questionnaire} />
+              <Questionnaire />
             </Tab>
           </Tabs>
         </Col>

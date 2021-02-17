@@ -27,7 +27,7 @@ export default function CreateBookClub({ user }) {
   };
 
   return (
-    <Container>
+    <Container className='py-4 my-5'>
       {show && (
         <Alert variant='danger' onClose={() => setShow(false)} dismissible>
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
