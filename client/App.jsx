@@ -23,6 +23,7 @@ import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 
 export const App = () => {
