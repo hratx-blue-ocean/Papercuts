@@ -35,7 +35,7 @@ export default function BookDetail({
       <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal size='l' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
+    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{book.title}</Modal.Title>
       </Modal.Header>
