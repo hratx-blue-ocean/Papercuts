@@ -14,7 +14,7 @@ import { AuthContext } from './context/authContext.jsx';
 import Header from './components/global/Header.jsx';
 import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
-import MyLibrary from './components/profilePage/myLibrary.jsx';
+import MainProfilePage from './components/profilePage/main.jsx';
 import HomePage from './components/homePage/homePage.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
@@ -23,6 +23,7 @@ import Checkout from './components/payments/Checkout.jsx';
 import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
+import RecommendedBooks from './components/profilePage/recommendedBooks.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
@@ -44,8 +45,10 @@ export const App = () => {
         >
           <Container className='p-1 m-1'>
             <Switch>
+              <Route path='/profile'>
+                <MainProfilePage user = {user}/>
+              </Route>
               <Route exact path='/' component={HomePage} />
-              <Route path='/profile' component={MyLibrary} />
               <Route exact path='/clubs' component={BookClubs} />
               {/* need to set up dynamic routing for different book clubs based on Id */}
               <Route path='/clubs/detail/:id' component={BookClub} />

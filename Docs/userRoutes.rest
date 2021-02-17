@@ -8,7 +8,7 @@
 @cayla = 602be52e26e7f146247321cf
 
 
-### Get all users 
+### Get all users
 GET {{baseUrl}}/user/all
 
 ### Get all users that user are friends with
@@ -27,15 +27,15 @@ Content-Type: application/json
     "userId":"{{matthew}}"
 }
 
- 
-### User adds a friend 
+
+### User adds a friend
 POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
     "userId":"{{matthew}}",
     "friendId":"{{jason}}"
-} 
+}
 
 
 # "recommendation": {"summary":"","description":""}
@@ -45,7 +45,7 @@ PUT {{baseUrl}}/user/info
 Content-Type: application/json
 
 {
-    "userId":"602bfb512b04728dd5f0fb51",  
+    "userId":"602bfb512b04728dd5f0fb51",
     "bookPreference": "Drama",
     "recommendation": {"summary":"1984 is far from perfect","description":"Those words keep sounding in my head since I read this book. Gosh, probably the most haunting not to mention frightening book I've ever read. 1984 should also be included in the horror genre."}
 }
@@ -62,7 +62,7 @@ Content-Type: application/json
 POST {{baseUrl}}/user/payment
 Content-Type: application/json
 
-{ 
+{
     "userId":"{{matthew}}",
     "cardNumber":123456789,
     "cardHolder":"Matthew",
@@ -74,7 +74,7 @@ Content-Type: application/json
 PUT {{baseUrl}}/user/payment
 Content-Type: application/json
 
-{ 
+{
     "paymentID": "602bedcc9b1f2d4518f78bee",
     "userId":"{{matthew}}",
     "cardNumber":123456,
@@ -87,15 +87,15 @@ Content-Type: application/json
 DELETE  {{baseUrl}}/user/payment
 Content-Type: application/json
 
-{  
-    "userId":"{{matthew}}" 
+{
+    "userId":"{{matthew}}"
 }
 
 ### Get user sub info
 GET  {{baseUrl}}/user/subscription
 Content-Type: application/json
 
-{  
+{
     "userId":"{{matthew}}"
 }
 
@@ -103,7 +103,7 @@ Content-Type: application/json
 POST  {{baseUrl}}/user/subscription
 Content-Type: application/json
 
-{  
+{
     "userId":"{{matthew}}",
     "name":"Pro",
     "description": "I like pro",
@@ -114,7 +114,7 @@ Content-Type: application/json
 DELETE   {{baseUrl}}/user/subscription
 Content-Type: application/json
 
-{  
+{
     "userId":"{{matthew}}"
 }
 
@@ -135,7 +135,7 @@ Content-Type: application/json
     "title":"Harry Potter",
     "authors":"JK Rowling",
     "isbn":525,
-    "image":"https://media2.s-nbcnews.com/i/newscms/2020_26/3155921/191219-j-k-rowling-2018-ac-845p_b96cd21ada5eec6c9ff8b9ff33920b0f.jpg", 
+    "image":"https://media2.s-nbcnews.com/i/newscms/2020_26/3155921/191219-j-k-rowling-2018-ac-845p_b96cd21ada5eec6c9ff8b9ff33920b0f.jpg",
     "price":50,
     "category":"fiction"
 }
