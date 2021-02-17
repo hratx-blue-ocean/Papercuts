@@ -8,11 +8,13 @@ import {
   ListGroup,
   Form,
   Image,
-  Button,
+  Button
 } from 'react-bootstrap';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import search from '../../assets/images/search.svg';
+
+// style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
 
 const Header = ({ user, title, variant, background }) => {
   return (
@@ -76,7 +78,7 @@ const Header = ({ user, title, variant, background }) => {
 Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
   variant: '',
-  background: 'light',
+  background: 'light'
 };
 
 export default Header;
