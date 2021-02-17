@@ -35,8 +35,8 @@ export const App = () => {
     <Router>
       <Header user={user} />
       <main
-        className='p-0 m-0'
-        style={{ marginTop: '80px', marginBottom: '150px', maxWidth: '100vw' }}
+        // className='p-0 m-0'
+        style={{ paddingTop: '75px', paddingBottom: '150px', maxWidth: '100vw' }}
       >
         <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
           <Switch>

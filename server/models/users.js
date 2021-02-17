@@ -68,10 +68,8 @@ const UserSchema = new mongoose.Schema(
     },
     bookclubs: [
       {
-        bookclubId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'Bookclubs',
-        },
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Bookclubs',
       },
     ],
     address: {
