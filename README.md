@@ -81,6 +81,8 @@ Key Features
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
+<code><img height="80" src="https://user-images.githubusercontent.com/64542531/108141141-cf41ef00-7088-11eb-9c57-2ea309457cba.png"></code>
+
 - [Bootstrap](https://getbootstrap.com)
 - [React/Hooks](https://reactjs.org/)
 - [React-bootstrap](https://react-bootstrap.github.io/)
