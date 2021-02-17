@@ -3,8 +3,8 @@ import { Navbar, Container, Row, Col } from 'react-bootstrap';
 
 const Footer = () => {
   return (
-    <Navbar className='footer bg-light fixed-bottom'>
-      <Container className='d-flex'>
+    <Navbar className='footer bg-light' style={{ borderTop: '1px solid #111', maxWidth: '100%' }}>
+      <Container className='d-flex' style={{ maxWidth: '100%' }}>
         <Col>
           <Row>
             <h3 className='font-weight-bold'>PAPERCUTS</h3>
@@ -12,7 +12,7 @@ const Footer = () => {
           <Row>Copyright &copy; Papercuts Books 2020-2021</Row>
           <Row>
             <i>Privacy</i>
-            {' -- '}
+            {' | '}
             <i>Terms</i>
           </Row>
         </Col>

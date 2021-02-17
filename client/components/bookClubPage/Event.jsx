@@ -7,17 +7,8 @@ export default function Event({ event }) {
   return (
     <>
       <h3>{event.name}</h3>
-      {event.checkbox && (
-        <Form.Check
-          inline
-          type='checkbox'
-          label='Done'
-          checked={checked}
-          onChange={() => setChecked(!checked)}
-        />
-      )}
-      <span>{event.description}</span>
-      <span>{new Date(event.dateTime).toString()}</span>
+      <span>{`${event.description} at ${Date(event.schedule).toString()}`}</span>
+      <a href={event.zoom_link}>Meeting Link</a>
     </>
   );
 }

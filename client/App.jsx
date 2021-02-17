@@ -23,21 +23,27 @@ import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
 
+import './style.css';
+
 export const App = () => {
   const user = useContext(AuthContext);
   const { exampleClubs } = useContext(AppContext);
   const [show, setShow] = useState(false);
+
   return (
     <Router>
       <Header user={user} />
-      <main className='py-3' style={{ marginTop: '80px', marginBottom: '150px' }}>
-        <Container>
+      <main
+        className='p-0 m-0'
+        style={{ marginTop: '80px', marginBottom: '150px', maxWidth: '100vw' }}
+      >
+        <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
           <Switch>
             <Route exact path='/' />
             <Route path='/profile' component={MyLibrary} />
             <Route exact path='/clubs' component={BookClubs} />
             {/* need to set up dynamic routing for different book clubs based on Id */}
-            <Route path='/clubs/detail' component={BookClub} />
+            <Route path='/clubs/detail/:id' component={BookClub} />
             <Route path='/clubs/create'>
               <CreateBookClub user={user} />
             </Route>

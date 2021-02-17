@@ -1,5 +1,6 @@
 import Firebase from 'firebase/app';
 import 'firebase/storage';
+<<<<<<< HEAD
 
 var firebaseConfig = {
   apiKey: 'AIzaSyAzU8hVZVKslQ9y7RVS9c5hgI5hVktDXQQ',
@@ -12,4 +13,15 @@ var firebaseConfig = {
 
 const app = Firebase.initializeApp(firebaseConfig);
 
+=======
+var firebaseConfig = {
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.SENDER_ID,
+  appId: process.env.APP_ID,
+};
+const app = Firebase.initializeApp(firebaseConfig);
+>>>>>>> 1c72f4d8f66f7cb549b31e7372f77095dac756da
 export const firebaseStorage = app.storage();
