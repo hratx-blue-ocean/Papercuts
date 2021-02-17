@@ -73,7 +73,6 @@ export const App = () => {
           }}
           show={show}
         />
-        {/* <Footer /> */}
         <NewFooter />
       </Router>
     </div>
