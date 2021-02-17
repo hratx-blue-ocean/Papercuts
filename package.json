@@ -22,6 +22,7 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
     "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.6.0",
