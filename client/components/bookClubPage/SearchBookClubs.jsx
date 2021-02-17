@@ -39,6 +39,7 @@ const SearchBookClubs = ({ setFound, placeholder, variant, search }) => {
       <Form.Control
         type='text'
         name='q'
+        value={keyword}
         onChange={(e) => updateKeyword(e.target.value)}
         placeholder={placeholder}
         className='ml-sm-5 mr-sm-2'

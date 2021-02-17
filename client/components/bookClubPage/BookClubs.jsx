@@ -9,8 +9,12 @@ import SearchBookClubs from './SearchBookClubs.jsx';
 import Error from '../global/Error.jsx';
 
 const BookClubs = () => {
-  const { club, error, keyword } = useContext(AppContext);
+  const { club, error, keyword, updateKeyword } = useContext(AppContext);
   const [found, setFound] = useState(false);
+
+  useEffect(() => {
+    updateKeyword('');
+  }, []);
 
   return (
     <div className='p-0 m-0'>
