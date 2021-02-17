@@ -16,7 +16,7 @@ import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
 import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
 import logout from './components/global/logout.js';
-import mainProfilePage from './components/profilePage/main.jsx';
+import MainProfilePage from './components/profilePage/main.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
 import Subscriptions from './components/subscriptionsPage/Subscriptions.jsx';
@@ -36,42 +36,6 @@ export const App = () => {
   const [show, setShow] = useState(false);
 
   return (
-<<<<<<< HEAD
-    <Router>
-      {/* <Header user={user} /> */}
-      <main
-        className='p-0 m-0'
-        style={{ marginTop: '80px', marginBottom: '150px', maxWidth: '100vw' }}
-      >
-        <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
-          <Switch>
-            <Route exact path='/' />
-            <Route path='/profile' component={mainProfilePage} />
-            <Route exact path='/clubs' component={BookClubs} />
-            {/* need to set up dynamic routing for different book clubs based on Id */}
-            <Route path='/clubs/detail/:id' component={BookClub} />
-            <Route path='/clubs/create'>
-              <CreateBookClub user={user} />
-            </Route>
-            <Route path='/subscriptions' component={Subscriptions} />
-            <Route path='/checkout' component={Checkout} />
-            <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
-            <Route component={Error} />
-          </Switch>
-        </Container>
-      </main>
-      <Button variant='primary' onClick={() => setShow(true)}>
-        Open Example Book Detail Modal
-      </Button>
-      <BookDetail
-        handleClose={() => {
-          setShow(false);
-        }}
-        show={show}
-      />
-      <Footer />
-    </Router>
-=======
     <div id='bodyContainer'>
       <Router>
         <Header user={user} />
@@ -82,7 +46,7 @@ export const App = () => {
           <Container className='p-1 m-1'>
             <Switch>
               <Route exact path='/' />
-              <Route path='/profile' component={MyLibrary} />
+              <Route path='/profile' component={MainProfilePage} />
               <Route exact path='/clubs' component={BookClubs} />
               {/* need to set up dynamic routing for different book clubs based on Id */}
               <Route path='/clubs/detail/:id' component={BookClub} />
@@ -111,6 +75,5 @@ export const App = () => {
         <NewFooter />
       </Router>
     </div>
->>>>>>> main
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Col, Row, Tab, Tabs } from 'react-bootstrap';
 
-export default function RecommendedBookClubs() {
+export default function UserBookClubs() {
   return (
     <>
     <Row>
