@@ -1,8 +1,12 @@
-import React, { createContext } from 'react';
-
-import exampleClubs from '../components/bookClubPage/exampleData.js';
+import React, { useState, createContext } from 'react';
 
 export const AppContext = createContext();
+
 export const AppProvider = ({ children }) => {
-  return <AppContext.Provider value={{ exampleClubs }}>{children}</AppContext.Provider>;
+  const [selectedClubData, setSelectedClubData] = useState({});
+  return (
+    <AppContext.Provider value={{ selectedClubData, setSelectedClubData }}>
+      {children}
+    </AppContext.Provider>
+  );
 };

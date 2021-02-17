@@ -12,14 +12,14 @@ import {
 } from 'react-bootstrap';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
-import search from '../images/search.svg';
+import search from '../../assets/images/search.svg';
 
 const Header = ({ user, title, variant, background }) => {
   return (
-    <Navbar className='nav fixed-top' bg={background}>
-      <Container>
+    <Navbar className='nav' bg={background} sticky='top'>
+      <Container style={{ maxWidth: '100vw' }}>
         <Navbar.Brand to='/' as={Link} variant={variant}>
-          <strong>{title}</strong>
+          <strong className='font-weight-bold'>{title}</strong>
         </Navbar.Brand>
 
         <Nav className='mr-auto'>

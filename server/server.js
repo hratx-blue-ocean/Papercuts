@@ -27,7 +27,7 @@ mongoose
 
 //Middleware
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(
   session({
     secret: 'aY5LZhOHMm!i',
@@ -40,7 +40,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.get('/test', (req, res) => {
-  console.log(req.body);
+  let { main } = req.body;
+  console.log(main);
 
   res.json({ msg: 'LOLOL' });
 });

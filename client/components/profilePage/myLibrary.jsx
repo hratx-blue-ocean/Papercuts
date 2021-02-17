@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axios from 'axios';
 import { Button, ListGroup, Container } from 'react-bootstrap';
 import BookDetail from '../global/BookDetail.jsx';
+import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function myLibrary() {
@@ -69,7 +70,7 @@ export default function myLibrary() {
       <div id='libraryBody'>
       {booksOwned.map((book) => {
         return(
-          <div className='bookBody'>
+          <div className='bookBody' key = {book.isbn}>
             <img className='bookImage' variant='primary' onClick={() => {
               setClickedBook(book);
               setShow(true);
@@ -81,6 +82,7 @@ export default function myLibrary() {
         )
       })}
       </div>
+      <RecommendedBooks/>
     </div>
   )
 };

@@ -27,7 +27,7 @@ export default function AllUsers({
         <Row>
           <Col>
             {allUsers.map((user) => {
-              return <div>{user.email}</div>
+              return <div key={user._id}>{user.email}</div>
             })}
           </Col>
         </Row>

@@ -54,7 +54,6 @@ h1 {
 }
 
 .recommendedBooksContainer {
-  width: 82%;
 }
 
 .recommendedCarousel {
@@ -70,19 +69,30 @@ h1 {
   width: 80%;
 }
 
-.recommended-books-container {
+.recommendedBooksContainer {
   display: grid;
-  grid-template-columns: repeat(auto-fill, auto);
-  background-color: #2196f3;
+  max-width: 80%;
+  align-self: left;
+  /* grid-template-columns: 25%; */
+  /* background-color: #2196F3; */
   max-height: 228px;
   padding: 10px;
-  overflow: scroll;
+  overflow: hidden;
+  align-content: center;
   grid-gap: 7px;
+  margin: auto;
 }
 
-.recommended-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  font-size: 30px;
+.recommendedBookBody {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* max-height: 110px; */
+  max-width: 100;
+  margin: 20px;
+  /* font-size: 30px; */
   text-align: center;
+}
+
+.recommendedBookImage {
+  height: 110px;
+  width: 85px;
 }

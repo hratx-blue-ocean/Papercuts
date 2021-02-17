@@ -1,12 +1,12 @@
 import React from 'react';
 import { Card, Col, Row, Tab, Tabs } from 'react-bootstrap';
 
-export default function RecommendedBookClubs({userObject}) {
+export default function UserBookClubs({user}) {
   return (
     <>
     <Row>
       <Col>
-        <p>{userObject.username}'s Book Clubs</p>
+        <p>{user.username}'s Book Clubs</p>
       </Col>
     </Row>
     <Row>

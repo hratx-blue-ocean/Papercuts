@@ -13,7 +13,7 @@ export default function FriendRecommendations() {
         <Row>
           {/* <Col className="friend-recommendations"> */}
             <Card className="recommendation-cards">
-              <p>Yo! This Patrick Mahomes book is sick! F@$* Thomas Edward Patrick Brady, Jr.! I mean, who needs that many names anyway?!</p>
+              <p>Yo! This Dr. Seuss Book is quite the masterpiece! Never knew I was so gifted in selecting books!</p>
               <p>Jerrick Ravelo</p>
             </Card>
           {/* </Col> */}

@@ -2,7 +2,7 @@ import React, {useState, useContext} from 'react';
 import axios from 'axios';
 import image1 from './avatar1.png';
 import FriendRecommendations from './friendRecommendations.jsx';
-import RecommendedBookClubs from './recommendedBookClubs.jsx';
+import UserBookClubs from './userBookClubs.jsx';
 import AllUsersModal from './allUsersModal.jsx';
 import { Button, ListGroup, Container } from 'react-bootstrap';
 import AuthContext from '../../context/authContext.jsx';
@@ -13,7 +13,6 @@ export default function myFriends({user}) {
     friends: [{username: 'Josh'},{username: 'Maddy'}, {username: 'Spencer'},{username: 'Abe'},{username: 'Jeffrey'}],
     subscription: 'platinum subscription'
   }
-  console.log(user)
   const [show, setShow] = useState(false);
 
   return(
@@ -32,7 +31,7 @@ export default function myFriends({user}) {
         {
         currentUser.friends.map((friend) => {
           return (
-            <div className = 'friendsDiv' >
+            <div className = 'friendsDiv' key = {friend.username}>
               <div><img src={image1}></img></div>
               <div>{friend.username}</div>
             </div>
@@ -41,7 +40,7 @@ export default function myFriends({user}) {
         }
       </div>
       <FriendRecommendations/>
-      <RecommendedBookClubs user = {user}/>
+      <UserBookClubs user = {user}/>
 
     </div>
   )
