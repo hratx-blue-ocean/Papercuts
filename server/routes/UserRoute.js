@@ -11,7 +11,9 @@ const bcrypt = require('bcryptjs');
 // @access  Private
 router.get('/all', async (req, res) => {
   try {
-    const users = await User.find().select('email');
+    const users = await User.find().select(
+      'email username photoUrl friends library recommendation bookclubs bookPreference'
+    );
     res.json(users);
   } catch (error) {
     res.status(500).json({ error });
@@ -42,7 +44,10 @@ router.post('/friends', async (req, res) => {
 
   const { friends } = await User.findById(userId)
     .select('friends')
-    .populate('friends', 'email recommendation');
+    .populate(
+      'friends',
+      'email recommendation friends library bookclubs bookPreference photoUrl username'
+    );
 
   res.json(friends);
 });
@@ -57,7 +62,7 @@ router.post('/newfriends', async (req, res) => {
   const newfriends = await User.find({
     friends: { $ne: userObj },
     _id: { $ne: userObj },
-  });
+  }).select('-password -third_party_auth -date -token -__v -email_is_verified');
 
   res.json(newfriends);
 });
