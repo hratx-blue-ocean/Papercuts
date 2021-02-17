@@ -1,36 +1,35 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-
+import { Button, ListGroup, Container } from 'react-bootstrap';
+import BookDetail from '../global/BookDetail.jsx';
+import RecommendedBooks from './recommendedBooks.jsx';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function myLibrary() {
-  const books = [
-    {
-      volumeInfo: {
-        title: 'The Cat in The Hat',
-        authors: 'Dr. Seuss',
-        industryIdentifiers:[{identifier:7891036757892}]
-      },
-      description: 'The Cat in The Hat jumps back!',
+  const books =
+  [{
+      title: 'Green Eggs & Ham',
+      authors: ['Dr. Seuss'],
+      isbn: 7891036757892,
+      description: 'I do not like my green eggs & ham, Sam I am',
       isbn: '9780375850967',
       image:
-        'http://books.google.com/books/content?id=FtVIabJkEUcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-      price: 13.99,
+        'http://books.google.com/books/content?id=h7w4DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+      price: '$13.99',
       category: 'Juvenile Fiction',
       rating: 3,
       ratingCount: 11,
       datePurchased: '11/30/2021',
     },
     {
-      volumeInfo: {
-        title: 'The Grinch',
-        authors: 'Dr. Seuss',
-        industryIdentifiers:[{identifier:7891036457892}]
-        },
-      description: 'Youre a mean one, Mr. Grinch!',
+      title: 'One Fish, Two Fish',
+      authors: ['Dr. Seuss'],
+      isbn: 7891036457892,
+      description: 'One Fish, Two Fish, Red Fish, Blue Fish',
       isbn: '5760375843767',
       image:
-        'http://books.google.com/books/content?id=FtVIabJkEUcC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-      price: 19.99,
+        'http://books.google.com/books/content?id=067xAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+      price: '$19.99',
       category: 'Juvenile Fiction',
       rating: 5,
       ratingCount: 7,
@@ -38,38 +37,52 @@ export default function myLibrary() {
     },
   ];
 
-  let [booksOwned, setBooksOwned] = useState(books);
-  let [searchInput, setSearchInput] = useState('');
+  const [booksOwned, setBooksOwned] = useState(books);
+  const [searchInput, setSearchInput] = useState('');
+  const [clickedBook, setClickedBook] = useState();
+
   let searchBooks = function (e) {
     e.preventDefault();
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}`)
+    axios.get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
     .then((results)=> {
       let searchResults = results.data.items.map((book) => {
-        return book;
+        let bookInfo = {};
+        bookInfo.title= book.volumeInfo.title,
+        bookInfo.authors= book.volumeInfo.authors,
+        bookInfo.isbn= book.volumeInfo.industryIdentifiers[0].identifier;
+        bookInfo.description = book.volumeInfo.description;
+        bookInfo.image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://i.imgur.com/sJ3CT4V.gif';
+        bookInfo.price = book.saleInfo.listPrice ? `$${book.saleInfo.listPrice.amount}` : 'Not Available'
+        return bookInfo;
       });
       setBooksOwned(searchResults);
     })
   }
 
-
+  const [show, setShow] = useState(false);
   return (
-    <div>
+    <div id='myLib'>
+      <div>My Library</div>
       <form onSubmit = {searchBooks.bind(this)}>
         <input type = 'text' placeholder = 'Search books by author' onChange = {(e)=> setSearchInput(e.target.value)}/>
         <input type = 'submit'/>
       </form>
-      <div>
+      <div id='libraryBody'>
       {booksOwned.map((book) => {
         return(
-          <div key={booksOwned.indexOf(book)}>
-            <div>{book.volumeInfo.title}</div>
-            <div>{book.volumeInfo.authors}</div>
-            <div>{book.volumeInfo.industryIdentifiers[0].identifier}</div>
-            <br/>
+          <div className='bookBody' key = {book.isbn}>
+            <img className='bookImage' variant='primary' onClick={() => {
+              setClickedBook(book);
+              setShow(true);
+              }
+              } src={book.image} >
+            </img>
+            <BookDetail handleClose={() => { setShow(false) }} show={show} book = {clickedBook}/>
           </div>
         )
       })}
       </div>
+      <RecommendedBooks/>
     </div>
   )
 };

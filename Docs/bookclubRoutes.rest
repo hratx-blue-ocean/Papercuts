@@ -21,14 +21,14 @@ Content-Type: application/json
 # userC id = 6026f3a3029fcf77b5dc02b8
 
 ### Get all bookclubs
-GET http://localhost:3000/bookclub/all 
+GET http://localhost:3000/bookclub/all
 
 
-### Get bookclub by id --GET /bookclub/bookclub_id
-GET http://localhost:3000/bookclub/6027582d28408307a8103ee9 
+### Get bookclub by id --GET /bookclub/:bookclub_id
+GET http://localhost:3000/bookclub/6027582d28408307a8103ee9
 
 
-### Get bookclub by its name --GET /bookclub
+### Get bookclub by its name --GET /:bookclub
 GET http://localhost:3000/bookclub
 Content-Type: application/json
 
@@ -36,24 +36,24 @@ Content-Type: application/json
     "name": "Nonfiction Book Club"
 }
 
-### Get all the comments from a bookclub  --GET /bookclub/comment/bookclub_id
+### Get all the comments from a bookclub  --GET /bookclub/comment/:bookclub_id
 GET http://localhost:3000/bookclub/comment/60298d9c3f52c42310b61dab
 
 
-### Get all events for a bookclub  --GET  /bookclub/event/bookclub_id
+### Get all events for a bookclub  --GET  /bookclub/event/:bookclub_id
 GET http://localhost:3000/bookclub/event/602990ccbbe2a223c96e908a
 
 
-### User joins a bookclub --POST /bookclub/join/bookclub_id
-POST http://localhost:3000/bookclub/join/60285529282a78162ee35d2a 
+### User joins a bookclub --POST /bookclub/join/:bookclub_id
+POST http://localhost:3000/bookclub/join/60285529282a78162ee35d2a
 # request body below
 Content-Type: application/json
 
 {
     "userId": "60275a77860d8630b88f7ce6"
-} 
+}
 
-### User Leaves a bookclub --DELETE /bookclub/leave/bookclub_id
+### User Leaves a bookclub --DELETE /bookclub/leave/:bookclub_id
 DELETE http://localhost:3000/bookclub/leave/60285529282a78162ee35d2a
 Content-Type: application/json
 
@@ -61,7 +61,7 @@ Content-Type: application/json
     "userId": "60272dc32b562508c4a69a4a"
 }
 
-### User creates a bookclub --POST /bookclub
+### User creates a bookclub --POST /:bookclub
 POST http://localhost:3000/bookclub
 Content-Type: application/json
 
@@ -73,7 +73,7 @@ Content-Type: application/json
     "thumbnail": "https://images.unsplash.com/photo-1421941027568-40ab08ee5592?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=80"
 }
 
-### User answers a questionnaire provided by the current bookclub --POST /bookclub/questionnaire/bookclub_id
+### User answers a questionnaire provided by the current bookclub --POST /:bookclub/questionnaire/bookclub_id
 POST http://localhost:3000/bookclub/questionnaire/60298d9c3f52c42310b61dab
 Content-Type: application/json
 
@@ -86,7 +86,7 @@ Content-Type: application/json
     "answer_6": "I have a advice that .."
 }
 
-### User post a comment for the current bookclub  --POST /bookclub/comment/bookclub_id
+### User post a comment for the current bookclub  --POST /bookclub/comment/:bookclub_id
 POST http://localhost:3000/bookclub/comment/602990ccbbe2a223c96e908a
 Content-Type: application/json
 

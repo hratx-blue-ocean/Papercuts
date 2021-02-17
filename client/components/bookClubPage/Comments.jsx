@@ -7,25 +7,25 @@ import axios from 'axios';
 
 export default function Comments({}) {
   const user = useContext(AuthContext);
-  const { selectedClubData } = useContext(AppContext);
+  const { club } = useContext(AppContext);
   const [comments, setComments] = useState([]);
   const [formData, setFormData] = useState(null);
 
   useEffect(() => {
-    if (!selectedClubData._id) return;
-    axios.get(`/bookclub/comment/${selectedClubData._id}`).then((res) => {
+    if (!club._id) return;
+    axios.get(`/bookclub/comment/${club._id}`).then((res) => {
       setComments(res.data);
     });
-  }, [selectedClubData]);
+  }, [club]);
 
   const handleAddComment = () => {
     axios
-      .post(`/bookclub/comment/${selectedClubData._id}`, {
+      .post(`/bookclub/comment/${club._id}`, {
         //This should be changed to username once we start using usernames
         username: user.email,
-        body: formData,
+        body: formData
       })
-      .then(() => axios.get(`/bookclub/comment/${selectedClubData._id}`))
+      .then(() => axios.get(`/bookclub/comment/${club._id}`))
       .then((res) => {
         setComments(res.data);
       });
@@ -52,7 +52,8 @@ export default function Comments({}) {
           <ListGroup.Item key={idx}>
             <p>{comment.body}</p>
             <p>
-              {comment.username} at <span>{Date(comment.created_at).toString()}</span>
+              {comment.username} at{' '}
+              <span>{Date(comment.created_at).toString()}</span>
             </p>
             <p>
               <Button id={comment._id} onClick={handleLike}>
