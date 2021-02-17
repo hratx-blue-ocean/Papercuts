@@ -1,5 +1,9 @@
 import React from 'react';
 
 export const SettingPage = () => {
-  return <div className=''>I like pie</div>;
+  return (
+    <>
+      <h1>Setting Page</h1>
+    </>
+  );
 };

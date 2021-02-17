@@ -63,7 +63,7 @@ router.post('/newfriends', async (req, res) => {
   const newfriends = await User.find({
     friends: { $ne: userObj },
     _id: { $ne: userObj },
-  }).select('-password -third_party_auth -date -token -__v -email_is_verified');
+  }).select('-password -third_party_auth -date -token -__v -email_is_verified payment');
 
   res.json(newfriends);
 });
