@@ -11,7 +11,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/hratx-blue-ocean/Papercuts">
-    <img src="Docs/readMeImage/logo.png" alt="Logo" width="80" height="80">
+    <img src="Docs/readMeImage/logo.png" alt="Logo" width="auto" height="80">
   </a>
 
   <h3 align="center">Papercuts Bookstore</h3>
@@ -81,7 +81,7 @@ Key Features
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-<code><img height="80" src="https://user-images.githubusercontent.com/64542531/108141141-cf41ef00-7088-11eb-9c57-2ea309457cba.png"></code>
+<code><img src="https://user-images.githubusercontent.com/64542531/108141141-cf41ef00-7088-11eb-9c57-2ea309457cba.png"></code>
 
 - [Bootstrap](https://getbootstrap.com)
 - [React/Hooks](https://reactjs.org/)
