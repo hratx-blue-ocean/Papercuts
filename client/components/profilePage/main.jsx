@@ -1,6 +1,6 @@
 import MyLibrary from './myLibrary.jsx';
 import MyProfile from './myProfile.jsx';
-import React from 'react';
+import React from 'React';
 import css from './profileStyles.css';
 
 export default function mainProfilePage ({user}) {

@@ -14,8 +14,6 @@ import { AuthContext } from './context/authContext.jsx';
 import Header from './components/global/Header.jsx';
 import Footer from './components/global/Footer.jsx';
 import BookDetail from './components/global/BookDetail.jsx';
-import { LoginModal, RegisterModal } from './components/global/loginRegisterModal.jsx';
-import logout from './components/global/logout.js';
 import MainProfilePage from './components/profilePage/main.jsx';
 import BookClub from './components/bookClubPage/BookClub.jsx';
 import BookClubs from './components/bookClubPage/BookClubs.jsx';
@@ -24,6 +22,7 @@ import Checkout from './components/payments/Checkout.jsx';
 import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
+import RecommendedBooks from './components/profilePage/recommendedBooks.jsx';
 
 import './style.css';
 import { SettingPage } from './components/settingPage/index.js';
