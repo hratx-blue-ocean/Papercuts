@@ -195,16 +195,7 @@ export const AppProvider = ({ children }) => {
     // Search Options
     const options = {
       includeScore: true,
-      keys: [
-        {
-          name: 'owner',
-          weight: 0.3
-        },
-        {
-          name: 'name',
-          weight: 0.7
-        }
-      ]
+      keys: ['name']
     };
     // Create Fuse index
     const index = Fuse.createIndex(options.keys, clubs[0]);
