@@ -37,7 +37,7 @@ node_modules/
 .env.test.local
 .env.production.local
 package-lock.json
-
+notes.txt
 
 npm-debug.log*
 yarn-debug.log*

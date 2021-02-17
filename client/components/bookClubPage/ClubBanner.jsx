@@ -1,38 +1,23 @@
-import axios from 'axios';
-import React, { Fragment, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
 import { LoginModal } from '../global/loginRegisterModal.jsx';
 import { AppContext } from '../../context/context.jsx';
-import default_splash from '../../assets/images/bookclubs_sample/marvel_splash.svg';
-export default function ClubBanner() {
+export default function ClubBanner({ main, variant }) {
   const user = useContext(AuthContext);
-  const { selectedClubData } = useContext(AppContext);
-  const [data, setData] = useState({});
+  const { club, joinClubById, leaveClubById } = useContext(AppContext);
   const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    setData(selectedClubData);
-  }, [selectedClubData]);
 
   const handleClose = () => setShow(false);
 
   const handleJoinClub = () => {
     if (!user) return setShow(true);
-    axios
-      .post(`/bookclub/join/${selectedClubData._id}`, { userId: user._id })
-      .then(() => setData({ ...data, members: [...data.members, user._id] }));
+    joinClubById(club._id, user._id);
   };
 
   const handleLeaveClub = () => {
-    axios
-      .post(`/bookclub/join/${selectedClubData._id}`, { userId: user._id })
-      .then(() =>
-        setData({
-          ...data,
-          members: data.members.filter((member) => member !== user._id)
-        })
-      );
+    leaveClubById(club._id, user._id);
   };
 
   return (
@@ -45,21 +30,25 @@ export default function ClubBanner() {
       </Modal>
       <Row>
         <Col>
-          <Image
-            src={data.thumbnail || ''}
-            rounded
-            fluid
-            style={{ maxWidth: '640px' }}
-          />
+          {main ? (
+            <Link
+              to={`/clubs/detail/${club._id}`}
+              style={{ maxWidth: '640px' }}
+            >
+              <Image src={club.thumbnail || ''} rounded fluid />
+            </Link>
+          ) : (
+            <Image src={club.thumbnail || ''} rounded fluid />
+          )}
         </Col>
         <Col>
           <Row>
             <h2>
-              <strong>{data.name || ''} </strong>
+              <strong>{club.name || ''} </strong>
               <Button variant='outline-info' disabled>{`${
-                data.members ? data.members.length : 0
+                club.members ? club.members.length : 0
               } members`}</Button>
-              {user && data.members && data.members.includes(user._id) ? (
+              {user && club.members && club.members.includes(user._id) ? (
                 <Button variant='secondary' onClick={handleLeaveClub}>
                   Leave
                 </Button>
@@ -71,10 +60,15 @@ export default function ClubBanner() {
             </h2>
           </Row>
           <Row>
-            <p>{data.description || ''}</p>
+            <p>{club.description || ''}</p>
           </Row>
         </Col>
       </Row>
     </Container>
   );
 }
+
+ClubBanner.defaultProps = {
+  variant: 'light',
+  main: false
+};

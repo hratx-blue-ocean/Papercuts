@@ -1,7 +1,6 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import axios from 'axios';
 import Schedule from './Schedule.jsx';
 import Comments from './Comments.jsx';
 import Questionnaire from './Questionnaire.jsx';
@@ -10,19 +9,18 @@ import { AppContext } from '../../context/context.jsx';
 
 export default function BookClub() {
   let { id } = useParams();
-  const { selectedClubData, setSelectedClubData } = useContext(AppContext);
-  const data = selectedClubData;
+  const { club, getClubById } = useContext(AppContext);
+  console.log({ club });
+
   useEffect(() => {
-    axios.get(`/bookclub/${id}`).then((res) => {
-      setSelectedClubData(res.data);
-    });
+    getClubById(id);
   }, []);
 
   return (
     <Container>
       <Row>
         <Col>
-          <ClubBanner name={data.name} description={data.description} members={data.members} />
+          <ClubBanner />
         </Col>
       </Row>
       <Row>

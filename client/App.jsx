@@ -4,7 +4,7 @@ import {
   Route,
   Link,
   useRouteMatch, //use if needed
-  useParams, // use if needed
+  useParams // use if needed
 } from 'react-router-dom';
 import React, { useState, useContext } from 'react';
 import { Button, ListGroup, Container } from 'react-bootstrap';
@@ -28,15 +28,17 @@ import './style.css';
 
 export const App = () => {
   const user = useContext(AuthContext);
-  const { exampleClubs } = useContext(AppContext);
   const [show, setShow] = useState(false);
 
   return (
     <Router>
       <Header user={user} />
       <main
-        // className='p-0 m-0'
-        style={{ paddingTop: '75px', paddingBottom: '150px', maxWidth: '100vw' }}
+        style={{
+          paddingTop: '75px',
+          paddingBottom: '150px',
+          maxWidth: '100vw'
+        }}
       >
         <Container className='p-1 m-1' style={{ maxWidth: '100%' }}>
           <Switch>
@@ -50,7 +52,11 @@ export const App = () => {
             </Route>
             <Route path='/subscriptions' component={Subscriptions} />
             <Route path='/checkout' component={Checkout} />
-            <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
+            <Route
+              exact
+              path='/changePassword/:email/:token'
+              component={ChangePasswordForm}
+            />
             <Route component={Error} />
           </Switch>
         </Container>
