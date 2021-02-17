@@ -167,7 +167,6 @@ export const AppProvider = ({ children }) => {
       value={{
         club: state.club,
         clubs: state.clubs,
-        hero_club: state.hero_club,
         error: state.error,
         loading: state.loading,
         getClubs,
