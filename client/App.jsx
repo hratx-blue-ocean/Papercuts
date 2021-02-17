@@ -24,6 +24,7 @@ import Checkout from './components/payments/Checkout.jsx';
 import { ChangePasswordForm } from './components/global/ChangePasswordForm.jsx';
 import Error from './components/global/Error.jsx';
 import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
+import RecommendedBooks from './components/profilePage/recommendedBooks.jsx';
 
 import './style.css';
 
@@ -34,7 +35,7 @@ export const App = () => {
 
   return (
     <Router>
-      <Header user={user} />
+      {/* <Header user={user} /> */}
       <main
         className='p-0 m-0'
         style={{ marginTop: '80px', marginBottom: '150px', maxWidth: '100vw' }}

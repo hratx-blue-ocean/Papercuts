@@ -2,20 +2,86 @@ import React from 'react';
 import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import '../../../node_modules/react-multi-carousel/lib/styles.css';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+// import Slider from 'react-slick';
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import './profileStyles.css';
+
+// export default function RecommendedBooks() {
+  // const items = [
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=iYTcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+
+  // ]
+
+  // <img src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
+  // <img src="http://books.google.com/books/content?id=iYTcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+  // <img src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+  // <img src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+
+//   const responsiveSettings = {
+//     0: {
+//         items: 5,
+//     },
+//     1024: {
+//         items: 3
+//     },
+//     2000: {
+//       items: 5
+//     },
+//     3000: {
+//       items: 5
+//     },
+//     5000: {
+//       items: 5
+//     }
+//   }
+
+//   return(
+//     <div className="recommendedBooksContainer">
+//       <AliceCarousel responsive={responsiveSettings} items={items} />
+//     </div>
+//   )
+
+// }
+
+  // const slideCount = {
+  //   0: {
+  //     items: 3
+  //   },
+  //   800: {
+  //     items:
+  //   }
+  //   1024: {
+  //     items: 5
+  //   }
+  // }
+  // return(
+  //   <AliceCarousel
+  //     items={items}
+  //     responsive={slideCount}
+  //   />
+  // )
 
 export default function RecommendedBooks() {
   const books = [];
 
-  const responsive = {
+  const responsiveSettings = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
-      items: 5
+      items: 6
     },
     desktop: {
       breakpoint: { max: 1500, min: 700 },
-      items: 4
+      items: 5
     },
     tablet: {
       breakpoint: { max: 1024, min: 464 },
@@ -28,23 +94,24 @@ export default function RecommendedBooks() {
   };
 
   return (
-    <div></div>
-    // <div className="recommendedBooksContainer">
-    //   <h1>Recommended Books</h1>
-    //   <Carousel className="recommendedCarousel"
-    //     responsive={responsive}
-    //     swipeable={true}
-    //     draggable={true}
-    //     showDots={false}
-    //     renderButtonGroupOutside={true}
-    //     keyboard={true}
-    //   >
-    //     <img src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-    //     <img src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-    //     <img src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-    //     <img src="http://books.google.com/books/content?id=LiA9zQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-    //     <img src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-    //   </Carousel>
-    // </div>
+    <div className="recommendedBooksContainer">
+      <h1>Recommended Books</h1>
+      <Carousel className="recommendedBookBody"
+        responsive={responsiveSettings}
+        swipeable={true}
+        draggable={true}
+        showDots={true}
+        renderButtonGroupOutside={true}
+        keyboard={true}
+      >
+        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
+        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
+      </Carousel>
+    </div>
   )
 }
+

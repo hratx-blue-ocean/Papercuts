@@ -16,17 +16,13 @@ import search from '../../assets/images/search.svg';
 
 const Header = ({ user, title, variant, background }) => {
   return (
-<<<<<<< HEAD
-    // <Navbar className='nav fixed-top px-1 mx-1' bg={background} fixed='top'>
-    <Navbar className='nav fixed-top px-1 mx-1' bg={background} position='sticky'>
-=======
     <Navbar
       className='nav fixed-top'
       bg={background}
-      fixed='top'
+      // fixed='top'
+      position='sticky'
       style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
     >
->>>>>>> main
       <Container style={{ maxWidth: '100vw' }}>
         <Navbar.Brand to='/' as={Link} variant={variant}>
           <strong className='font-weight-bold'>{title}</strong>
