@@ -2,11 +2,6 @@ import React from 'react';
 import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import '../../../node_modules/react-multi-carousel/lib/styles.css';
-import AliceCarousel from 'react-alice-carousel';
-import 'react-alice-carousel/lib/alice-carousel.css';
-// import Slider from 'react-slick';
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import './profileStyles.css';
 
 // export default function RecommendedBooks() {

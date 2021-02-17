@@ -1,37 +1,29 @@
 import React from 'react';
 import { Card, Col, Row, Tab, Tabs } from 'react-bootstrap';
+import './profileStyles.css';
 
 export default function UserBookClubs() {
   return (
-    <>
-    <Row>
-      <Col>
-        <Card>
+    <div className="userBookClubsBody">
+      {/* <div>User's Book Clubs</div> */}
+      <div>
+        <Card className="userBookClubItem">
           <p>Book Club Name</p>
           <p>Book club description.</p>
         </Card>
-      </Col>
-      <Col>
-        <Card>
+        <Card className="userBookClubItem">
           <p>Book Club Name</p>
           <p>Book club description.</p>
         </Card>
-      </Col>
-    </Row>
-    <Row>
-      <Col>
-        <Card>
+        <Card className="userBookClubItem">
           <p>Book Club Name</p>
           <p>Book club description.</p>
         </Card>
-      </Col>
-      <Col>
-        <Card>
+        <Card className="userBookClubItem">
           <p>Book Club Name</p>
           <p>Book club description.</p>
         </Card>
-      </Col>
-    </Row>
-    </>
+      </div>
+    </div>
   )
 }

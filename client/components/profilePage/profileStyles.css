@@ -76,3 +76,32 @@ h1 {
   height: 110px;
   width: 85px;
 }
+
+/* ----USER BOOK CLUBS STYLES ---- */
+
+/* .userBookClubsBody {
+  display: grid;
+  background-color: blue;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto auto;
+  grid-gap: 5px;
+  margin: 5px 5px 5px 5px;
+  max-height: 200px;
+} */
+
+.userBookClubsBody{
+  display: grid;
+  background-color: blue;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px 10px;
+  max-height: 200px;
+}
+
+.userBookClubItem{
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 100px;
+  width: 200px;
+  border-radius: 5px;
+  /* overflow: hidden; */
+}
