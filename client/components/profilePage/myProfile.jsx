@@ -7,14 +7,13 @@ import AllUsersModal from './allUsersModal.jsx';
 import { Button, ListGroup, Container } from 'react-bootstrap';
 import AuthContext from '../../context/authContext.jsx';
 
-export default function myFriends({user}) {
+export default function myFriends({user = {friends: []}}) {
   const currentUser = {
     username: 'bookwormboy85',
     friends: [{username: 'Josh'},{username: 'Maddy'}, {username: 'Spencer'},{username: 'Abe'},{username: 'Jeffrey'}],
     subscription: 'platinum subscription'
   }
   const [show, setShow] = useState(false);
-  console.log(user);
 
   return(
     <div id='myProfile'>
