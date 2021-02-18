@@ -17,16 +17,8 @@ const BOTM = () => {
         </div>
         <div className="cc-BOTM-mainBookInfo-priceCardsContainer">
           <div className="cc-BOTM-mainBookInfo-priceCards">
-            <p>Hardcover:</p>
-            <p>{`\n$${dummyData[3].priceHardcover}`}</p>
-          </div>
-          <div className="cc-BOTM-mainBookInfo-priceCards">
-            <p>Paperback:</p>
-            <p>{`\n$${dummyData[3].pricePaperback}`}</p>
-          </div>
-          <div className="cc-BOTM-mainBookInfo-priceCards">
-            <p > Audio:</p>
-            <p>{`\n$${dummyData[3].priceAudio}`}</p>
+            <p>Price:</p>
+            <p>$16.89</p>
           </div>
         </div>
         <div >
@@ -34,9 +26,7 @@ const BOTM = () => {
         </div>
       </div>
     </Container>
-
   )
-
 }
 
 export default BOTM;

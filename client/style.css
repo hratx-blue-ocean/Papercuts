@@ -55,28 +55,35 @@ body {
 
 .cc-homePage-topLevelContainer {
   display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.cc-homePage-topHalf {
+  display: flex;
   flex-direction: row;
   padding: 10px;
 }
 
 .cc-homePage-leftMainCol {
   display: flex;
-  flex-direction: column;
-  width: 55%;
+  flex: 2;
+  flex-direction: row;
+  width: 70%;
 }
 
 .cc-homePage-rightMainCol {
   display: flex;
   flex-direction: column;
+  flex: 1;
   padding-top: 10px;
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 20px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 30px;
+  margin-right: 0px;
   margin-top: 10px;
-  margin-left: 10px;
-  width: 45%;
+  width: 30%;
 }
 
 .cc-BOTM {
@@ -91,11 +98,13 @@ body {
   flex: 1;
   margin: 10px;
 }
+
 .cc-BOTM-mainBookInfo-title-container {
-  display: flex;
-  flex-direction: column;
+  /* display: flex; */
+  /* flex-direction: column; */
   vertical-align: top;
 }
+
 .cc-BOTM-mainBookInfo-header {
   text-align: center;
   font-style: normal;
@@ -113,6 +122,7 @@ body {
   text-align: center;
   color: #000000;
 }
+
 .cc-BOTM-mainBookInfo-author {
   text-align: center;
   font-style: italic;
@@ -122,28 +132,38 @@ body {
   font-weight: 300;
   font-size: 2vw;
 }
+
 .cc-BOTM-mainBookInfo-priceCardsContainer {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
   height: 100px;
   width: auto;
-  flex-wrap: nowrap;
+  justify-content: center;
+  /* flex-wrap: nowrap; */
   padding: 10px;
 }
+
 .cc-BOTM-mainBookInfo-priceCards {
   height: 80px;
-  width: 100px;
+  /* width: stretch; */
   text-align: center;
   background-color: white;
   border-radius: 6px;
   margin: 5px;
   padding: 5px;
 }
+
 .cc-BOTM-mainBookInfo-description {
   font-size: 1vw;
   color: #000000;
   padding: 5px;
   margin: 10px;
+}
+
+.cc-homepage-bottomHalf {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .cc-TrendingCaro {
@@ -159,20 +179,11 @@ body {
   margin: 10px;
   width: 100%;
 }
-.cc-SiteDesc {
-  display: flex;
-  flex: 1;
-}
 
-/* .cc-LogInSignUp {
+/* .cc-SiteDesc {
   display: flex;
   flex: 1;
 } */
-
-.cc-MonthlySubscr {
-  display: flex;
-  flex: 1;
-}
 
 .cc-homePage-rightMainCol-titles {
   text-align: left;
@@ -186,6 +197,11 @@ body {
   font-size: 1vw;
   color: #000000;
 }
+
+/* .cc-MonthlySubscr {
+  display: flex;
+  flex: 1;
+} */
 
 .navList {
   text-align: center;
