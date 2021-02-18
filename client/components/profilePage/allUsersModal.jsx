@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Modal,
-  Image,
-  Button,
-  Table,
-  Badge,
-  Spinner,
-  Row,
-  Col
-} from 'react-bootstrap';
+import { Modal, Image, Button, Table, Badge, Spinner, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 export default function AllUsers({ handleClose, show, user }) {
@@ -27,13 +18,7 @@ export default function AllUsers({ handleClose, show, user }) {
       <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal
-      size='lg'
-      show={show}
-      onHide={handleClose}
-      backdrop='static'
-      keyboard={false}
-    >
+    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>All Users</Modal.Title>
       </Modal.Header>
