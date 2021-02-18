@@ -11,14 +11,14 @@ require('dotenv').config();
 const app = express();
 const dbURI = `mongodb+srv://jfleming9357:${process.env.MONGO_PASS}@cluster0.v4rli.mongodb.net/papercut?retryWrites=true&w=majority`;
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 //db connection
 mongoose
   .connect(dbURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true,
+    useCreateIndex: true
   })
   .then(console.log(`MongoDB connected ${dbURI}`))
   .catch((err) => console.log(err));
@@ -31,7 +31,7 @@ app.use(
     secret: 'aY5LZhOHMm!i',
     resave: false,
     saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
 app.use(passport.initialize());
@@ -58,7 +58,7 @@ app.use(
     orderPreference: ['br'],
     setHeaders: function (res, path) {
       res.setHeader('Cache-Control', 'public, max-age=31536000');
-    },
+    }
   })
 );
 

@@ -139,3 +139,21 @@ Content-Type: application/json
     "price":50,
     "category":"fiction"
 }
+
+### user delete all his friends
+DELETE http://localhost:3000/user/allfriends
+Content-Type: application/json
+
+{
+    "userId": "{{jason}}"
+}
+
+### user add a review to specific book they owned
+POST http://localhost:3000/user/review
+Content-Type: application/json
+
+{
+    "bookId": "602c0c193cf044525d282e8a",
+    "username": "shinan",
+    "comment": "tell me who dont want to be a wizard?!"
+}
