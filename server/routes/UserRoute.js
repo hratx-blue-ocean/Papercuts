@@ -50,6 +50,7 @@ router.post('/friends', async (req, res) => {
         'email recommendation friends library bookclubs bookPreference photoUrl username'
       );
     res.json(friends);
+    console.log(res);
   } catch (error) {
     res.json(error);
   }
