@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Image } from 'react-bootstrap';
+import BookDetail from '../global/BookDetail.jsx';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Image from 'react-bootstrap/Image';
 import dummyData from './dummyData.js';
 
 const TrendingCaro = () => {
@@ -44,7 +45,9 @@ const TrendingCaro = () => {
         {dummyData.map((book, index) => {
           return (
             <div key={index}>
-              <Image style={{ width: 'auto', height: '200px' }} src={book.imageURL} />
+              <Image
+                style={{ width: 'auto', height: '200px' }}
+                src={book.imageURL}/>
             </div>
           );
         })}
