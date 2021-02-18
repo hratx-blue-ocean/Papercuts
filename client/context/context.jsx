@@ -6,7 +6,6 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
-  const [members, setMembers] = useState([]); //Members of current club
   const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
   const [keyword, setKeyword] = useState(''); //Current search input
   const [fuzzyClubs, setFuzzyClubs] = useState([]); //Used to fuzzy-search clubs (fuse.js)
@@ -52,7 +51,6 @@ export const AppProvider = ({ children }) => {
   async function getClubById(id) {
     try {
       const res = await axios.get(`/bookclub/${id}`);
-
       setClub(res.data);
     } catch (err) {
       setError(err.response.data.error);
@@ -65,8 +63,7 @@ export const AppProvider = ({ children }) => {
       await axios.post(`/bookclub/join/${id}`, {
         userId
       });
-
-      setMembers([...members, user._id]);
+      setClub({ ...club, members: [...club.members, userId] });
     } catch (err) {
       setError(err.response.data.error);
     }
@@ -75,11 +72,13 @@ export const AppProvider = ({ children }) => {
   // Leave bookclub by id
   async function leaveClubById(id, userId) {
     try {
-      await axios.post(`/bookclub/join/${id}`, {
+      await axios.delete(`/bookclub/leave/${id}`, {
         userId
       });
-
-      setMembers([...members.filter((member) => member !== user._id)]);
+      setClub({
+        ...club,
+        members: club.members.filter((member) => member !== userId)
+      });
     } catch (err) {
       setError(err.response.data.error);
     }
@@ -134,7 +133,6 @@ export const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{
         club,
-        members,
         clubs,
         keyword,
         fuzzyClubs,
