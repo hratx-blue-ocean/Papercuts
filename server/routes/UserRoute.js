@@ -38,7 +38,7 @@ router.delete('/allfriends', async (req, res) => {
 });
 
 // @desc    Display all users that user is friends wuth
-// @route   get /user/friends
+// @route   POST /user/friends
 // @access  Private
 router.post('/friends', async (req, res) => {
   const { userId } = req.body;
@@ -56,7 +56,7 @@ router.post('/friends', async (req, res) => {
 });
 
 // @desc    Display all users that user is not friends wuth
-// @route   get /user/friends
+// @route   POST /user/friends
 // @access  Private
 router.post('/newfriends', async (req, res) => {
   const { userId } = req.body;
@@ -73,7 +73,7 @@ router.post('/newfriends', async (req, res) => {
 });
 
 // @desc    User adding friend
-// @route   post /user/friend/add
+// @route   POST /user/friend/add
 // @access  Private
 router.post('/friend', async (req, res) => {
   let { userId, friendId } = req.body;
@@ -236,16 +236,16 @@ router.delete('/payment', async (req, res) => {
   }
 });
 
-// @desc    Get user payment info
-// @route   Get /user/payment
+// @desc    Get user subscription info
+// @route   Get /user/subscription
 // @access  Private
 router.get('/subscription', async (req, res) => {
   let { userId } = req.body;
 
   try {
     const userPayment = await await User.findById(userId)
-      .populate('suscriptionTier')
-      .select('suscriptionTier -_id');
+      .populate('subscriptionTier')
+      .select('subscriptionTier -_id');
 
     res.json(userPayment);
   } catch (err) {
@@ -282,7 +282,7 @@ router.delete('/subscription', async (req, res) => {
 
   try {
     const curUser = await User.findById(userId);
-    curUser.suscriptionTier = null;
+    curUser.subscriptionTier = null;
 
     await curUser.save();
 

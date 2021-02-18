@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:3008
 
 ### Infos
 @matthew = 602be49226e7f146247321c8
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Get user payment info
-DELETE {{baseUrl}}/user/payment
+GET {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
