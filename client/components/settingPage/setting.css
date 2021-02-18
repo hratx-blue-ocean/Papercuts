@@ -1,0 +1,184 @@
+.settingContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.glass-rect {
+  display: block;
+  padding: 25px;
+  border: 1px solid rgb(235, 233, 233);
+  background: linear-gradient(
+    111.29deg,
+    rgba(255, 255, 255, 0.53) -1.83%,
+    rgba(255, 255, 255, 0) 109.95%
+  );
+  box-shadow: 50px 60px 100px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(70px);
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.nav-brand {
+  display: inline-block;
+  font-size: 30px;
+  margin-top: -10px;
+  font-weight: 600;
+  color: white;
+}
+
+ul.nav-items {
+  margin: 0;
+  float: right;
+  display: flex;
+  list-style-type: none;
+}
+
+li.nav-item {
+  display: inline-block;
+  margin-left: 30px;
+  font-size: 17px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.main {
+  font-weight: normal;
+  float: right;
+  padding: 10px;
+}
+
+.main-title {
+  font-size: 35px;
+}
+
+.main-desc {
+  font-size: 17px;
+  line-height: 25px;
+}
+
+.btn-boost {
+  margin-top: 10px;
+  border: 0;
+  width: 120px;
+  height: 50px;
+  font-size: 17px;
+  color: #ffffff;
+  background: linear-gradient(
+    111.29deg,
+    rgba(255, 255, 255, 0.53) -1.83%,
+    rgba(255, 255, 255, 0) 109.95%
+  );
+  box-shadow: 50px 60px 100px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  font-family: 'br_omega', sans-serif;
+  border: 1px solid rgb(235, 233, 233);
+  cursor: pointer;
+}
+
+.img-wrapper {
+  display: flex;
+  float: left;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #8d33f3;
+}
+
+::placeholder {
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.profileInp {
+  background: transparent;
+  width: 250px;
+  padding: 1em;
+  margin-bottom: 2em;
+  border: none;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  border-radius: 5000px;
+  backdrop-filter: blur(5px);
+  box-shadow: 4px 4px 60px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input {
+  outline: none;
+}
+
+.contentBody {
+  min-height: 320px;
+  min-width: 650px;
+}
+
+.ccBody {
+  backdrop-filter: blur(1.5rem);
+  border-radius: 1.2rem;
+  padding: 1.5rem;
+  box-shadow: 0 1rem 3rem -2rem #493167, inset 0 0 0.2rem 0rem rgba(255, 255, 255, 0.4);
+}
+
+.payment-card__title {
+  font-weight: 600;
+  color: #493167;
+  margin: 1rem 0 1.5rem;
+}
+
+.ccGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.payment-card__field--small {
+  max-width: 40%;
+}
+
+.payment-card__extra-fields {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0 1rem;
+}
+
+.payment-card__input {
+  background: none;
+  border: none;
+  border-bottom: dashed 5px rgba(255, 255, 255, 0.15);
+  font-family: 'JetBrains Mono', monospace;
+  color: #fff;
+}
+
+.payment-card__input:focus {
+  outline: none;
+}
+
+.payment-card__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.payment-card__field--large .payment-card__input {
+  width: 100%;
+  font-size: 2rem;
+}
+
+.ccSmallLabel .payment-card__input {
+  font-size: 1.2rem;
+}
+
+.ccLabel {
+  color: #fff;
+  margin: 0 0 0.2rem;
+  font-weight: 400;
+}

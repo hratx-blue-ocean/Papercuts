@@ -39,14 +39,13 @@ export const App = () => {
       <Router>
         <Header user={user} />
         <main
-          style={{
-            maxWidth: '100vw'
-          }}
+          className='d-flex justify-content-center'
+          style={{ paddingBottom: '25px' }}
         >
           <Container className='p-1 m-1'>
             <Switch>
               <Route path='/profile'>
-                <MainProfilePage user = {user}/>
+                <MainProfilePage user={user} />
               </Route>
               <Route exact path='/' component={HomePage} />
               <Route exact path='/clubs' component={BookClubs} />
@@ -57,7 +56,9 @@ export const App = () => {
               </Route>
               <Route path='/subscriptions' component={Subscriptions} />
               <Route path='/checkout' component={Checkout} />
-              <Route path='/setting' component={SettingPage} />
+              <Route path='/setting'>
+                <SettingPage user={user} />
+              </Route>
 
               <Route
                 exact
@@ -68,15 +69,6 @@ export const App = () => {
             </Switch>
           </Container>
         </main>
-        <Button variant='primary' onClick={() => setShow(true)}>
-          Open Example Book Detail Modal
-        </Button>
-        <BookDetail
-          handleClose={() => {
-            setShow(false);
-          }}
-          show={show}
-        />
         <NewFooter />
       </Router>
     </div>
