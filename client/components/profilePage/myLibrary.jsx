@@ -44,9 +44,7 @@ export default function myLibrary() {
   let searchBooks = function (e) {
     e.preventDefault();
     axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`
-      )
+      .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
       .then((results) => {
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
@@ -96,7 +94,6 @@ export default function myLibrary() {
                   setShow(false);
                 }}
                 show={show}
-                book={clickedBook}
               />
             </div>
           );

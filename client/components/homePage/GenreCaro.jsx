@@ -14,7 +14,7 @@ const GenreCaro = () => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1 // optional, default to 1.
       // },
       // tablet: {
       //   breakpoint: { max: 1024, min: 464 },
@@ -25,20 +25,20 @@ const GenreCaro = () => {
       //   breakpoint: { max: 464, min: 0 },
       //   items: 1,
       //   slidesToSlide: 1 // optional,default to 1.
-    },
+    }
   };
 
   return (
     <div>
       <Dropdown>
-        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+        <Dropdown.Toggle variant='secondary' id='dropdown-basic'>
           Select Category
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">Childrens Fiction</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Horror</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Winter Survival</Dropdown.Item>
+          <Dropdown.Item href='#/action-1'>Childrens Fiction</Dropdown.Item>
+          <Dropdown.Item href='#/action-2'>Horror</Dropdown.Item>
+          <Dropdown.Item href='#/action-3'>Winter Survival</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <Carousel
@@ -60,24 +60,23 @@ const GenreCaro = () => {
           return (
             <div key={book.isbn10}>
               <Image
-                style={{ width: 'auto', height: '200px' }} src={book.imageURL}
+                style={{ width: 'auto', height: '200px' }}
+                src={book.imageURL}
                 onClick={() => {
                   setShow(true);
-                  setModalBook(book)}
-                }/>
+                  setModalBook(book);
+                }}
+              />
             </div>
           );
         })}
       </Carousel>
       <BookDetail
-        // id={modalBook.isbn10 || undefined}
-        owned={false}
-        inLibrary={true}
-        handlePurchase={() => {}}
-        handleAddToLibrary={() => {}}
-        handleClose={() => { setShow(false)}}
+        handleClose={() => {
+          setShow(false);
+        }}
         show={show}
-        book={modalBook}/>
+      />
     </div>
   );
 };

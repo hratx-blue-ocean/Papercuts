@@ -140,6 +140,24 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  const purchaseBook = async (userId) => {
+    try {
+      await axios
+        .post('user/book', {
+          userId,
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors.join(', '),
+          isbn: book.volumeInfo.industryIdentifiers[0].identifier, //may not always be true
+          image: book.volumeInfo.imageLinks.thumbnail, //may need to change this
+          price: null,
+          category: book.volumeInfo.categories[0] //what if there is multiple
+        })
+        .then((res) => console.log(res));
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -159,7 +177,8 @@ export const AppProvider = ({ children }) => {
         updateKeyword,
         fuzzyClubSearch,
         getUserClubsById,
-        getBookDetails
+        getBookDetails,
+        purchaseBook
       }}
     >
       {children}

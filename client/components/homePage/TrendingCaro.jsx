@@ -14,7 +14,7 @@ const TrendingCaro = () => {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 4,
-      slidesToSlide: 1, // optional, default to 1.
+      slidesToSlide: 1 // optional, default to 1.
       // },
       // tablet: {
       //   breakpoint: { max: 1024, min: 464 },
@@ -25,7 +25,7 @@ const TrendingCaro = () => {
       //   breakpoint: { max: 464, min: 0 },
       //   items: 1,
       //   slidesToSlide: 1 // optional,default to 1.
-    },
+    }
   };
 
   return (
@@ -54,21 +54,19 @@ const TrendingCaro = () => {
                 src={book.imageURL}
                 onClick={() => {
                   setShow(true);
-                  setModalBook(book)}
-                } />
+                  setModalBook(book);
+                }}
+              />
             </div>
           );
         })}
       </Carousel>
       <BookDetail
-        // id={modalBook.isbn10 || undefined}
-        owned={false}
-        inLibrary={true}
-        handlePurchase={() => {}}
-        handleAddToLibrary={() => {}}
-        handleClose={() => { setShow(false)}}
+        handleClose={() => {
+          setShow(false);
+        }}
         show={show}
-        book={modalBook}/>
+      />
     </div>
   );
 };

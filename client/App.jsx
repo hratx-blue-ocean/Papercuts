@@ -62,6 +62,8 @@ export const App = () => {
             </Switch>
           </Container>
         </main>
+        {/* <Button onClick={setShow(true)}>Book</Button>
+        <BookDetail handleClose={setShow(false)} show={show} /> */}
         <NewFooter />
       </Router>
     </div>
