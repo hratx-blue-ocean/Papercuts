@@ -20,7 +20,6 @@ export default function myFriends({ user = { friends: [] } }) {
     subscription: 'platinum subscription'
   };
   const [show, setShow] = useState(false);
-  console.log(user);
 
   return (
     <div id='myProfile'>
