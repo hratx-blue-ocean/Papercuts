@@ -26,7 +26,6 @@ export const SettingPage = ({ user }) => {
   };
 
   const sendImg = () => {
-    console.log(fileRef.current.files[0]);
     const storageRef = firebaseStorage.ref(fileRef.current.files[0].name);
     storageRef
       .put(fileRef.current.files[0])
@@ -37,7 +36,7 @@ export const SettingPage = ({ user }) => {
         document.getElementById('profilePic').src = url;
         return axios.put('/user/info', {
           userId: user._id,
-          photoUrl: url,
+          photoUrl: url
         });
       })
       .catch((err) => console.log(err));
@@ -53,7 +52,7 @@ export const SettingPage = ({ user }) => {
         await axios.put('/user/info', {
           userId: user._id,
           username: usrName || undefined,
-          email: usrEmail || undefined,
+          email: usrEmail || undefined
         });
         setMsg('Data updated');
       } else {
@@ -63,14 +62,13 @@ export const SettingPage = ({ user }) => {
             username: usrName || undefined,
             email: usrEmail || undefined,
             password: usrOldPwd,
-            newPassword: usrNewPwd,
+            newPassword: usrNewPwd
           })
           .then(() => {
             setMsg('Data updated');
           })
           .catch(() => setError('Invalid passwords'));
       }
-      console.log('UPDATED');
     } catch (error) {
       setError('ERROR: ' + error);
     }
@@ -84,7 +82,7 @@ export const SettingPage = ({ user }) => {
         userId: user._id,
         cardNumber: ccNum,
         cardHolder: ccHolder,
-        cardExpiredDate: ccDate,
+        cardExpiredDate: ccDate
       })
       .then(() => setMsg('Payment Updated'))
       .catch(() => setError('Unable to update payment'));
@@ -99,14 +97,18 @@ export const SettingPage = ({ user }) => {
               <div className='nav-brand'>Setting Page</div>
               <ul className='nav-items'>
                 <li
-                  style={curTab === 'profile' ? { textDecoration: 'underline' } : {}}
+                  style={
+                    curTab === 'profile' ? { textDecoration: 'underline' } : {}
+                  }
                   className='nav-item'
                   onClick={() => setCurTab('profile')}
                 >
                   Profile
                 </li>
                 <li
-                  style={curTab === 'payment' ? { textDecoration: 'underline' } : {}}
+                  style={
+                    curTab === 'payment' ? { textDecoration: 'underline' } : {}
+                  }
                   className='nav-item'
                   onClick={() => setCurTab('payment')}
                 >
@@ -184,7 +186,11 @@ export const SettingPage = ({ user }) => {
                         onChange={(e) => setUsrNewPwd(e.target.value)}
                       />
                       <br />
-                      <input className='profileInp' type='submit' value='Update' />
+                      <input
+                        className='profileInp'
+                        type='submit'
+                        value='Update'
+                      />
                     </form>
                   </div>
                 </>
