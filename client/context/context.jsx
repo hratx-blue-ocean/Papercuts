@@ -10,7 +10,6 @@ export const AppProvider = ({ children }) => {
   const [event, setEvent] = useState({});
   const [questionnaire, setQuestionnaire] = useState({});
   const [users, setUsers] = useState([]);
-  const [members, setMembers] = useState([]);
   const [books, setBooks] = useState([]);
   const [clubs, setClubs] = useState([]);
   const [events, setEvents] = useState([]);
@@ -26,7 +25,12 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
-    getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d'])
+    getUserClubsById([
+      '602bff381017a68f02009b0e',
+      '602d4e35191ce139634c8791',
+      '602d50bc191ce139634c8797',
+      '602d52c3191ce139634c879d'
+    ]);
   }, []);
 
   // Actions
@@ -56,7 +60,6 @@ export const AppProvider = ({ children }) => {
   async function getClubById(id) {
     try {
       const res = await axios.get(`/bookclub/${id}`);
-
       setClub(res.data);
     } catch (err) {
       setError(err.response.data.error);
@@ -69,8 +72,7 @@ export const AppProvider = ({ children }) => {
       await axios.post(`/bookclub/join/${id}`, {
         userId
       });
-
-      setMembers([...members, user._id]);
+      setClub({ ...club, members: [...club.members, userId] });
     } catch (err) {
       setError(err.response.data.error);
     }
@@ -79,11 +81,13 @@ export const AppProvider = ({ children }) => {
   // Leave bookclub by id
   async function leaveClubById(id, userId) {
     try {
-      await axios.post(`/bookclub/join/${id}`, {
+      await axios.delete(`/bookclub/leave/${id}`, {
         userId
       });
-
-      setMembers([...members.filter((member) => member !== user._id)]);
+      setClub({
+        ...club,
+        members: club.members.filter((member) => member !== userId)
+      });
     } catch (err) {
       setError(err.response.data.error);
     }
@@ -142,7 +146,6 @@ export const AppProvider = ({ children }) => {
         event,
         questionnaire,
         users,
-        members,
         books,
         clubs,
         events,
