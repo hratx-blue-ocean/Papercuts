@@ -179,7 +179,6 @@ router.get('/payment', async (req, res) => {
 // @access  Private
 router.post('/payment', async (req, res) => {
   let { userId, cardNumber, cardHolder, cardExpiredDate } = req.body;
-  console.log(req.body);
   try {
     const newPayment = await new Payment({
       cardNumber,
