@@ -73,7 +73,6 @@ app.get('/checkauth', isAuthenticated, function (req, res) {
   Subscription.findOne({ _id: req.user.subscriptionTier })
     .then((subscription) => {
       req.user._doc.subscription = subscription;
-      console.log(req.user);
       res.status(200).send(req.user);
     })
     .catch((err) => {

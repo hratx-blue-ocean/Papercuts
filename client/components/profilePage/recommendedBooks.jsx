@@ -5,21 +5,21 @@ import '../../../node_modules/react-multi-carousel/lib/styles.css';
 import './profileStyles.css';
 
 // export default function RecommendedBooks() {
-  // const items = [
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=iYTcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
-  //   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+// const items = [
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=iYTcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+//   <img className="recommendedBookBody" src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
 
-  // ]
+// ]
 
-  // <img src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
-  // <img src="http://books.google.com/books/content?id=iYTcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
-  // <img src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
-  // <img src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
+// <img src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />,
+// <img src="http://books.google.com/books/content?id=iYTcDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+// <img src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />,
+// <img src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
 
 //   const responsiveSettings = {
 //     0: {
@@ -47,23 +47,23 @@ import './profileStyles.css';
 
 // }
 
-  // const slideCount = {
-  //   0: {
-  //     items: 3
-  //   },
-  //   800: {
-  //     items:
-  //   }
-  //   1024: {
-  //     items: 5
-  //   }
-  // }
-  // return(
-  //   <AliceCarousel
-  //     items={items}
-  //     responsive={slideCount}
-  //   />
-  // )
+// const slideCount = {
+//   0: {
+//     items: 3
+//   },
+//   800: {
+//     items:
+//   }
+//   1024: {
+//     items: 5
+//   }
+// }
+// return(
+//   <AliceCarousel
+//     items={items}
+//     responsive={slideCount}
+//   />
+// )
 
 export default function RecommendedBooks() {
   const books = [];
@@ -71,11 +71,11 @@ export default function RecommendedBooks() {
   const responsiveSettings = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
+      breakpoint: { max: 4000, min: 1500 },
       items: 5
     },
     desktop: {
-      breakpoint: { max: 1500, min: 700 },
+      breakpoint: { max: 1500, min: 1024 },
       items: 5
     },
     tablet: {
@@ -89,23 +89,41 @@ export default function RecommendedBooks() {
   };
 
   return (
-    <div className="recommendedBooksContainer">
+    <div className='recommendedBooksContainer'>
       <h1>Recommended Books</h1>
-      <Carousel className="recommendedBookBody"
+      <Carousel
+        className='recommendedBookBody'
         responsive={responsiveSettings}
         swipeable={true}
         draggable={true}
         showDots={true}
         // renderButtonGroupOutside={true}
       >
-        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
-        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />
-        <img className="recommendedBookImage" src="http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
+        <img
+          className='recommendedBookImage'
+          src='http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
+        />
+        <img
+          className='recommendedBookImage'
+          src='http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+        />
+        <img
+          className='recommendedBookImage'
+          src='http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+        />
+        <img
+          className='recommendedBookImage'
+          src='http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+        />
+        <img
+          className='recommendedBookImage'
+          src='http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+        />
+        <img
+          className='recommendedBookImage'
+          src='http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
+        />
       </Carousel>
     </div>
-  )
+  );
 }
-
