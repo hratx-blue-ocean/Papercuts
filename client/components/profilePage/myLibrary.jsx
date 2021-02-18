@@ -50,9 +50,9 @@ export default function myLibrary() {
       .then((results) => {
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
-          (bookInfo.title = book.volumeInfo.title),
-            (bookInfo.authors = book.volumeInfo.authors),
-            (bookInfo.isbn = book.volumeInfo.industryIdentifiers[0].identifier);
+          bookInfo.title = book.volumeInfo.title;
+          bookInfo.authors = book.volumeInfo.authors;
+          bookInfo.isbn = book.volumeInfo.industryIdentifiers[0].identifier;
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
