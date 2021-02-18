@@ -8,11 +8,13 @@ import {
   ListGroup,
   Form,
   Image,
-  Button,
+  Button
 } from 'react-bootstrap';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import search from '../../assets/images/search.svg';
+
+// style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
 
 const Header = ({ user, title, variant, background }) => {
   return (
@@ -34,9 +36,19 @@ const Header = ({ user, title, variant, background }) => {
               Create a Book Club
             </Nav.Link>
           </NavDropdown>
-          <Nav.Link as={Link} to='/subscriptions' variant={variant}>
-            Subscriptions
-          </Nav.Link>
+          {user ? (
+            user.suscriptionTier ? (
+              <></>
+            ) : (
+              <Nav.Link as={Link} to='/subscriptions' variant={variant}>
+                Subscriptions
+              </Nav.Link>
+            )
+          ) : (
+            <Nav.Link as={Link} to='/subscriptions' variant={variant}>
+              Subscriptions
+            </Nav.Link>
+          )}
           {user && (
             <Nav.Link as={Link} to='/profile' variant={variant}>
               Profile
@@ -76,7 +88,7 @@ const Header = ({ user, title, variant, background }) => {
 Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
   variant: '',
-  background: 'light',
+  background: 'light'
 };
 
 export default Header;
