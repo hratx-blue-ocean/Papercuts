@@ -20,7 +20,7 @@ export default function SubscriptionCard({ spec, handleSubscribe }) {
             <div key={idx}>&#10003; {feature}</div>
           ))}
           <br />
-          <Button variant="dark" onClick={handleSubscribe}>
+          <Button variant='dark' onClick={handleSubscribe}>
             Subscribe
           </Button>
         </Card.Body>
