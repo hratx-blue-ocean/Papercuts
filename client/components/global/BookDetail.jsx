@@ -1,49 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Modal,
-  Image,
-  Button,
-  Table,
-  Badge,
-  Spinner,
-  Row,
-  Col
-} from 'react-bootstrap';
-import axios from 'axios';
+import { Modal, Image, Button, Table, Badge, Row, Col } from 'react-bootstrap';
+import { AppContext } from '../../context/context.jsx';
 
-//Props: id from Google books (number), show & owned & inLibrary (boolean), handleClose & handleAddToLibrary & handlePurchase functions
-export default function BookDetail({
-  // id,
-  inLibrary,
-  owned,
-  handlePurchase,
-  handleAddToLibrary,
-  handleClose,
-  show,
-  book
-}) {
+//Props: id from Google books (number), show & owned (boolean), handleClose & handlePurchase functions
+export default function BookDetail({ id = '0efCDwAAQBAJ', handleClose, show }) {
+  const { getClubById } = useContext(AppContext);
+
   // const [data, setData] = useState({});
 
   //Temporary test constants
   // id = '0efCDwAAQBAJ';
   // owned = false;
-  // inLibrary = true;
   // handlePurchase = () => {};
-  // handleAddToLibrary = () => {};
 
-  //Temporary fetch from Google Books, will need to replaced by our own server proxy route
-  // useEffect(async () => {
-  //   let info = await axios.get(
-  //     `https://www.googleapis.com/books/v1/volumes/${id}?key=${'AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY'}`
-  //   );
-  //   setData(info.data);
-  // }, []);
-
-  return book === undefined ? (
-    <Spinner animation='border' role='status'>
-      <span className='sr-only'>Loading...</span>
-    </Spinner>
-  ) : (
+  return (
     <Modal
       size='lg'
       show={show}
@@ -65,7 +35,7 @@ export default function BookDetail({
             <br />
             <br />
             <p>{book.description}</p>
-            {/* <Table size='sm' striped bordered variant='light'>
+            <Table size='sm' striped bordered variant='light'>
               <tbody>
                 <tr>
                   <td>Publisher</td>
@@ -96,20 +66,13 @@ export default function BookDetail({
                   </td>
                 </tr>
               </tbody>
-            </Table> */}
+            </Table>
           </Col>
         </Row>
       </Modal.Body>
       <Modal.Footer>
         <Button variant='secondary' onClick={handleClose}>
           Close
-        </Button>
-        <Button
-          variant='primary'
-          onClick={handleAddToLibrary}
-          disabled={inLibrary}
-        >
-          {'Add to Library'}
         </Button>
         <Button variant='primary' onClick={handlePurchase} disabled={owned}>
           {'Purchase'}

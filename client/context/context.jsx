@@ -138,6 +138,21 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  // Get one book's details from external API
+  const getUserClubsById = async (ids) => {
+    const userClubData = [];
+    try {
+      ids.map(async (clubId) => {
+        const clubData = await axios.get(`user/userclubs/${clubId}`);
+        userClubData.push(clubData.data);
+      });
+
+      setUserClubs(userClubData);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{

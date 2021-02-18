@@ -4,24 +4,33 @@ const axios = require('axios');
 // @desc    Retrieve top books from selected lists
 // @route   GET /book/bestsellers
 // @access  Public
-router.get('/bestsellers', async(req, res) => {
+router.get('/bestsellers', async (req, res) => {
   let key = req.query.apikey;
   let list = req.query.list;
   try {
     await axios
-      .get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`)
-      .then(response => { res.status(200).send(response.data); })
-      .catch(error => { console.error(`Could not complete NYT Books API request for ${req.query.listName}: `, error.message); });
+      .get(
+        `https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`
+      )
+      .then((response) => {
+        res.status(200).send(response.data);
+      })
+      .catch((error) => {
+        console.error(
+          `Could not complete NYT Books API request for ${req.query.listName}: `,
+          error.message
+        );
+      });
   } catch (error) {
     // console.error('cant sit here')
-    res.status(500).send(error)
+    res.status(500).send(error);
   }
-})
+});
 
 // @desc    Display 7 trending books
 // @route   GET /book/trending
 // @access  Public
-router.get('/trending', async(req, res) => {
+router.get('/trending', async (req, res) => {
   let isbn = req.query.bookIsbn;
   let key = req.query.apikey;
   console.log('this is the google isbn: ', isbn);
@@ -30,13 +39,18 @@ router.get('/trending', async(req, res) => {
   try {
     await axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=${isbn}&key=${key}`)
-      .then(response => {
-        console.log('get response: ', response)
-        res.status(200).send(response)
+      .then((response) => {
+        console.log('get response: ', response);
+        res.status(200).send(response);
       })
-      .catch(error => { res.status(500).send(error); });
+      .catch((error) => {
+        res.status(500).send(error);
+      });
   } catch (error) {
-    console.error(`Could not complete Google Books API request for ISBN ${isbn}: `, error);
+    console.error(
+      `Could not complete Google Books API request for ISBN ${isbn}: `,
+      error
+    );
   }
 });
 
@@ -63,6 +77,27 @@ router.post('/', async (req, res) => {
     res.status(201).send(savedDoc);
   } catch (err) {
     res.status(400).send(err);
+  }
+});
+
+// @desc    Get one book's details
+// @route   GET /book/details/:id
+// @access  Public
+router.get('/details/:id', async (req, res) => {
+  let { id } = req.params;
+  console.log('id', id);
+  console.log('apikey', process.env.GOOGLE_API_KEY);
+
+  try {
+    let response = await axios.get(
+      `https://www.googleapis.com/books/v1/volumes/${id}?key=${process.env.GOOGLE_API_KEY}`
+    );
+    res.send(response.data);
+  } catch (error) {
+    console.error(
+      `Could not complete Google Books API request for id ${id}: `,
+      error
+    );
   }
 });
 
