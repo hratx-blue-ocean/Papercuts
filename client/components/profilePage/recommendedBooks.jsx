@@ -96,8 +96,7 @@ export default function RecommendedBooks() {
         swipeable={true}
         draggable={true}
         showDots={true}
-        renderButtonGroupOutside={true}
-        keyboard={true}
+        // renderButtonGroupOutside={true}
       >
         <img className="recommendedBookImage" src="http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api" />
         <img className="recommendedBookImage" src="http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" />

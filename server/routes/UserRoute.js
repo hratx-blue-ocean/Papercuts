@@ -357,4 +357,17 @@ router.post('/review', async (req, res) => {
   }
 });
 
+router.get('/userclubs/:id', async (req, res) => {
+  try {
+    // console.log('params id: ', req.query.id)
+    // const club = await Bookclub.findOne({"_id": ObjectId(req.query.id)});
+
+    const club = await Bookclub.findById(req.params.id).populate('_id', ['name', 'description', 'smallThumbnail'])
+
+    res.json(club);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+})
+
 module.exports = router;
