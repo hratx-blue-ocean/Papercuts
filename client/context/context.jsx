@@ -21,10 +21,12 @@ export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [userClubs, setUserClubs] = useState([]);
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
+    getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d'])
   }, []);
 
   // Actions
@@ -117,6 +119,21 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  // Get user book club by id
+  const getUserClubsById = async (ids) => {
+    const userClubData = [];
+    try {
+      ids.map(async (clubId) => {
+        const clubData = await axios.get(`user/userclubs/${clubId}`);
+        userClubData.push(clubData.data);
+      });
+
+      setUserClubs(userClubData);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -136,13 +153,15 @@ export const AppProvider = ({ children }) => {
         error,
         success,
         loading,
+        userClubs,
         getClubs,
         getClubByName,
         getClubById,
         joinClubById,
         leaveClubById,
         updateKeyword,
-        fuzzyClubSearch
+        fuzzyClubSearch,
+        getUserClubsById
       }}
     >
       {children}

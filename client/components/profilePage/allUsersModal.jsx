@@ -5,8 +5,12 @@ import axios from 'axios';
 export default function AllUsers({
   handleClose,
   show,
+  user,
 }) {
 
+  const addFriend = (newFriendId) => {
+    axios.post('/user/friend', {userId: user._id, friendId: newFriendId})
+  }
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(async () => {
@@ -28,14 +32,19 @@ export default function AllUsers({
           <Col>
             {allUsers.map((user) => {
               return (
-              <div key={user._id}>
-                <span className='thumbBody'><img className='thumbImage' src = {user.photoUrl}/></span>
+              <Row className = 'm-3' key={user._id}>
+                <div className='thumbBody mx-3'>
+                  <img className='thumbImage' src={user.photoUrl}/>
+                </div>
                 <span>{user.username}</span>
-              </div>
-              )
+                <Button className='mx-3' variant='secondary' onClick={() => {addFriend(user._id)}}>
+                  Add Friend
+                </Button>
+              </Row>)
             })}
           </Col>
         </Row>
+
       </Modal.Body>
       <Modal.Footer>
         <Button variant='secondary' onClick={handleClose}>

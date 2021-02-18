@@ -6,6 +6,7 @@
 @chris = 602be49f26e7f146247321ca
 @shinan = 602be4b126e7f146247321cd
 @cayla = 602be52e26e7f146247321cf
+@jerrick = 602be4b626e7f146247321ce
 
 
 ### Get all users
@@ -16,7 +17,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId": "{{matthew}}"
+    "userId": "{{jerrick}}"
 }
 
 ### Get all users that user are not friends with
@@ -33,8 +34,8 @@ POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
-    "userId":"{{matthew}}",
-    "friendId":"{{jason}}"
+    "userId":"{{jerrick}}",
+    "friendId":"{{chris}}"
 }
 
 
@@ -51,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Get user payment info
-GET {{baseUrl}}/user/payment
+DELETE {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
@@ -139,3 +140,4 @@ Content-Type: application/json
     "price":50,
     "category":"fiction"
 }
+
