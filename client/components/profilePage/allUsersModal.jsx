@@ -10,7 +10,7 @@ export default function AllUsers({
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(async () => {
-    let usersList = await axios.get(`http://localhost:3000/user/all`)
+    let usersList = await axios.get(`/user/all`)
     setAllUsers(usersList.data);
   }, []);
 

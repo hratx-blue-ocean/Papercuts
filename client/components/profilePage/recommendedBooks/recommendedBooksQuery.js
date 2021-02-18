@@ -1,15 +1,16 @@
 const axios = require('axios');
 const Promise = require('bluebird');
 
-// const nytSelectedLists = [
-//   'combined-print-fiction',
-//   'combined-print-nonfiction',
-//   'series-books',
-//   'young-adult',
-//   'audio-fiction',
-//   'audio-nonfiction',
-//   'chapter-books'
-// ]
+const nytSelectedLists = [
+  'hardcover-fiction',
+  'hardcover-nonfiction',
+  'trade-fiction-paperback',
+  'paperback-nonfiction'
+  'series-books',
+  'young-adult',
+  'audio-fiction',
+  'audio-nonfiction'
+]
 
 const nytSelectedLists = ['combined-print-fiction'];
 

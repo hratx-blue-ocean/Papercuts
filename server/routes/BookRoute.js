@@ -1,22 +1,23 @@
 const router = require('express').Router();
 const axios = require('axios');
+require('dotenv').config();
 
 // @desc    Retrieve top books from selected lists
 // @route   GET /book/bestsellers
 // @access  Public
 router.get('/bestsellers', async(req, res) => {
-  let key = req.query.apikey;
-  let list = req.query.list;
+  const key = process.env.NYT_KEY;
+  const { list } = req.query;
+  console.log('NYT keys: ', key);
+  console.log('NYT list: ', list);
   try {
-    await axios
-      .get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`)
-      .then(response => { res.status(200).send(response.data); })
-      .catch(error => { console.error(`Could not complete NYT Books API request for ${req.query.listName}: `, error.message); });
-  } catch (error) {
-    // console.error('cant sit here')
-    res.status(500).send(error)
+    const bestSeller = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`);
+    console.log('bestSeller: ', bestSeller);
+    res.json(bestSeller.data);
+  } catch (err) {
+    res.status(404).send(err);
   }
-})
+});
 
 // @desc    Display 7 trending books
 // @route   GET /book/trending

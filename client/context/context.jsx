@@ -28,13 +28,18 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
-    getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d'])
+    getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d']),
+    getTrendingBooks([
+      'hardcover-fiction',
+      'hardcover-nonfiction',
+      'trade-fiction-paperback',
+      'paperback-nonfiction',
+      'series-books',
+      'young-adult',
+      'audio-fiction',
+      'audio-nonfiction'
+    ])
   }, []);
-
-  // useEffect(() => {
-  //   getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d'])
-  //   getUserClubsById('602bff381017a68f02009b0e')
-  // }, [])
 
   // Actions
   // Get all bookclubs
@@ -135,7 +140,6 @@ export const AppProvider = ({ children }) => {
         userClubData.push(clubData.data);
       });
 
-      // const clubData = await axios.get(`user/userclubs/${ids}`);
       setUserClubs(userClubData);
     } catch (err) {
       setError(err.response.data.error);
@@ -143,12 +147,17 @@ export const AppProvider = ({ children }) => {
   };
 
   // Get top books from select NYT Best Sellers lists
-  async function getTrendingBooks(lists) => {
-    const topBooks = [];
+  const getTrendingBooks = async (lists) => {
+    const bestSellers = [];
     try {
-      lists.map(async (list) => {
-        const listTop = await axios.get(`user/`)
-      })
+      lists.map(async (currentList) => {
+        const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
+        bestSellers.push(topBooks.data);
+      });
+      console.log(bestSellers);
+      setTrendingBooks(bestSellers);
+    } catch (err) {
+      setError(err.response.data.error);
     }
   }
 
