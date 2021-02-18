@@ -26,7 +26,7 @@ import CreateBookClub from './components/createBookClubPage/CreateBookClub.jsx';
 import RecommendedBooks from './components/profilePage/recommendedBooks.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './style.css';
+import './App.css';
 import { SettingPage } from './components/settingPage/index.js';
 import { NewFooter } from './components/global/NewFooter.js';
 
@@ -38,10 +38,7 @@ export const App = () => {
     <div id='bodyContainer'>
       <Router>
         <Header user={user} />
-        <main
-          className='d-flex justify-content-center'
-          style={{ paddingBottom: '25px' }}
-        >
+        <main className='d-flex justify-content-center' style={{ paddingBottom: '25px' }}>
           <Container className='p-1 m-1'>
             <Switch>
               <Route path='/profile'>
@@ -60,11 +57,7 @@ export const App = () => {
                 <SettingPage user={user} />
               </Route>
 
-              <Route
-                exact
-                path='/changePassword/:email/:token'
-                component={ChangePasswordForm}
-              />
+              <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
               <Route component={Error} />
             </Switch>
           </Container>
