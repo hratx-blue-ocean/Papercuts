@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     return userData.data;
   };
   const { result } = useAsync(checkAuth, []);
+  console.log(result);
   // const result = checkAuth();
   return <AuthContext.Provider value={result}>{children}</AuthContext.Provider>;
 };
