@@ -42,7 +42,7 @@ export default function BookDetail({
       <Modal.Body>
         <Row>
           <Col>
-            <Image src={book.imageURL} fluid rounded />
+            <Image src={book.image} fluid rounded />
           </Col>
           <Col>
             <div>by {book.authors.join(', ')}</div>

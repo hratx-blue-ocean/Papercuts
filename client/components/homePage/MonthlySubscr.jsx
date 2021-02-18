@@ -25,7 +25,7 @@ const MonthlySubscr = (props) => {
         margin="5px"
         padding="5px"
         block
-        href="/subscriptions">
+        href='/subscriptions'>
         See Subscription Tiers
       </Button>{'   '}
       </div>

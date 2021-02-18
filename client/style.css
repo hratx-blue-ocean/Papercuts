@@ -148,24 +148,26 @@ body {
 
 .cc-TrendingCaro {
   display: flex;
-  flex: 2;
+  /* flex: 2; */
   margin: 10px;
+  width: 100%;
 }
 
 .cc-GenreCaro {
   display: flex;
-  flex: 2;
+  /* flex: 2; */
   margin: 10px;
+  width: 100%;
 }
 .cc-SiteDesc {
   display: flex;
   flex: 1;
 }
 
-.cc-LogInSignUp {
+/* .cc-LogInSignUp {
   display: flex;
   flex: 1;
-}
+} */
 
 .cc-MonthlySubscr {
   display: flex;

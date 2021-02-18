@@ -60,7 +60,7 @@ const GenreCaro = () => {
           return (
             <div key={book.isbn10}>
               <Image
-                style={{ width: 'auto', height: '200px' }} src={book.imageURL}
+                style={{ width: 'auto', height: '200px' }} src={book.image}
                 onClick={() => {
                   setShow(true);
                   setModalBook(book)}
