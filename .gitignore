@@ -22,6 +22,12 @@ node_modules/
 /client/dist/font/.ttf
 /client/dist/font/.woff
 /client/dist/font/.woff2
+/client/dist/img/
+/client/dist/img/.svg
+/client/dist/img/.png
+/client/dist/img/.gif
+/client/dist/img/.jpg
+/client/dist/img/.jpeg
 
 # testing
 /coverage
