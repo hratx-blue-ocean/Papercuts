@@ -33,9 +33,6 @@ const Header = ({ user, title, variant, background }) => {
         </Navbar.Brand>
 
         <Nav className='mr-auto'>
-          <Nav.Link to='/' as={Link} variant={variant}>
-            Home
-          </Nav.Link>
           <NavDropdown title='Book Clubs'>
             <Nav.Link to='/clubs' as={Link} variant={variant}>
               Browse
