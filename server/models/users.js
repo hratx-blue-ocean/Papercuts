@@ -3,82 +3,82 @@ const mongoose = require('mongoose');
 const ThirdPartyProviderSchema = new mongoose.Schema({
   provider_name: {
     type: String,
-    default: null,
+    default: null
   },
   provider_id: {
     type: String,
-    default: null,
+    default: null
   },
   provider_data: {
     type: {},
-    default: null,
-  },
+    default: null
+  }
 });
 
 const UserSchema = new mongoose.Schema(
   {
     username: {
       type: String,
-      default: null,
+      default: null
     },
     email: {
       type: String,
       required: true,
-      unique: true,
+      unique: true
     },
     email_is_verified: {
       type: Boolean,
-      default: false,
+      default: false
     },
     password: {
       type: String,
-      required: true,
+      required: true
     },
     third_party_auth: [ThirdPartyProviderSchema],
     date: {
       type: Date,
-      default: Date.now,
+      default: Date.now
     },
     photoUrl: {
       type: String,
-      default: null,
+      default: null
     },
-    suscriptionTier: {
+    subscriptionTier: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Subscriptions',
+      ref: 'Subscriptions'
     },
     library: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Books',
-      },
+        ref: 'Books'
+      }
     ],
     friends: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Users',
-      },
+        ref: 'Users'
+      }
     ],
     bookPreference: {
-      type: String,
+      type: String
     },
     recommendation: {
       summary: String,
-      description: String,
+      description: String
     },
     bookclubs: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Bookclubs',
-      },
+        ref: 'Bookclubs'
+      }
     ],
     address: {
-      type: String,
+      type: String
     },
     payment: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Payments',
-    },
+      ref: 'Payments'
+    }
   },
   { strict: false }
 );

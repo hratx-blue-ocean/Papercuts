@@ -30,7 +30,12 @@ a:hover {
 }
 
 body {
-  background: linear-gradient(131deg, rgba(205, 221, 244, 1) 0%, rgba(205, 186, 250, 1) 100%);
+  background: linear-gradient(
+    131deg,
+    rgba(205, 221, 244, 1) 0%,
+    rgba(205, 186, 250, 1) 100%
+  );
+  background: linear-gradient(to left, #b067ec, #9e5beb);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -50,7 +55,7 @@ body {
 
 .cc-homePage-topLevelContainer {
   display: flex;
-  flex-direction:row;
+  flex-direction: row;
   padding: 10px;
 }
 
@@ -71,7 +76,7 @@ body {
   margin-right: 20px;
   margin-top: 10px;
   margin-left: 10px;
-  width: 45%
+  width: 45%;
 }
 
 .cc-BOTM {

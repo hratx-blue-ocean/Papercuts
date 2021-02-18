@@ -10,9 +10,9 @@ const specifications = [
       'Personalized selections',
       'No Cancellation Fee',
       'Any-time Pause',
-      'Customer Service from Sean',
+      'Customer Service from Sean'
     ],
-    badges: [],
+    badges: []
   },
   {
     id: 2,
@@ -29,9 +29,9 @@ const specifications = [
       'Unparalleled versatility',
       'Funny Book pictures on your package',
       'Guaranteed seratonin boost',
-      'Not FDA Approved',
+      'Not FDA Approved'
     ],
-    badges: ['Recommended'],
+    badges: ['Recommended']
   },
   {
     id: 3,
@@ -47,16 +47,10 @@ const specifications = [
       'CustomBooker Service from Book',
       'Book Unparalleled Book versatilityBook',
       'Book Book pictures on your Book',
-      'Book Book Book',
-      'Book Book Book',
-      'Book Book Book',
-      'Book Book Book',
-      'Book Book Book',
-      'Book Book Book',
-      'Book Book Book',
+      'FDA Approved'
     ],
-    badges: ['Featured'],
-  },
+    badges: ['Featured']
+  }
 ];
 
 export default specifications;

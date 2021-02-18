@@ -48,7 +48,7 @@ const HomePage = (props) => {
         </div>
         <div className="cc-homePage-rightMainCol">
           <SiteDesc />
-          <LogInSignUp />
+          {/* <LogInSignUp /> */}
           <MonthlySubscr />
         </div>
       </Container>

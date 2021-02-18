@@ -1,0 +1,167 @@
+#profileMain {
+  position: relative;
+  top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#libraryBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  overflow: auto;
+  grid-gap: 5px;
+  margin: 5px 5px 5px 0;
+  max-height: 341px;
+  padding: 0px 0px;
+}
+.bookBody {
+  height: 110px;
+  width: 85px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.bookImage {
+  height: 100%;
+  width: 100%;
+}
+
+.thumbBody {
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 30px;
+  width: 30px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.thumbImage {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.friendsBody {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.friendsImage {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+#myFriends {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 90px;
+  overflow: auto;
+  grid-gap: 5px;
+  margin: 5px 5px 5px 0;
+  max-width: 375px;
+  max-height: 120px;
+}
+
+#userHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#friendsLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* --------------------------------------------- */
+
+h1 {
+  font-size: 18px;
+}
+
+.recommendedBooksContainer {
+}
+
+.recommendedCarousel {
+  width: 70%;
+}
+
+.friend-recommendations {
+  width: 100%;
+  align-items: right;
+}
+
+.recommendation-cards {
+  width: 80%;
+}
+
+.recommendedBooksContainer {
+  display: grid;
+  max-width: 80%;
+  align-self: left;
+  /* grid-template-columns: 25%; */
+  /* background-color: #2196F3; */
+  max-height: 228px;
+  padding: 10px;
+  overflow: hidden;
+  align-content: center;
+  grid-gap: 7px;
+  margin: 5px 5px 5px 5px;
+}
+
+.recommendedBookBody {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* max-height: 110px; */
+  max-width: 100%;
+  margin: 20px;
+  /* font-size: 30px; */
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.recommendedBookImage {
+  height: 110px;
+  width: 85px;
+}
+
+/* ----USER BOOK CLUBS STYLES ---- */
+
+.userClubsHeader {
+  font-style: bold;
+}
+
+.userBookClubsBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 5px 5px 5px 0px;
+  grid-gap: 5px;
+  height: 215px;
+}
+.userBookClubInnerBody {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  height: 105px;
+  width: 135px;
+  border-radius: 5px;
+}
+
+.userBookClubItem {
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+}
+
+.cardStyle {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 900;
+  text-shadow: 3px 2px 3px #000000;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  vertical-align: text-bottom;
+}

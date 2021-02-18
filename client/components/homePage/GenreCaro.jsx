@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Image, Dropdown } from 'react-bootstrap';
+import BookDetail from '../global/BookDetail.jsx';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Image from 'react-bootstrap/Image';
 import dummyData from './dummyData.js';
 
 const GenreCaro = () => {
+  const [show, setShow] = useState(false);
+  const [modalBook, setModalBook] = useState(undefined);
+  const handleShow = () => setShow(true);
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -25,14 +30,24 @@ const GenreCaro = () => {
 
   return (
     <div>
-      Select Genre
+      <Dropdown>
+        <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+          Select Category
+        </Dropdown.Toggle>
+
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-1">Childrens Fiction</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Horror</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Winter Survival</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
       <Carousel
         className='cc-GenreCaro'
         swipeable={false}
         draggable={false}
         showDots={false}
         responsive={responsive}
-        // arrows={true}
+        arrows={true}
         infinite={true}
         keyBoardControl={true}
         customTransition='all .5'
@@ -43,12 +58,26 @@ const GenreCaro = () => {
       >
         {dummyData.map((book, index) => {
           return (
-            <div key={index}>
-              <Image style={{ width: 'auto', height: '200px' }} src={book.imageURL} />
+            <div key={book.isbn10}>
+              <Image
+                style={{ width: 'auto', height: '200px' }} src={book.imageURL}
+                onClick={() => {
+                  setShow(true);
+                  setModalBook(book)}
+                }/>
             </div>
           );
         })}
       </Carousel>
+      <BookDetail
+        // id={modalBook.isbn10 || undefined}
+        owned={false}
+        inLibrary={true}
+        handlePurchase={() => {}}
+        handleAddToLibrary={() => {}}
+        handleClose={() => { setShow(false)}}
+        show={show}
+        book={modalBook}/>
     </div>
   );
 };
