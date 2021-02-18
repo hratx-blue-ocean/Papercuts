@@ -107,19 +107,61 @@ h1 {
   overflow: hidden;
   align-content: center;
   grid-gap: 7px;
-  margin: auto;
+  margin: 5px 5px 5px 5px;
 }
 
 .recommendedBookBody {
   /* background-color: rgba(255, 255, 255, 0.8); */
   /* max-height: 110px; */
-  max-width: 100;
+  max-width: 100%;
   margin: 20px;
   /* font-size: 30px; */
   text-align: center;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .recommendedBookImage {
   height: 110px;
   width: 85px;
+}
+
+/* ----USER BOOK CLUBS STYLES ---- */
+
+.userClubsHeader {
+  font-style: bold;
+}
+
+.userBookClubsBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 5px 5px 5px 0px;
+  grid-gap: 5px;
+  height: 215px;
+}
+.userBookClubInnerBody {
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  height: 105px;
+  width: 135px;
+  border-radius: 5px;
+}
+
+.userBookClubItem {
+  height: 100%;
+  width: 100%;
+  color: #ffffff;
+}
+
+.cardStyle {
+  color: #ffffff;
+  font-size: 21px;
+  font-weight: 900;
+  text-shadow: 3px 2px 3px #000000;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  vertical-align: text-bottom;
 }

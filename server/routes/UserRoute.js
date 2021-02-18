@@ -42,15 +42,17 @@ router.delete('/allfriends', async (req, res) => {
 // @access  Private
 router.post('/friends', async (req, res) => {
   const { userId } = req.body;
-
-  const { friends } = await User.findById(userId)
-    .select('friends')
-    .populate(
-      'friends',
-      'email recommendation friends library bookclubs bookPreference photoUrl username'
-    );
-
-  res.json(friends);
+  try {
+    const { friends } = await User.findById(userId)
+      .select('friends')
+      .populate(
+        'friends',
+        'email recommendation friends library bookclubs bookPreference photoUrl username'
+      );
+    res.json(friends);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 // @desc    Display all users that user is not friends wuth
@@ -62,8 +64,10 @@ router.post('/newfriends', async (req, res) => {
 
   const newfriends = await User.find({
     friends: { $ne: userObj },
-    _id: { $ne: userObj },
-  }).select('-password -third_party_auth -date -token -__v -email_is_verified payment');
+    _id: { $ne: userObj }
+  }).select(
+    '-password -third_party_auth -date -token -__v -email_is_verified payment'
+  );
 
   res.json(newfriends);
 });
@@ -77,10 +81,10 @@ router.post('/friend', async (req, res) => {
   try {
     await User.updateOne(
       {
-        _id: userId,
+        _id: userId
       },
       {
-        $addToSet: { friends: friendId },
+        $addToSet: { friends: friendId }
       }
     );
 
@@ -102,7 +106,7 @@ router.put('/info', async (req, res) => {
     email,
     photoUrl,
     bookPreference,
-    recommendation,
+    recommendation
   } = req.body;
 
   try {
@@ -162,7 +166,9 @@ router.get('/payment', async (req, res) => {
   let { userId } = req.body;
 
   try {
-    const userPayment = await User.findById(userId).populate('payment').select('payment -_id');
+    const userPayment = await User.findById(userId)
+      .populate('payment')
+      .select('payment -_id');
 
     res.json(userPayment);
   } catch (err) {
@@ -180,7 +186,7 @@ router.post('/payment', async (req, res) => {
     const newPayment = await new Payment({
       cardNumber,
       cardHolder,
-      cardExpiredDate,
+      cardExpiredDate
     }).save();
 
     const user = await User.findById(userId);
@@ -258,7 +264,7 @@ router.post('/subscription', async (req, res) => {
     const newSub = await new Subscription({
       name,
       description,
-      voucher,
+      voucher
     }).save();
 
     const user = await User.findById(userId);
@@ -294,7 +300,9 @@ router.get('/book', async (req, res) => {
   let { userId } = req.body;
 
   try {
-    const userBooks = await User.findById(userId).populate('library').select('library');
+    const userBooks = await User.findById(userId)
+      .populate('library')
+      .select('library');
 
     return res.json(userBooks);
   } catch (err) {
@@ -321,12 +329,12 @@ router.post('/book', async (req, res) => {
         isbn,
         image,
         price,
-        category,
+        category
       }).save();
     }
 
     await User.findByIdAndUpdate(userId, {
-      $push: { library: book._id },
+      $push: { library: book._id }
     });
 
     return res.json({ msg: 'Book added successfully' });
@@ -344,16 +352,33 @@ router.post('/review', async (req, res) => {
   try {
     const newReview = await new Review({
       username,
-      comment,
+      comment
     }).save();
 
     await Book.findByIdAndUpdate(bookId, {
-      $push: { reviews: newReview._id },
+      $push: { reviews: newReview._id }
     });
 
     return res.json({ msg: 'Review added successfully' });
   } catch (err) {
     return res.json({ err });
+  }
+});
+
+// @desc    User  get all current user book clubs
+// @route   GET /user/userclubs/:id
+// @access  Private
+router.get('/userclubs/:id', async (req, res) => {
+  try {
+    const club = await Bookclub.findById(req.params.id).populate('_id', [
+      'name',
+      'description',
+      'smallThumbnail'
+    ]);
+
+    res.json(club);
+  } catch (err) {
+    res.status(404).send(err);
   }
 });
 
