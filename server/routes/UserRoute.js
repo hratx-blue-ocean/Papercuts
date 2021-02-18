@@ -295,8 +295,9 @@ router.delete('/subscription', async (req, res) => {
 // @desc    Get all books that the user owns
 // @route   Get /user/book
 // @access  Private
-router.get('/book', async (req, res) => {
-  let { userId } = req.body;
+router.get('/book/:id', async (req, res) => {
+  let userId = req.params.id;
+  console.log(req.body);
 
   try {
     const userBooks = await User.findById(userId)
