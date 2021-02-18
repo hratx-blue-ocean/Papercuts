@@ -6,6 +6,9 @@ import 'react-multi-carousel/lib/styles.css';
 import dummyData from './dummyData.js';
 
 const TrendingCaro = () => {
+  const [show, setShow] = useState(false);
+  const [modalBook, setModalBook] = useState(undefined);
+  const handleShow = () => setShow(true);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -42,16 +45,29 @@ const TrendingCaro = () => {
         dotListClass='custom-dot-list-style'
         itemClass='carousel-item-padding-10-px'
       >
-        {dummyData.map((book, index) => {
+        {dummyData.map((book) => {
           return (
-            <div key={index}>
+            <div key={book.isbn10}>
               <Image
                 style={{ width: 'auto', height: '200px' }}
-                src={book.imageURL}/>
+                src={book.imageURL}
+                onClick={() => {
+                  setShow(true);
+                  setModalBook(book)}
+                } />
             </div>
           );
         })}
       </Carousel>
+      <BookDetail
+        // id={modalBook.isbn10 || undefined}
+        owned={false}
+        inLibrary={true}
+        handlePurchase={() => {}}
+        handleAddToLibrary={() => {}}
+        handleClose={() => { setShow(false)}}
+        show={show}
+        book={modalBook}/>
     </div>
   );
 };

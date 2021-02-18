@@ -4,7 +4,7 @@ import axios from 'axios';
 
 //Props: id from Google books (number), show & owned & inLibrary (boolean), handleClose & handleAddToLibrary & handlePurchase functions
 export default function BookDetail({
-  id,
+  // id,
   inLibrary,
   owned,
   handlePurchase,
@@ -42,7 +42,7 @@ export default function BookDetail({
       <Modal.Body>
         <Row>
           <Col>
-            <Image src={book.image} fluid rounded />
+            <Image src={book.imageURL} fluid rounded />
           </Col>
           <Col>
             <div>by {book.authors.join(', ')}</div>
