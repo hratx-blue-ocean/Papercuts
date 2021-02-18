@@ -11,7 +11,7 @@ require('dotenv').config();
 const app = express();
 const dbURI = `mongodb+srv://jfleming9357:${process.env.MONGO_PASS}@cluster0.v4rli.mongodb.net/papercut?retryWrites=true&w=majority`;
 
-const port = process.env.PORT || 3008;
+const port = process.env.PORT || 3000;
 
 //db connection
 mongoose
