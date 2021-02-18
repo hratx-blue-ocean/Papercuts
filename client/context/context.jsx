@@ -22,11 +22,17 @@ export const AppProvider = ({ children }) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userClubs, setUserClubs] = useState([]);
+  const [usrId, setUsrId] = useState(null);
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
-    getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d'])
+    getUserClubsById([
+      '602bff381017a68f02009b0e',
+      '602d4e35191ce139634c8791',
+      '602d50bc191ce139634c8797',
+      '602d52c3191ce139634c879d'
+    ]);
   }, []);
 
   // Actions
@@ -161,7 +167,9 @@ export const AppProvider = ({ children }) => {
         leaveClubById,
         updateKeyword,
         fuzzyClubSearch,
-        getUserClubsById
+        getUserClubsById,
+        usrId,
+        setUsrId
       }}
     >
       {children}
