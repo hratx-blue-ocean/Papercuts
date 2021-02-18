@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Modal, Image, Button, Table, Badge, Row, Col } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
 
@@ -14,13 +14,7 @@ export default function BookDetail({ id = '0efCDwAAQBAJ', handleClose, show }) {
   // handlePurchase = () => {};
 
   return (
-    <Modal
-      size='lg'
-      show={show}
-      onHide={handleClose}
-      backdrop='static'
-      keyboard={false}
-    >
+    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{book.title}</Modal.Title>
       </Modal.Header>
