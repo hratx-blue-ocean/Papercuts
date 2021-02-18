@@ -123,11 +123,11 @@ router.put('/info', async (req, res) => {
                 if (err) throw err;
 
                 user.password = hash;
-                user.username = username;
-                user.email = email;
-                user.photoUrl = photoUrl;
-                user.bookPreference = bookPreference;
-                user.recommendation = recommendation;
+                user.username = username || user.username;
+                user.email = email || user.email;
+                user.photoUrl = photoUrl || user.photoUrl;
+                user.bookPreference = bookPreference || user.bookPreference;
+                user.recommendation = recommendation || user.recommendation;
 
                 user.save().then((usr) => {
                   return res.json(usr);
@@ -135,7 +135,7 @@ router.put('/info', async (req, res) => {
               });
             });
           } else {
-            return res.json({ msg: 'Wrong password' });
+            return res.status(401).json({ msg: 'Wrong password' });
           }
         });
       } else {

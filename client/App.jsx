@@ -36,10 +36,7 @@ export const App = () => {
     <div id='bodyContainer'>
       <Router>
         <Header user={user} />
-        <main
-          // className='p-0 m-0'
-          style={{ paddingBottom: '150px' }}
-        >
+        <main style={{ paddingBottom: '150px' }}>
           <Container className='p-1 m-1'>
             <Switch>
               <Route exact path='/' />
@@ -52,16 +49,18 @@ export const App = () => {
               </Route>
               <Route path='/subscriptions' component={Subscriptions} />
               <Route path='/checkout' component={Checkout} />
-              <Route path='/setting' component={SettingPage} />
+              <Route path='/setting'>
+                <SettingPage user={user} />
+              </Route>
 
               <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
               <Route component={Error} />
             </Switch>
           </Container>
         </main>
-        <Button variant='primary' onClick={() => setShow(true)}>
+        {/* <Button variant='primary' onClick={() => setShow(true)}>
           Open Example Book Detail Modal
-        </Button>
+        </Button> */}
         <BookDetail
           handleClose={() => {
             setShow(false);
