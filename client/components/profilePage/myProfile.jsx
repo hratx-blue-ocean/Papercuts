@@ -11,7 +11,13 @@ import AuthContext from '../../context/authContext.jsx';
 export default function myFriends({user = {friends:[]}}) {
   const currentUser = {
     username: 'bookwormboy85',
-    friends: [{username: 'Josh'},{username: 'Maddy'}, {username: 'Spencer'},{username: 'Abe'},{username: 'Jeffrey'}],
+    friends: [
+      { username: 'Josh' },
+      { username: 'Maddy' },
+      { username: 'Spencer' },
+      { username: 'Abe' },
+      { username: 'Jeffrey' }
+    ],
     subscription: 'platinum subscription'
   }
   const [allUsersShow, setAllUsersShow] = useState(false);
@@ -25,7 +31,7 @@ export default function myFriends({user = {friends:[]}}) {
     })
   },[])
 
-  return(
+  return (
     <div id='myProfile'>
       <div id='userHeader'>
         <div>{user.username}</div>
@@ -53,6 +59,5 @@ export default function myFriends({user = {friends:[]}}) {
       <FriendRecommendations friendsList = {friendsList}/>
       <UserBookClubs user = {user}/>
     </div>
-  )
-
+  );
 }

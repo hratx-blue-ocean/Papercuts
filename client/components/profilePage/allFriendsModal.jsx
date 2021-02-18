@@ -15,7 +15,7 @@ export default function AllFriends({
       <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
+    <Modal size='lg' show={show} onHide={handleClose} keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>All Friends</Modal.Title>
       </Modal.Header>
