@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Container, Image, Button, Cards } from 'react-bootstrap';
 import dummyData from "./dummyData.js";
 
-const BOTM = () => {
+const Bookofthemonth = () => {
 // OPTION 1: FLEX
   return (
     <Container className="cc-BOTM">
@@ -39,4 +39,4 @@ const BOTM = () => {
 
 }
 
-export default BOTM;
+export default Bookofthemonth;
