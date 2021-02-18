@@ -97,6 +97,11 @@ export default function RecommendedBooks() {
         swipeable={true}
         draggable={true}
         showDots={true}
+        ssr={true}
+        infinite={true}
+        itemClass='carousel-item-padding-40-px'
+        autoPlay={true}
+        autoPlaySpeed={5000}
         // renderButtonGroupOutside={true}
       >
         <img

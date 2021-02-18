@@ -80,9 +80,6 @@ h1 {
   font-size: 18px;
 }
 
-.recommendedBooksContainer {
-}
-
 .recommendedCarousel {
   width: 70%;
 }
@@ -98,14 +95,13 @@ h1 {
 
 .recommendedBooksContainer {
   display: grid;
-  max-width: 80%;
-  align-self: left;
+  max-width: 100%;
+  align-items: left;
   /* grid-template-columns: 25%; */
   /* background-color: #2196F3; */
-  max-height: 228px;
+  /* max-height: 228px; */
   padding: 10px;
   overflow: hidden;
-  align-content: center;
   grid-gap: 7px;
   margin: 5px 5px 5px 5px;
 }
@@ -113,17 +109,19 @@ h1 {
 .recommendedBookBody {
   /* background-color: rgba(255, 255, 255, 0.8); */
   /* max-height: 110px; */
-  max-width: 100%;
+  position: relative;
+  max-width: 120%;
   margin: 20px;
   /* font-size: 30px; */
-  text-align: center;
+  text-align: left;
   border-radius: 5px;
-  padding: 5px;
+  left: 110%;
 }
 
 .recommendedBookImage {
-  height: 110px;
-  width: 85px;
+  height: 175px;
+  width: 135px;
+  padding: 20px;
 }
 
 /* ----USER BOOK CLUBS STYLES ---- */
