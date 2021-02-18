@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { Image } from 'react-bootstrap';
+import BookDetail from '../global/BookDetail.jsx';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import Image from 'react-bootstrap/Image';
 import dummyData from './dummyData.js';
 
 const TrendingCaro = () => {
+  const [show, setShow] = useState(false);
+  const [modalBook, setModalBook] = useState(undefined);
+  const handleShow = () => setShow(true);
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -43,12 +48,27 @@ const TrendingCaro = () => {
       >
         {dummyData.map((book, index) => {
           return (
-            <div key={index}>
-              <Image style={{ width: 'auto', height: '200px' }} src={book.imageURL} />
+            <div key={book.isbn10}>
+              <Image
+                style={{ width: 'auto', height: '200px' }}
+                src={book.imageURL}
+                onClick={() => {
+                  setShow(true);
+                  setModalBook(book)}
+                } />
             </div>
           );
         })}
       </Carousel>
+      <BookDetail
+        // id={modalBook.isbn10 || undefined}
+        owned={false}
+        inLibrary={true}
+        handlePurchase={() => {}}
+        handleAddToLibrary={() => {}}
+        handleClose={() => { setShow(false)}}
+        show={show}
+        book={modalBook}/>
     </div>
   );
 };
