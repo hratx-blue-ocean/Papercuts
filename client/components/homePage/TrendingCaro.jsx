@@ -9,6 +9,7 @@ const TrendingCaro = () => {
   const [show, setShow] = useState(false);
   const [modalBook, setModalBook] = useState(undefined);
   const handleShow = () => setShow(true);
+
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -45,7 +46,7 @@ const TrendingCaro = () => {
         dotListClass='custom-dot-list-style'
         itemClass='carousel-item-padding-10-px'
       >
-        {dummyData.map((book) => {
+        {dummyData.map((book, index) => {
           return (
             <div key={book.isbn10}>
               <Image
