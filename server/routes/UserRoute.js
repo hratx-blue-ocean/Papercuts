@@ -62,8 +62,10 @@ router.post('/newfriends', async (req, res) => {
 
   const newfriends = await User.find({
     friends: { $ne: userObj },
-    _id: { $ne: userObj },
-  }).select('-password -third_party_auth -date -token -__v -email_is_verified payment');
+    _id: { $ne: userObj }
+  }).select(
+    '-password -third_party_auth -date -token -__v -email_is_verified payment'
+  );
 
   res.json(newfriends);
 });
@@ -77,10 +79,10 @@ router.post('/friend', async (req, res) => {
   try {
     await User.updateOne(
       {
-        _id: userId,
+        _id: userId
       },
       {
-        $addToSet: { friends: friendId },
+        $addToSet: { friends: friendId }
       }
     );
 
@@ -102,7 +104,7 @@ router.put('/info', async (req, res) => {
     email,
     photoUrl,
     bookPreference,
-    recommendation,
+    recommendation
   } = req.body;
 
   try {
@@ -162,7 +164,9 @@ router.get('/payment', async (req, res) => {
   let { userId } = req.body;
 
   try {
-    const userPayment = await User.findById(userId).populate('payment').select('payment -_id');
+    const userPayment = await User.findById(userId)
+      .populate('payment')
+      .select('payment -_id');
 
     res.json(userPayment);
   } catch (err) {
@@ -175,12 +179,12 @@ router.get('/payment', async (req, res) => {
 // @access  Private
 router.post('/payment', async (req, res) => {
   let { userId, cardNumber, cardHolder, cardExpiredDate } = req.body;
-
+  console.log(req.body);
   try {
     const newPayment = await new Payment({
       cardNumber,
       cardHolder,
-      cardExpiredDate,
+      cardExpiredDate
     }).save();
 
     const user = await User.findById(userId);
@@ -258,11 +262,11 @@ router.post('/subscription', async (req, res) => {
     const newSub = await new Subscription({
       name,
       description,
-      voucher,
+      voucher
     }).save();
 
     const user = await User.findById(userId);
-    user.suscriptionTier = newSub._id;
+    user.subscriptionTier = newSub._id;
     await user.save();
 
     return res.json({ msg: 'Sub added' });
@@ -294,7 +298,9 @@ router.get('/book', async (req, res) => {
   let { userId } = req.body;
 
   try {
-    const userBooks = await User.findById(userId).populate('library').select('library');
+    const userBooks = await User.findById(userId)
+      .populate('library')
+      .select('library');
 
     return res.json(userBooks);
   } catch (err) {
@@ -321,12 +327,12 @@ router.post('/book', async (req, res) => {
         isbn,
         image,
         price,
-        category,
+        category
       }).save();
     }
 
     await User.findByIdAndUpdate(userId, {
-      $push: { library: book._id },
+      $push: { library: book._id }
     });
 
     return res.json({ msg: 'Book added successfully' });
@@ -344,11 +350,11 @@ router.post('/review', async (req, res) => {
   try {
     const newReview = await new Review({
       username,
-      comment,
+      comment
     }).save();
 
     await Book.findByIdAndUpdate(bookId, {
-      $push: { reviews: newReview._id },
+      $push: { reviews: newReview._id }
     });
 
     return res.json({ msg: 'Review added successfully' });

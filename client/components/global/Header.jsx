@@ -17,6 +17,7 @@ import search from '../../assets/images/search.svg';
 // style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
 
 const Header = ({ user, title, variant, background }) => {
+  console.log(user);
   return (
     <Navbar className='nav' bg={background} sticky='top'>
       <Container style={{ maxWidth: '100vw' }}>
@@ -36,14 +37,8 @@ const Header = ({ user, title, variant, background }) => {
               Create a Book Club
             </Nav.Link>
           </NavDropdown>
-          {user ? (
-            user.suscriptionTier ? (
-              <></>
-            ) : (
-              <Nav.Link as={Link} to='/subscriptions' variant={variant}>
-                Subscriptions
-              </Nav.Link>
-            )
+          {user && user.subscriptionTier ? (
+            <></>
           ) : (
             <Nav.Link as={Link} to='/subscriptions' variant={variant}>
               Subscriptions

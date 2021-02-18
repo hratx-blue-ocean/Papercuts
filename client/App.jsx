@@ -69,15 +69,6 @@ export const App = () => {
             </Switch>
           </Container>
         </main>
-        {/* <Button variant='primary' onClick={() => setShow(true)}>
-          Open Example Book Detail Modal
-        </Button> */}
-        <BookDetail
-          handleClose={() => {
-            setShow(false);
-          }}
-          show={show}
-        />
         <NewFooter />
       </Router>
     </div>
