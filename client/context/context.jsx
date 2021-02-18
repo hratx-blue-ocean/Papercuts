@@ -22,6 +22,8 @@ export const AppProvider = ({ children }) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userClubs, setUserClubs] = useState([]);
+  const [trendingBooks, setTrendingBooks] = useState([]);
+  const [trendingGenres, setTrendingGenres] = useState([]);
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
@@ -139,6 +141,16 @@ export const AppProvider = ({ children }) => {
       setError(err.response.data.error);
     }
   };
+
+  // Get top books from select NYT Best Sellers lists
+  async function getTrendingBooks(lists) => {
+    const topBooks = [];
+    try {
+      lists.map(async (list) => {
+        const listTop = await axios.get(`user/`)
+      })
+    }
+  }
 
   return (
     <AppContext.Provider
