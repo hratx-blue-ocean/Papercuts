@@ -5,13 +5,13 @@ require('dotenv').config();
 // @desc    Retrieve top books from selected lists
 // @route   GET /book/bestsellers
 // @access  Public
-router.get('/bestsellers', async(req, res) => {
+router.get('/bestsellers', async (req, res) => {
   const key = process.env.NYT_KEY;
   const { list } = req.query;
-
   try {
-    const bestSeller = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`);
-
+    const bestSeller = await axios.get(
+      `https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`
+    );
     res.json(bestSeller.data);
   } catch (err) {
     res.status(404).send(err);
@@ -26,8 +26,9 @@ router.get('/trending', async(req, res) => {
   const { isbn } = req.query;
 
   try {
-    const book = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${key}`);
-
+    const book = await axios.get(
+      `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${key}`
+    );
 
     res.json(book.data);
   } catch (err) {

@@ -35,6 +35,7 @@ export const AppProvider = ({ children }) => {
     ]);
   }, []);
 
+
   // Actions
   // Get all bookclubs
   async function getClubs() {
