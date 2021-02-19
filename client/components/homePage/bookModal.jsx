@@ -3,7 +3,7 @@ import { Modal, Image, Button, Row, Col } from 'react-bootstrap';
 
 //Props: id from Google books (number), show & owned & inLibrary (boolean), handleClose & handleAddToLibrary & handlePurchase functions
 export default function BookModal({ book, show, setShow }) {
-  console.log('waht is clicked book', book)
+ 
   return (
     <Modal size='lg' show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>

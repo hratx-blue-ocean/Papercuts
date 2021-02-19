@@ -5,7 +5,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 
-const BookCarosel = ({books, setModalBook, setShow}) => {
+const BookCarousel = ({books, setModalBook, setShow}) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -47,4 +47,4 @@ const BookCarosel = ({books, setModalBook, setShow}) => {
     </div>
   );
 };
-export default BookCarosel;
+export default BookCarousel;

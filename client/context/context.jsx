@@ -24,19 +24,6 @@ export const AppProvider = ({ children }) => {
     ]);
   }, []);
 
-  // actions for get all the trending books
-  async function getAllTrendingBooks () {
-    try{
-      const res = await axios.get('/book/bestsellers?list=trade-fiction-paperback')
-      console.log(res.data)
-      setTradeFiction(res.data)
-    } catch (err) {
-      setError(err.response)
-    }
-  }
-
-
-
 
   // Actions
   // Get all bookclubs
@@ -146,10 +133,6 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-<<<<<<< HEAD
-        tradeFiction,
-=======
->>>>>>> 959330ae1192c3ea3bbe4fd810730ca1eb066eb5
         club,
         clubs,
         keyword,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import BookCarosel from './booksCarosel.jsx'
+import BookCarousel from './booksCarousel.jsx'
 import BookModal from './bookModal.jsx';
 
 const Books = () => {
@@ -38,22 +38,22 @@ axios.get('/book/bestsellers?list=young-adult').then(res => {
   return (
     <div>
       <p>Best NY times seller fictions</p>      
-      <BookCarosel books={trendFiction} setModalBook={setBook} setShow={setShow} />
+      <BookCarousel books={trendFiction} setModalBook={setBook} setShow={setShow} />
 
       <p>More trade fictions</p>      
-      <BookCarosel books={moreFiction} setModalBook={setBook} setShow={setShow} />
+      <BookCarousel books={moreFiction} setModalBook={setBook} setShow={setShow} />
 
       <p>Current trending non-fictions</p>
-      <BookCarosel books={nonFiction} setModalBook={setBook} setShow={setShow}/>
+      <BookCarousel books={nonFiction} setModalBook={setBook} setShow={setShow}/>
 
       <p>Popular yound Adults</p>
-      <BookCarosel books={youngAdult} setModalBook={setBook} setShow={setShow} />
+      <BookCarousel books={youngAdult} setModalBook={setBook} setShow={setShow} />
 
       <p>explore manga</p>      
-      <BookCarosel books={manga} setModalBook={setBook} setShow={setShow} />
+      <BookCarousel books={manga} setModalBook={setBook} setShow={setShow} />
 
       <p>Top pick series books for children</p>   
-      <BookCarosel books={seriesBooks} setModalBook={setBook} setShow={setShow} />
+      <BookCarousel books={seriesBooks} setModalBook={setBook} setShow={setShow} />
 
       <BookModal book={book} show={show} setShow={setShow}/>
     </div>
