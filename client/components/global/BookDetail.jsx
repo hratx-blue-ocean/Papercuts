@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, Image, Button, Table, Badge, Spinner, Row, Col } from 'react-bootstrap';
+import {
+  Modal,
+  Image,
+  Button,
+  Table,
+  Badge,
+  Spinner,
+  Row,
+  Col
+} from 'react-bootstrap';
 import axios from 'axios';
 
 //Props: id from Google books (number), show & owned & inLibrary (boolean), handleClose & handleAddToLibrary & handlePurchase functions
 export default function BookDetail({
-  id,
+  // id,
   inLibrary,
   owned,
   handlePurchase,
   handleAddToLibrary,
   handleClose,
   show,
-  book,
+  book
 }) {
   // const [data, setData] = useState({});
 
@@ -35,20 +44,26 @@ export default function BookDetail({
       <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
+    <Modal
+      size='lg'
+      show={show}
+      onHide={handleClose}
+      backdrop='static'
+      keyboard={false}
+    >
       <Modal.Header closeButton>
         <Modal.Title>{book.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Row>
           <Col>
-            <Image src={book.image} fluid rounded />
+            <Image src={book.imageURL} fluid rounded />
           </Col>
           <Col>
             <div>by {book.authors.join(', ')}</div>
             <p>{book.price}</p>
-            <br/>
-            <br/>
+            <br />
+            <br />
             <p>{book.description}</p>
             {/* <Table size='sm' striped bordered variant='light'>
               <tbody>
@@ -89,7 +104,11 @@ export default function BookDetail({
         <Button variant='secondary' onClick={handleClose}>
           Close
         </Button>
-        <Button variant='primary' onClick={handleAddToLibrary} disabled={inLibrary}>
+        <Button
+          variant='primary'
+          onClick={handleAddToLibrary}
+          disabled={inLibrary}
+        >
           {'Add to Library'}
         </Button>
         <Button variant='primary' onClick={handlePurchase} disabled={owned}>

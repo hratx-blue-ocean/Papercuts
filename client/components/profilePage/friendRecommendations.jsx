@@ -1,32 +1,40 @@
-import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Card, Col, Row, Accordion, Button } from 'react-bootstrap';
 
-export default function FriendRecommendations({user}) {
-
+export default function FriendRecommendations({ friendsList }) {
+  const reviewList = friendsList;
 
   return (
-
     <div>
       <Row>
-        <Col>
-        <p>What friends are recommending</p>
-        </Col>
+        <div
+          style={{ fontSize: '23px' }}
+          className='userClubsHeader font-weight-bold'
+        >
+          Friends recommendations
+        </div>
       </Row>
-      <Row>
-        <Col>
-          <Card className="recommendation-cards">
-            <p>Yo! This Dr. Seuss Book is quite the masterpiece! Never knew I was so gifted in selecting books!</p>
-            <p>Jerrick Ravelo</p>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card className="recommendation-cards">
-            <p>Jason Fleming recommends...</p>
-          </Card>
-        </Col>
-      </Row>
+
+      <Accordion defaultActiveKey='0'>
+        {reviewList.length > 0 &&
+          reviewList.map((friend, i) => {
+            return (
+              <Card key={friend._id}>
+                <Card.Header>
+                  <Accordion.Toggle as={Button} variant='link' eventKey={i + 1}>
+                    {friend.username} recommends...
+                  </Accordion.Toggle>
+                </Card.Header>
+                <Accordion.Collapse eventKey={i + 1}>
+                  <Card.Body>
+                    {friend.recommendation.summary} <br />
+                    {friend.recommendation.description}
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            );
+          })}
+      </Accordion>
     </div>
-  )
+  );
 }

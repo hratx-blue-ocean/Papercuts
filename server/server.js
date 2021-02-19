@@ -5,6 +5,7 @@ const MongoStore = require('connect-mongo')(session);
 const mongoose = require('mongoose');
 const expressStaticGzip = require('express-static-gzip');
 const passport = require('./passport/setup.js');
+const Subscription = require('./models/subscription');
 require('dotenv').config();
 
 //Vars
@@ -37,13 +38,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/test', (req, res) => {
-  let { main } = req.body;
-  console.log(main);
-
-  res.json({ msg: 'LOLOL' });
-});
-
 // Routes
 app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
@@ -69,7 +63,16 @@ const isAuthenticated = (req, res, next) => {
 
 app.get('/checkauth', isAuthenticated, function (req, res) {
   delete req.user._doc.password;
-  res.status(200).send(req.user);
+  Subscription.findOne({ _id: req.user.subscriptionTier })
+    .then((subscription) => {
+      req.user._doc.subscription = subscription;
+      console.log(req.user);
+      res.status(200).send(req.user);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(200).send(req.user);
+    });
 });
 
 app.get('*', function (req, res) {

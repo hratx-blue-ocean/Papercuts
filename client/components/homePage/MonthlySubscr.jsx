@@ -23,16 +23,11 @@ const MonthlySubscr = (props) => {
         className="cc-MonthlySubsc-Button"
         variant="dark"
         margin="5px"
-        padding="5px">
-        Start Free Trial
+        padding="5px"
+        block
+        href="/subscriptions">
+        See Subscription Tiers
       </Button>{'   '}
-      <Button
-        className="cc-MonthlySubsc-Button"
-        variant="dark"
-        margin="5px"
-        padding="5px">
-        Compare Plans
-      </Button>
       </div>
   )
 

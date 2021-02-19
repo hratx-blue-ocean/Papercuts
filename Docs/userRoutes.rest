@@ -6,6 +6,7 @@
 @chris = 602be49f26e7f146247321ca
 @shinan = 602be4b126e7f146247321cd
 @cayla = 602be52e26e7f146247321cf
+@jerrick = 602be4b626e7f146247321ce
 
 
 ### Get all users
@@ -34,7 +35,7 @@ Content-Type: application/json
 
 {
     "userId":"{{matthew}}",
-    "friendId":"{{jason}}"
+    "friendId":"{{chris}}"
 }
 
 
@@ -138,4 +139,12 @@ Content-Type: application/json
     "image":"https://media2.s-nbcnews.com/i/newscms/2020_26/3155921/191219-j-k-rowling-2018-ac-845p_b96cd21ada5eec6c9ff8b9ff33920b0f.jpg",
     "price":50,
     "category":"fiction"
+}
+
+### Get all bookclubs that user is in
+GET {{baseUrl}}/user/bookclubs
+Content-Type: application/json
+
+{
+    "userId":"602be49226e7f146247321c8"
 }
