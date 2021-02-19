@@ -5,7 +5,7 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [book, setBook] = useState({});
+  const [tradeFiction, setTradeFiction] = useState([]);
   const [club, setClub] = useState({});
   const [event, setEvent] = useState({});
   const [questionnaire, setQuestionnaire] = useState({});
@@ -26,8 +26,23 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
+    // getAllTrendingBooks();
     getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d'])
   }, []);
+
+  // actions for get all the trending books
+  async function getAllTrendingBooks () {
+    try{
+      const res = await axios.get('/book/bestsellers?list=trade-fiction-paperback')
+      console.log(res.data)
+      setTradeFiction(res.data)
+    } catch (err) {
+      setError(err.response)
+    }
+  }
+
+
+
 
   // Actions
   // Get all bookclubs
@@ -137,7 +152,7 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        book,
+        tradeFiction,
         club,
         event,
         questionnaire,
