@@ -149,11 +149,15 @@ export const AppProvider = ({ children }) => {
       lists.map(async (currentList) => {
         // console.log('currentList: ', currentList)
         const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
+        // console.log('topBooks: ', topBooks)
         const currentIsbn = topBooks.data.results.books[0].primary_isbn10;
+        console.log(currentIsbn);
 
         const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }})
+        // console.log('Google response: ', book.data.items[0])
         bestSellers.push(book.data.items[0]);
       });
+      console.log('bestSellers: ', bestSellers);
 
       setTrendingBooks(bestSellers);
     } catch (err) {
