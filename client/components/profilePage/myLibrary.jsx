@@ -7,37 +7,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import inLibraryMark from './book.png';
 
 export default function myLibrary({ user }) {
-  // const books =
-  // [{
-  //     title: 'Green Eggs & Ham',
-  //     authors: ['Dr. Seuss'],
-  //     isbn: 7891036757892,
-  //     description: 'I do not like my green eggs & ham, Sam I am',
-  //     isbn: '9780375850967',
-  //     image:
-  //       'http://books.google.com/books/content?id=h7w4DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-  //     price: '$13.99',
-  //     category: 'Juvenile Fiction',
-  //     rating: 3,
-  //     ratingCount: 11,
-  //     datePurchased: '11/30/2021',
-  //   },
-  //   {
-  //     title: 'One Fish, Two Fish',
-  //     authors: ['Dr. Seuss'],
-  //     isbn: 7891036457892,
-  //     description: 'One Fish, Two Fish, Red Fish, Blue Fish',
-  //     isbn: '5760375843767',
-  //     image:
-  //       'http://books.google.com/books/content?id=067xAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
-  //     price: '$19.99',
-  //     category: 'Juvenile Fiction',
-  //     rating: 5,
-  //     ratingCount: 7,
-  //     datePurchased: '02/15/2021',
-  //   },
-  // ];
-
   const [booksOwned, setBooksOwned] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [clickedBook, setClickedBook] = useState();

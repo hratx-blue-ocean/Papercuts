@@ -13,23 +13,6 @@ export default function BookDetail({
   show,
   book
 }) {
-  // const [data, setData] = useState({});
-
-  //Temporary test constants
-  // id = '0efCDwAAQBAJ';
-  // owned = false;
-  // inLibrary = true;
-  // handlePurchase = () => {};
-  // handleAddToLibrary = () => {};
-
-  //Temporary fetch from Google Books, will need to replaced by our own server proxy route
-  // useEffect(async () => {
-  //   let info = await axios.get(
-  //     `https://www.googleapis.com/books/v1/volumes/${id}?key=${'AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY'}`
-  //   );
-  //   setData(info.data);
-  // }, []);
-  console.log(book);
   return book === undefined ? (
     <Spinner animation='border' role='status'>
       <span className='sr-only'>Loading...</span>
