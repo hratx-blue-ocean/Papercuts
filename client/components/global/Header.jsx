@@ -12,22 +12,27 @@ import {
 } from 'react-bootstrap';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
-import search from '../../assets/images/search.svg';
+import logo from '../../../Docs/readMeImage/logo.png';
 
 // style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
 
 const Header = ({ user, title, variant, background }) => {
+  const scale = 5;
+
   return (
-    <Navbar className='nav' bg={background} sticky='top'>
+    <Navbar className='nav font-weight-light font-lg' bg={background} sticky='top'>
       <Container style={{ maxWidth: '100vw' }}>
-        <Navbar.Brand to='/' as={Link} variant={variant}>
-          <strong className='font-weight-bold'>{title}</strong>
+        <Navbar.Brand to='/' as={Link}>
+          <img
+            alt='logo image'
+            src={logo}
+            width={`${1451 / scale}`}
+            height={`${308 / scale}`}
+            className='d-inline-block align-top'
+          />{' '}
         </Navbar.Brand>
 
         <Nav className='mr-auto'>
-          <Nav.Link to='/' as={Link} variant={variant}>
-            Home
-          </Nav.Link>
           <NavDropdown title='Book Clubs'>
             <Nav.Link to='/clubs' as={Link} variant={variant}>
               Browse
@@ -62,18 +67,14 @@ const Header = ({ user, title, variant, background }) => {
             </Nav.Link>
           )}
         </Nav>
-
-        <Form className='ml-auto' inline>
-          <Form.Control type='text' placeholder='Search' className='mr-sm-2' />
-          <Button variant='outline-info'>
+        {/* <Button variant='outline-info'>
             <Image
               src={search}
               style={{ width: '40px', height: '40px', color: 'red' }}
               className='d-inline-block align-top'
               alt='Search Icon'
             />
-          </Button>
-        </Form>
+          </Button> */}
       </Container>
     </Navbar>
   );

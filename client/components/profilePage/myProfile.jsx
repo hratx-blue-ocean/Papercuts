@@ -1,74 +1,66 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import image1 from './avatar1.png';
+
 import FriendRecommendations from './friendRecommendations.jsx';
 import UserBookClubs from './userBookClubs.jsx';
 import AllUsersModal from './allUsersModal.jsx';
 import AllFriendsModal from './allFriendsModal.jsx';
-import { Button, ListGroup, Container } from 'react-bootstrap';
-import AuthContext from '../../context/authContext.jsx';
+import { Row, Col } from 'react-bootstrap';
+import { AuthContext } from '../../context/authContext.jsx';
 
-export default function myFriends({ user = { friends: [] } }) {
-  const currentUser = {
-    username: 'bookwormboy85',
-    friends: [
-      { username: 'Josh' },
-      { username: 'Maddy' },
-      { username: 'Spencer' },
-      { username: 'Abe' },
-      { username: 'Jeffrey' }
-    ],
-    subscription: 'platinum subscription'
-  };
+export default function myFriends() {
+  const user = useContext(AuthContext);
   const [allUsersShow, setAllUsersShow] = useState(false);
   const [allFriendsShow, setAllFriendsShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
 
   useEffect(() => {
-    axios.post('/user/friends', { userId: user._id }).then((friends) => {
-      if (Array.isArray(friends.data)) setFriendsList(friends.data);
-    });
+    if (user) {
+      axios.post('/user/friends', { userId: user._id }).then((friends) => {
+        setFriendsList(friends.data);
+      });
+    }
   }, [user]);
 
-  return (
+  return !user ? (
+    <p></p>
+  ) : (
     <div id='myProfile'>
       <div id='userHeader'>
-        <div>{user.username}</div>
-        <div>{currentUser.subscription}</div>
+        <h4>{user.username}</h4>
+        {user.subscriptionTier && (
+          <div className='btn btn-outline-secondary'>{user.subscriptionTier}</div>
+        )}
       </div>
-      <div id='friendsLinks'>
-        <a>Friends</a>
-        <a
-          variant='primary'
-          onClick={() => {
-            setAllUsersShow(true);
-          }}
-        >
-          Find Friends
-        </a>
-        <AllUsersModal
-          handleClose={() => {
-            setAllUsersShow(false);
-          }}
-          show={allUsersShow}
-          user={user}
-        />
-        <a
-          variant='primary'
-          onClick={() => {
-            setAllFriendsShow(true);
-          }}
-        >
-          View All Friends
-        </a>
-        <AllFriendsModal
-          handleClose={() => {
-            setAllFriendsShow(false);
-          }}
-          show={allFriendsShow}
-          friendsList={friendsList}
-        />
-      </div>
+      <br />
+      <br />
+      <Row>
+        <Col xs={5}>
+          <h4>Friends</h4>
+        </Col>
+        <Col>
+          <a
+            variant='primary'
+            onClick={() => {
+              setAllUsersShow(true);
+            }}
+          >
+            Find Friends
+          </a>{' '}
+          &gt;
+        </Col>
+        <Col>
+          <a
+            variant='primary'
+            onClick={() => {
+              setAllFriendsShow(true);
+            }}
+          >
+            View All Friends
+          </a>{' '}
+          &gt;
+        </Col>
+      </Row>
       <div id='myFriends'>
         {friendsList.length > 0 &&
           friendsList.map((friend) => {
@@ -82,8 +74,25 @@ export default function myFriends({ user = { friends: [] } }) {
             );
           })}
       </div>
+      <br /> <br />
       <FriendRecommendations friendsList={friendsList} />
+      <br /> <br />
       <UserBookClubs user={user} />
+      {/* Modals */}
+      <AllUsersModal
+        handleClose={() => {
+          setAllUsersShow(false);
+        }}
+        show={allUsersShow}
+        user={user}
+      />
+      <AllFriendsModal
+        handleClose={() => {
+          setAllFriendsShow(false);
+        }}
+        show={allFriendsShow}
+        friendsList={friendsList}
+      />
     </div>
   );
 }

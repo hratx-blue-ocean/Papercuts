@@ -38,13 +38,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/test', (req, res) => {
-  let { main } = req.body;
-  console.log(main);
-
-  res.json({ msg: 'LOLOL' });
-});
-
 // Routes
 app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
