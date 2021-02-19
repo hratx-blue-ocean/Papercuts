@@ -4,15 +4,15 @@ import { AppContext } from '../../context/context.jsx';
 import { AuthContext } from '../../context/authContext.jsx';
 import Loader from './Loader.jsx';
 
-//Props: id from Google books (number), show & owned (boolean), handleClose & handlePurchase functions
-export default function BookDetail({ isbn = '082343978X', handleClose, show }) {
+//Accepts only a googleId, handleClose function and show boolean.
+export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose, show }) {
   const user = useContext(AuthContext);
   const { getBookDetails, book, purchaseBook } = useContext(AppContext);
-
+  console.log(user);
   useEffect(() => {
-    getBookDetails(isbn);
-  }, [isbn]);
-  console.log(book);
+    getBookDetails(googleId);
+  }, [googleId]);
+
   return !book.volumeInfo ? (
     <Loader />
   ) : (
@@ -23,7 +23,11 @@ export default function BookDetail({ isbn = '082343978X', handleClose, show }) {
       <Modal.Body>
         <Row>
           <Col>
-            <Image src={book.volumeInfo.imageLinks.thumbnail} fluid rounded />
+            <Image
+              src={book.volumeInfo.imageLinks.large || 'https://i.imgur.com/sJ3CT4V.gif'}
+              fluid
+              rounded
+            />
           </Col>
           <Col>
             <div>by {book.volumeInfo.authors.join(', ')}</div>
@@ -33,25 +37,25 @@ export default function BookDetail({ isbn = '082343978X', handleClose, show }) {
               <tbody>
                 <tr>
                   <td>Publisher</td>
-                  <td colSpan='2'>{book.volumeInfo.publisher || ''}</td>
+                  <td colSpan='1'>{book.volumeInfo.publisher || 'Not Available'}</td>
                 </tr>
                 <tr>
                   <td>Published Date</td>
-                  <td colSpan='2'>{book.volumeInfo.publishedDate || ''}</td>
+                  <td colSpan='1'>{book.volumeInfo.publishedDate || 'Not Available'}</td>
                 </tr>
                 <tr>
                   <td>Language</td>
-                  <td colSpan='2'>{book.volumeInfo.language || ''}</td>
+                  <td colSpan='1'>{book.volumeInfo.language || 'Not Available'}</td>
                 </tr>
                 <tr>
                   <td>Price</td>
-                  <td colSpan='2'>{`$${
-                    book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : ''
+                  <td colSpan='1'>{`$${
+                    book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : 'Not for Sale'
                   }`}</td>
                 </tr>
                 <tr>
                   <td>Tags</td>
-                  <td colSpan='2'>
+                  <td colSpan='1'>
                     {book.volumeInfo.categories.map((category, idx) => (
                       <React.Fragment key={idx}>
                         <Badge pill variant='light'>

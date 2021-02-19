@@ -135,7 +135,7 @@ Content-Type: application/json
     "userId":"{{jason}}",
     "title":"Harry Potter",
     "authors":"JK Rowling",
-    "isbn":525,
+    "googleId":"hyGODQAAQBAJ",
     "image":"https://media2.s-nbcnews.com/i/newscms/2020_26/3155921/191219-j-k-rowling-2018-ac-845p_b96cd21ada5eec6c9ff8b9ff33920b0f.jpg",
     "price":50,
     "category":"fiction"

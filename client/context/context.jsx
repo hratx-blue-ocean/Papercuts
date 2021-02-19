@@ -131,9 +131,9 @@ export const AppProvider = ({ children }) => {
   };
 
   // Get one book's details from external API
-  const getBookDetails = async (isbn) => {
+  const getBookDetails = async (googleId) => {
     try {
-      let response = await axios.get(`book/details/${isbn}`);
+      let response = await axios.get(`book/details/${googleId}`);
       setBook(response.data);
     } catch (err) {
       setError(err.response.data.error);
@@ -146,11 +146,11 @@ export const AppProvider = ({ children }) => {
         .post('user/book', {
           userId,
           title: book.volumeInfo.title,
-          authors: book.volumeInfo.authors.join(', '),
-          isbn: book.volumeInfo.industryIdentifiers[0].identifier, //may not always be true
-          image: book.volumeInfo.imageLinks.thumbnail, //may need to change this
-          price: null,
-          category: book.volumeInfo.categories[0] //what if there is multiple
+          authors: book.volumeInfo.authors,
+          googleId: book.id,
+          image: book.volumeInfo.imageLinks.large,
+          price: book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : null,
+          category: book.volumeInfo.categories
         })
         .then((res) => console.log(res));
     } catch (err) {
