@@ -71,12 +71,13 @@ const GenreCaro = () => {
           );
         })}
       </Carousel>
-      <BookDetail
-        handleClose={() => {
-          setShow(false);
-        }}
-        show={show}
-      />
+      {show && (
+        <BookDetail
+          handleClose={() => {
+            setShow(false);
+          }}
+        />
+      )}
     </div>
   );
 };

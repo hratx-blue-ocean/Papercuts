@@ -5,12 +5,14 @@ import { AuthContext } from '../../context/authContext.jsx';
 import Loader from './Loader.jsx';
 
 //Accepts only a googleId, handleClose function and show boolean.
-export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose, show }) {
+export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose }) {
   const user = useContext(AuthContext);
   const { getBookDetails, book, purchaseBook } = useContext(AppContext);
-  console.log(user);
-  useEffect(() => {
-    getBookDetails(googleId);
+  const [show, setShow] = useState(false);
+
+  useEffect(async () => {
+    await getBookDetails(googleId);
+    setShow(true);
   }, [googleId]);
 
   return !book.volumeInfo ? (
