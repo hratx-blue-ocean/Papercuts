@@ -22,6 +22,7 @@ export const AppProvider = ({ children }) => {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const [userClubs, setUserClubs] = useState([]);
+  const [trendingBookIsbns, setTrendingBookIsbns] = useState([]);
   const [trendingBooks, setTrendingBooks] = useState([]);
   const [trendingGenres, setTrendingGenres] = useState([]);
 
@@ -29,15 +30,15 @@ export const AppProvider = ({ children }) => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
     getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d']),
-    getTrendingBooks([
+    getTrendingBookIsbns([
       'hardcover-fiction',
       'hardcover-nonfiction',
       'trade-fiction-paperback',
       'paperback-nonfiction',
       'series-books',
       'young-adult',
-      'audio-fiction',
-      'audio-nonfiction'
+      'chapter-books',
+      'young-adult-paperback'
     ])
   }, []);
 
@@ -147,19 +148,33 @@ export const AppProvider = ({ children }) => {
   };
 
   // Get top books from select NYT Best Sellers lists
-  const getTrendingBooks = async (lists) => {
+  const getTrendingBookIsbns = async (lists) => {
     const bestSellers = [];
     try {
       lists.map(async (currentList) => {
         const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
-        bestSellers.push(topBooks.data);
+        const currentIsbn = topBooks.data.results.books[0].primary_isbn10;
+        const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }})
+        bestSellers.push(book);
       });
       console.log(bestSellers);
+
       setTrendingBooks(bestSellers);
     } catch (err) {
       setError(err.response.data.error);
     }
   }
+
+  // const getTrendingBooks = async (isbns) => {
+  //   const trending = [];
+  //   try {
+  //     isbns.map(async (currentIsbn) => {
+  //       const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }});
+
+  //       trending.push()
+  //     })
+  //   }
+  // }
 
   return (
     <AppContext.Provider

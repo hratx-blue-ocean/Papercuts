@@ -8,11 +8,10 @@ require('dotenv').config();
 router.get('/bestsellers', async(req, res) => {
   const key = process.env.NYT_KEY;
   const { list } = req.query;
-  console.log('NYT keys: ', key);
-  console.log('NYT list: ', list);
+
   try {
     const bestSeller = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`);
-    console.log('bestSeller: ', bestSeller);
+
     res.json(bestSeller.data);
   } catch (err) {
     res.status(404).send(err);
@@ -23,21 +22,16 @@ router.get('/bestsellers', async(req, res) => {
 // @route   GET /book/trending
 // @access  Public
 router.get('/trending', async(req, res) => {
-  let isbn = req.query.bookIsbn;
-  let key = req.query.apikey;
-  console.log('this is the google isbn: ', isbn);
-  console.log('this is the google key: ', key);
+  const key = process.env.GOOGLE_KEY;
+  const { isbn } = req.query;
 
   try {
-    await axios
-      .get(`https://www.googleapis.com/books/v1/volumes?q=${isbn}&key=${key}`)
-      .then(response => {
-        console.log('get response: ', response)
-        res.status(200).send(response)
-      })
-      .catch(error => { res.status(500).send(error); });
-  } catch (error) {
-    console.error(`Could not complete Google Books API request for ISBN ${isbn}: `, error);
+    const book = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${isbn}&key=${key}`);
+    console.log(book);
+
+    res.json(book.data);
+  } catch (err) {
+    res.status(404).send(err);
   }
 });
 
