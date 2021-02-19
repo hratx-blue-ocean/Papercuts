@@ -1,45 +1,35 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import image1 from './avatar1.png';
+
 import FriendRecommendations from './friendRecommendations.jsx';
 import UserBookClubs from './userBookClubs.jsx';
 import AllUsersModal from './allUsersModal.jsx';
 import AllFriendsModal from './allFriendsModal.jsx';
-import { Button, ListGroup, Container, Badge, Row, Col } from 'react-bootstrap';
-import AuthContext from '../../context/authContext.jsx';
+import { Row, Col } from 'react-bootstrap';
+import { AuthContext } from '../../context/authContext.jsx';
 
-export default function myFriends({ user = { friends: [] } }) {
-  const currentUser = {
-    username: 'bookwormboy85',
-    friends: [
-      { username: 'Josh' },
-      { username: 'Maddy' },
-      { username: 'Spencer' },
-      { username: 'Abe' },
-      { username: 'Jeffrey' }
-    ],
-    subscription: 'platinum subscription'
-  };
+export default function myFriends() {
+  const user = useContext(AuthContext);
   const [allUsersShow, setAllUsersShow] = useState(false);
   const [allFriendsShow, setAllFriendsShow] = useState(false);
   const [friendsList, setFriendsList] = useState([]);
 
   useEffect(() => {
-    const usrId = JSON.parse(localStorage.getItem('usrID')) || '';
+    if (user) {
+      axios.post('/user/friends', { userId: user._id }).then((friends) => {
+        setFriendsList(friends.data);
+      });
+    }
+  }, [user]);
 
-    axios.post('/user/friends', { userId: usrId }).then((friends) => {
-      setFriendsList(friends.data);
-    });
-  }, []);
-
-  return (
+  return !user ? (
+    <p></p>
+  ) : (
     <div id='myProfile'>
       <div id='userHeader'>
         <h4>{user.username}</h4>
         {user.subscriptionTier && (
-          <div className='btn btn-outline-secondary'>
-            {user.subscriptionTier}
-          </div>
+          <div className='btn btn-outline-secondary'>{user.subscriptionTier}</div>
         )}
       </div>
       <br />
