@@ -13,7 +13,7 @@ const TrendingCaro = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 5,
       slidesToSlide: 1, // optional, default to 1.
       // },
       // tablet: {
@@ -29,10 +29,10 @@ const TrendingCaro = () => {
   };
 
   return (
-    <div>
+    <div className="cc-medTitles-left">
       Trending Books
       <Carousel
-        className='cc-TrendingCaro'
+        className='cc-Caro'
         swipeable={false}
         draggable={false}
         showDots={false}
@@ -45,12 +45,13 @@ const TrendingCaro = () => {
         containerClass='carousel-container'
         dotListClass='custom-dot-list-style'
         itemClass='carousel-item-padding-10-px'
+        renderButtonGroupOutside={true}
       >
         {dummyData.map((book, index) => {
           return (
             <div key={book.isbn10}>
               <Image
-                style={{ width: 'auto', height: '200px' }}
+                style={{ width: 'auto', height: '300px' }}
                 src={book.image}
                 onClick={() => {
                   setShow(true);

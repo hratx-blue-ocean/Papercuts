@@ -56,20 +56,22 @@ body {
 .cc-homePage-topLevelContainer {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .cc-homePage-topHalf {
   display: flex;
   flex-direction: row;
   padding: 10px;
+  margin: 20px;
 }
 
 .cc-homePage-leftMainCol {
   display: flex;
   flex: 2;
   flex-direction: row;
-  width: 70%;
+  width: 60%;
 }
 
 .cc-homePage-rightMainCol {
@@ -83,7 +85,7 @@ body {
   margin-left: 30px;
   margin-right: 0px;
   margin-top: 10px;
-  width: 30%;
+  width: 40%;
 }
 
 .cc-BOTM {
@@ -92,72 +94,74 @@ body {
   align-items: stretch;
 }
 
+.cc-BOTM-img-container {
+  display: flex;
+  flex: 2;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
 .cc-BOTM-mainBookInfo-container {
   display: flex;
   flex-direction: column;
   flex: 1;
   margin: 10px;
-}
-
-.cc-BOTM-mainBookInfo-title-container {
-  /* display: flex; */
-  /* flex-direction: column; */
   vertical-align: top;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.cc-BOTM-mainBookInfo-header {
+.cc-medTitles-centered {
   text-align: center;
   font-style: normal;
   font-size: 2vw;
+  font-weight: lighter;
+  line-height: 2vw;
   color: #000000;
   padding: 0px;
 }
 
-.cc-BOTM-mainBookInfo-bookTitle {
-  text-align: center;
-  font-style: bold;
-  font-size: 2.5vw;
-  padding: 0px;
+.cc-medTitles-left {
+  text-align: left;
   font-style: normal;
-  text-align: center;
+  font-size: 2vw;
   color: #000000;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 0px;
+  padding-bottom: 10px;
 }
 
-.cc-BOTM-mainBookInfo-author {
+.cc-medTitles-italic {
   text-align: center;
   font-style: italic;
   color: #000000;
   padding: 0px;
   font-style: italic;
   font-weight: 300;
-  font-size: 2vw;
+  font-size: 1.5vw;
 }
 
 .cc-BOTM-mainBookInfo-priceCardsContainer {
-  /* display: flex;
-  flex-direction: row; */
-  height: 100px;
+  height: 70px;
   width: auto;
   justify-content: center;
-  /* flex-wrap: nowrap; */
-  padding: 10px;
-}
-
-.cc-BOTM-mainBookInfo-priceCards {
-  height: 80px;
-  /* width: stretch; */
   text-align: center;
   background-color: white;
+  border-color: black;
   border-radius: 6px;
-  margin: 5px;
-  padding: 5px;
+  border: 1px;
+  margin: 10px;
+  padding: 10px;
+  font-style: normal;
+  font-size: 2vw;
+  color: #000000;
 }
 
-.cc-BOTM-mainBookInfo-description {
-  font-size: 1vw;
-  color: #000000;
-  padding: 5px;
-  margin: 10px;
+.cc-align-bottom {
+  align-content:flex-end;
 }
 
 .cc-homepage-bottomHalf {
@@ -166,42 +170,27 @@ body {
   padding: 10px;
 }
 
-.cc-TrendingCaro {
-  display: flex;
-  /* flex: 2; */
-  margin: 10px;
+.cc-Caro {
+  /* display: flex; */
+  padding: 20px;
   width: 100%;
+  justify-items: center;
 }
 
-.cc-GenreCaro {
-  display: flex;
-  /* flex: 2; */
-  margin: 10px;
-  width: 100%;
-}
-
-/* .cc-SiteDesc {
-  display: flex;
-  flex: 1;
-} */
-
-.cc-homePage-rightMainCol-titles {
-  text-align: left;
-  font-style: normal;
-  font-size: 2vw;
+.cc-bigTitles {
+  text-align: center;
+  font-style: bold;
+  font-size: 2.5vw;
+  line-height: 2vw;
   color: #000000;
-  padding: 0px;
+  padding-top: 0px;
+  padding-bottom:20px;
 }
 
-.cc-homePage-rightMainCol-text {
+.cc-homePage-smallText {
   font-size: 1vw;
   color: #000000;
 }
-
-/* .cc-MonthlySubscr {
-  display: flex;
-  flex: 1;
-} */
 
 .navList {
   text-align: center;

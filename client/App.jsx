@@ -42,7 +42,7 @@ export const App = () => {
           className='d-flex justify-content-center'
           style={{ paddingBottom: '25px' }}
         >
-          <Container className='p-1 m-1'>
+          <Container className='p-1 m-1' fluid>
             <Switch>
               <Route path='/profile'>
                 <MainProfilePage user={user} />

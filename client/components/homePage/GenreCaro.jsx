@@ -13,7 +13,7 @@ const GenreCaro = () => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 4,
+      items: 5,
       slidesToSlide: 1, // optional, default to 1.
       // },
       // tablet: {
@@ -42,7 +42,7 @@ const GenreCaro = () => {
         </Dropdown.Menu>
       </Dropdown>
       <Carousel
-        className='cc-GenreCaro'
+        className='cc-Caro'
         swipeable={false}
         draggable={false}
         showDots={false}
@@ -60,7 +60,7 @@ const GenreCaro = () => {
           return (
             <div key={book.isbn10}>
               <Image
-                style={{ width: 'auto', height: '200px' }} src={book.image}
+                style={{ width: 'auto', height: '300px' }} src={book.image}
                 onClick={() => {
                   setShow(true);
                   setModalBook(book)}
