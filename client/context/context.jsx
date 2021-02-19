@@ -5,26 +5,6 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-<<<<<<< HEAD
-  const [book, setBook] = useState({});
-  const [club, setClub] = useState({});
-  const [event, setEvent] = useState({});
-  const [questionnaire, setQuestionnaire] = useState({});
-  const [users, setUsers] = useState([]);
-  const [members, setMembers] = useState([]);
-  const [books, setBooks] = useState([]);
-  const [clubs, setClubs] = useState([]);
-  const [events, setEvents] = useState([]);
-  const [questionnaires, setQuestionnaires] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [keyword, setKeyword] = useState('');
-  const [fuzzyClubs, setFuzzyClubs] = useState([]);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [userClubs, setUserClubs] = useState([]);
-  const [usrId, setUsrId] = useState(null);
-=======
   const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
   const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
   const [keyword, setKeyword] = useState(''); //Current search input
@@ -32,7 +12,6 @@ export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null); //Error toggle if a request returns 400-range errors
   const [loading, setLoading] = useState(false); //Loading toggle to show/hide spinners globally
   const [userClubs, setUserClubs] = useState([]); //List of clubs current user has joined
->>>>>>> bd53d0adc25a2a92c69229e055d7c52e558b05b9
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
@@ -167,9 +146,7 @@ export const AppProvider = ({ children }) => {
         leaveClubById,
         updateKeyword,
         fuzzyClubSearch,
-        getUserClubsById,
-        usrId,
-        setUsrId
+        getUserClubsById
       }}
     >
       {children}
