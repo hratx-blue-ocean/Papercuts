@@ -12,6 +12,7 @@ export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null); //Error toggle if a request returns 400-range errors
   const [loading, setLoading] = useState(false); //Loading toggle to show/hide spinners globally
   const [userClubs, setUserClubs] = useState([]); //List of clubs current user has joined
+  const [trendingBooks, setTrendingBooks] = useState([]);
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
@@ -142,33 +143,22 @@ export const AppProvider = ({ children }) => {
   // Get top books from select NYT Best Sellers lists
   const getTrendingBooks = async (lists) => {
     const bestSellers = [];
+    // console.log('lists', lists)
     try {
       lists.map(async (currentList) => {
+        // console.log('currentList: ', currentList)
         const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
         const currentIsbn = topBooks.data.results.books[0].primary_isbn10;
 
         const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }})
-        bestSellers.push(book);
+        bestSellers.push(book.data.items[0]);
       });
-      console.log(bestSellers);
 
       setTrendingBooks(bestSellers);
     } catch (err) {
       setError(err.response.data.error);
     }
   }
-
-  getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d']),
-  getTrendingBooks([
-    'hardcover-fiction',
-    'hardcover-nonfiction',
-    'trade-fiction-paperback',
-    'paperback-nonfiction',
-    'series-books',
-    'young-adult',
-    'chapter-books',
-    'young-adult-paperback'
-  ])
 
   return (
     <AppContext.Provider
