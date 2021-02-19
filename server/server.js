@@ -12,7 +12,7 @@ require('dotenv').config();
 const app = express();
 const dbURI = `mongodb+srv://jfleming9357:${process.env.MONGO_PASS}@cluster0.v4rli.mongodb.net/papercut?retryWrites=true&w=majority`;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3008;
 
 //db connection
 mongoose
@@ -37,13 +37,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
-app.get('/test', (req, res) => {
-  let { main } = req.body;
-  console.log(main);
-
-  res.json({ msg: 'LOLOL' });
-});
 
 // Routes
 app.use('/bookclub', require('./routes/BookclubRoute'));

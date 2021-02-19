@@ -314,7 +314,6 @@ router.post('/book', async (req, res) => {
     let book = await Book.findOne({ googleId });
 
     if (!book) {
-      console.log('ADDING BOOK');
       book = await new Book({
         title,
         authors,
@@ -369,6 +368,20 @@ router.get('/userclubs/:id', async (req, res) => {
     ]);
 
     res.json(club);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
+
+// @desc    User  get all current user book clubs
+// @route   POST /user/userclubs/:id
+// @access  Private
+router.post('/bookclubs', async (req, res) => {
+  let { userId } = req.body;
+  try {
+    const userBookClubs = await User.findById(userId).populate('bookclubs');
+
+    res.json(userBookClubs.bookclubs);
   } catch (err) {
     res.status(404).send(err);
   }
