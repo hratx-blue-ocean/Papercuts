@@ -30,7 +30,7 @@ export const AppProvider = ({ children }) => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
     getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d']),
-    getTrendingBookIsbns([
+    getTrendingBooks([
       'hardcover-fiction',
       'hardcover-nonfiction',
       'trade-fiction-paperback',
@@ -148,12 +148,13 @@ export const AppProvider = ({ children }) => {
   };
 
   // Get top books from select NYT Best Sellers lists
-  const getTrendingBookIsbns = async (lists) => {
+  const getTrendingBooks = async (lists) => {
     const bestSellers = [];
     try {
       lists.map(async (currentList) => {
         const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
         const currentIsbn = topBooks.data.results.books[0].primary_isbn10;
+
         const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }})
         bestSellers.push(book);
       });
@@ -164,17 +165,6 @@ export const AppProvider = ({ children }) => {
       setError(err.response.data.error);
     }
   }
-
-  // const getTrendingBooks = async (isbns) => {
-  //   const trending = [];
-  //   try {
-  //     isbns.map(async (currentIsbn) => {
-  //       const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }});
-
-  //       trending.push()
-  //     })
-  //   }
-  // }
 
   return (
     <AppContext.Provider
