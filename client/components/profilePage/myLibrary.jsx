@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, ListGroup, Container } from 'react-bootstrap';
 import BookDetail from '../global/BookDetail.jsx';
@@ -6,8 +6,8 @@ import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function myLibrary() {
-  const books =
-  [{
+  const books = [
+    {
       title: 'Green Eggs & Ham',
       authors: ['Dr. Seuss'],
       isbn: 7891036757892,
@@ -19,7 +19,7 @@ export default function myLibrary() {
       category: 'Juvenile Fiction',
       rating: 3,
       ratingCount: 11,
-      datePurchased: '11/30/2021',
+      datePurchased: '11/30/2021'
     },
     {
       title: 'One Fish, Two Fish',
@@ -33,8 +33,8 @@ export default function myLibrary() {
       category: 'Juvenile Fiction',
       rating: 5,
       ratingCount: 7,
-      datePurchased: '02/15/2021',
-    },
+      datePurchased: '02/15/2021'
+    }
   ];
 
   const [booksOwned, setBooksOwned] = useState(books);
@@ -43,46 +43,66 @@ export default function myLibrary() {
 
   let searchBooks = function (e) {
     e.preventDefault();
-    axios.get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
-    .then((results)=> {
-      let searchResults = results.data.items.map((book) => {
-        let bookInfo = {};
-        bookInfo.title= book.volumeInfo.title,
-        bookInfo.authors= book.volumeInfo.authors,
-        bookInfo.isbn= book.volumeInfo.industryIdentifiers[0].identifier;
-        bookInfo.description = book.volumeInfo.description;
-        bookInfo.image = book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.thumbnail : 'https://i.imgur.com/sJ3CT4V.gif';
-        bookInfo.price = book.saleInfo.listPrice ? `$${book.saleInfo.listPrice.amount}` : 'Not Available'
-        return bookInfo;
+    axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`
+      )
+      .then((results) => {
+        let searchResults = results.data.items.map((book) => {
+          let bookInfo = {};
+          bookInfo.title = book.volumeInfo.title;
+          bookInfo.authors = book.volumeInfo.authors;
+          bookInfo.isbn = book.volumeInfo.industryIdentifiers[0].identifier;
+          bookInfo.description = book.volumeInfo.description;
+          bookInfo.image = book.volumeInfo.imageLinks
+            ? book.volumeInfo.imageLinks.thumbnail
+            : 'https://i.imgur.com/sJ3CT4V.gif';
+          bookInfo.price = book.saleInfo.listPrice
+            ? `$${book.saleInfo.listPrice.amount}`
+            : 'Not Available';
+          return bookInfo;
+        });
+        setBooksOwned(searchResults);
       });
-      setBooksOwned(searchResults);
-    })
-  }
+  };
 
   const [show, setShow] = useState(false);
   return (
     <div id='myLib'>
       <div>My Library</div>
-      <form onSubmit = {searchBooks.bind(this)}>
-        <input type = 'text' placeholder = 'Search books by author' onChange = {(e)=> setSearchInput(e.target.value)}/>
-        <input type = 'submit'/>
+      <form onSubmit={searchBooks.bind(this)}>
+        <input
+          type='text'
+          placeholder='Search books by author'
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
+        <input type='submit' />
       </form>
       <div id='libraryBody'>
-      {booksOwned.map((book) => {
-        return(
-          <div className='bookBody' key = {book.isbn}>
-            <img className='bookImage' variant='primary' onClick={() => {
-              setClickedBook(book);
-              setShow(true);
-              }
-              } src={book.image} >
-            </img>
-            <BookDetail handleClose={() => { setShow(false) }} show={show} book = {clickedBook}/>
-          </div>
-        )
-      })}
+        {booksOwned.map((book) => {
+          return (
+            <div className='bookBody' key={book.isbn}>
+              <img
+                className='bookImage'
+                variant='primary'
+                onClick={() => {
+                  setClickedBook(book);
+                  setShow(true);
+                }}
+                src={book.image}
+              ></img>
+              <BookDetail
+                handleClose={() => {
+                  setShow(false);
+                }}
+                show={show}
+                book={clickedBook}
+              />
+            </div>
+          );
+        })}
       </div>
-      <RecommendedBooks/>
+      <RecommendedBooks />
     </div>
-  )
-};
+  );
+}

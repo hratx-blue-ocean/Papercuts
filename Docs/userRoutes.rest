@@ -17,7 +17,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId": "{{jerrick}}"
+    "userId": "{{matthew}}"
 }
 
 ### Get all users that user are not friends with
@@ -34,7 +34,7 @@ POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
-    "userId":"{{jerrick}}",
+    "userId":"{{matthew}}",
     "friendId":"{{chris}}"
 }
 
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Get user payment info
-DELETE {{baseUrl}}/user/payment
+GET {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
@@ -141,20 +141,10 @@ Content-Type: application/json
     "category":"fiction"
 }
 
-### user delete all his friends
-DELETE http://localhost:3000/user/allfriends
+### Get all bookclubs that user is in
+GET {{baseUrl}}/user/bookclubs
 Content-Type: application/json
 
 {
-    "userId": "{{jason}}"
-}
-
-### user add a review to specific book they owned
-POST http://localhost:3000/user/review
-Content-Type: application/json
-
-{
-    "bookId": "602c0c193cf044525d282e8a",
-    "username": "shinan",
-    "comment": "tell me who dont want to be a wizard?!"
+    "userId":"602be49226e7f146247321c8"
 }

@@ -1,13 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 /* Global Styles */
+:root {
+  --primary-color: #dc3545;
+  --secondary-color: #6308f7;
+  --light-purple: #c19cfc;
+  --dark-purple: #3c0594;
+  --light-color: #f4f4f4;
+  --dark-color: #333333;
+  --light-bg-color: #a0a3bd;
+  --bg-color: #262338;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #111;
+  color: #000;
 }
 
 body {
@@ -16,28 +29,25 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
   color: #111;
+  /* background: linear-gradient(131deg, rgba(205, 221, 244, 1) 0%, rgba(205, 186, 250, 1) 100%); */
+  /* background: linear-gradient(to left, #b067ec, #9e5beb); */
+  background: linear-gradient(225deg, #cdddf4 3.26%, #cdbafa 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Utility Styles */
+.font-lg {
+  font-size: 1.6rem;
 }
 
 a {
-  color: #222;
   text-decoration: none;
 }
 
 a:hover {
   color: #666;
-}
-
-body {
-  background: linear-gradient(
-    131deg,
-    rgba(205, 221, 244, 1) 0%,
-    rgba(205, 186, 250, 1) 100%
-  );
-  background: linear-gradient(to left, #e2c2fc, #e1cafc);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 #bodyContainer {
