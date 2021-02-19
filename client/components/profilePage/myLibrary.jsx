@@ -17,7 +17,6 @@ export default function myLibrary({ user }) {
       axios.get(`/user/book/${user._id}`).then((results) => {
         setBooksInLibrary(results.data.library);
         setBooksOwned(results.data.library);
-        console.log(results);
       });
   }, [user]);
 
