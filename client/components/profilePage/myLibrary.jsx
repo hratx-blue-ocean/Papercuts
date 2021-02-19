@@ -57,7 +57,7 @@ export default function myLibrary({ user }) {
   const [show, setShow] = useState(false);
   return (
     <div id='myLib'>
-      <div>My Library</div>
+      <h3>My Library</h3>
       <form onSubmit={searchBooks.bind(this)}>
         <input
           type='text'

@@ -1,71 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import '../../../node_modules/react-multi-carousel/lib/styles.css';
 import './profileStyles.css';
+import BookDetail from '../global/BookDetail.jsx';
 
 export default function RecommendedBooks() {
   const books = [];
-
-  const responsiveSettings = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 1500 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 1500, min: 1024 },
-      items: 5
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 5
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 5
-    }
-  };
+  const [clickedBook, setClickedBook] = useState();
+  const [show, setShow] = useState(false);
+  let dummyBooks = [
+    'http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
+    'http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    'http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    'http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    'http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
+    'http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
+  ];
 
   return (
-    <div className='recommendedBooksContainer'>
-      <h1>Recommended Books</h1>
-      <Carousel
-        className='recommendedBookBody'
-        responsive={responsiveSettings}
-        swipeable={true}
-        draggable={true}
-        showDots={true}
-        ssr={true}
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={5000}
-      >
-        <img
-          className='recommendedBookImage'
-          src='http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
-        />
-        <img
-          className='recommendedBookImage'
-          src='http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
-        />
-        <img
-          className='recommendedBookImage'
-          src='http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
-        />
-        <img
-          className='recommendedBookImage'
-          src='http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
-        />
-        <img
-          className='recommendedBookImage'
-          src='http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
-        />
-        <img
-          className='recommendedBookImage'
-          src='http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
-        />
-      </Carousel>
-    </div>
+    <>
+      <h3>Recommended Books</h3>
+      <div id='recommendBody'>
+        {dummyBooks.map((book, index) => {
+          return (
+            <div className='bookBody' key={index}>
+              <img
+                className='bookImage'
+                variant='primary'
+                onClick={() => {
+                  setClickedBook(book);
+                  setShow(true);
+                }}
+                src={book}
+              ></img>
+              <BookDetail
+                handleClose={() => {
+                  setShow(false);
+                }}
+                show={show}
+                book={clickedBook}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 }
