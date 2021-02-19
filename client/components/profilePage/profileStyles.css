@@ -19,11 +19,26 @@
   width: 85px;
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 .bookImage {
   height: 100%;
   width: 100%;
+}
+
+.bookImageOwned {
+  height: 100%;
+  width: 100%;
+  opacity: 50%;
+}
+
+.bookMarker {
+  position: absolute;
+  height: auto;
+  width: 30%;
+  left: 70%;
+  top: 74%;
 }
 
 .thumbBody {

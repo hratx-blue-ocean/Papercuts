@@ -4,6 +4,7 @@ import { Button, ListGroup, Container } from 'react-bootstrap';
 import BookDetail from '../global/BookDetail.jsx';
 import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import inLibraryMark from './book.png';
 
 export default function myLibrary({user}) {
 
@@ -41,10 +42,12 @@ export default function myLibrary({user}) {
   const [booksOwned, setBooksOwned] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [clickedBook, setClickedBook] = useState();
+  const [booksInLibrary, setBooksInLibrary] = useState([]);
 
   useEffect(()=>{
     axios.get(`/user/book/${user._id}`)
     .then ((results) => {
+      setBooksInLibrary(results.data.library);
       setBooksOwned(results.data.library);
     })
   },[user])
@@ -60,7 +63,9 @@ export default function myLibrary({user}) {
           let bookInfo = {};
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.isbn = book.volumeInfo.industryIdentifiers[0].identifier;
+          bookInfo.isbn = book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].identifier
+          :
+          'no ISBN';
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -68,8 +73,15 @@ export default function myLibrary({user}) {
           bookInfo.price = book.saleInfo.listPrice
             ? `$${book.saleInfo.listPrice.amount}`
             : 'Not Available';
+          bookInfo.inLibrary = false;
+          for (let i = 0; i < booksInLibrary.length; i++) {
+            if (bookInfo.isbn === booksInLibrary[i].isbn.toString()) {
+              bookInfo.inLibrary = true;
+            }
+          }
           return bookInfo;
         });
+        searchResults.sort(function(x,y){ return x.inLibrary == true ? -1 : y.inLibrary == false ? 1 : 0; });
         setBooksOwned(searchResults);
       });
   };
@@ -90,17 +102,36 @@ export default function myLibrary({user}) {
         {booksOwned.map((book) => {
           return (
             <div className='bookBody' key={book.isbn}>
+              {book.inLibrary ?
+              <div>
               <img
-                className='bookImage'
-                variant='primary'
-                onClick={() => {
-                  setClickedBook(book);
-                  setShow(true);
-                }}
-                src={book.image}
+              className='bookImageOwned'
+              variant='primary'
+              onClick={() => {
+                setClickedBook(book);
+                setShow(true);
+              }}
+              src={book.image}
               ></img>
+              <img
+                className='bookMarker'
+                src = {inLibraryMark}
+              >
+              </img>
+              </div>
+              :
+              <img
+              className='bookImage'
+              variant='primary'
+              onClick={() => {
+                setClickedBook(book);
+                setShow(true);
+              }}
+              src={book.image}
+              ></img>
+              }
               <BookDetail
-                handleClose={() => {
+              handleClose={() => {
                   setShow(false);
                 }}
                 show={show}
