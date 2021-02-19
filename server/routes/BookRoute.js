@@ -26,7 +26,7 @@ router.get('/trending', async(req, res) => {
   const { isbn } = req.query;
 
   try {
-    const book = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=${isbn}&key=${key}`);
+    const book = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${key}`);
     console.log(book);
 
     res.json(book.data);

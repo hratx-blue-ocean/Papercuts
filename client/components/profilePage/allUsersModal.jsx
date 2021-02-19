@@ -9,11 +9,7 @@ export default function AllUsers({ handleClose, show, user }) {
   const [allUsers, setAllUsers] = useState([]);
 
   useEffect(async () => {
-<<<<<<< HEAD
-    let usersList = await axios.get(`/user/all`)
-=======
     let usersList = await axios.get(`/user/all`);
->>>>>>> main
     setAllUsers(usersList.data);
   }, []);
 

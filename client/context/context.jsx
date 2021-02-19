@@ -5,28 +5,6 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-<<<<<<< HEAD
-  const [book, setBook] = useState({});
-  const [club, setClub] = useState({});
-  const [event, setEvent] = useState({});
-  const [questionnaire, setQuestionnaire] = useState({});
-  const [users, setUsers] = useState([]);
-  const [members, setMembers] = useState([]);
-  const [books, setBooks] = useState([]);
-  const [clubs, setClubs] = useState([]);
-  const [events, setEvents] = useState([]);
-  const [questionnaires, setQuestionnaires] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [keyword, setKeyword] = useState('');
-  const [fuzzyClubs, setFuzzyClubs] = useState([]);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [userClubs, setUserClubs] = useState([]);
-  const [trendingBookIsbns, setTrendingBookIsbns] = useState([]);
-  const [trendingBooks, setTrendingBooks] = useState([]);
-  const [trendingGenres, setTrendingGenres] = useState([]);
-=======
   const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
   const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
   const [keyword, setKeyword] = useState(''); //Current search input
@@ -34,13 +12,16 @@ export const AppProvider = ({ children }) => {
   const [error, setError] = useState(null); //Error toggle if a request returns 400-range errors
   const [loading, setLoading] = useState(false); //Loading toggle to show/hide spinners globally
   const [userClubs, setUserClubs] = useState([]); //List of clubs current user has joined
->>>>>>> main
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
-<<<<<<< HEAD
-    getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d']),
+    getUserClubsById([
+      '602bff381017a68f02009b0e',
+      '602d4e35191ce139634c8791',
+      '602d50bc191ce139634c8797',
+      '602d52c3191ce139634c879d'
+    ]);
     getTrendingBooks([
       'hardcover-fiction',
       'hardcover-nonfiction',
@@ -49,16 +30,8 @@ export const AppProvider = ({ children }) => {
       'series-books',
       'young-adult',
       'chapter-books',
-      'young-adult-paperback'
-    ])
-=======
-    getUserClubsById([
-      '602bff381017a68f02009b0e',
-      '602d4e35191ce139634c8791',
-      '602d50bc191ce139634c8797',
-      '602d52c3191ce139634c879d'
+      'business-books'
     ]);
->>>>>>> main
   }, []);
 
   // Actions
@@ -184,6 +157,18 @@ export const AppProvider = ({ children }) => {
       setError(err.response.data.error);
     }
   }
+
+  getUserClubsById(['602bff381017a68f02009b0e', '602d4e35191ce139634c8791', '602d50bc191ce139634c8797', '602d52c3191ce139634c879d']),
+  getTrendingBooks([
+    'hardcover-fiction',
+    'hardcover-nonfiction',
+    'trade-fiction-paperback',
+    'paperback-nonfiction',
+    'series-books',
+    'young-adult',
+    'chapter-books',
+    'young-adult-paperback'
+  ])
 
   return (
     <AppContext.Provider

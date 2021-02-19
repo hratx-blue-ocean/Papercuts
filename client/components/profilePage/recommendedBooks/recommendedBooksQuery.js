@@ -8,8 +8,8 @@ const nytSelectedLists = [
   'paperback-nonfiction'
   'series-books',
   'young-adult',
-  'audio-fiction',
-  'audio-nonfiction'
+  'chapter-books',
+  'business-books'
 ]
 
 const nytSelectedLists = ['combined-print-fiction'];
