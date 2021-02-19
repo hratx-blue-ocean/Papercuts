@@ -1,10 +1,9 @@
 import React, { useContext } from 'react';
 import BOTM from './BOTM.jsx';
-import TrendingCaro from './TrendingCaro.jsx';
-import GenreCaro from './GenreCaro.jsx';
 import SiteDesc from './SiteDesc.jsx';
 import MonthlySubscr from './MonthlySubscr.jsx';
-import Container from 'react-bootstrap/Container';
+import TrendingCaro from './TrendingCaro.jsx';
+import GenreCaro from './GenreCaro.jsx';
 
 const HomePage = () => {
 

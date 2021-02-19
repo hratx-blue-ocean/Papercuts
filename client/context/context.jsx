@@ -5,26 +5,23 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const [book, setBook] = useState({});
-  const [club, setClub] = useState({});
-  const [event, setEvent] = useState({});
-  const [questionnaire, setQuestionnaire] = useState({});
-  const [users, setUsers] = useState([]);
-  const [members, setMembers] = useState([]);
-  const [books, setBooks] = useState([]);
-  const [clubs, setClubs] = useState([]);
-  const [events, setEvents] = useState([]);
-  const [questionnaires, setQuestionnaires] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const [keyword, setKeyword] = useState('');
-  const [fuzzyClubs, setFuzzyClubs] = useState([]);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
+  const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
+  const [keyword, setKeyword] = useState(''); //Current search input
+  const [fuzzyClubs, setFuzzyClubs] = useState([]); //Used to fuzzy-search clubs (fuse.js)
+  const [error, setError] = useState(null); //Error toggle if a request returns 400-range errors
+  const [loading, setLoading] = useState(false); //Loading toggle to show/hide spinners globally
+  const [userClubs, setUserClubs] = useState([]); //List of clubs current user has joined
 
   useEffect(() => {
     getClubById('602bff381017a68f02009b0e');
     getClubs();
+    getUserClubsById([
+      '602bff381017a68f02009b0e',
+      '602d4e35191ce139634c8791',
+      '602d50bc191ce139634c8797',
+      '602d52c3191ce139634c879d'
+    ]);
   }, []);
 
   // Actions
@@ -54,7 +51,6 @@ export const AppProvider = ({ children }) => {
   async function getClubById(id) {
     try {
       const res = await axios.get(`/bookclub/${id}`);
-
       setClub(res.data);
     } catch (err) {
       setError(err.response.data.error);
@@ -67,8 +63,7 @@ export const AppProvider = ({ children }) => {
       await axios.post(`/bookclub/join/${id}`, {
         userId
       });
-
-      setMembers([...members, user._id]);
+      setClub({ ...club, members: [...club.members, userId] });
     } catch (err) {
       setError(err.response.data.error);
     }
@@ -77,11 +72,13 @@ export const AppProvider = ({ children }) => {
   // Leave bookclub by id
   async function leaveClubById(id, userId) {
     try {
-      await axios.post(`/bookclub/join/${id}`, {
+      await axios.delete(`/bookclub/leave/${id}`, {
         userId
       });
-
-      setMembers([...members.filter((member) => member !== user._id)]);
+      setClub({
+        ...club,
+        members: club.members.filter((member) => member !== userId)
+      });
     } catch (err) {
       setError(err.response.data.error);
     }
@@ -117,32 +114,39 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  // Get user book club by id
+  const getUserClubsById = async (ids) => {
+    const userClubData = [];
+    try {
+      ids.map(async (clubId) => {
+        const clubData = await axios.get(`user/userclubs/${clubId}`);
+        userClubData.push(clubData.data);
+      });
+
+      setUserClubs(userClubData);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
-        book,
         club,
-        event,
-        questionnaire,
-        users,
-        members,
-        books,
         clubs,
-        events,
-        questionnaires,
-        categories,
         keyword,
         fuzzyClubs,
         error,
-        success,
         loading,
+        userClubs,
         getClubs,
         getClubByName,
         getClubById,
         joinClubById,
         leaveClubById,
         updateKeyword,
-        fuzzyClubSearch
+        fuzzyClubSearch,
+        getUserClubsById
       }}
     >
       {children}

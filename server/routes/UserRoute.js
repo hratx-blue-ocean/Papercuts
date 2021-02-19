@@ -38,23 +38,25 @@ router.delete('/allfriends', async (req, res) => {
 });
 
 // @desc    Display all users that user is friends wuth
-// @route   get /user/friends
+// @route   POST /user/friends
 // @access  Private
 router.post('/friends', async (req, res) => {
   const { userId } = req.body;
-
-  const { friends } = await User.findById(userId)
-    .select('friends')
-    .populate(
-      'friends',
-      'email recommendation friends library bookclubs bookPreference photoUrl username'
-    );
-
-  res.json(friends);
+  try {
+    const { friends } = await User.findById(userId)
+      .select('friends')
+      .populate(
+        'friends',
+        'email recommendation friends library bookclubs bookPreference photoUrl username'
+      );
+    res.json(friends);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 // @desc    Display all users that user is not friends wuth
-// @route   get /user/friends
+// @route   POST /user/friends
 // @access  Private
 router.post('/newfriends', async (req, res) => {
   const { userId } = req.body;
@@ -71,7 +73,7 @@ router.post('/newfriends', async (req, res) => {
 });
 
 // @desc    User adding friend
-// @route   post /user/friend/add
+// @route   POST /user/friend/add
 // @access  Private
 router.post('/friend', async (req, res) => {
   let { userId, friendId } = req.body;
@@ -234,16 +236,16 @@ router.delete('/payment', async (req, res) => {
   }
 });
 
-// @desc    Get user payment info
-// @route   Get /user/payment
+// @desc    Get user subscription info
+// @route   Get /user/subscription
 // @access  Private
 router.get('/subscription', async (req, res) => {
   let { userId } = req.body;
 
   try {
     const userPayment = await await User.findById(userId)
-      .populate('suscriptionTier')
-      .select('suscriptionTier -_id');
+      .populate('subscriptionTier')
+      .select('subscriptionTier -_id');
 
     res.json(userPayment);
   } catch (err) {
@@ -280,7 +282,7 @@ router.delete('/subscription', async (req, res) => {
 
   try {
     const curUser = await User.findById(userId);
-    curUser.suscriptionTier = null;
+    curUser.subscriptionTier = null;
 
     await curUser.save();
 
@@ -359,6 +361,23 @@ router.post('/review', async (req, res) => {
     return res.json({ msg: 'Review added successfully' });
   } catch (err) {
     return res.json({ err });
+  }
+});
+
+// @desc    User  get all current user book clubs
+// @route   GET /user/userclubs/:id
+// @access  Private
+router.get('/userclubs/:id', async (req, res) => {
+  try {
+    const club = await Bookclub.findById(req.params.id).populate('_id', [
+      'name',
+      'description',
+      'smallThumbnail'
+    ]);
+
+    res.json(club);
+  } catch (err) {
+    res.status(404).send(err);
   }
 });
 
