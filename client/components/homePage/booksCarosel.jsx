@@ -6,9 +6,6 @@ import 'react-multi-carousel/lib/styles.css';
 
 
 const BookCarosel = ({books, setModalBook, setShow}) => {
-  
-  console.log(books, 'books');
-
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
