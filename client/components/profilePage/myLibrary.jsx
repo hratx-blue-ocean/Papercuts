@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, ListGroup, Container } from 'react-bootstrap';
 import BookDetail from '../global/BookDetail.jsx';
@@ -6,8 +6,7 @@ import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import inLibraryMark from './book.png';
 
-export default function myLibrary({user}) {
-
+export default function myLibrary({ user }) {
   // const books =
   // [{
   //     title: 'Green Eggs & Ham',
@@ -44,28 +43,27 @@ export default function myLibrary({user}) {
   const [clickedBook, setClickedBook] = useState();
   const [booksInLibrary, setBooksInLibrary] = useState([]);
 
-  useEffect(()=>{
-    axios.get(`/user/book/${user._id}`)
-    .then ((results) => {
-      setBooksInLibrary(results.data.library);
-      setBooksOwned(results.data.library);
-    })
-  },[user])
+  useEffect(() => {
+    user &&
+      axios.get(`/user/book/${user._id}`).then((results) => {
+        setBooksInLibrary(results.data.library);
+        setBooksOwned(results.data.library);
+        console.log(results);
+      });
+  }, [user]);
 
   let searchBooks = function (e) {
     e.preventDefault();
     axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`
-      )
+      .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
       .then((results) => {
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.isbn = book.volumeInfo.industryIdentifiers ? book.volumeInfo.industryIdentifiers[0].identifier
-          :
-          'no ISBN';
+          bookInfo.isbn = book.volumeInfo.industryIdentifiers
+            ? book.volumeInfo.industryIdentifiers[0].identifier
+            : 'no ISBN';
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -81,7 +79,9 @@ export default function myLibrary({user}) {
           }
           return bookInfo;
         });
-        searchResults.sort(function(x,y){ return x.inLibrary == true ? -1 : y.inLibrary == false ? 1 : 0; });
+        searchResults.sort(function (x, y) {
+          return x.inLibrary == true ? -1 : y.inLibrary == false ? 1 : 0;
+        });
         setBooksOwned(searchResults);
       });
   };
@@ -102,36 +102,32 @@ export default function myLibrary({user}) {
         {booksOwned.map((book) => {
           return (
             <div className='bookBody' key={book.isbn}>
-              {book.inLibrary ?
-              <div>
-              <img
-              className='bookImageOwned'
-              variant='primary'
-              onClick={() => {
-                setClickedBook(book);
-                setShow(true);
-              }}
-              src={book.image}
-              ></img>
-              <img
-                className='bookMarker'
-                src = {inLibraryMark}
-              >
-              </img>
-              </div>
-              :
-              <img
-              className='bookImage'
-              variant='primary'
-              onClick={() => {
-                setClickedBook(book);
-                setShow(true);
-              }}
-              src={book.image}
-              ></img>
-              }
+              {book.inLibrary ? (
+                <div>
+                  <img
+                    className='bookImageOwned'
+                    variant='primary'
+                    onClick={() => {
+                      setClickedBook(book);
+                      setShow(true);
+                    }}
+                    src={book.image}
+                  ></img>
+                  <img className='bookMarker' src={inLibraryMark}></img>
+                </div>
+              ) : (
+                <img
+                  className='bookImage'
+                  variant='primary'
+                  onClick={() => {
+                    setClickedBook(book);
+                    setShow(true);
+                  }}
+                  src={book.image}
+                ></img>
+              )}
               <BookDetail
-              handleClose={() => {
+                handleClose={() => {
                   setShow(false);
                 }}
                 show={show}

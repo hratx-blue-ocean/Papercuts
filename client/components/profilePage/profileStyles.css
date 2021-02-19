@@ -130,7 +130,7 @@ h1 {
   /* font-size: 30px; */
   text-align: left;
   border-radius: 5px;
-  left: 110%;
+  right: 10%;
 }
 
 .recommendedBookImage {
