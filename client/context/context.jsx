@@ -25,7 +25,6 @@ export const AppProvider = ({ children }) => {
     ]);
   }, []);
 
-
   // Actions
   // Get all bookclubs
   async function getClubs() {
@@ -132,16 +131,16 @@ export const AppProvider = ({ children }) => {
   };
 
   // Get one book's details from external API
-  const getBookDetails = async (googleId) => {
+  const getBookDetails = async (isbn) => {
     try {
-      let response = await axios.get(`book/details/${googleId}`);
-      setBook(response.data);
+      let response = await axios.get(`book/details/${isbn}`);
+      return response.data;
     } catch (err) {
       setError(err.response.data.error);
     }
   };
 
-  const purchaseBook = async (userId) => {
+  const purchaseBook = async (userId, book) => {
     try {
       await axios
         .post('user/book', {
@@ -149,7 +148,7 @@ export const AppProvider = ({ children }) => {
           title: book.volumeInfo.title,
           authors: book.volumeInfo.authors,
           googleId: book.id,
-          image: book.volumeInfo.imageLinks.large,
+          image: book.volumeInfo.imageLinks.thumbnail,
           price: book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : null,
           category: book.volumeInfo.categories
         })

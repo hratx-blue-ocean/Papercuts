@@ -62,14 +62,18 @@ router.post('/', async (req, res) => {
 // @desc    Get one book's details
 // @route   GET /book/details/:id
 // @access  Public
-router.get('/details/:googleId', async (req, res) => {
-  let { googleId } = req.params;
+router.get('/details/:isbn', async (req, res) => {
+  let { isbn } = req.params;
 
   try {
-    let response = await axios.get(`https://www.googleapis.com/books/v1/volumes/${googleId}`);
+    let first = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+    console.log(first.data.items[0].id);
+    let response = await axios.get(
+      `https://www.googleapis.com/books/v1/volumes/${first.data.items[0].id}`
+    );
     res.send(response.data);
   } catch (error) {
-    console.error(`Could not complete Google Books API request for id ${id}: `, error);
+    console.error(`Could not complete Google Books API request for isbn ${isbn}: `, error);
   }
 });
 

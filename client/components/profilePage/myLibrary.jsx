@@ -52,7 +52,9 @@ export default function myLibrary() {
           let bookInfo = {};
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.id = book.id; //now uses google Id instead of ISBN
+          bookInfo.id = book.volumeInfo.industryIdentifiers.find(
+            (el) => (el.type = 'ISBN_10')
+          ).identifier;
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -92,7 +94,7 @@ export default function myLibrary() {
         ))}
       </div>
       <RecommendedBooks />
-      {show && <BookDetail googleId={clickedBook} handleClose={() => setShow(false)} />}
+      <BookDetail isbn={clickedBook} show={show} setShow={setShow} />
     </div>
   );
 }

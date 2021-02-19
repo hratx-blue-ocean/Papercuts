@@ -5,28 +5,33 @@ import { AuthContext } from '../../context/authContext.jsx';
 import Loader from './Loader.jsx';
 
 //Accepts only a googleId, handleClose function and show boolean.
-export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose }) {
+export default function BookDetail({ isbn = '0312537077', show, setShow }) {
   const user = useContext(AuthContext);
-  const { getBookDetails, book, purchaseBook } = useContext(AppContext);
-  const [show, setShow] = useState(false);
+  const { getBookDetails, purchaseBook } = useContext(AppContext);
+  const [book, setBook] = useState({});
+  const [purchased, setPurchased] = useState(false);
 
   useEffect(async () => {
-    await getBookDetails(googleId);
-    setShow(true);
-  }, [googleId]);
+    let data = await getBookDetails(isbn);
+    setBook(data);
+  }, [isbn]);
 
   return !book.volumeInfo ? (
     <Loader />
   ) : (
-    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
+    <Modal size='xl' show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{book.volumeInfo.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Row>
-          <Col>
+          <Col md='auto'>
             <Image
-              src={book.volumeInfo.imageLinks.large || 'https://i.imgur.com/sJ3CT4V.gif'}
+              src={
+                book.volumeInfo.imageLinks.large ||
+                book.volumeInfo.imageLinks.thumbnail ||
+                'https://i.imgur.com/sJ3CT4V.gif'
+              }
               fluid
               rounded
             />
@@ -34,7 +39,7 @@ export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose }) {
           <Col>
             <div>by {book.volumeInfo.authors.join(', ')}</div>
             <br />
-            <p>{book.volumeInfo.description}</p>
+            <p dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}></p>
             <Table size='sm' striped bordered variant='light'>
               <tbody>
                 <tr>
@@ -58,13 +63,14 @@ export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose }) {
                 <tr>
                   <td>Tags</td>
                   <td colSpan='1'>
-                    {book.volumeInfo.categories.map((category, idx) => (
-                      <React.Fragment key={idx}>
-                        <Badge pill variant='light'>
-                          {category}
-                        </Badge>{' '}
-                      </React.Fragment>
-                    ))}
+                    {book.volumeInfo.categories &&
+                      book.volumeInfo.categories.map((category, idx) => (
+                        <React.Fragment key={idx}>
+                          <Badge pill variant='light'>
+                            {category}
+                          </Badge>{' '}
+                        </React.Fragment>
+                      ))}
                   </td>
                 </tr>
               </tbody>
@@ -73,10 +79,17 @@ export default function BookDetail({ googleId = 'WqmFDwAAQBAJ', handleClose }) {
         </Row>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant='secondary' onClick={handleClose}>
+        <Button variant='secondary' onClick={() => setShow(false)}>
           Close
         </Button>
-        <Button variant='primary' onClick={() => purchaseBook(user._id)}>
+        <Button
+          variant='primary'
+          onClick={() => {
+            purchaseBook(user._id, book);
+            setPurchased(true);
+          }}
+          disabled={purchased}
+        >
           {'Purchase'}
         </Button>
       </Modal.Footer>
