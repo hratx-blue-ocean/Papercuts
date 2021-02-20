@@ -66,8 +66,8 @@ a:hover {
 .cc-homePage-topLevelContainer {
   display: flex;
   flex-direction: column;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .cc-homePage-topHalf {
@@ -81,7 +81,7 @@ a:hover {
   display: flex;
   flex: 2;
   flex-direction: row;
-  width: 60%;
+  width: 70%;
 }
 
 .cc-homePage-rightMainCol {
@@ -95,7 +95,7 @@ a:hover {
   margin-left: 30px;
   margin-right: 0px;
   margin-top: 10px;
-  width: 40%;
+  width: 30%;
 }
 
 .cc-BOTM {
@@ -109,6 +109,7 @@ a:hover {
   flex: 2;
   margin-top: 10px;
   padding-top: 10px;
+  width: 50%;
 }
 
 .cc-BOTM-mainBookInfo-container {
@@ -121,6 +122,7 @@ a:hover {
   padding-right: 10px;
   margin-left: 20px;
   margin-right: 20px;
+  width: 50%;
 }
 
 .cc-medTitles-centered {
@@ -160,9 +162,11 @@ a:hover {
   justify-content: center;
   text-align: center;
   background-color: white;
+  border: 1px;
   border-color: black;
   border-radius: 6px;
   border: 1px;
+  vertical-align: middle;
   margin: 10px;
   padding: 10px;
   font-style: normal;
@@ -203,6 +207,6 @@ a:hover {
 }
 
 .navList {
-  text-align: center;
+  text-align: right;
   vertical-align: middle;
 }

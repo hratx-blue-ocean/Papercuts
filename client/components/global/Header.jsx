@@ -32,7 +32,7 @@ const Header = ({ user, title, variant, background }) => {
           />{' '}
         </Navbar.Brand>
 
-        <Nav className='mr-auto'>
+        <Nav className='mr-auto navList'>
           <NavDropdown title='Book Clubs'>
             <Nav.Link to='/clubs' as={Link} variant={variant}>
               Browse
@@ -55,7 +55,7 @@ const Header = ({ user, title, variant, background }) => {
           )}
         </Nav>
 
-        <Nav className='ml-auto'>
+        <Nav className='ml-auto navList'>
           {!user ? (
             <>
               <LoginModal />
