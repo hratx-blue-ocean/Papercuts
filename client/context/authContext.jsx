@@ -11,6 +11,5 @@ export const AuthProvider = ({ children }) => {
     return userData.data;
   };
   const { result } = useAsync(checkAuth, []);
-
   return <AuthContext.Provider value={result}>{children}</AuthContext.Provider>;
 };
