@@ -142,7 +142,6 @@ export const AppProvider = ({ children }) => {
 
   const purchaseBook = async (userId, book) => {
     try {
-      console.log(book);
       await axios
         .post('user/book', {
           userId,
