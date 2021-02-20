@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import BookCarousel from './booksCarousel.jsx';
-import BookModal from './bookModal.jsx';
 import BookDetail from '../global/BookDetail.jsx';
 
 const Books = () => {
