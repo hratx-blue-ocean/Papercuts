@@ -1,28 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import '../../../node_modules/react-multi-carousel/lib/styles.css';
 import './profileStyles.css';
 import BookDetail from '../global/BookDetail.jsx';
+import axios from 'axios';
+import { nytAllLists } from './recommendedBooks/recommendedBooksQuery';
 
 export default function RecommendedBooks() {
-  const books = [];
+  const [books, setBooks] = useState([]);
   const [clickedBook, setClickedBook] = useState();
   const [show, setShow] = useState(false);
-  let dummyBooks = [
-    'http://books.google.com/books/content?id=xUNEAAAAYAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api',
-    'http://books.google.com/books/content?id=IV5HDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-    'http://books.google.com/books/content?id=qzzLDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-    'http://books.google.com/books/content?id=dhkSEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-    'http://books.google.com/books/content?id=gI2RDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api',
-    'http://books.google.com/books/content?id=zocZAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'
-  ];
+
+  useEffect(async () => {
+    function getRandomInt(max) {
+      return Math.floor(Math.random() * Math.floor(max));
+    }
+    try {
+      let bestsellers = await axios.get(
+        '/book/bestsellers?list=' + nytAllLists[getRandomInt(nytAllLists.length)]
+      );
+      setBooks(bestsellers.data.results.books);
+    } catch {
+      console.log('Error getting bestsellers');
+    }
+  }, []);
 
   return (
     <>
       <h3>Recommended Books</h3>
       <div id='recommendBody'>
-        {dummyBooks.map((book, index) => {
+        {books.map((book, index) => {
           return (
             <div className='bookBody' key={index}>
               <img
@@ -32,7 +40,7 @@ export default function RecommendedBooks() {
                   setClickedBook(book);
                   setShow(true);
                 }}
-                src={book}
+                src={book.book_image}
               ></img>
               <BookDetail
                 handleClose={() => {
