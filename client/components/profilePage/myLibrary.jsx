@@ -68,7 +68,6 @@ export default function myLibrary({ user }) {
       </form>
       <div id='libraryBody'>
         {booksOwned.map((book, index) => {
-          console.log(book);
           return (
             <div className='bookBody' key={index}>
               {book.inLibrary ? (
