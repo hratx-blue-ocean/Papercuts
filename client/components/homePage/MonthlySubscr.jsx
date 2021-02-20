@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Button from 'react-bootstrap/Button';
 
-const MonthlySubscr = (props) => {
+const MonthlySubscr = () => {
 
   return (
     <div>

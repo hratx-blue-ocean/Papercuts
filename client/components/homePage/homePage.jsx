@@ -1,28 +1,26 @@
-import React, { useContext } from 'react';
-import BOTM from './BOTM.jsx';
+import React, { useEffect, useContext } from 'react';
+import Bookofthemonth from './bookofthemonth.jsx';
+import Books from './books.jsx';
 import SiteDesc from './SiteDesc.jsx';
 import MonthlySubscr from './MonthlySubscr.jsx';
-import TrendingCaro from './TrendingCaro.jsx';
-import GenreCaro from './GenreCaro.jsx';
+import Container from 'react-bootstrap/Container';
 
 const HomePage = () => {
 
   return (
-
-    <div className="cc-homePage-topLevelContainer">
-      <div className="cc-homePage-topHalf">
+    <div>
+      <Container className="cc-homePage-topLevelContainer">
         <div className="cc-homePage-leftMainCol">
-          <BOTM />
+          <Bookofthemonth />
+
         </div>
         <div className="cc-homePage-rightMainCol">
-        <SiteDesc />
-        <MonthlySubscr />
+          <SiteDesc />
+          <MonthlySubscr />
         </div>
-      </div>
-      <div className="cc-homepage-bottomHalf">
-        <TrendingCaro />
-        <GenreCaro />
-      </div>
+      </Container>
+      <Books />
+      <br />
     </div>
 
   )

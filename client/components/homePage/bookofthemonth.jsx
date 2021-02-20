@@ -1,7 +1,9 @@
 import React, { useContext } from 'react';
 import { Container, Image, Button, Cards } from 'react-bootstrap';
+// import dummyData from "./dummyData.js";
 
-const BOTM = () => {
+const Bookofthemonth = () => {
+// OPTION 1: FLEX
   return (
     <Container className="cc-BOTM">
       <div >
@@ -16,9 +18,19 @@ const BOTM = () => {
           <p className="cc-medTitles-centered">Snow Mountain Passage</p>
           <p className="cc-medTitles-italic">by James D. Houston</p>
         </div>
-        <br></br>
-        <div className="cc-BOTM-mainBookInfo-priceCardsContainer cc-BOTM-mainBookInfo-priceCards">
-          <p className="cc-medTitles-centered">$16.89</p>
+        <div className="cc-BOTM-mainBookInfo-priceCardsContainer">
+          <div className="cc-BOTM-mainBookInfo-priceCards">
+            <p>Hardcover:</p>
+            <p>{`\n$${50}`}</p>
+          </div>
+          <div className="cc-BOTM-mainBookInfo-priceCards">
+            <p>Paperback:</p>
+            <p>{`\n$${50}`}</p>
+          </div>
+          <div className="cc-BOTM-mainBookInfo-priceCards">
+            <p > Audio:</p>
+            <p>{`\n$${50}`}</p>
+          </div>
         </div>
         <br></br>
         <div >
@@ -29,4 +41,4 @@ const BOTM = () => {
   )
 }
 
-export default BOTM;
+export default Bookofthemonth;
