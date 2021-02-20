@@ -30,7 +30,6 @@ export default function RecommendedBooks() {
       <h3>Recommended Books</h3>
       <div id='recommendBody'>
         {books.map((book, index) => {
-          console.log(book);
           return (
             <div className='bookBody' key={index}>
               <img
