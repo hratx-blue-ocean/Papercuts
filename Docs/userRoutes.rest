@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3008
+@baseUrl = http://localhost:3000
 
 ### Infos
 @matthew = 602be49226e7f146247321c8
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Get user payment info
-GET {{baseUrl}}/user/payment
+DELETE {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
@@ -120,19 +120,15 @@ Content-Type: application/json
 }
 
 ### Get all books that the user owns
-GET {{baseUrl}}/user/book
+GET {{baseUrl}}/user/book/{{jerrick}}
 Content-Type: application/json
-
-{
-    "userId":"{{jason}}"
-}
 
 ### User add book to library 7ef
 POST  {{baseUrl}}/user/book
 Content-Type: application/json
 
 {
-    "userId":"{{jason}}",
+    "userId":"{{jerrick}}",
     "title":"Harry Potter",
     "authors":"JK Rowling",
     "isbn":525,

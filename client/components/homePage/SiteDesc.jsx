@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 
-const SiteDesc = (props) => {
+const SiteDesc = () => {
 
   return (
     <div>
