@@ -12,7 +12,6 @@ export default function RecommendedBooks() {
   //   updateKeyword('');
   // }, []);
 
-
   const { trendingBooks } = useContext(AppContext);
   const [selectedBook, setselectedBook] = useState(books);
   const [clickedBook, setClickedBook] = useState();

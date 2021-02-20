@@ -46,7 +46,6 @@ export const App = () => {
               </Route>
               <Route exact path='/' component={HomePage} />
               <Route exact path='/clubs' component={BookClubs} />
-              {/* need to set up dynamic routing for different book clubs based on Id */}
               <Route path='/clubs/detail/:id' component={BookClub} />
               <Route path='/clubs/create'>
                 <CreateBookClub user={user} />
@@ -62,6 +61,8 @@ export const App = () => {
             </Switch>
           </Container>
         </main>
+        {/* <Button onClick={setShow(true)}>Book</Button>
+        <BookDetail handleClose={setShow(false)} show={show} /> */}
         <NewFooter />
       </Router>
     </div>

@@ -307,18 +307,17 @@ router.get('/book', async (req, res) => {
 // @route   Post /user/book
 // @access  Private
 router.post('/book', async (req, res) => {
-  let { userId, title, authors, isbn, image, price, category } = req.body;
-
+  let { userId, title, authors, googleId, image, price, category } = req.body;
   try {
     // check if book is in book colletion
 
-    let book = await Book.findOne({ isbn });
+    let book = await Book.findOne({ googleId });
 
     if (!book) {
       book = await new Book({
         title,
         authors,
-        isbn,
+        googleId,
         image,
         price,
         category
@@ -331,7 +330,7 @@ router.post('/book', async (req, res) => {
 
     return res.json({ msg: 'Book added successfully' });
   } catch (err) {
-    return res.json({ err });
+    return res.status(500).json({ err });
   }
 });
 
