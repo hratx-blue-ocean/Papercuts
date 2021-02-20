@@ -4,6 +4,8 @@ import { AppContext } from '../../context/context.jsx';
 import { AuthContext } from '../../context/authContext.jsx';
 import Loader from './Loader.jsx';
 
+let currentISBN;
+
 //Accepts only a googleId, handleClose function and show boolean.
 export default function BookDetail({ isbn, show, setShow }) {
   const user = useContext(AuthContext);
@@ -12,14 +14,14 @@ export default function BookDetail({ isbn, show, setShow }) {
   const [purchased, setPurchased] = useState(false);
 
   useEffect(async () => {
-    if (isbn) {
+    if (isbn && isbn !== currentISBN) {
+      currentISBN = isbn;
       let data = await getBookDetails(isbn);
       setBook(data);
     }
   }, [isbn]);
-
   return !book.volumeInfo ? (
-    <Loader />
+    <></>
   ) : (
     <Modal size='xl' show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>

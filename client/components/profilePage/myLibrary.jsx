@@ -10,7 +10,7 @@ import { AppContext } from '../../context/context.jsx';
 export default function myLibrary({ user }) {
   const [booksOwned, setBooksOwned] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  const [clickedBook, setClickedBook] = useState(null);
+  const [clickedBook, setClickedBook] = useState({});
   const [booksInLibrary, setBooksInLibrary] = useState([]);
   const [show, setShow] = useState(false);
 
@@ -55,7 +55,6 @@ export default function myLibrary({ user }) {
         setBooksOwned(searchResults);
       });
   };
-
   return (
     <div id='myLib'>
       <h3>My Library</h3>
@@ -68,9 +67,10 @@ export default function myLibrary({ user }) {
         <input type='submit' />
       </form>
       <div id='libraryBody'>
-        {booksOwned.map((book) => {
+        {booksOwned.map((book, index) => {
+          console.log(book);
           return (
-            <div className='bookBody' key={book.isbn}>
+            <div className='bookBody' key={index}>
               {book.inLibrary ? (
                 <div>
                   <img
@@ -107,7 +107,7 @@ export default function myLibrary({ user }) {
         })}
       </div>
       <RecommendedBooks />
-      <BookDetail isbn={clickedBook} show={show} setShow={setShow} />
+      <BookDetail isbn={clickedBook.isbn} show={show} setShow={setShow} />
     </div>
   );
 }

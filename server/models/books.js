@@ -8,6 +8,7 @@ const BookSchema = new mongoose.Schema({
   image: String,
   price: Number,
   category: Array,
+  isbn: String,
   purchase_date: {
     type: Date,
     default: Date.now
