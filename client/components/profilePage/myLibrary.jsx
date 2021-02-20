@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, ListGroup, Container } from 'react-bootstrap';
+import { Button, ListGroup, Container, Image } from 'react-bootstrap';
 import BookDetail from '../global/BookDetail.jsx';
 import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -9,8 +9,9 @@ import inLibraryMark from './book.png';
 export default function myLibrary({ user }) {
   const [booksOwned, setBooksOwned] = useState([]);
   const [searchInput, setSearchInput] = useState('');
-  const [clickedBook, setClickedBook] = useState();
+  const [clickedBook, setClickedBook] = useState({});
   const [booksInLibrary, setBooksInLibrary] = useState([]);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     user &&
@@ -29,9 +30,9 @@ export default function myLibrary({ user }) {
           let bookInfo = {};
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.isbn = book.volumeInfo.industryIdentifiers
-            ? book.volumeInfo.industryIdentifiers[0].identifier
-            : 'no ISBN';
+          bookInfo.id = book.volumeInfo.industryIdentifiers.find(
+            (el) => (el.type = 'ISBN_10')
+          ).identifier;
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -41,7 +42,7 @@ export default function myLibrary({ user }) {
             : 'Not Available';
           bookInfo.inLibrary = false;
           for (let i = 0; i < booksInLibrary.length; i++) {
-            if (bookInfo.isbn === booksInLibrary[i].isbn.toString()) {
+            if (bookInfo.id === booksInLibrary[i].id) {
               bookInfo.inLibrary = true;
             }
           }
@@ -54,7 +55,6 @@ export default function myLibrary({ user }) {
       });
   };
 
-  const [show, setShow] = useState(false);
   return (
     <div id='myLib'>
       <h3>My Library</h3>
@@ -68,8 +68,9 @@ export default function myLibrary({ user }) {
       </form>
       <div id='libraryBody'>
         {booksOwned.map((book) => {
+          console.log(book)
           return (
-            <div className='bookBody' key={book.isbn}>
+            <div className='bookBody' key={book.id}>
               {book.inLibrary ? (
                 <div>
                   <img
@@ -106,6 +107,7 @@ export default function myLibrary({ user }) {
         })}
       </div>
       <RecommendedBooks />
+      <BookDetail isbn={clickedBook.id} show={show} setShow={setShow} />
     </div>
   );
 }
