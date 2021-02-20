@@ -8,14 +8,19 @@ require('dotenv').config();
 router.get('/bestsellers', async (req, res) => {
   const key = process.env.NYT_KEY;
   const { list } = req.query;
+  // const keys = new Array(process.env.NYT_KEY1, process.env.NYT_KEY2, process.env.NYT_KEY3);
+
+  // for (let i = 0; i < keys.length; i++) {
   try {
-    const bestSeller = await axios.get(
-      `https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`
-    );
-    res.json(bestSeller.data);
+      const bestSeller = await axios.get(
+        `https://api.nytimes.com/svc/books/v3/lists/current/${list}.json?&api-key=${key}`
+      );
+
+      res.json(bestSeller.data);
   } catch (err) {
     res.status(404).send(err);
   }
+  // }
 });
 
 // @desc    Display 7 trending books
@@ -29,7 +34,7 @@ router.get('/trending', async(req, res) => {
     const book = await axios.get(
       `https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${key}`
     );
-    console.log('Google response: ', book)
+    // console.log('Google response: ', book)
 
     res.json(book.data);
   } catch (err) {

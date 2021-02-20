@@ -48,7 +48,7 @@ export default function BookDetail({
       size='lg'
       show={show}
       onHide={handleClose}
-      backdrop='static'
+      // backdrop='static'
       keyboard={false}
     >
       <Modal.Header closeButton>
@@ -57,7 +57,7 @@ export default function BookDetail({
       <Modal.Body>
         <Row>
           <Col>
-            <Image src={book.imageURL} fluid rounded />
+            <Image src={book.imageLinks.thumbnail} fluid rounded />
           </Col>
           <Col>
             <div>by {book.authors.join(', ')}</div>

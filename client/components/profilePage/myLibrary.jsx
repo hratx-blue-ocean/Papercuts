@@ -13,8 +13,10 @@ export default function myLibrary() {
       isbn: 7891036757892,
       description: 'I do not like my green eggs & ham, Sam I am',
       isbn: '9780375850967',
-      image:
-        'http://books.google.com/books/content?id=h7w4DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+      imageLinks:
+        {
+          thumbnail: 'http://books.google.com/books/content?id=h7w4DwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'
+        },
       price: '$13.99',
       category: 'Juvenile Fiction',
       rating: 3,
@@ -27,8 +29,10 @@ export default function myLibrary() {
       isbn: 7891036457892,
       description: 'One Fish, Two Fish, Red Fish, Blue Fish',
       isbn: '5760375843767',
-      image:
-        'http://books.google.com/books/content?id=067xAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+      imageLinks:
+        {
+          thumbnail: 'http://books.google.com/books/content?id=067xAwAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'
+        },
       price: '$19.99',
       category: 'Juvenile Fiction',
       rating: 5,
@@ -54,9 +58,13 @@ export default function myLibrary() {
           bookInfo.authors = book.volumeInfo.authors;
           bookInfo.isbn = book.volumeInfo.industryIdentifiers[0].identifier;
           bookInfo.description = book.volumeInfo.description;
-          bookInfo.image = book.volumeInfo.imageLinks
-            ? book.volumeInfo.imageLinks.thumbnail
-            : 'https://i.imgur.com/sJ3CT4V.gif';
+          // bookInfo.imageLinks.thumbnail = book.volumeInfo.imageLinks
+          //   ? book.volumeInfo.imageLinks.thumbnail
+          //   : 'https://i.imgur.com/sJ3CT4V.gif';
+          bookInfo.imageLinks = book.volumeInfo.imageLinks.thumbnail ?
+            { thumbnail: book.volumeInfo.imageLinks.thumbnail } :
+            { thumbnail: 'https://i.imgur.com/sJ3CT4V.gif' };
+
           bookInfo.price = book.saleInfo.listPrice
             ? `$${book.saleInfo.listPrice.amount}`
             : 'Not Available';
@@ -89,7 +97,7 @@ export default function myLibrary() {
                   setClickedBook(book);
                   setShow(true);
                 }}
-                src={book.image}
+                src={book.imageLinks.thumbnail}
               ></img>
               <BookDetail
                 handleClose={() => {

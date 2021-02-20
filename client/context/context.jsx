@@ -1,6 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import Fuse from 'fuse.js';
 import axios from 'axios';
+import getTrendingBooksCookie from './timestampCookie.jsx';
 
 export const AppContext = createContext();
 
@@ -23,16 +24,7 @@ export const AppProvider = ({ children }) => {
       '602d50bc191ce139634c8797',
       '602d52c3191ce139634c879d'
     ]);
-    getTrendingBooks([
-      'hardcover-fiction',
-      'hardcover-nonfiction',
-      'trade-fiction-paperback',
-      'paperback-nonfiction',
-      'series-books',
-      'young-adult',
-      'chapter-books',
-      'business-books'
-    ]);
+    trendingBooksCookieCheck();
   }, []);
 
 
@@ -144,24 +136,40 @@ export const AppProvider = ({ children }) => {
   // Get top books from select NYT Best Sellers lists
   const getTrendingBooks = async (lists) => {
     const bestSellers = [];
-    // console.log('lists', lists)
+
     try {
       lists.map(async (currentList) => {
-        // console.log('currentList: ', currentList)
         const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
-        // console.log('topBooks: ', topBooks)
         const currentIsbn = topBooks.data.results.books[0].primary_isbn10;
-        console.log(currentIsbn);
 
         const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }})
-        // console.log('Google response: ', book.data.items[0])
-        bestSellers.push(book.data.items[0]);
+
+        bestSellers.push(book.data.items[0].volumeInfo);
       });
-      console.log('bestSellers: ', bestSellers);
 
       setTrendingBooks(bestSellers);
+      setTrendingBooksCookie(value = trendingBooks);
     } catch (err) {
-      setError(err.response.data.error);
+      setError(err);
+    }
+  }
+
+  function trendingBooksCookieCheck() {
+    const storedTrendingBooks = getTrendingBooksCookie(trendingBooks);
+
+    if (storedTrendingBooks) {
+      setTrendingBooks(storedTrendingBooks);
+    } else {
+      getTrendingBooks([
+        'hardcover-fiction',
+        'hardcover-nonfiction',
+        'trade-fiction-paperback',
+        'paperback-nonfiction',
+        'series-books',
+        'young-adult',
+        'chapter-books',
+        'business-books'
+      ]);
     }
   }
 
@@ -174,6 +182,7 @@ export const AppProvider = ({ children }) => {
         fuzzyClubs,
         error,
         loading,
+        trendingBooks,
         userClubs,
         getClubs,
         getClubByName,
