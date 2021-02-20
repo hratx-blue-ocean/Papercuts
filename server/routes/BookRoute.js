@@ -74,6 +74,7 @@ router.get('/details/:isbn', async (req, res) => {
     res.send(response.data);
   } catch (error) {
     console.error(`Could not complete Google Books API request for isbn ${isbn}: `, error);
+    res.status(400).send(error.message);
   }
 });
 
