@@ -64,10 +64,8 @@ router.post('/', async (req, res) => {
 // @access  Public
 router.get('/details/:isbn', async (req, res) => {
   let { isbn } = req.params;
-
   try {
     let first = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
-    console.log(first.data.items[0].id);
     let response = await axios.get(
       `https://www.googleapis.com/books/v1/volumes/${first.data.items[0].id}`
     );

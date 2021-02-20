@@ -14,16 +14,40 @@
   max-height: 341px;
   padding: 0px 0px;
 }
+#recommendBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  overflow: auto;
+  grid-gap: 5px;
+  margin: 5px 5px 5px 0;
+  max-height: 341px;
+  padding: 0px 0px;
+}
 .bookBody {
   height: 110px;
   width: 85px;
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 .bookImage {
   height: 100%;
   width: 100%;
+}
+
+.bookImageOwned {
+  height: 100%;
+  width: 100%;
+  opacity: 50%;
+}
+
+.bookMarker {
+  position: absolute;
+  height: auto;
+  width: 30%;
+  left: 70%;
+  top: 74%;
 }
 
 .thumbBody {
@@ -80,9 +104,6 @@ h1 {
   font-size: 18px;
 }
 
-.recommendedBooksContainer {
-}
-
 .recommendedCarousel {
   width: 70%;
 }
@@ -98,14 +119,13 @@ h1 {
 
 .recommendedBooksContainer {
   display: grid;
-  max-width: 80%;
-  align-self: left;
+  max-width: 100%;
+  align-items: left;
   /* grid-template-columns: 25%; */
   /* background-color: #2196F3; */
-  max-height: 228px;
+  /* max-height: 228px; */
   padding: 10px;
   overflow: hidden;
-  align-content: center;
   grid-gap: 7px;
   margin: 5px 5px 5px 5px;
 }
@@ -113,17 +133,19 @@ h1 {
 .recommendedBookBody {
   /* background-color: rgba(255, 255, 255, 0.8); */
   /* max-height: 110px; */
-  max-width: 100%;
+  position: relative;
+  max-width: 120%;
   margin: 20px;
   /* font-size: 30px; */
-  text-align: center;
+  text-align: left;
   border-radius: 5px;
-  padding: 5px;
+  right: 10%;
 }
 
 .recommendedBookImage {
-  height: 110px;
-  width: 85px;
+  height: 175px;
+  width: 135px;
+  padding: 20px;
 }
 
 /* ----USER BOOK CLUBS STYLES ---- */

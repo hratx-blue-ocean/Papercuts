@@ -20,25 +20,19 @@ export default function UserBookClubs({ user = { bookclubs: [] } }) {
 
   return (
     <>
-      <div
-        style={{ fontSize: '23px' }}
-        className='userClubsHeader font-weight-bold'
-      >
+      <div style={{ fontSize: '23px' }} className='userClubsHeader font-weight-bold'>
         My's Book Clubs
       </div>
       <div className='userBookClubsBody'>
         {clubs &&
-          clubs.map((club) => {
+          clubs.map((club, index) => {
             var cardImage = {
               backgroundImage: `url(${club.smallThumbnail})`
             };
             return (
-              <div className='usedBookClubInnersBody' key={club.name}>
+              <div className='usedBookClubInnersBody' key={index}>
                 <Link to={`/clubs/detail/${club._id}`}>
-                  <Card
-                    className='userBookClubItem cardStyle'
-                    style={cardImage}
-                  >
+                  <Card className='userBookClubItem cardStyle' style={cardImage}>
                     {club.name}
                   </Card>
                 </Link>

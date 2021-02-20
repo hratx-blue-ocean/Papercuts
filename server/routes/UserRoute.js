@@ -291,12 +291,10 @@ router.delete('/subscription', async (req, res) => {
 // @desc    Get all books that the user owns
 // @route   Get /user/book
 // @access  Private
-router.get('/book', async (req, res) => {
-  let { userId } = req.body;
-
+router.get('/book/:id', async (req, res) => {
+  let userId = req.params.id;
   try {
     const userBooks = await User.findById(userId).populate('library').select('library');
-
     return res.json(userBooks);
   } catch (err) {
     return res.json({ err });
