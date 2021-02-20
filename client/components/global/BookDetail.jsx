@@ -1,14 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Modal,
-  Image,
-  Button,
-  Table,
-  Badge,
-  Spinner,
-  Row,
-  Col
-} from 'react-bootstrap';
+import { Modal, Image, Button, Table, Badge, Spinner, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 
 //Props: id from Google books (number), show & owned & inLibrary (boolean), handleClose & handleAddToLibrary & handlePurchase functions
@@ -22,35 +13,12 @@ export default function BookDetail({
   show,
   book
 }) {
-  // const [data, setData] = useState({});
-
-  //Temporary test constants
-  // id = '0efCDwAAQBAJ';
-  // owned = false;
-  // inLibrary = true;
-  // handlePurchase = () => {};
-  // handleAddToLibrary = () => {};
-
-  //Temporary fetch from Google Books, will need to replaced by our own server proxy route
-  // useEffect(async () => {
-  //   let info = await axios.get(
-  //     `https://www.googleapis.com/books/v1/volumes/${id}?key=${'AIzaSyClsYn7svvE9FTXQi_2hEVc9A0_vZgYCOY'}`
-  //   );
-  //   setData(info.data);
-  // }, []);
-
   return book === undefined ? (
     <Spinner animation='border' role='status'>
       <span className='sr-only'>Loading...</span>
     </Spinner>
   ) : (
-    <Modal
-      size='lg'
-      show={show}
-      onHide={handleClose}
-      backdrop='static'
-      keyboard={false}
-    >
+    <Modal size='lg' show={show} onHide={handleClose} backdrop='static' keyboard={false}>
       <Modal.Header closeButton>
         <Modal.Title>{book.title}</Modal.Title>
       </Modal.Header>
@@ -60,7 +28,7 @@ export default function BookDetail({
             <Image src={book.imageURL} fluid rounded />
           </Col>
           <Col>
-            <div>by {book.authors.join(', ')}</div>
+            <div>by {Array.isArray(book.authors) ? book.authors.join(', ') : book.authors}</div>
             <p>{book.price}</p>
             <br />
             <br />
@@ -104,11 +72,7 @@ export default function BookDetail({
         <Button variant='secondary' onClick={handleClose}>
           Close
         </Button>
-        <Button
-          variant='primary'
-          onClick={handleAddToLibrary}
-          disabled={inLibrary}
-        >
+        <Button variant='primary' onClick={handleAddToLibrary} disabled={inLibrary}>
           {'Add to Library'}
         </Button>
         <Button variant='primary' onClick={handlePurchase} disabled={owned}>

@@ -14,6 +14,15 @@
   max-height: 341px;
   padding: 0px 0px;
 }
+#recommendBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  overflow: auto;
+  grid-gap: 5px;
+  margin: 5px 5px 5px 0;
+  max-height: 341px;
+  padding: 0px 0px;
+}
 .bookBody {
   height: 110px;
   width: 85px;
@@ -130,7 +139,7 @@ h1 {
   /* font-size: 30px; */
   text-align: left;
   border-radius: 5px;
-  left: 110%;
+  right: 10%;
 }
 
 .recommendedBookImage {

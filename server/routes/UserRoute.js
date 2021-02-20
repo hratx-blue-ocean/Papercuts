@@ -293,11 +293,8 @@ router.delete('/subscription', async (req, res) => {
 // @access  Private
 router.get('/book/:id', async (req, res) => {
   let userId = req.params.id;
-  console.log(req.body);
-
   try {
     const userBooks = await User.findById(userId).populate('library').select('library');
-
     return res.json(userBooks);
   } catch (err) {
     return res.json({ err });
