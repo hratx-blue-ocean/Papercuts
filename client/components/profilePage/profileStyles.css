@@ -169,3 +169,18 @@ h1 {
   text-align: center;
   vertical-align: text-bottom;
 }
+
+
+/* ----FRIEND RECOMMENDATIONS---- */
+
+.friendRecommendationsBody {
+
+}
+
+.friendRecommendationsItem {
+  /* background: radial-gradient(100% 236.4% at 0% 4.24%, #C4C4C4 0%, rgba(196, 196, 196, 0.767342) 0%, rgba(196, 196, 196, 0.161458) 0.01%, #FFFFFF 0.02%, rgba(196, 196, 196, 0.0260469) 99.99%, rgba(145, 144, 144, 0) 100%); */
+  background: red;
+  border-radius: 40px;
+}
+
+

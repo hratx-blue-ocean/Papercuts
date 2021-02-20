@@ -67,10 +67,10 @@ export default function RecommendedBooks() {
                     setShow(true);
                   }}
                 />
-                { !trendingBooks ?
+                {/* { !trendingBooks ?
                   <Spinner animation='border' role='status'>
                     <span className='sr-only'>Loading...</span>
-                  </Spinner> :
+                  </Spinner> : */}
                   <BookDetail
                     handleClose={() => {
                       setShow(false);
@@ -78,7 +78,7 @@ export default function RecommendedBooks() {
                     show={show}
                     book={clickedBook}
                   />
-                }
+                {/* } */}
               </div>
             )
           })

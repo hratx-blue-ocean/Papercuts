@@ -97,7 +97,7 @@ export default function myLibrary() {
               setClickedBook(book.id);
               setShow(true);
             }}
-            src={book.image}
+            src={book.imageLinks.thumbnail}
           />
         ))}
       </div>
@@ -112,25 +112,25 @@ export default function myLibrary() {
 
 
 
-{/* {booksOwned.map((book) => {
-          return (
-            <div className='bookBody' key={book.isbn}>
-              <img
-                className='bookImage'
-                variant='primary'
-                onClick={() => {
-                  setClickedBook(book);
-                  setShow(true);
-                }}
-                src={book.imageLinks.thumbnail}
-              ></img>
-              <BookDetail
-                handleClose={() => {
-                  setShow(false);
-                }}
-                show={show}
-                book={clickedBook}
-              />
-            </div>
-          );
-        })} */}
+// {booksOwned.map((book) => {
+//           return (
+//             <div className='bookBody' key={book.isbn}>
+//               <img
+//                 className='bookImage'
+//                 variant='primary'
+//                 onClick={() => {
+//                   setClickedBook(book);
+//                   setShow(true);
+//                 }}
+//                 src={book.imageLinks.thumbnail}
+//               ></img>
+//               <BookDetail
+//                 handleClose={() => {
+//                   setShow(false);
+//                 }}
+//                 show={show}
+//                 book={clickedBook}
+//               />
+//             </div>
+//           );
+//         })} */}
