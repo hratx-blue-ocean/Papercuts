@@ -4,14 +4,13 @@ import BookDetail from '../global/BookDetail.jsx';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-
-const BookCarousel = ({books, setModalBook, setShow}) => {
+const BookCarousel = ({ books, setModalBook, setShow }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
       items: 5,
-      slidesToSlide: 2, 
-    },
+      slidesToSlide: 2
+    }
   };
   return (
     <div>
@@ -33,17 +32,17 @@ const BookCarousel = ({books, setModalBook, setShow}) => {
           return (
             <div key={book.primary_isbn10}>
               <Image
-                style={{ width: 'auto', height: '280px' }} src={book.book_image}
+                style={{ width: 'auto', height: '280px' }}
+                src={book.book_image}
                 onClick={() => {
-                  setModalBook(book)
-                  setShow(true)
-                }       
-                }/>
+                  setModalBook(book.primary_isbn10);
+                  setShow(true);
+                }}
+              />
             </div>
           );
         })}
       </Carousel>
-      
     </div>
   );
 };
