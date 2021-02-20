@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, ListGroup, Container } from 'react-bootstrap';
+import { Button, ListGroup, Container, Image } from 'react-bootstrap';
 import BookDetail from '../global/BookDetail.jsx';
 import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { AppContext } from '../../context/context.jsx';
 
 export default function myLibrary() {
   const books = [
@@ -39,20 +40,21 @@ export default function myLibrary() {
 
   const [booksOwned, setBooksOwned] = useState(books);
   const [searchInput, setSearchInput] = useState('');
-  const [clickedBook, setClickedBook] = useState();
+  const [clickedBook, setClickedBook] = useState(null);
+  const [show, setShow] = useState(false);
 
   let searchBooks = function (e) {
     e.preventDefault();
     axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`
-      )
+      .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
       .then((results) => {
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.isbn = book.volumeInfo.industryIdentifiers[0].identifier;
+          bookInfo.id = book.volumeInfo.industryIdentifiers.find(
+            (el) => (el.type = 'ISBN_10')
+          ).identifier;
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -66,7 +68,6 @@ export default function myLibrary() {
       });
   };
 
-  const [show, setShow] = useState(false);
   return (
     <div id='myLib'>
       <div>My Library</div>
@@ -79,30 +80,21 @@ export default function myLibrary() {
         <input type='submit' />
       </form>
       <div id='libraryBody'>
-        {booksOwned.map((book) => {
-          return (
-            <div className='bookBody' key={book.isbn}>
-              <img
-                className='bookImage'
-                variant='primary'
-                onClick={() => {
-                  setClickedBook(book);
-                  setShow(true);
-                }}
-                src={book.image}
-              ></img>
-              <BookDetail
-                handleClose={() => {
-                  setShow(false);
-                }}
-                show={show}
-                book={clickedBook}
-              />
-            </div>
-          );
-        })}
+        {booksOwned.map((book) => (
+          <Image
+            key={book.id}
+            className='bookImage'
+            variant='primary'
+            onClick={(e) => {
+              setClickedBook(book.id);
+              setShow(true);
+            }}
+            src={book.image}
+          />
+        ))}
       </div>
       <RecommendedBooks />
+      <BookDetail isbn={clickedBook} show={show} setShow={setShow} />
     </div>
   );
 }
