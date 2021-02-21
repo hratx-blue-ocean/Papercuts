@@ -1,0 +1,44 @@
+.banner {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+  min-height: 55vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 940w, https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 1260w, https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 1880w, https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 2520w');
+  background-size: cover;
+}
+
+.banner_content {
+  max-width: 900px;
+  text-align: center;
+}
+
+.banner_content h2 {
+  font-size: 5em;
+  color: #fff;
+}
+
+.banner_content p {
+  font-size: 1em;
+  color: #fff;
+}
+
+.button {
+  font-size: 1em;
+  color: #fff;
+  background: #aa73aa;
+  display: inline-block;
+  padding: 10px 30px;
+  margin-top: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: 0.5s;
+}
+
+.button:hover {
+  letter-spacing: 6px;
+}

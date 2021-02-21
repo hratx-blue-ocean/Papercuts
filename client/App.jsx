@@ -30,6 +30,7 @@ import './App.css';
 import { SettingPage } from './components/settingPage/index.js';
 import { FooterComp } from './components/global/Footer/Footer.js';
 import { HeaderComp } from './components/global/Header/Header.js';
+import { AboutComp } from './components/About/About.jsx';
 
 export const App = () => {
   const user = useContext(AuthContext);
@@ -51,6 +52,8 @@ export const App = () => {
               <CreateBookClub user={user} />
             </Route>
             <Route path='/subscriptions' component={Subscriptions} />
+            <Route path='/about' component={AboutComp} />
+
             <Route path='/checkout' component={Checkout} />
             <Route path='/setting'>
               <SettingPage user={user} />
