@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Modal, Image, Button, Table, Badge, Row, Col } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
 import { AuthContext } from '../../context/authContext.jsx';
-import Loader from './Loader.jsx';
 
 let currentISBN;
 
@@ -24,10 +23,10 @@ export default function BookDetail({ isbn, show, setShow }) {
     <></>
   ) : (
     <Modal size='xl' show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
-      <Modal.Header closeButton>
+      <Modal.Header style={{ backgroundColor: 'var(--background-color)' }} closeButton>
         <Modal.Title>{book.volumeInfo.title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{ backgroundColor: 'var(--background-color)' }}>
         <Row>
           <Col md='auto'>
             <Image
