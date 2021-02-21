@@ -66,6 +66,7 @@ router.get('/details/:isbn', async (req, res) => {
   let { isbn } = req.params;
   try {
     let first = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
+    console.log(first.data);
     if (first.data.totalItems === 0) {
       return res.send({ volumeInfo: { title: 'Could not find book' } });
     }

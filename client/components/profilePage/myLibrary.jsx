@@ -17,6 +17,7 @@ export default function myLibrary({ user }) {
   useEffect(() => {
     user &&
       axios.get(`/user/book/${user._id}`).then((results) => {
+        console.log(results.data.library);
         setBooksInLibrary(results.data.library);
         setBooksOwned(results.data.library);
       });
@@ -27,12 +28,14 @@ export default function myLibrary({ user }) {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
       .then((results) => {
+        console.log(results.data.items);
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
+          bookInfo.id = book.id;
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.id = book.volumeInfo.industryIdentifiers.find(
-            (el) => (el.type = 'ISBN_10')
+          bookInfo.isbn = book.volumeInfo.industryIdentifiers.find(
+            (el) => (el.type = 'ISBN_13')
           ).identifier;
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
@@ -43,7 +46,7 @@ export default function myLibrary({ user }) {
             : 'Not Available';
           bookInfo.inLibrary = false;
           for (let i = 0; i < booksInLibrary.length; i++) {
-            if (bookInfo.isbn === booksInLibrary[i].isbn.toString()) {
+            if (bookInfo.id === booksInLibrary[i].googleId) {
               bookInfo.inLibrary = true;
             }
           }
