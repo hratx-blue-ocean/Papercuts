@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Navbar,
@@ -10,13 +10,13 @@ import {
   Image,
   Button
 } from 'react-bootstrap';
+import { AppContext } from '../../context/context.jsx';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import logo from '../../../Docs/readMeImage/logo.png';
 
-// style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
-
-const Header = ({ user, title, variant, background }) => {
+const Header = ({ user, title, background }) => {
+  const { updateFound } = useContext(AppContext);
   const scale = 5;
 
   return (
@@ -34,22 +34,28 @@ const Header = ({ user, title, variant, background }) => {
 
         <Nav className='mr-auto'>
           <NavDropdown title='Book Clubs'>
-            <Nav.Link to='/clubs' as={Link} variant={variant}>
+            <Nav.Link
+              to='/clubs'
+              as={Link}
+              onClick={() => {
+                updateFound(false);
+              }}
+            >
               Browse
             </Nav.Link>
-            <Nav.Link to='/clubs/create' as={Link} variant={variant}>
+            <Nav.Link to='/clubs/create' as={Link}>
               Create a Book Club
             </Nav.Link>
           </NavDropdown>
           {user && user.subscriptionTier ? (
             <></>
           ) : (
-            <Nav.Link as={Link} to='/subscriptions' variant={variant}>
+            <Nav.Link as={Link} to='/subscriptions'>
               Subscriptions
             </Nav.Link>
           )}
           {user && (
-            <Nav.Link as={Link} to='/profile' variant={variant}>
+            <Nav.Link as={Link} to='/profile'>
               Profile
             </Nav.Link>
           )}
@@ -62,9 +68,7 @@ const Header = ({ user, title, variant, background }) => {
               <RegisterModal />
             </>
           ) : (
-            <Nav.Link variant={variant} onClick={logout}>
-              Logout from {user.email}
-            </Nav.Link>
+            <Nav.Link onClick={logout}>Logout from {user.email}</Nav.Link>
           )}
         </Nav>
         {/* <Button variant='outline-info'>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AppContext } from '../../context/context.jsx';
 import { Container } from 'react-bootstrap';
@@ -9,17 +9,12 @@ import SearchBookClubs from './SearchBookClubs.jsx';
 import Error from '../global/Error.jsx';
 
 const BookClubs = () => {
-  const { club, error, keyword, updateKeyword } = useContext(AppContext);
-  const [found, setFound] = useState(false);
-
-  useEffect(() => {
-    updateKeyword('');
-  }, []);
+  const { club, found, error, keyword } = useContext(AppContext);
 
   return (
     <div className='p-0 m-0'>
       <Container className='px-1 mt-1'>
-        <SearchBookClubs setFound={setFound} />
+        <SearchBookClubs />
       </Container>
       {error ? (
         <Error />

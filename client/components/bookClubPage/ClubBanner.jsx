@@ -31,10 +31,7 @@ export default function ClubBanner({ main, variant }) {
       <Row>
         <Col>
           {main ? (
-            <Link
-              to={`/clubs/detail/${club._id}`}
-              style={{ maxWidth: '640px' }}
-            >
+            <Link to={`/clubs/detail/${club._id}`} style={{ maxWidth: '640px' }}>
               <Image src={club.thumbnail || ''} rounded fluid />
             </Link>
           ) : (
@@ -43,23 +40,25 @@ export default function ClubBanner({ main, variant }) {
         </Col>
         <Col>
           <Row>
-            <h2>
-              <strong>{club.name || ''} </strong>
-              <Button variant='outline-info' disabled>{`${
+            <div className='d-flex flex-grow-1'>
+              <h2>
+                <strong>{club.name || ''} </strong>
+              </h2>
+              <Button variant='outline-info' disabled className='ml-2'>{`${
                 club.members ? club.members.length : 0
               } members`}</Button>
-              {user && club.members && club.members.includes(user._id) ? (
-                <Button variant='secondary' onClick={handleLeaveClub}>
-                  Leave
-                </Button>
-              ) : (
-                <Button variant='primary' onClick={handleJoinClub}>
-                  Join
-                </Button>
-              )}
-            </h2>
+            </div>
           </Row>
           <Row>
+            {user && club.members && club.members.includes(user._id) ? (
+              <Button variant='secondary' onClick={handleLeaveClub}>
+                Leave
+              </Button>
+            ) : (
+              <Button variant='primary' onClick={handleJoinClub}>
+                Join
+              </Button>
+            )}
             <p>{club.description || ''}</p>
           </Row>
         </Col>

@@ -6,6 +6,7 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
+  const [found, setFound] = useState(false); // search state
   const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
   const [keyword, setKeyword] = useState(''); //Current search input
   const [fuzzyClubs, setFuzzyClubs] = useState([]); //Used to fuzzy-search clubs (fuse.js)
@@ -14,7 +15,10 @@ export const AppProvider = ({ children }) => {
   const [userClubs, setUserClubs] = useState([]); //List of clubs current user has joined
 
   useEffect(() => {
-    getClubById('602bff381017a68f02009b0e');
+    if (!('name' in club)) {
+      getClubById('602d52c3191ce139634c879d');
+    }
+
     getClubs();
     getUserClubsById([
       '602bff381017a68f02009b0e',
@@ -114,6 +118,15 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  // Set found state
+  function updateFound(bool) {
+    try {
+      setFound(bool);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
   // Get user book club by id
   const getUserClubsById = async (ids) => {
     const userClubData = [];
@@ -134,11 +147,13 @@ export const AppProvider = ({ children }) => {
       value={{
         club,
         clubs,
+        found,
         keyword,
         fuzzyClubs,
         error,
         loading,
         userClubs,
+        updateFound,
         getClubs,
         getClubByName,
         getClubById,
