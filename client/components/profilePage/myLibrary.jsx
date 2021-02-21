@@ -5,6 +5,7 @@ import BookDetail from '../global/BookDetail.jsx';
 import RecommendedBooks from './recommendedBooks.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import inLibraryMark from './book.png';
+import { AppContext } from '../../context/context.jsx';
 
 export default function myLibrary({ user }) {
   const [booksOwned, setBooksOwned] = useState([]);
@@ -30,9 +31,10 @@ export default function myLibrary({ user }) {
           let bookInfo = {};
           bookInfo.title = book.volumeInfo.title;
           bookInfo.authors = book.volumeInfo.authors;
-          bookInfo.id = book.volumeInfo.industryIdentifiers.find(
-            (el) => (el.type = 'ISBN_10')
+          bookInfo.isbn = book.volumeInfo.industryIdentifiers.find(
+            (el) => (el.type = 'ISBN_13')
           ).identifier;
+          // Not all books have isbn_10
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -42,7 +44,10 @@ export default function myLibrary({ user }) {
             : 'Not Available';
           bookInfo.inLibrary = false;
           for (let i = 0; i < booksInLibrary.length; i++) {
-            if (bookInfo.id === booksInLibrary[i].id) {
+            console.log('heres book info: ', bookInfo)
+            console.log('heres books in library: ', booksInLibrary);
+            if (bookInfo.isbn === booksInLibrary[i].isbn) {
+              console.log('found your book!', `the books is ${bookInfo.title}`)
               bookInfo.inLibrary = true;
             }
           }
@@ -54,7 +59,6 @@ export default function myLibrary({ user }) {
         setBooksOwned(searchResults);
       });
   };
-
   return (
     <div id='myLib'>
       <h3>My Library</h3>
@@ -67,10 +71,9 @@ export default function myLibrary({ user }) {
         <input type='submit' />
       </form>
       <div id='libraryBody'>
-        {booksOwned.map((book) => {
-          console.log(book)
+        {booksOwned.map((book, index) => {
           return (
-            <div className='bookBody' key={book.id}>
+            <div className='bookBody' key={index}>
               {book.inLibrary ? (
                 <div>
                   <img
@@ -107,7 +110,7 @@ export default function myLibrary({ user }) {
         })}
       </div>
       <RecommendedBooks />
-      <BookDetail isbn={clickedBook.id} show={show} setShow={setShow} />
+      <BookDetail isbn={clickedBook.isbn} show={show} setShow={setShow} />
     </div>
   );
 }

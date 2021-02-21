@@ -9,7 +9,7 @@ import { nytAllLists } from './recommendedBooks/recommendedBooksQuery';
 
 export default function RecommendedBooks() {
   const [books, setBooks] = useState([]);
-  const [clickedBook, setClickedBook] = useState();
+  const [clickedBook, setClickedBook] = useState({});
   const [show, setShow] = useState(false);
 
   useEffect(async () => {
@@ -25,7 +25,6 @@ export default function RecommendedBooks() {
       console.log('Error getting bestsellers');
     }
   }, []);
-
   return (
     <>
       <h3>Recommended Books</h3>
@@ -42,13 +41,7 @@ export default function RecommendedBooks() {
                 }}
                 src={book.book_image}
               ></img>
-              <BookDetail
-                handleClose={() => {
-                  setShow(false);
-                }}
-                show={show}
-                book={clickedBook}
-              />
+              <BookDetail setShow={setShow} show={show} isbn={clickedBook.primary_isbn10} />
             </div>
           );
         })}

@@ -150,6 +150,7 @@ export const AppProvider = ({ children }) => {
           googleId: book.id,
           image: book.volumeInfo.imageLinks.thumbnail,
           price: book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : null,
+          isbn: book.volumeInfo.industryIdentifiers[0].identifier.toString(),
           category: book.volumeInfo.categories
         })
         .then((res) => console.log(res));
