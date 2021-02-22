@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   Navbar,
@@ -10,15 +10,12 @@ import {
   Image,
   Button
 } from 'react-bootstrap';
-import { AppContext } from '../../context/context.jsx';
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import logo from '../../../Docs/readMeImage/logo.png';
-
-const Header = ({ user, title, background }) => {
-  const { updateFound } = useContext(AppContext);
+// style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
+const Header = ({ user, title, variant, background }) => {
   const scale = 5;
-
   return (
     <Navbar className='nav font-weight-light font-lg' bg={background} sticky='top'>
       <Container style={{ maxWidth: '100vw' }}>
@@ -31,36 +28,27 @@ const Header = ({ user, title, background }) => {
             className='d-inline-block align-top'
           />{' '}
         </Navbar.Brand>
-
         <Nav className='mr-auto'>
           <NavDropdown title='Book Clubs'>
-            <Nav.Link
-              to='/clubs'
-              as={Link}
-              onClick={() => {
-                updateFound(false);
-              }}
-            >
+            <Nav.Link to='/clubs' as={Link} variant={variant}>
               Browse
             </Nav.Link>
-            <Nav.Link to='/clubs/create' as={Link}>
+            <Nav.Link to='/clubs/create' as={Link} variant={variant}>
               Create a Book Club
             </Nav.Link>
           </NavDropdown>
-          {user && user.subscriptionTier ? (
-            <></>
-          ) : (
-            <Nav.Link as={Link} to='/subscriptions'>
-              Subscriptions
-            </Nav.Link>
-          )}
+          <Nav.Link as={Link} to='/subscriptions' variant={variant}>
+            Subscriptions
+          </Nav.Link>
+          <Nav.Link as={Link} to='/about' variant={variant}>
+            About
+          </Nav.Link>
           {user && (
-            <Nav.Link as={Link} to='/profile'>
+            <Nav.Link as={Link} to='/profile' variant={variant}>
               Profile
             </Nav.Link>
           )}
         </Nav>
-
         <Nav className='ml-auto'>
           {!user ? (
             <>
@@ -68,7 +56,9 @@ const Header = ({ user, title, background }) => {
               <RegisterModal />
             </>
           ) : (
-            <Nav.Link onClick={logout}>Logout from {user.email}</Nav.Link>
+            <Nav.Link variant={variant} onClick={logout}>
+              Logout from {user.email}
+            </Nav.Link>
           )}
         </Nav>
         {/* <Button variant='outline-info'>
@@ -83,11 +73,9 @@ const Header = ({ user, title, background }) => {
     </Navbar>
   );
 };
-
 Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
   variant: '',
   background: 'light'
 };
-
 export default Header;

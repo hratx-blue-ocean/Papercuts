@@ -4,11 +4,10 @@ import { Container } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import { AppContext } from '../../context/context.jsx';
 import BookClubItem from './BookClubItem.jsx';
-import ButtonGroup from './CarouselButtons';
 
 import 'react-multi-carousel/lib/styles.css';
 
-const ClubsCarousel = ({ variant, deviceType }) => {
+const ClubsCarousel = ({ deviceType }) => {
   const { clubs, keyword, fuzzyClubs } = useContext(AppContext);
   const [start, setStart] = useState([]);
   const [end, setEnd] = useState([]);
@@ -16,7 +15,6 @@ const ClubsCarousel = ({ variant, deviceType }) => {
   useEffect(() => {
     if (keyword !== '' && fuzzyClubs.length > 0) {
       let copy = fuzzyClubs.map((club) => club.item);
-      console.log('COPY: ', copy);
       let mid = Math.round(copy.length / 2);
       let left = copy.slice(0, mid);
       let right = copy.slice(mid, copy.length - 1);

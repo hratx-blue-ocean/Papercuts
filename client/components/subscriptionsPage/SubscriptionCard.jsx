@@ -6,19 +6,21 @@ export default function SubscriptionCard({ spec, handleSubscribe }) {
     <Col>
       <Card>
         <Card.Body>
-          <div>
-            {spec.badges.map((badge, idx) => (
-              <Badge key={idx}>{badge}</Badge>
+          <div className='Cards' style={{ color: 'var(--text-color)' }}>
+            <div>
+              {spec.badges.map((badge, idx) => (
+                <Badge key={idx}>{badge}</Badge>
+              ))}
+            </div>
+            <br />
+            <h2>{spec.name}</h2>
+            <br />
+            <p>{spec.description}</p>
+            <hr />
+            {spec.features.map((feature, idx) => (
+              <div key={idx}>&#10003; {feature}</div>
             ))}
           </div>
-          <br />
-          <h2>{spec.name}</h2>
-          <br />
-          <p>{spec.description}</p>
-          <hr />
-          {spec.features.map((feature, idx) => (
-            <div key={idx}>&#10003; {feature}</div>
-          ))}
           <br />
           <Button variant='dark' onClick={handleSubscribe}>
             Subscribe

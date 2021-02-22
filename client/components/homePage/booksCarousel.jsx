@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Image } from 'react-bootstrap';
-import BookDetail from '../global/BookDetail.jsx';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
@@ -13,7 +12,7 @@ const BookCarousel = ({ books, setModalBook, setShow }) => {
     }
   };
   return (
-    <div>
+    <div className='p-3'>
       <Carousel
         swipeable
         draggable={false}

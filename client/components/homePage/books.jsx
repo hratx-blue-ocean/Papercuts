@@ -35,7 +35,7 @@ const Books = () => {
   }, []);
 
   return (
-    <div>
+    <div className='carouselTitles'>
       <p>Best NY times seller fictions</p>
       <BookCarousel books={trendFiction} setModalBook={setBook} setShow={setShow} />
 
