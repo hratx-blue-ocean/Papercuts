@@ -5,9 +5,14 @@ export default function Event({ event }) {
   const [checked, setChecked] = useState(event.checked);
   return (
     <>
-      <h3>{event.name}</h3>
-      <span>{`${event.description} at ${Date(event.schedule).toString()}`}</span>
-      <a href={event.zoom_link}>Meeting Link</a>
+      <h4>{event.name}</h4>
+      <p>{event.description}</p>
+      <small>
+        {`At ${new Date(event.schedule).toLocaleString()} - `}
+        <a href={event.zoom_link.includes('//') ? event.zoom_link : 'https://' + event.zoom_link}>
+          Meeting Link
+        </a>
+      </small>
     </>
   );
 }

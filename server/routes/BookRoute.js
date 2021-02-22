@@ -67,12 +67,12 @@ router.get('/details/:isbn', async (req, res) => {
   try {
     let first = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
     let response = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${first.data.items[0].id}`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${first.data.items[0].volumeInfo.title}&key=${process.env.GOOGLE_KEY}`
     );
-    res.send(response.data);
+    res.send(response.data.items.filter((book) => book.saleInfo.saleability === 'FOR_SALE')[0]);
   } catch (error) {
     console.error(`Could not complete Google Books API request for isbn ${isbn}: `, error);
-    res.status(400).send(error.message);
+    res.status(400).send('NOT_FOUND');
   }
 });
 

@@ -43,7 +43,7 @@ const ClubsCarousel = ({ variant, deviceType }) => {
               to={`/clubs/detail/${club.item._id}`}
               key={club.item._id + index + `search-${club.score}`}
             >
-              <BookClubItem current={club.item} />
+              <BookClubItem className='mx-0' current={club.item} />
             </Link>
           ))}
         </Carousel>
