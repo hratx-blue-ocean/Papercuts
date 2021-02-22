@@ -65,9 +65,7 @@ router.post('/newfriends', async (req, res) => {
   const newfriends = await User.find({
     friends: { $ne: userObj },
     _id: { $ne: userObj }
-  }).select(
-    '-password -third_party_auth -date -token -__v -email_is_verified payment'
-  );
+  }).select('-password -third_party_auth -date -token -__v -email_is_verified payment');
 
   res.json(newfriends);
 });
@@ -166,9 +164,7 @@ router.get('/payment', async (req, res) => {
   let { userId } = req.body;
 
   try {
-    const userPayment = await User.findById(userId)
-      .populate('payment')
-      .select('payment -_id');
+    const userPayment = await User.findById(userId).populate('payment').select('payment -_id');
 
     res.json(userPayment);
   } catch (err) {
@@ -295,14 +291,10 @@ router.delete('/subscription', async (req, res) => {
 // @desc    Get all books that the user owns
 // @route   Get /user/book
 // @access  Private
-router.get('/book', async (req, res) => {
-  let { userId } = req.body;
-
+router.get('/book/:id', async (req, res) => {
+  let userId = req.params.id;
   try {
-    const userBooks = await User.findById(userId)
-      .populate('library')
-      .select('library');
-
+    const userBooks = await User.findById(userId).populate('library').select('library');
     return res.json(userBooks);
   } catch (err) {
     return res.json({ err });
@@ -313,19 +305,17 @@ router.get('/book', async (req, res) => {
 // @route   Post /user/book
 // @access  Private
 router.post('/book', async (req, res) => {
-  let { userId, title, authors, isbn, image, price, category } = req.body;
-
+  let { userId, title, authors, googleId, image, price, category } = req.body;
   try {
     // check if book is in book colletion
 
-    let book = await Book.findOne({ isbn });
+    let book = await Book.findOne({ googleId });
 
     if (!book) {
-      console.log('ADDING BOOK');
       book = await new Book({
         title,
         authors,
-        isbn,
+        googleId,
         image,
         price,
         category
@@ -338,7 +328,7 @@ router.post('/book', async (req, res) => {
 
     return res.json({ msg: 'Book added successfully' });
   } catch (err) {
-    return res.json({ err });
+    return res.status(500).json({ err });
   }
 });
 
@@ -376,6 +366,20 @@ router.get('/userclubs/:id', async (req, res) => {
     ]);
 
     res.json(club);
+  } catch (err) {
+    res.status(404).send(err);
+  }
+});
+
+// @desc    User  get all current user book clubs
+// @route   POST /user/userclubs/:id
+// @access  Private
+router.post('/bookclubs', async (req, res) => {
+  let { userId } = req.body;
+  try {
+    const userBookClubs = await User.findById(userId).populate('bookclubs');
+
+    res.json(userBookClubs.bookclubs);
   } catch (err) {
     res.status(404).send(err);
   }

@@ -38,13 +38,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get('/test', (req, res) => {
-  let { main } = req.body;
-  console.log(main);
-
-  res.json({ msg: 'LOLOL' });
-});
-
 // Routes
 app.use('/bookclub', require('./routes/BookclubRoute'));
 app.use('/user', require('./routes/UserRoute'));
@@ -73,12 +66,11 @@ app.get('/checkauth', isAuthenticated, function (req, res) {
   Subscription.findOne({ _id: req.user.subscriptionTier })
     .then((subscription) => {
       req.user._doc.subscription = subscription;
-      console.log(req.user);
       res.status(200).send(req.user);
     })
     .catch((err) => {
       console.log(err);
-      res.status(200).send(req.user);
+      res.status(400).send(req.user);
     });
 });
 

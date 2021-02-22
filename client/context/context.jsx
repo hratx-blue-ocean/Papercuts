@@ -5,6 +5,7 @@ import axios from 'axios';
 export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  const [book, setBook] = useState({}); //Current selected book (BookDetail modal)
   const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
   const [found, setFound] = useState(false); // search state
   const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
@@ -142,9 +143,39 @@ export const AppProvider = ({ children }) => {
     }
   };
 
+  // Get one book's details from external API
+  const getBookDetails = async (isbn) => {
+    try {
+      let response = await axios.get(`book/details/${isbn}`);
+      return response.data;
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  };
+
+  const purchaseBook = async (userId, book) => {
+    try {
+      await axios
+        .post('user/book', {
+          userId,
+          title: book.volumeInfo.title,
+          authors: book.volumeInfo.authors,
+          googleId: book.id,
+          image: book.volumeInfo.imageLinks.thumbnail,
+          price: book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : null,
+          isbn: book.volumeInfo.industryIdentifiers[0],
+          category: book.volumeInfo.categories
+        })
+        .then((res) => console.log(res));
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  };
+
   return (
     <AppContext.Provider
       value={{
+        book,
         club,
         clubs,
         found,
@@ -161,7 +192,9 @@ export const AppProvider = ({ children }) => {
         leaveClubById,
         updateKeyword,
         fuzzyClubSearch,
-        getUserClubsById
+        getUserClubsById,
+        getBookDetails,
+        purchaseBook
       }}
     >
       {children}

@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3008
+@baseUrl = http://localhost:3000
 
 ### Infos
 @matthew = 602be49226e7f146247321c8
@@ -17,7 +17,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId": "{{jerrick}}"
+    "userId": "{{matthew}}"
 }
 
 ### Get all users that user are not friends with
@@ -34,7 +34,7 @@ POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
-    "userId":"{{jerrick}}",
+    "userId":"{{matthew}}",
     "friendId":"{{chris}}"
 }
 
@@ -135,9 +135,16 @@ Content-Type: application/json
     "userId":"{{jason}}",
     "title":"Harry Potter",
     "authors":"JK Rowling",
-    "isbn":525,
+    "googleId":"hyGODQAAQBAJ",
     "image":"https://media2.s-nbcnews.com/i/newscms/2020_26/3155921/191219-j-k-rowling-2018-ac-845p_b96cd21ada5eec6c9ff8b9ff33920b0f.jpg",
     "price":50,
     "category":"fiction"
 }
 
+### Get all bookclubs that user is in
+GET {{baseUrl}}/user/bookclubs
+Content-Type: application/json
+
+{
+    "userId":"602be49226e7f146247321c8"
+}
