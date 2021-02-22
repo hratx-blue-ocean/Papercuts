@@ -17,8 +17,8 @@ const BookClubs = () => {
   }, []);
 
   return (
-    <div className='p-0 m-0'>
-      <Container className='px-1 mt-1'>
+    <div className='p-0 m-0 mt-3'>
+      <Container>
         <SearchBookClubs setFound={setFound} />
       </Container>
       {error ? (
@@ -32,7 +32,7 @@ const BookClubs = () => {
               <ClubBanner main />
             </Container>
           )}
-          <Container className='px-1 py-1 my-1' style={{ maxWidth: '90vw' }}>
+          <Container className='py-1 my-1' style={{ maxWidth: '90vw' }}>
             <ClubsCarousel />
           </Container>
         </Fragment>

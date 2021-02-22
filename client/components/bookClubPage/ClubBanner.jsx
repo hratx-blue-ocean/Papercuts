@@ -29,12 +29,9 @@ export default function ClubBanner({ main, variant }) {
         </Modal.Body>
       </Modal>
       <Row>
-        <Col>
+        <Col className='ml-0'>
           {main ? (
-            <Link
-              to={`/clubs/detail/${club._id}`}
-              style={{ maxWidth: '640px' }}
-            >
+            <Link to={`/clubs/detail/${club._id}`} style={{ maxWidth: '640px' }}>
               <Image src={club.thumbnail || ''} rounded fluid />
             </Link>
           ) : (
@@ -45,7 +42,7 @@ export default function ClubBanner({ main, variant }) {
           <Row>
             <h2>
               <strong>{club.name || ''} </strong>
-              <Button variant='outline-info' disabled>{`${
+              <Button variant='outline-info' className='mr-2' disabled>{`${
                 club.members ? club.members.length : 0
               } members`}</Button>
               {user && club.members && club.members.includes(user._id) ? (

@@ -7,6 +7,7 @@ import AllUsersModal from './allUsersModal.jsx';
 import AllFriendsModal from './allFriendsModal.jsx';
 import { Row, Col } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
+import { Link } from 'react-router-dom';
 
 export default function myFriends() {
   const user = useContext(AuthContext);
@@ -33,6 +34,11 @@ export default function myFriends() {
         )}
       </div>
       <br />
+      <Row>
+        <Col>
+          <Link to='/setting'>Settings</Link>
+        </Col>
+      </Row>
       <br />
       <Row>
         <Col xs={5}>
@@ -44,6 +50,7 @@ export default function myFriends() {
             onClick={() => {
               setAllUsersShow(true);
             }}
+            style={{ cursor: 'pointer' }}
           >
             Find Friends
           </a>{' '}
@@ -55,6 +62,7 @@ export default function myFriends() {
             onClick={() => {
               setAllFriendsShow(true);
             }}
+            style={{ cursor: 'pointer' }}
           >
             View All Friends
           </a>{' '}

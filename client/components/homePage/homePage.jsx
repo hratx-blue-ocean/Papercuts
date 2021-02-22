@@ -6,24 +6,15 @@ import MonthlySubscr from './MonthlySubscr.jsx';
 import Container from 'react-bootstrap/Container';
 
 const HomePage = () => {
-
   return (
-    <div>
-      <Container className="cc-homePage-topLevelContainer">
-        <div className="cc-homePage-leftMainCol">
-          <Bookofthemonth />
-         
-        </div>
-        <div className="cc-homePage-rightMainCol">
-          <SiteDesc />
-          <MonthlySubscr />
-        </div>
+    <>
+      <Container>
+        <Bookofthemonth />
       </Container>
       <Books />
       <br />
-    </div>
-  )
-}
+    </>
+  );
+};
 
 export default HomePage;
-
