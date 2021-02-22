@@ -12,7 +12,7 @@ export default function SubscriptionCard({ spec, handleSubscribe }) {
             ))}
           </div>
           <br />
-          <h2>{spec.name}</h2>
+          <h3>{spec.name}</h3>
           <br />
           <p>{spec.description}</p>
           <hr />

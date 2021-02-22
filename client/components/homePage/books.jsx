@@ -4,9 +4,10 @@ import BookCarousel from './booksCarousel.jsx';
 import BookDetail from '../global/BookDetail.jsx';
 
 const Books = () => {
+  const [photo, setPhoto] = useState('');
   const [book, setBook] = useState('');
   const [show, setShow] = useState(false);
-  const [trendFiction, setTradeFiction] = useState([]);
+  const [trendFiction, setTrendFiction] = useState([]);
   const [nonFiction, setNonFiction] = useState([]);
   const [seriesBooks, setSeriesBooks] = useState([]);
   const [manga, setManga] = useState([]);
@@ -21,7 +22,7 @@ const Books = () => {
       if (res.data) setMoreFiction(res.data.results.books);
     });
     axios.get('/book/bestsellers?list=hardcover-fiction').then((res) => {
-      if (res.data) setTradeFiction(res.data.results.books);
+      if (res.data) setTrendFiction(res.data.results.books);
     });
     axios.get('/book/bestsellers?list=series-books').then((res) => {
       if (res.data) setSeriesBooks(res.data.results.books);
@@ -36,25 +37,50 @@ const Books = () => {
 
   return (
     <div className='carouselTitles'>
-      <p>Best NY times seller fictions</p>
-      <BookCarousel books={trendFiction} setModalBook={setBook} setShow={setShow} />
+      <p>New York Times Hardcover Fiction Best Sellers</p>
+      <BookCarousel
+        books={trendFiction}
+        setModalBook={setBook}
+        setShow={setShow}
+        setPhoto={setPhoto}
+      />
 
-      <p>More trade fictions</p>
-      <BookCarousel books={moreFiction} setModalBook={setBook} setShow={setShow} />
+      <p>New York Times Paperback Fiction Best Sellers</p>
+      <BookCarousel
+        books={moreFiction}
+        setModalBook={setBook}
+        setShow={setShow}
+        setPhoto={setPhoto}
+      />
 
-      <p>Current trending non-fictions</p>
-      <BookCarousel books={nonFiction} setModalBook={setBook} setShow={setShow} />
+      <p>Trending Non-fiction</p>
+      <BookCarousel
+        books={nonFiction}
+        setModalBook={setBook}
+        setShow={setShow}
+        setPhoto={setPhoto}
+      />
 
-      <p>Popular yound Adults</p>
-      <BookCarousel books={youngAdult} setModalBook={setBook} setShow={setShow} />
+      <p>Popular with Young Adult</p>
+      <BookCarousel
+        books={youngAdult}
+        setModalBook={setBook}
+        setShow={setShow}
+        setPhoto={setPhoto}
+      />
 
-      <p>explore manga</p>
-      <BookCarousel books={manga} setModalBook={setBook} setShow={setShow} />
+      <p>Explore Manga</p>
+      <BookCarousel books={manga} setModalBook={setBook} setShow={setShow} setPhoto={setPhoto} />
 
-      <p>Top pick series books for children</p>
-      <BookCarousel books={seriesBooks} setModalBook={setBook} setShow={setShow} />
+      <p>Series Books for Kids</p>
+      <BookCarousel
+        books={seriesBooks}
+        setModalBook={setBook}
+        setShow={setShow}
+        setPhoto={setPhoto}
+      />
 
-      <BookDetail isbn={book} show={show} setShow={setShow} />
+      <BookDetail isbn={book} photo={photo} show={show} setShow={setShow} />
     </div>
   );
 };
