@@ -7,17 +7,14 @@ export default function FriendRecommendations({ friendsList }) {
   return (
     <div>
       <Row>
-        <div
-          style={{ fontSize: '23px' }}
-          className='userClubsHeader font-weight-bold'
-        >
+        <div style={{ fontSize: '23px' }} className='userClubsHeader font-weight-bold'>
           Friends recommendations
         </div>
       </Row>
 
       <Accordion defaultActiveKey='0'>
         {reviewList.length > 0 &&
-          reviewList.map((friend, i) => {
+          reviewList.slice(0, 3).map((friend, i) => {
             return (
               <Card key={friend._id}>
                 <Card.Header>
