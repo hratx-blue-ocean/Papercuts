@@ -37,6 +37,10 @@ export const HeaderComp = ({ user }) => {
                 Subscriptions
               </Link>
 
+              <Link className={styles.navText} to='/about'>
+                About
+              </Link>
+
               {user && (
                 <Link className={styles.navText} to='/profile'>
                   Profile
