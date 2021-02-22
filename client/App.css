@@ -66,6 +66,10 @@ a:hover {
   grid-template-rows: auto 1fr auto;
 }
 
+.club-rounded {
+  border-radius: 32px !important;
+}
+
 .cc-homePage-topLevelContainer {
   display: flex;
   flex-direction: row;

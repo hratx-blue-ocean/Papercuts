@@ -13,7 +13,7 @@ const BookClubs = () => {
 
   return (
     <div className='p-0 m-0'>
-      <Container className='px-1 mt-1'>
+      <Container className='d-flex justify-content-left px-4 mx-4' style={{ maxWidth: '90vw' }}>
         <SearchBookClubs />
       </Container>
       {error ? (
@@ -23,7 +23,10 @@ const BookClubs = () => {
       ) : (
         <Fragment>
           {!keyword && (
-            <Container className='py-1 my-1' style={{ maxWidth: '90vw' }}>
+            <Container
+              className='d-flex justify-content-between pt-1 mt-1 px-4 mx-4'
+              style={{ maxWidth: '90vw' }}
+            >
               <ClubBanner main />
             </Container>
           )}

@@ -17,7 +17,7 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     if (!('name' in club)) {
-      getClubById('602d52c3191ce139634c879d');
+      getClubById('60337b4ceee5952cf9fa0f9e');
     }
 
     getClubs();

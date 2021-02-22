@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Image, OverlayTrigger, Popover } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
+import imageType from './utils/imageType.js';
 
 const BookClubItem = ({ current, placement }) => {
   const { getClubById } = useContext(AppContext);
@@ -29,7 +30,13 @@ const BookClubItem = ({ current, placement }) => {
         </Popover>
       }
     >
-      <Image src={current.thumbnail || ''} rounded fluid onClick={handleClicked} />
+      <Image
+        src={current.thumbnail || ''}
+        className={imageType(current.thumbnail) === 'IMG' ? 'club-rounded' : 'rounded'}
+        fluid
+        onClick={handleClicked}
+        style={{ border: '1px solid #000' }}
+      />
     </OverlayTrigger>
   );
 };

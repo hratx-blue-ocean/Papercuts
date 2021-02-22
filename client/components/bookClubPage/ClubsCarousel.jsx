@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useContext, Fragment } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
@@ -27,12 +27,13 @@ const ClubsCarousel = ({ deviceType }) => {
         let left = clubs.slice(0, mid);
         let right = clubs.slice(mid, clubs.length - 1);
 
-        setStart([...left, ...left, ...right]);
-        setEnd([...right, ...left, ...right]);
+        setStart([...left]);
+        setEnd([...right]);
       }
     }
   }, [clubs, keyword, fuzzyClubs]);
   // console.log('START: ', start, 'END: ', end);
+  // console.log(clubs[0]);
 
   const responsive = {
     superLargeDesktop: {
@@ -119,16 +120,16 @@ const ClubsCarousel = ({ deviceType }) => {
   const ButtonGroup2 = ({ next, previous }) => {
     return (
       <div className='carousel-button-group d-none'>
-        <CustomLeftArrow2 onClick={() => previous()} />
-        <CustomRightArrow2 onClick={() => next()} />
+        <CustomLeftArrow2 onClick={() => previous()} className='left' />
+        <CustomRightArrow2 onClick={() => next()} className='right' />
       </div>
     );
   };
 
   return (
-    <Fragment>
+    <>
       {start.length > 0 && (
-        <Fragment>
+        <>
           <Carousel
             ssr
             deviceType={deviceType}
@@ -142,7 +143,7 @@ const ClubsCarousel = ({ deviceType }) => {
             keyBoardControl={true}
           >
             {start.map((club, index) => (
-              <Container className='p-1 m-1'>
+              <Container className={'p-1 m-1'}>
                 <Link
                   to={`/clubs/detail/${club._id}`}
                   key={club._id + index + `search-${club.score}`}
@@ -166,7 +167,7 @@ const ClubsCarousel = ({ deviceType }) => {
           >
             {end.length > 0 &&
               end.map((club, index) => (
-                <Container className='p-1 m-1' style={{ width: '100%', height: '100%' }}>
+                <Container className={'p-1 m-1'}>
                   <Link
                     to={`/clubs/detail/${club._id}`}
                     key={club._id + index + `search-${club.score}`}
@@ -176,14 +177,14 @@ const ClubsCarousel = ({ deviceType }) => {
                 </Container>
               ))}
           </Carousel>
-        </Fragment>
+        </>
       )}
       {keyword !== '' && start.length < 1 && (
         <div>
           <h3 className='text-center text-muted pt-2 mt-2'>No Results Found</h3>
         </div>
       )}
-    </Fragment>
+    </>
   );
 };
 

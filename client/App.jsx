@@ -28,29 +28,27 @@ export const App = () => {
       <div id='bodyContainer'>
         <HeaderComp user={user} />
 
-        <Container>
-          <Switch>
-            <Route path='/profile'>
-              <MainProfilePage user={user} />
-            </Route>
-            <Route exact path='/' component={HomePage} />
-            <Route exact path='/clubs' component={BookClubs} />
-            <Route path='/clubs/detail/:id' component={BookClub} />
-            <Route path='/clubs/create'>
-              <CreateBookClub user={user} />
-            </Route>
-            <Route path='/subscriptions' component={Subscriptions} />
-            <Route path='/about' component={AboutComp} />
+        <Switch>
+          <Route path='/profile'>
+            <MainProfilePage user={user} />
+          </Route>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/clubs' component={BookClubs} />
+          <Route path='/clubs/detail/:id' component={BookClub} />
+          <Route path='/clubs/create'>
+            <CreateBookClub user={user} />
+          </Route>
+          <Route path='/subscriptions' component={Subscriptions} />
+          <Route path='/about' component={AboutComp} />
 
-            <Route path='/checkout' component={Checkout} />
-            <Route path='/setting'>
-              <SettingPage user={user} />
-            </Route>
+          <Route path='/checkout' component={Checkout} />
+          <Route path='/setting'>
+            <SettingPage user={user} />
+          </Route>
 
-            <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
-            <Route component={Error} />
-          </Switch>
-        </Container>
+          <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
+          <Route component={Error} />
+        </Switch>
 
         <FooterComp />
       </div>

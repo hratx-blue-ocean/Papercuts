@@ -28,7 +28,7 @@ const SearchBookClubs = () => {
 
     if (keyword !== '') {
       if (option) {
-        // console.log('FUZZY: ', `(${fuzzyClubs[option - 1].item.name})`);
+        console.log('FUZZY: ', `(${fuzzyClubs[option - 1].item})`);
         getClubById(fuzzyClubs[option - 1].item._id);
         updateFound(true);
         setOption(0);
@@ -47,16 +47,23 @@ const SearchBookClubs = () => {
   };
 
   return (
-    <Form autoComplete='off' onSubmit={submitHandler} inline>
+    <Form
+      autoComplete='off'
+      onSubmit={submitHandler}
+      inline
+      className='py-2 my-2 px-5 mx-5'
+      style={{ width: '40%' }}
+    >
       <Form.Control
         type='text'
         name='q'
         value={keyword}
         onChange={(e) => updateKeyword(e.target.value)}
         placeholder='Search Book Clubs...'
-        className='ml-sm-5 mr-sm-2'
+        className='px-5'
+        style={{ width: '70%' }}
       />
-      <Button type='submit' className='p-2'>
+      <Button type='submit' className='p-2 px-3 mx-3' style={{ width: '20%' }}>
         Search
       </Button>
       {keyword !== '' && fuzzyClubs.length > 0 && (
