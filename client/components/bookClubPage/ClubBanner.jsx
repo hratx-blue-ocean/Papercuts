@@ -4,7 +4,7 @@ import { Container, Row, Col, Button, Image, Modal } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
 import { LoginModal } from '../global/loginRegisterModal.jsx';
 import { AppContext } from '../../context/context.jsx';
-export default function ClubBanner({ main, variant }) {
+export default function ClubBanner({ main }) {
   const user = useContext(AuthContext);
   const { club, joinClubById, leaveClubById } = useContext(AppContext);
   const [show, setShow] = useState(false);
@@ -29,7 +29,7 @@ export default function ClubBanner({ main, variant }) {
         </Modal.Body>
       </Modal>
       <Row>
-        <Col>
+        <Col className='ml-0'>
           {main ? (
             <Link to={`/clubs/detail/${club._id}`} style={{ maxWidth: '640px' }}>
               <Image src={club.thumbnail || ''} rounded fluid />
@@ -68,6 +68,5 @@ export default function ClubBanner({ main, variant }) {
 }
 
 ClubBanner.defaultProps = {
-  variant: 'light',
   main: false
 };

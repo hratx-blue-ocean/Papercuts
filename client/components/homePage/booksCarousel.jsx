@@ -3,7 +3,7 @@ import { Image } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-const BookCarousel = ({ books, setModalBook, setShow }) => {
+const BookCarousel = ({ books, setPhoto, setModalBook, setShow }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
@@ -35,6 +35,7 @@ const BookCarousel = ({ books, setModalBook, setShow }) => {
                 src={book.book_image}
                 onClick={() => {
                   setModalBook(book.primary_isbn10);
+                  setPhoto(book.book_image);
                   setShow(true);
                 }}
               />

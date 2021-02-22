@@ -21,9 +21,7 @@ export default function Questionnaire({}) {
   const [showAlert, setShowAlert] = useState(false);
 
   const handleSubmitQuestionnaire = (e) => {
-    axios
-      .post(`/bookclub/questionnaire/${club._id}`, formData)
-      .then(() => setShowAlert(true));
+    axios.post(`/bookclub/questionnaire/${club._id}`, formData).then(() => setShowAlert(true));
   };
 
   return (
@@ -33,7 +31,7 @@ export default function Questionnaire({}) {
           Successfully submitted questionnaire. Thanks for your feedback!
         </Alert>
       )}
-      <Form>
+      <Form className='mt-2' autoComplete='off'>
         {questionnaire.map((question, idx) => (
           <Form.Group key={idx + 1} controlId={`question-${idx + 1}`}>
             <Form.Label>{question}</Form.Label>
@@ -55,9 +53,7 @@ export default function Questionnaire({}) {
           </Button>
         ) : (
           <Alert variant='info'>
-            <Alert.Heading>
-              Please log in to answer the questionnaire
-            </Alert.Heading>
+            <Alert.Heading>Please log in to answer the questionnaire</Alert.Heading>
             <LoginModal />
           </Alert>
         )}

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Form, ListGroup, Button, Alert } from 'react-bootstrap';
+import { Form, ListGroup, Nav, Button, Alert } from 'react-bootstrap';
 import { AuthContext } from '../../context/authContext.jsx';
 import { AppContext } from '../../context/context.jsx';
 import { LoginModal } from '../global/loginRegisterModal.jsx';
@@ -49,27 +49,32 @@ export default function Comments({}) {
     <div>
       <ListGroup>
         {comments.map((comment, idx) => (
-          <ListGroup.Item key={idx}>
+          <ListGroup.Item className='my-1' key={idx}>
             <p>{comment.body}</p>
-            <p>
+            <small>
               {comment.username} at{' '}
-              <span>{Date(comment.created_at).toString()}</span>
-            </p>
-            <p>
-              <Button id={comment._id} onClick={handleLike}>
-                {comment.likes}
-              </Button>
-              {` likes | `}
-              <Button id={comment._id} onClick={handleDislike}>
-                {comment.dislikes}
-              </Button>
-              {` dislikes`}
-            </p>
+              <span>{`${new Date(comment.created_at).toLocaleString()} - `} </span>
+              <Nav.Link
+                id={comment._id}
+                style={{ display: 'inline-block', padding: '0' }}
+                onClick={handleLike}
+              >
+                {`${comment.likes} likes`}
+              </Nav.Link>
+              {` | `}
+              <Nav.Link
+                id={comment._id}
+                style={{ display: 'inline-block', padding: '0' }}
+                onClick={handleDislike}
+              >
+                {`${comment.dislikes} dislikes`}
+              </Nav.Link>
+            </small>
           </ListGroup.Item>
         ))}
       </ListGroup>
       {user ? (
-        <Form>
+        <Form className='my-2'>
           <Form.Group controlId='addComment'>
             <Form.Label>Add a Comment</Form.Label>
             <Form.Control

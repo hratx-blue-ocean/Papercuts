@@ -27,7 +27,7 @@ const BookClubs = () => {
               <ClubBanner main />
             </Container>
           )}
-          <Container className='px-1 py-1 my-1' style={{ maxWidth: '90vw' }}>
+          <Container className='py-1 my-1' style={{ maxWidth: '90vw' }}>
             <ClubsCarousel />
           </Container>
         </Fragment>
