@@ -17,7 +17,7 @@ POST {{baseUrl}}/user/friends
 Content-Type: application/json
 
 {
-    "userId": "{{matthew}}"
+    "userId": "{{jerrick}}"
 }
 
 ### Get all users that user are not friends with
@@ -34,7 +34,7 @@ POST {{baseUrl}}/user/friend
 Content-Type: application/json
 
 {
-    "userId":"{{matthew}}",
+    "userId":"{{jerrick}}",
     "friendId":"{{chris}}"
 }
 
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ### Get user payment info
-GET {{baseUrl}}/user/payment
+DELETE {{baseUrl}}/user/payment
 Content-Type: application/json
 
 {
@@ -120,19 +120,15 @@ Content-Type: application/json
 }
 
 ### Get all books that the user owns
-GET {{baseUrl}}/user/book
+GET {{baseUrl}}/user/book/{{jerrick}}
 Content-Type: application/json
-
-{
-    "userId":"{{jason}}"
-}
 
 ### User add book to library 7ef
 POST  {{baseUrl}}/user/book
 Content-Type: application/json
 
 {
-    "userId":"{{jason}}",
+    "userId":"{{jerrick}}",
     "title":"Harry Potter",
     "authors":"JK Rowling",
     "googleId":"hyGODQAAQBAJ",
@@ -141,10 +137,3 @@ Content-Type: application/json
     "category":"fiction"
 }
 
-### Get all bookclubs that user is in
-GET {{baseUrl}}/user/bookclubs
-Content-Type: application/json
-
-{
-    "userId":"602be49226e7f146247321c8"
-}

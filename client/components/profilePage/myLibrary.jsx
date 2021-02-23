@@ -8,7 +8,7 @@ import inLibraryMark from './book.png';
 import { AppContext } from '../../context/context.jsx';
 
 export default function myLibrary({ user }) {
-  const [booksOwned, setBooksOwned] = useState([]);
+  const [booksShown, setBooksShown] = useState([]);
   const [searchInput, setSearchInput] = useState('');
   const [clickedBook, setClickedBook] = useState({});
   const [booksInLibrary, setBooksInLibrary] = useState([]);
@@ -18,7 +18,7 @@ export default function myLibrary({ user }) {
     user &&
       axios.get(`/user/book/${user._id}`).then((results) => {
         setBooksInLibrary(results.data.library);
-        setBooksOwned(results.data.library);
+        setBooksShown(results.data.library);
       });
   }, [user]);
 
@@ -35,6 +35,7 @@ export default function myLibrary({ user }) {
           bookInfo.isbn = book.volumeInfo.industryIdentifiers.find(
             (el) => (el.type = 'ISBN_13')
           ).identifier;
+          // Not all books have isbn_10
           bookInfo.description = book.volumeInfo.description;
           bookInfo.image = book.volumeInfo.imageLinks
             ? book.volumeInfo.imageLinks.thumbnail
@@ -53,7 +54,7 @@ export default function myLibrary({ user }) {
         searchResults.sort(function (x, y) {
           return x.inLibrary == true ? -1 : y.inLibrary == false ? 1 : 0;
         });
-        setBooksOwned(searchResults);
+        setBooksShown(searchResults);
       });
   };
   return (
@@ -68,14 +69,14 @@ export default function myLibrary({ user }) {
         <Button type='submit'>Submit</Button>
         <Button
           onClick={() => {
-            setBooksOwned(booksInLibrary);
+            setBooksShown(booksInLibrary);
           }}
         >
           Show Library
         </Button>
       </form>
       <div id='libraryBody'>
-        {booksOwned.map((book, index) => {
+        {booksShown.map((book, index) => {
           return (
             <div className='bookBody' key={index}>
               {book.inLibrary ? (
