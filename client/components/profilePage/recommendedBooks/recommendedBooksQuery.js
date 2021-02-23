@@ -1,18 +1,13 @@
-const axios = require('axios');
-const Promise = require('bluebird');
-
 const nytSelectedLists = [
   'hardcover-fiction',
   'hardcover-nonfiction',
   'trade-fiction-paperback',
-  'paperback-nonfiction'
+  'paperback-nonfiction',
   'series-books',
   'young-adult',
   'chapter-books',
   'business-books'
 ]
-
-const nytSelectedLists = ['combined-print-fiction'];
 
 export const nytAllLists = [
   'combined-print-and-e-book-fiction',
@@ -75,70 +70,3 @@ export const nytAllLists = [
   'travel',
   'young-adult-paperback-monthly'
 ];
-
-const selectBestSellers = [];
-const trendingBooks = [];
-
-const getRecommendedBooks = async () => {
-  // try {
-  selectBestSeller = [];
-  return new Promise((resolve, reject) => {
-    return resolve(
-      nytSelectedLists.forEach(async (currentList) => {
-        await axios
-          .get('http://localhost:3000/book/bestsellers', {
-            params: { apikey: '0', list: currentList }
-          })
-          .then((topTitle) => {
-            selectBestSellers.push(parseInt(topTitle.data.results.books[0].primary_isbn10));
-            return resolve(selectBestSeller);
-          })
-          .catch((error) => {
-            console.error(`Could not retrieve NYT ${currentList}: `, error.message);
-          });
-      })
-    );
-  });
-  // } catch(error) {
-  //   console.error(`Trending books retrieval failed overall: `, error.message);
-  // }
-};
-
-const getBookInfo = async (isbn) => {
-  // try {
-  return new Promise((resolve, reject) => {
-    // selectBestSellers.forEach(async (isbn) => {
-    return resolve(
-      axios
-        .get('http://localhost:3000/book/trending', {
-          params: {
-            bookIsbn: isbn,
-            apikey: '0'
-          }
-        })
-        .then((bookInfo) => {
-          console.log('bookInfo: ', bookInfo);
-          // trendingBooks.push(bookInfo.data);
-          // console.log('trending books ', trendingBooks)
-        })
-        .catch((error) => {
-          console.error(`Could not retrieve Google API data for ${isbn}: `, error.message);
-        })
-    );
-    // })
-  });
-  // } catch (error) {
-  //   console.error('didnt work: ', error)
-  // }
-};
-
-const getTrendingBooks = async () => {
-  const bookISBNs = await getRecommendedBooks();
-
-  Promise.all(
-    bookISBNs.map(async (isbn) => {
-      const bookInfo = await getBookInfo(isbn);
-      console.log(bookInfo);
-    })
-  );
-};

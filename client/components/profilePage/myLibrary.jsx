@@ -35,13 +35,9 @@ export default function myLibrary({ user }) {
             (el) => (el.type = 'ISBN_10')
           ).identifier;
           bookInfo.description = book.volumeInfo.description;
-          // bookInfo.imageLinks.thumbnail = book.volumeInfo.imageLinks
-          //   ? book.volumeInfo.imageLinks.thumbnail
-          //   : 'https://i.imgur.com/sJ3CT4V.gif';
           bookInfo.imageLinks = book.volumeInfo.imageLinks.thumbnail ?
             { thumbnail: book.volumeInfo.imageLinks.thumbnail } :
             { thumbnail: 'https://i.imgur.com/sJ3CT4V.gif' };
-
           bookInfo.price = book.saleInfo.listPrice
             ? `$${book.saleInfo.listPrice.amount}`
             : 'Not Available';
