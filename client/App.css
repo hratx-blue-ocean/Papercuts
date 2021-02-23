@@ -34,9 +34,21 @@ body {
   color: var(--text-color);
 }
 
-/* Utility Styles */
-.font-lg {
-  font-size: 1.6rem;
+.btn-text {
+  outline: none;
+  padding: 5px;
+  border: 0px;
+  box-sizing: none;
+  background-color: transparent;
+}
+
+.btn-text:hover {
+  outline: none;
+  padding: 5px;
+  border: 0px;
+  box-sizing: none;
+  background-color: transparent;
+  color: #000 !important;
 }
 
 a {
@@ -52,6 +64,10 @@ a:hover {
 
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+
+.club-rounded {
+  border-radius: 32px !important;
 }
 
 .cc-homePage-topLevelContainer {

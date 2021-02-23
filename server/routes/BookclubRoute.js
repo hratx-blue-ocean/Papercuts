@@ -28,7 +28,7 @@ router.get('/:id', async (req, res) => {
     const clubs = await Bookclub.findById(req.params.id).populate('owner', [
       'username',
       'email',
-      'photoUrl',
+      'photoUrl'
     ]);
 
     res.json(clubs);
@@ -80,7 +80,7 @@ router.post('/join/:id', async (req, res) => {
     if (!club) return res.status(404).send('the Club is not exist, try a different club id.');
 
     await User.findByIdAndUpdate(userId, {
-      $push: { bookclubs: club._id },
+      $push: { bookclubs: club._id }
     });
 
     club.members.addToSet(userId); //addToSet adds values to array if not already present;
@@ -117,7 +117,7 @@ router.post('/questionnaire/:id', async (req, res) => {
     const savedDoc = await newQuestionnaire.save();
 
     await Bookclub.findByIdAndUpdate(req.params.id, {
-      $push: { questionnaire: savedDoc._id },
+      $push: { questionnaire: savedDoc._id }
     });
 
     res.status(201).send(savedDoc);
@@ -134,7 +134,7 @@ router.post('/comment/:id', async (req, res) => {
     const savedDoc = await newComment.save();
 
     await Bookclub.findByIdAndUpdate(req.params.id, {
-      $push: { comments: savedDoc._id },
+      $push: { comments: savedDoc._id }
     });
 
     res.status(201).send(savedDoc);
@@ -193,7 +193,7 @@ router.post('/event/:id', async (req, res) => {
     const savedDoc = await newEvent.save();
 
     await Bookclub.findByIdAndUpdate(req.params.id, {
-      $push: { events: savedDoc._id },
+      $push: { events: savedDoc._id }
     });
 
     res.status(201).send(savedDoc);
