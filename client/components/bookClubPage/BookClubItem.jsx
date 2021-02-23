@@ -1,28 +1,43 @@
 import React, { useContext } from 'react';
-import { Container, Image } from 'react-bootstrap';
+import { Image, OverlayTrigger, Popover } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
+import imageType from './utils/imageType.js';
 
-const BookClubItem = ({ current }) => {
+const BookClubItem = ({ current, placement }) => {
   const { getClubById } = useContext(AppContext);
 
   const handleClicked = () => {
     getClubById(current._id);
-    // console.log('clicked: ', current._id);
   };
 
   return (
-    <Container className='my-1 p-1'>
-      {/* <Card.ImgOverlay>
-          <Card.Text className='text-white text-center font-weight-bold pt-1'>{title}</Card.Text>
-        </Card.ImgOverlay> */}
+    <OverlayTrigger
+      key={current._id}
+      placement={placement}
+      overlay={
+        <Popover id={`popover-positioned-bookclub`}>
+          <Popover.Title as='h3'>{current.name}</Popover.Title>
+          <Popover.Content
+            style={{
+              maxHeight: '96px',
+              overflow: 'hidden',
+              whiteSpace: 'pre',
+              textOverflow: 'ellipsis'
+            }}
+          >
+            {current.description}
+          </Popover.Content>
+        </Popover>
+      }
+    >
       <Image
         src={current.thumbnail || ''}
-        rounded
+        className={imageType(current.thumbnail) === 'IMG' ? 'club-rounded' : 'rounded'}
         fluid
-        style={{ width: '320px', height: '200px', maxWidth: '320px' }}
         onClick={handleClicked}
+        style={{ border: '1px solid #000' }}
       />
-    </Container>
+    </OverlayTrigger>
   );
 };
 

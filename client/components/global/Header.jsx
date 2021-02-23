@@ -13,12 +13,9 @@ import {
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import logo from '../../../Docs/readMeImage/logo.png';
-
 // style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
-
 const Header = ({ user, title, variant, background }) => {
   const scale = 5;
-
   return (
     <Navbar className='nav font-weight-light font-lg' bg={background} sticky='top'>
       <Container style={{ maxWidth: '100vw' }}>
@@ -31,7 +28,6 @@ const Header = ({ user, title, variant, background }) => {
             className='d-inline-block align-top'
           />{' '}
         </Navbar.Brand>
-
         <Nav className='mr-auto'>
           <NavDropdown title='Book Clubs'>
             <Nav.Link to='/clubs' as={Link} variant={variant}>
@@ -53,7 +49,6 @@ const Header = ({ user, title, variant, background }) => {
             </Nav.Link>
           )}
         </Nav>
-
         <Nav className='ml-auto'>
           {!user ? (
             <>
@@ -78,11 +73,9 @@ const Header = ({ user, title, variant, background }) => {
     </Navbar>
   );
 };
-
 Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
   variant: '',
   background: 'light'
 };
-
 export default Header;
