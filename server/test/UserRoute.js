@@ -5,7 +5,7 @@ let requestD = request('http://localhost:3000');
 
 describe('Friend Section', () => {
   let testUserId = {
-    userId: '602aea49180a1d22643e561c',
+    userId: '602aea49180a1d22643e561c'
   };
 
   before(async () => {
@@ -32,7 +32,7 @@ describe('Friend Section', () => {
     it('User should be able to add friends', async () => {
       let dummyData = {
         userId: '602aea49180a1d22643e561c',
-        friendId: '60272dc32b562508c4a69a4a',
+        friendId: '60272dc32b562508c4a69a4a'
       };
 
       await requestD
@@ -46,7 +46,7 @@ describe('Friend Section', () => {
         });
     });
 
-    it('User should have no friends', async () => {
+    it('User should have friends', async () => {
       await requestD
         .post('/user/friends')
         .send(testUserId)
@@ -57,8 +57,8 @@ describe('Friend Section', () => {
           res.body.should.eql([
             {
               _id: '60272dc32b562508c4a69a4a',
-              email: 'userA@test.com',
-            },
+              email: 'userA@test.com'
+            }
           ]);
         });
     });
@@ -67,7 +67,7 @@ describe('Friend Section', () => {
 
 describe('Payment Section', () => {
   let testUserId = {
-    userId: '602aea49180a1d22643e561c',
+    userId: '602aea49180a1d22643e561c'
   };
 
   before(async () => {
@@ -88,7 +88,7 @@ describe('Payment Section', () => {
         .expect(200)
         .then((res) => {
           res.body.should.eql({
-            payment: null,
+            payment: null
           });
         });
     });
@@ -99,7 +99,7 @@ describe('Payment Section', () => {
         cardNumber: 123456,
         cardHolder: 'Matthew',
         cardCVC: 343,
-        cardExpiredDate: 'cardExpiredDateLol',
+        cardExpiredDate: 'cardExpiredDateLol'
       };
 
       await requestD
@@ -110,7 +110,7 @@ describe('Payment Section', () => {
         .expect(200)
         .then((res) => {
           res.body.should.eql({
-            msg: 'Payment added',
+            msg: 'Payment added'
           });
         });
     });
@@ -134,7 +134,7 @@ describe('Payment Section', () => {
         cardNumber: 123456,
         cardHolder: 'Matthew Ming',
         cardCVC: 343,
-        cardExpiredDate: 'cardExpiredDateLol',
+        cardExpiredDate: 'cardExpiredDateLol'
       };
       await requestD
         .get('/user/payment')
