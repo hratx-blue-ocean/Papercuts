@@ -1,6 +1,4 @@
 const router = require('express').Router();
-const { DocumentProvider } = require('mongoose');
-const { errorMonitor } = require('nodemailer/lib/mailer');
 const Bookclub = require('../models/bookclubs');
 const Questionnaire = require('../models/questionnaire');
 const Comment = require('../models/comment');
@@ -85,7 +83,7 @@ router.post('/join/:id', async (req, res) => {
 
     club.members.addToSet(userId); //addToSet adds values to array if not already present;
     club.save();
-    res.sendStatus(201);
+    res.status(201).send('successfully added.');
   } catch (err) {
     res.status(400).send(err);
   }
