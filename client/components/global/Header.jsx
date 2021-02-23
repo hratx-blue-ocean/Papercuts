@@ -41,13 +41,12 @@ const Header = ({ user, title, variant, background }) => {
               Create a Book Club
             </Nav.Link>
           </NavDropdown>
-          {user && user.subscriptionTier ? (
-            <></>
-          ) : (
-            <Nav.Link as={Link} to='/subscriptions' variant={variant}>
-              Subscriptions
-            </Nav.Link>
-          )}
+          <Nav.Link as={Link} to='/subscriptions' variant={variant}>
+            Subscriptions
+          </Nav.Link>
+          <Nav.Link as={Link} to='/about' variant={variant}>
+            About
+          </Nav.Link>
           {user && (
             <Nav.Link as={Link} to='/profile' variant={variant}>
               Profile

@@ -2,12 +2,11 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Modal, Image, Button, Table, Badge, Row, Col } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
 import { AuthContext } from '../../context/authContext.jsx';
-import Loader from './Loader.jsx';
 
 let currentISBN;
 
 //Accepts only a googleId, handleClose function and show boolean.
-export default function BookDetail({ isbn, show, setShow }) {
+export default function BookDetail({ isbn, photo, show, setShow }) {
   const user = useContext(AuthContext);
   const { getBookDetails, purchaseBook } = useContext(AppContext);
   const [book, setBook] = useState({});
@@ -17,33 +16,44 @@ export default function BookDetail({ isbn, show, setShow }) {
     if (isbn && isbn !== currentISBN) {
       currentISBN = isbn;
       let data = await getBookDetails(isbn);
-      setBook(data);
+      if (data === 'NOT_FOUND') {
+        setBook(null);
+      } else {
+        setBook(data);
+      }
     }
   }, [isbn]);
-  return !book.volumeInfo ? (
+  return !book ? (
+    <Modal show={show} onHide={() => setShow(false)}>
+      <Modal.Header closeButton>
+        Oops! That info is currently missing. Please select another book.
+      </Modal.Header>
+    </Modal>
+  ) : !book.volumeInfo ? (
     <></>
   ) : (
     <Modal size='xl' show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
-      <Modal.Header closeButton>
+      <Modal.Header style={{ backgroundColor: 'var(--background-color)' }} closeButton>
         <Modal.Title>{book.volumeInfo.title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>
+      <Modal.Body style={{ backgroundColor: 'var(--background-color)' }}>
         <Row>
-          <Col md='auto'>
+          <Col md={!photo ? 'auto' : '4'}>
             <Image
               src={
-                book.volumeInfo.imageLinks.large ||
-                book.volumeInfo.imageLinks.thumbnail ||
-                'https://i.imgur.com/sJ3CT4V.gif'
+                photo || book.volumeInfo.imageLinks.thumbnail || 'https://i.imgur.com/sJ3CT4V.gif'
               }
               fluid
               rounded
             />
           </Col>
-          <Col>
-            <div>by {book.volumeInfo.authors.join(', ')}</div>
+          <Col md={!photo ? null : '8'}>
+            <div>by {book.volumeInfo.authors ? book.volumeInfo.authors.join(', ') : 'Unknown'}</div>
             <br />
-            <p dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}></p>
+            <p
+              style={{ maxHeight: '35vh', overflow: 'scroll' }}
+              dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }}
+            ></p>
             <Table size='sm' striped bordered variant='light'>
               <tbody>
                 <tr>
@@ -60,9 +70,11 @@ export default function BookDetail({ isbn, show, setShow }) {
                 </tr>
                 <tr>
                   <td>Price</td>
-                  <td colSpan='1'>{`$${
-                    book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : 'Not for Sale'
-                  }`}</td>
+                  <td colSpan='1'>
+                    {book.saleInfo.saleability === 'FOR_SALE'
+                      ? `$${book.saleInfo.listPrice.amount}`
+                      : 'Freely Available'}
+                  </td>
                 </tr>
                 <tr>
                   <td>Tags</td>

@@ -16,8 +16,8 @@ export default function BookClub() {
   }, []);
 
   return (
-    <Container>
-      <Row>
+    <Container className='my-3'>
+      <Row className='my-2'>
         <Col>
           <ClubBanner />
         </Col>
