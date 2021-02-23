@@ -39,15 +39,11 @@ export default function Subscriptions() {
           {error}
         </Alert>
       )}
-      <h1>Subscription &amp; Pricing Options</h1>
+      <h2>Subscription &amp; Pricing Options</h2>
 
       <Row>
         {specifications.map((spec, i) => (
-          <SubscriptionCard
-            key={spec.id}
-            spec={spec}
-            handleSubscribe={() => handleSubscribe(i)}
-          />
+          <SubscriptionCard key={spec.id} spec={spec} handleSubscribe={() => handleSubscribe(i)} />
         ))}
       </Row>
     </Container>

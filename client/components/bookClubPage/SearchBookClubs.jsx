@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { AppContext } from '../../context/context.jsx';
+import { Link } from 'react-router-dom';
 
 const SearchBookClubs = ({ setFound, placeholder, variant, search }) => {
   const {
@@ -42,10 +43,13 @@ const SearchBookClubs = ({ setFound, placeholder, variant, search }) => {
         value={keyword}
         onChange={(e) => updateKeyword(e.target.value)}
         placeholder={placeholder}
-        className='ml-sm-5 mr-sm-2'
+        className='mr-1'
       ></Form.Control>
-      <Button type='submit' variant={search} className='p-2'>
+      <Button type='submit' variant={search} className='mx-1'>
         Search
+      </Button>
+      <Button to='/clubs/create' as={Link} variant='outline-secondary' className='mx-1'>
+        Create Your Own!
       </Button>
     </Form>
   );

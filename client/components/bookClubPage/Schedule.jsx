@@ -31,7 +31,7 @@ export default function Schedule({}) {
     <div>
       <ListGroup>
         {events.map((event, idx) => (
-          <ListGroup.Item key={idx}>
+          <ListGroup.Item className='my-1' key={idx}>
             <Event event={event} />
           </ListGroup.Item>
         ))}
@@ -43,32 +43,24 @@ export default function Schedule({}) {
               <Form.Control
                 required
                 type='input'
-                onChange={(e) =>
-                  setFormData({ ...formData, name: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               />
               <Form.Label>Description</Form.Label>
               <Form.Control
                 required
                 type='text'
-                onChange={(e) =>
-                  setFormData({ ...formData, description: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               />
               <Form.Label>Schedule</Form.Label>
               <Form.Control
                 required
                 type='datetime-local'
-                onChange={(e) =>
-                  setFormData({ ...formData, schedule: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, schedule: e.target.value })}
               />
               <Form.Label>Link</Form.Label>
               <Form.Control
                 type='url'
-                onChange={(e) =>
-                  setFormData({ ...formData, zoom_link: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, zoom_link: e.target.value })}
               />
               <Button onClick={handleAddEvent}>Add</Button>
             </Form>
