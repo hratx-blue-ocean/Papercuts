@@ -17,7 +17,6 @@ export default function myLibrary({ user }) {
   useEffect(() => {
     user &&
       axios.get(`/user/book/${user._id}`).then((results) => {
-        console.log(results.data.library);
         setBooksInLibrary(results.data.library);
         setBooksOwned(results.data.library);
       });
@@ -28,7 +27,6 @@ export default function myLibrary({ user }) {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
       .then((results) => {
-        console.log(results.data.items);
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
           bookInfo.id = book.id;
@@ -67,7 +65,14 @@ export default function myLibrary({ user }) {
           placeholder='Search books by author'
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <input type='submit' />
+        <Button type='submit'>Submit</Button>
+        <Button
+          onClick={() => {
+            setBooksOwned(booksInLibrary);
+          }}
+        >
+          Show Library
+        </Button>
       </form>
       <div id='libraryBody'>
         {booksOwned.map((book, index) => {
