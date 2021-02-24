@@ -20,10 +20,8 @@ const Books = () => {
 
   useEffect(() => {
     if (localStorage.getItem('booksByGenre') !== null && currentTime <= storedBooks.expiry) {
-      console.log('trying to use localstorage')
-      setBooks(JSON.parse(localStorage.getItem('booksByGenre')));
+      setBooks(storedBooks);
     } else {
-      console.log('Over a minute old')
       localStorage.removeItem('booksByGenre')
       homepageQueries();
     }
