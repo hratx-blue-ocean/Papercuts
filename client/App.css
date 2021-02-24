@@ -137,36 +137,20 @@ a:hover {
   text-align: center;
   font-style: normal;
   font-size: 2vw;
-<<<<<<< HEAD
-  font-weight: lighter;
-  line-height: 2vw;
-  color: #000000;
-=======
   color: var(--text-color-secondary);
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
   padding: 0px;
 }
 
 .cc-medTitles-left {
   text-align: left;
   font-style: normal;
-<<<<<<< HEAD
   font-size: 2vw;
   color: #000000;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
-  padding-bottom: 10px;
-=======
-  text-align: center;
-  color: var(--text-color-secondary);
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
-}
-
-.cc-medTitles-italic {
   text-align: center;
   font-style: italic;
-  color: var(--text-color-secondary);
   padding: 0px;
   font-style: italic;
   font-weight: 300;
@@ -182,10 +166,6 @@ a:hover {
   border: 1px;
   border-color: black;
   border-radius: 6px;
-<<<<<<< HEAD
-  border: 1px;
-  vertical-align: middle;
-=======
   margin: 5px;
   padding: 5px;
 }
@@ -200,7 +180,6 @@ a:hover {
 .cc-TrendingCaro {
   display: flex;
   flex: 2;
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
   margin: 10px;
   padding: 10px;
   font-style: normal;
@@ -225,23 +204,12 @@ a:hover {
   justify-items: center;
 }
 
-<<<<<<< HEAD
-.cc-bigTitles {
-  text-align: center;
-  font-style: bold;
-  font-size: 2.5vw;
-  line-height: 2vw;
-  color: #000000;
-  padding-top: 0px;
-  padding-bottom:20px;
-=======
 .cc-homePage-rightMainCol-titles {
   text-align: left;
   font-style: normal;
   font-size: 2vw;
   color: var(--text-color-secondary);
   padding: 0px;
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
 }
 
 .cc-homePage-smallText {
@@ -252,12 +220,8 @@ a:hover {
 .navList {
   text-align: right;
   vertical-align: middle;
-<<<<<<< HEAD
-}
-=======
 }
 
 .carouselTitles > p {
   font-size: 23px;
 }
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f

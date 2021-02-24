@@ -28,12 +28,7 @@ const Header = ({ user, title, variant, background }) => {
             className='d-inline-block align-top'
           />{' '}
         </Navbar.Brand>
-<<<<<<< HEAD
-
-        <Nav className='mr-auto navList'>
-=======
         <Nav className='mr-auto'>
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
           <NavDropdown title='Book Clubs'>
             <Nav.Link to='/clubs' as={Link} variant={variant}>
               Browse
@@ -54,12 +49,7 @@ const Header = ({ user, title, variant, background }) => {
             </Nav.Link>
           )}
         </Nav>
-<<<<<<< HEAD
-
-        <Nav className='ml-auto navList'>
-=======
         <Nav className='ml-auto'>
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
           {!user ? (
             <>
               <LoginModal />

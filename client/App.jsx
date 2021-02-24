@@ -24,31 +24,6 @@ export const App = () => {
   const user = useContext(AuthContext);
 
   return (
-<<<<<<< HEAD
-    <div id='bodyContainer'>
-      <Router>
-        <Header user={user} />
-        <main
-          className='d-flex justify-content-center'
-          style={{ paddingBottom: '25px' }}
-        >
-          <Container className='p-1 m-1' fluid>
-            <Switch>
-              <Route path='/profile'>
-                <MainProfilePage user={user} />
-              </Route>
-              <Route exact path='/' component={HomePage} />
-              <Route exact path='/clubs' component={BookClubs} />
-              <Route path='/clubs/detail/:id' component={BookClub} />
-              <Route path='/clubs/create'>
-                <CreateBookClub user={user} />
-              </Route>
-              <Route path='/subscriptions' component={Subscriptions} />
-              <Route path='/checkout' component={Checkout} />
-              <Route path='/setting'>
-                <SettingPage user={user} />
-              </Route>
-=======
     <Router>
       <div id='bodyContainer'>
         <HeaderComp user={user} />
@@ -74,7 +49,6 @@ export const App = () => {
           <Route exact path='/changePassword/:email/:token' component={ChangePasswordForm} />
           <Route component={Error} />
         </Switch>
->>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
 
         <FooterComp />
       </div>
