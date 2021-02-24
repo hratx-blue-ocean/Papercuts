@@ -3,27 +3,18 @@ import Bookofthemonth from './bookofthemonth.jsx';
 import Books from './books.jsx';
 import SiteDesc from './SiteDesc.jsx';
 import MonthlySubscr from './MonthlySubscr.jsx';
-import Container from 'react-bootstrap/Container';
+import { Container } from 'react-bootstrap';
 
 const HomePage = () => {
-
   return (
-    <div>
-      <Container className="cc-homePage-topLevelContainer">
-        <div className="cc-homePage-leftMainCol">
-          <Bookofthemonth />
-         
-        </div>
-        <div className="cc-homePage-rightMainCol">
-          <SiteDesc />
-          <MonthlySubscr />
-        </div>
+    <Container className='p-1 m-1'>
+      <Container>
+        <Bookofthemonth />
+        <Books />
+        <br />
       </Container>
-      <Books />
-      <br />
-    </div>
-  )
-}
+    </Container>
+  );
+};
 
 export default HomePage;
-

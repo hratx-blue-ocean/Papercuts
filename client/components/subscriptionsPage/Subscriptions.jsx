@@ -33,21 +33,17 @@ export default function Subscriptions() {
   return redirect ? (
     <Redirect to='/setting' />
   ) : (
-    <Container>
+    <Container className='p-1 m-1'>
       {error && (
         <Alert variant='danger' onClose={() => setError('')} dismissible>
           {error}
         </Alert>
       )}
-      <h1>Subscription &amp; Pricing Options</h1>
+      <h2>Subscription &amp; Pricing Options</h2>
 
       <Row>
         {specifications.map((spec, i) => (
-          <SubscriptionCard
-            key={spec.id}
-            spec={spec}
-            handleSubscribe={() => handleSubscribe(i)}
-          />
+          <SubscriptionCard key={spec.id} spec={spec} handleSubscribe={() => handleSubscribe(i)} />
         ))}
       </Row>
     </Container>

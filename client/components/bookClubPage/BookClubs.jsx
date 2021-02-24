@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import { Redirect } from 'react-router-dom';
 import { AppContext } from '../../context/context.jsx';
 import { Container } from 'react-bootstrap';
@@ -9,17 +9,12 @@ import SearchBookClubs from './SearchBookClubs.jsx';
 import Error from '../global/Error.jsx';
 
 const BookClubs = () => {
-  const { club, error, keyword, updateKeyword } = useContext(AppContext);
-  const [found, setFound] = useState(false);
-
-  useEffect(() => {
-    updateKeyword('');
-  }, []);
+  const { club, found, error, keyword } = useContext(AppContext);
 
   return (
     <div className='p-0 m-0'>
-      <Container className='px-1 mt-1'>
-        <SearchBookClubs setFound={setFound} />
+      <Container className='d-flex justify-content-left px-4 mx-4' style={{ maxWidth: '90vw' }}>
+        <SearchBookClubs />
       </Container>
       {error ? (
         <Error />
@@ -28,11 +23,14 @@ const BookClubs = () => {
       ) : (
         <Fragment>
           {!keyword && (
-            <Container className='py-1 my-1' style={{ maxWidth: '90vw' }}>
+            <Container
+              className='d-flex justify-content-between pt-1 mt-1 px-4 mx-4'
+              style={{ maxWidth: '90vw' }}
+            >
               <ClubBanner main />
             </Container>
           )}
-          <Container className='px-1 py-1 my-1' style={{ maxWidth: '90vw' }}>
+          <Container className='py-1 my-1' style={{ maxWidth: '90vw' }}>
             <ClubsCarousel />
           </Container>
         </Fragment>
