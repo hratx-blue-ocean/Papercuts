@@ -305,7 +305,7 @@ router.get('/book/:id', async (req, res) => {
 // @route   Post /user/book
 // @access  Private
 router.post('/book', async (req, res) => {
-  let { userId, title, authors, googleId, image, price, category } = req.body;
+  let { userId, title, authors, googleId, image, price, category, isbn } = req.body;
   try {
     // check if book is in book colletion
 
@@ -318,7 +318,8 @@ router.post('/book', async (req, res) => {
         googleId,
         image,
         price,
-        category
+        category,
+        isbn
       }).save();
     }
 

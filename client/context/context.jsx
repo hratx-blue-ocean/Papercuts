@@ -8,6 +8,7 @@ export const AppContext = createContext();
 export const AppProvider = ({ children }) => {
   const [book, setBook] = useState({}); //Current selected book (BookDetail modal)
   const [club, setClub] = useState({}); //Current selected club (ClubBanner & BookClub)
+  const [found, setFound] = useState(false); // search state
   const [clubs, setClubs] = useState([]); //List of all clubs retreived from database
   const [keyword, setKeyword] = useState(''); //Current search input
   const [fuzzyClubs, setFuzzyClubs] = useState([]); //Used to fuzzy-search clubs (fuse.js)
@@ -17,7 +18,10 @@ export const AppProvider = ({ children }) => {
   const [trendingBooks, setTrendingBooks] = useState([]);
 
   useEffect(() => {
-    getClubById('602bff381017a68f02009b0e');
+    if (!('name' in club)) {
+      getClubById('60337b4ceee5952cf9fa0f9e');
+    }
+
     getClubs();
     getUserClubsById([
       '602bff381017a68f02009b0e',
@@ -117,6 +121,15 @@ export const AppProvider = ({ children }) => {
     }
   }
 
+  // Set found state
+  function updateFound(bool) {
+    try {
+      setFound(bool);
+    } catch (err) {
+      setError(err.response.data.error);
+    }
+  }
+
   // Get user book club by id
   const getUserClubsById = async (ids) => {
     const userClubData = [];
@@ -172,7 +185,7 @@ export const AppProvider = ({ children }) => {
           googleId: book.id,
           image: book.volumeInfo.imageLinks.thumbnail,
           price: book.saleInfo.retailPrice ? book.saleInfo.retailPrice.amount : null,
-          isbn: book.volumeInfo.industryIdentifiers[0],
+          isbn: book.volumeInfo.industryIdentifiers[0].identifier.toString(),
           category: book.volumeInfo.categories
         })
         .then((res) => console.log(res));
@@ -187,12 +200,14 @@ export const AppProvider = ({ children }) => {
         book,
         club,
         clubs,
+        found,
         keyword,
         fuzzyClubs,
         error,
         loading,
         trendingBooks,
         userClubs,
+        updateFound,
         getClubs,
         getClubByName,
         getClubById,
