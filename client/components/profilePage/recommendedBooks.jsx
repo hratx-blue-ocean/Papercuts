@@ -5,7 +5,7 @@ import '../../../node_modules/react-multi-carousel/lib/styles.css';
 import './profileStyles.css';
 import BookDetail from '../global/BookDetail.jsx';
 import axios from 'axios';
-import { nytAllLists } from './recommendedBooks/recommendedBooksQuery';
+import { nytAllLists } from './recommendedBooks/recommendedBooksQuery.jsx';
 
 export default function RecommendedBooks() {
   const [books, setBooks] = useState([]);

@@ -1,4 +1,4 @@
-const nytSelectedLists = [
+export const nytSelectedLists = [
   'hardcover-fiction',
   'hardcover-nonfiction',
   'trade-fiction-paperback',
@@ -70,3 +70,12 @@ export const nytAllLists = [
   'travel',
   'young-adult-paperback-monthly'
 ];
+
+export const homepageBookList = [
+  'combined-print-and-e-book-nonfiction',
+  'trade-fiction-paperback',
+  'hardcover-fiction',
+  'series-books',
+  'manga',
+  'young-adult'
+]

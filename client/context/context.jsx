@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from 'react';
 import Fuse from 'fuse.js';
 import axios from 'axios';
-import getTrendingBooksCookie from './timestampCookie.jsx';
+import { nytSelectedLists } from '../components/profilePage/recommendedBooks/recommendedBooksQuery.jsx';
 
 export const AppContext = createContext();
 
@@ -25,7 +25,6 @@ export const AppProvider = ({ children }) => {
       '602d50bc191ce139634c8797',
       '602d52c3191ce139634c879d'
     ]);
-    trendingBooksCookieCheck();
   }, []);
 
   // Actions
@@ -134,44 +133,25 @@ export const AppProvider = ({ children }) => {
   };
 
   // Get top books from select NYT Best Sellers lists
-  const getTrendingBooks = async (lists) => {
-    const bestSellers = [];
-
+  async function getTrendingBooks(lists) {
+    let bestSellers = [];
     try {
       lists.map(async (currentList) => {
         const topBooks = await axios.get(`book/bestsellers`, {params: { list: currentList }});
         const currentIsbn = topBooks.data.results.books[0].primary_isbn10;
-
-        const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }})
+        const book = await axios.get(`book/trending`, {params: { isbn: currentIsbn }});
 
         bestSellers.push(book.data.items[0].volumeInfo);
       });
 
       setTrendingBooks(bestSellers);
-      setTrendingBooksCookie(value = trendingBooks);
+
+      localStorage.setItem('trendingBooks', JSON.stringify(trendingBooks));
     } catch (err) {
       setError(err);
     }
   }
 
-  function trendingBooksCookieCheck() {
-    const storedTrendingBooks = getTrendingBooksCookie(trendingBooks);
-
-    if (storedTrendingBooks) {
-      setTrendingBooks(storedTrendingBooks);
-    } else {
-      getTrendingBooks([
-        'hardcover-fiction',
-        'hardcover-nonfiction',
-        'trade-fiction-paperback',
-        'paperback-nonfiction',
-        'series-books',
-        'young-adult',
-        'chapter-books',
-        'business-books'
-      ]);
-    }
-  }
   // Get one book's details from external API
   const getBookDetails = async (isbn) => {
     try {
