@@ -31,6 +31,10 @@ export default function BookDetail({ isbn, photo, show, setShow }) {
     </Modal>
   ) : !book.volumeInfo ? (
     <></>
+  ) : book.volumeInfo.title === 'Could not find book' ? (
+    <Modal size='xl' show={show} onHide={() => setShow(false)} keyboard={false}>
+      Could not find book
+    </Modal>
   ) : (
     <Modal size='xl' show={show} onHide={() => setShow(false)} backdrop='static' keyboard={false}>
       <Modal.Header style={{ backgroundColor: 'var(--background-color)' }} closeButton>
