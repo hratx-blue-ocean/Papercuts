@@ -64,17 +64,19 @@ router.post('/', async (req, res) => {
 // @access  Public
 router.get('/details/:isbn', async (req, res) => {
   let { isbn } = req.params;
-
   try {
     let first = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}`);
-    console.log(first.data.items[0].id);
+    console.log(first.data);
+    if (first.data.totalItems === 0) {
+      return res.send({ volumeInfo: { title: 'Could not find book' } });
+    }
     let response = await axios.get(
-      `https://www.googleapis.com/books/v1/volumes/${first.data.items[0].id}`
+      `https://www.googleapis.com/books/v1/volumes?q=intitle:${first.data.items[0].volumeInfo.title}&key=${process.env.GOOGLE_KEY}`
     );
-    res.send(response.data);
+    res.send(response.data.items.filter((book) => book.saleInfo.saleability === 'FOR_SALE')[0]);
   } catch (error) {
     console.error(`Could not complete Google Books API request for isbn ${isbn}: `, error);
-    res.status(400).send(error.message);
+    res.status(400).send('NOT_FOUND');
   }
 });
 

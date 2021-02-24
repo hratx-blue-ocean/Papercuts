@@ -13,7 +13,7 @@ const Promise = require('bluebird');
 
 const nytSelectedLists = ['combined-print-fiction'];
 
-const nytAllLists = [
+export const nytAllLists = [
   'combined-print-and-e-book-fiction',
   'combined-print-and-e-book-nonfiction',
   'hardcover-fiction',
@@ -89,16 +89,11 @@ const getRecommendedBooks = async () => {
             params: { apikey: '0', list: currentList }
           })
           .then((topTitle) => {
-            selectBestSellers.push(
-              parseInt(topTitle.data.results.books[0].primary_isbn10)
-            );
+            selectBestSellers.push(parseInt(topTitle.data.results.books[0].primary_isbn10));
             return resolve(selectBestSeller);
           })
           .catch((error) => {
-            console.error(
-              `Could not retrieve NYT ${currentList}: `,
-              error.message
-            );
+            console.error(`Could not retrieve NYT ${currentList}: `, error.message);
           });
       })
     );
@@ -126,10 +121,7 @@ const getBookInfo = async (isbn) => {
           // console.log('trending books ', trendingBooks)
         })
         .catch((error) => {
-          console.error(
-            `Could not retrieve Google API data for ${isbn}: `,
-            error.message
-          );
+          console.error(`Could not retrieve Google API data for ${isbn}: `, error.message);
         })
     );
     // })

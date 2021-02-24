@@ -25,19 +25,19 @@ GET http://localhost:3000/bookclub/all
 
 
 ### Get bookclub by id --GET /bookclub/:bookclub_id
-GET http://localhost:3000/bookclub/6027582d28408307a8103ee9
+GET http://localhost:3000/bookclub/602bff381017a68f02009b0e
 
 
-### Get bookclub by its name --GET /:bookclub
+### Get bookclub by its name --GET /bookclub
 GET http://localhost:3000/bookclub
 Content-Type: application/json
 
 {
-    "name": "Nonfiction Book Club"
+    "name": "Game of Thrones Book Club"
 }
 
 ### Get all the comments from a bookclub  --GET /bookclub/comment/:bookclub_id
-GET http://localhost:3000/bookclub/comment/60298d9c3f52c42310b61dab
+GET http://localhost:3000/bookclub/comment/602bff381017a68f02009b0e
 
 
 ### Get all events for a bookclub  --GET  /bookclub/event/:bookclub_id

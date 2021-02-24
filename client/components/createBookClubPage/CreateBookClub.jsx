@@ -9,21 +9,23 @@ export default function CreateBookClub({ user }) {
   const fileRef1 = useRef();
   const fileRef2 = useRef();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!user) return setShow(true);
     const storageRef1 = firebaseStorage.ref(fileRef1.current.files[0].name);
     const storageRef2 = firebaseStorage.ref(fileRef2.current.files[0].name);
     Promise.all([
       storageRef1.put(fileRef1.current.files[0]).then((snapShot) => snapShot.ref.getDownloadURL()),
-      storageRef2.put(fileRef2.current.files[0]).then((snapShot) => snapShot.ref.getDownloadURL()),
+      storageRef2.put(fileRef2.current.files[0]).then((snapShot) => snapShot.ref.getDownloadURL())
     ]).then((urls) => {
       return axios.post('/bookclub', {
         ...formData,
         owner: user._id,
         smallThumbnail: urls[0],
-        thumbnail: urls[1],
+        thumbnail: urls[1]
       });
     });
+    console.log('CLUB CREATED');
   };
 
   return (
@@ -35,7 +37,7 @@ export default function CreateBookClub({ user }) {
         </Alert>
       )}
       <h1>Create a Book Club</h1>
-      <Form>
+      <Form autoComplete='off' onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label>Name</Form.Label>
           <Form.Control
@@ -60,7 +62,7 @@ export default function CreateBookClub({ user }) {
           <Form.Label>Thumbnail</Form.Label>
           <Form.Control required type='file' name='thumbnail' ref={fileRef2} />
         </Form.Group>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <Button type='submit'>Submit</Button>
       </Form>
     </Container>
   );

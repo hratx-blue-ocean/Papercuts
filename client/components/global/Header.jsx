@@ -13,12 +13,9 @@ import {
 import { LoginModal, RegisterModal } from './loginRegisterModal.jsx';
 import logout from './logout.js';
 import logo from '../../../Docs/readMeImage/logo.png';
-
 // style={{ borderBottom: '2px solid #111', maxWidth: '100vw' }}
-
 const Header = ({ user, title, variant, background }) => {
   const scale = 5;
-
   return (
     <Navbar className='nav font-weight-light font-lg' bg={background} sticky='top'>
       <Container style={{ maxWidth: '100vw' }}>
@@ -31,8 +28,12 @@ const Header = ({ user, title, variant, background }) => {
             className='d-inline-block align-top'
           />{' '}
         </Navbar.Brand>
+<<<<<<< HEAD
 
         <Nav className='mr-auto navList'>
+=======
+        <Nav className='mr-auto'>
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
           <NavDropdown title='Book Clubs'>
             <Nav.Link to='/clubs' as={Link} variant={variant}>
               Browse
@@ -41,21 +42,24 @@ const Header = ({ user, title, variant, background }) => {
               Create a Book Club
             </Nav.Link>
           </NavDropdown>
-          {user && user.subscriptionTier ? (
-            <></>
-          ) : (
-            <Nav.Link as={Link} to='/subscriptions' variant={variant}>
-              Subscriptions
-            </Nav.Link>
-          )}
+          <Nav.Link as={Link} to='/subscriptions' variant={variant}>
+            Subscriptions
+          </Nav.Link>
+          <Nav.Link as={Link} to='/about' variant={variant}>
+            About
+          </Nav.Link>
           {user && (
             <Nav.Link as={Link} to='/profile' variant={variant}>
               Profile
             </Nav.Link>
           )}
         </Nav>
+<<<<<<< HEAD
 
         <Nav className='ml-auto navList'>
+=======
+        <Nav className='ml-auto'>
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
           {!user ? (
             <>
               <LoginModal />
@@ -79,11 +83,9 @@ const Header = ({ user, title, variant, background }) => {
     </Navbar>
   );
 };
-
 Header.defaultProps = {
   title: 'PAPERCUTS BOOKSTORE',
   variant: '',
   background: 'light'
 };
-
 export default Header;

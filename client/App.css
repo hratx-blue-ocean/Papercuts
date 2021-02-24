@@ -1,45 +1,54 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 /* Global Styles */
 :root {
-  --primary-color: #dc3545;
-  --secondary-color: #6308f7;
-  --light-purple: #c19cfc;
-  --dark-purple: #3c0594;
-  --light-color: #f4f4f4;
-  --dark-color: #333333;
-  --light-bg-color: #a0a3bd;
-  --bg-color: #262338;
-  --danger-color: #dc3545;
-  --success-color: #28a745;
+  --text-color: #124a63;
+  --text-color-secondary: #b3c5cd;
+
+  --background-color: #f9f9f9;
+  --background-color-dark: #eef3f6;
+  --background-color-light: rgb(241, 231, 248);
+
+  --font-family: 'Poppins', sans-serif;
+  --box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+
+  --logo-img: invert(0);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #000;
+[data-theme='dark'] {
+  --text-color: #f0f0f0;
+  --text-color-secondary: #b3c5cd;
+
+  --background-color: #8a8a8d;
+  --background-color-dark: #3c393f;
+  --background-color-light: #5c4e61;
+
+  --logo-img: invert(1);
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: #111;
-  /* background: linear-gradient(131deg, rgba(205, 221, 244, 1) 0%, rgba(205, 186, 250, 1) 100%); */
-  /* background: linear-gradient(to left, #b067ec, #9e5beb); */
-  background: linear-gradient(225deg, #cdddf4 3.26%, #cdbafa 100%);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-/* Utility Styles */
-.font-lg {
-  font-size: 1.6rem;
+.btn-text {
+  outline: none;
+  padding: 5px;
+  border: 0px;
+  box-sizing: none;
+  background-color: transparent;
+}
+
+.btn-text:hover {
+  outline: none;
+  padding: 5px;
+  border: 0px;
+  box-sizing: none;
+  background-color: transparent;
+  color: #000 !important;
 }
 
 a {
@@ -51,16 +60,14 @@ a:hover {
 }
 
 #bodyContainer {
-  position: relative;
-  min-height: 100vh;
+  height: 100vh;
+
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 }
 
-#footer {
-  position: absolute;
-  margin: auto;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+.club-rounded {
+  border-radius: 32px !important;
 }
 
 .cc-homePage-topLevelContainer {
@@ -113,6 +120,7 @@ a:hover {
 }
 
 .cc-BOTM-mainBookInfo-container {
+  width: 20vw;
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -129,27 +137,36 @@ a:hover {
   text-align: center;
   font-style: normal;
   font-size: 2vw;
+<<<<<<< HEAD
   font-weight: lighter;
   line-height: 2vw;
   color: #000000;
+=======
+  color: var(--text-color-secondary);
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
   padding: 0px;
 }
 
 .cc-medTitles-left {
   text-align: left;
   font-style: normal;
+<<<<<<< HEAD
   font-size: 2vw;
   color: #000000;
   padding-left: 0px;
   padding-right: 0px;
   padding-top: 0px;
   padding-bottom: 10px;
+=======
+  text-align: center;
+  color: var(--text-color-secondary);
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
 }
 
 .cc-medTitles-italic {
   text-align: center;
   font-style: italic;
-  color: #000000;
+  color: var(--text-color-secondary);
   padding: 0px;
   font-style: italic;
   font-weight: 300;
@@ -165,8 +182,25 @@ a:hover {
   border: 1px;
   border-color: black;
   border-radius: 6px;
+<<<<<<< HEAD
   border: 1px;
   vertical-align: middle;
+=======
+  margin: 5px;
+  padding: 5px;
+}
+.cc-BOTM-mainBookInfo-description {
+  font-size: 23px;
+  color: var(--text-color-secondary);
+  padding: 5px;
+  margin: 10px;
+  text-align: justify;
+}
+
+.cc-TrendingCaro {
+  display: flex;
+  flex: 2;
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
   margin: 10px;
   padding: 10px;
   font-style: normal;
@@ -191,6 +225,7 @@ a:hover {
   justify-items: center;
 }
 
+<<<<<<< HEAD
 .cc-bigTitles {
   text-align: center;
   font-style: bold;
@@ -199,14 +234,30 @@ a:hover {
   color: #000000;
   padding-top: 0px;
   padding-bottom:20px;
+=======
+.cc-homePage-rightMainCol-titles {
+  text-align: left;
+  font-style: normal;
+  font-size: 2vw;
+  color: var(--text-color-secondary);
+  padding: 0px;
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
 }
 
 .cc-homePage-smallText {
   font-size: 1vw;
-  color: #000000;
+  color: var(--text-color-secondary);
 }
 
 .navList {
   text-align: right;
   vertical-align: middle;
+<<<<<<< HEAD
 }
+=======
+}
+
+.carouselTitles > p {
+  font-size: 23px;
+}
+>>>>>>> 5c55553f4e6b99fe6171ccb94ddd6f4c87f9668f
