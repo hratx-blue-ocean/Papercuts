@@ -77,7 +77,7 @@ export default function BookDetail({ isbn, photo, show, setShow }) {
                   <td colSpan='1'>
                     {book.saleInfo.saleability === 'FOR_SALE'
                       ? `$${book.saleInfo.listPrice.amount}`
-                      : 'Freely Available'}
+                      : 'Call For Availability'}
                   </td>
                 </tr>
                 <tr>
