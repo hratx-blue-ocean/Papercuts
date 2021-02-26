@@ -42,10 +42,6 @@
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
@@ -60,35 +56,76 @@
 
 ## About The Project
 
-#### Applicatin login with proper authentication
+Papercuts is a full-stack web application for buying, browsing, and commenting on the latest books. The user can register an account and maintain their own library of books, as well as make friends, leave recommendations, and start/join book clubs!
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Project Description
+![Papercuts Home Page](/readme/home.png)
 
 Key Features
 
 - User authentication
-- Display the book of the month
-- Explore trending books from the store
-- View user libary and purchased book
-- Explore user libary and
-- Connect and add friends
-- Create bookclub and bookclub event
-- Email notification for bookclub event
+- Displays a book of the month
+- Explore trending books from New York Times 
+- View purchased books in user library
+- Search for new books in the user library
+- Connect to friends
+- Create Book Clubs and add Events
+
+### Application login with proper authentication
+
+![Papercuts Login](/readme/login.png)
+
+- Click Register to create a new account with the site.
+- Using sessions, you will only be asked to log in again once a week, for user convenience.
+- If you lose your password, you may retrieve through the forgot password button.
+
+### User Profile Page
+
+![Papercuts Login](/readme/profile.png)
+
+- In your user profile, you may browse your library of purchased books or search for new ones.
+- A gallery of recommended books will be available to you.
+- You may also find new friends and see what they are currently recommending, as well as see the book clubs you are subscribed to.
+
+### Book Clubs Page
+
+![Papercuts Login](/readme/book-clubs.png)
+
+- On the book clubs page, you may browse the available book clubs and click to join or leave them.
+- Clicking on a club's image will take you to the detailed view, where the events, comments, and questionnaire are available.
+- Only the owner will be able to create events, and only logged in users will be able to comment.
+
+### Subscriptions Page
+
+![Papercuts Login](/readme/subscriptions.png)
+
+- On the subscriptions page, you may choose a plan to subscribe to. This will require you to have payment info saved in the settings page.
 
 ### Built With
 
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-<code><img src="https://user-images.githubusercontent.com/64542531/108141141-cf41ef00-7088-11eb-9c57-2ea309457cba.png"></code>
-
-- [Bootstrap](https://getbootstrap.com)
-- [React/Hooks](https://reactjs.org/)
-- [React-bootstrap](https://react-bootstrap.github.io/)
-- [MongoDB](https://www.mongodb.com/3)
-- [Node.js](https://nodejs.org/en/)
-- [Express.js](http://expressjs.com/)
+<table>
+  <tr>
+    <td>Languages</td>
+    <td><img alt="JavaScript" src="https://img.shields.io/badge/javascript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E"/> <img alt="NodeJS" src="https://img.shields.io/badge/node.js%20-%2343853D.svg?&style=for-the-badge&logo=node.js&logoColor=white"/> <img alt="HTML5" src="https://img.shields.io/badge/html5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white"/> <img alt="CSS3" src="https://img.shields.io/badge/css3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white"/></td>
+  </tr>
+  <tr>
+    <td>Frameworks & Libraries</td>
+    <td><img alt="React" src="https://img.shields.io/badge/react%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB"/> <img alt="Express.js" src="https://img.shields.io/badge/express.js%20-%23404d59.svg?&style=for-the-badge"/> <img alt="Bootstrap" src="https://img.shields.io/badge/bootstrap%20-%23563D7C.svg?&style=for-the-badge&logo=bootstrap&logoColor=white"/></td>
+  </tr>
+  <tr>
+    <td>Hosting</td>
+    <td><img alt="AWS" src="https://img.shields.io/badge/AWS%20-%23FF9900.svg?&style=for-the-badge&logo=amazon-aws&logoColor=white"/> </td>
+  </tr>
+  <tr>
+    <td>Databases</td>
+    <td><img alt="MongoDB" src ="https://img.shields.io/badge/MongoDB-%234ea94b.svg?&style=for-the-badge&logo=mongodb&logoColor=white"/> </td>
+  </tr>
+  <tr>
+    <td>Testing</td>
+    <td><img alt="Jest" src="https://img.shields.io/badge/-jest-%23C21325?&style=for-the-badge&logo=jest&logoColor=white"/></td>
+  </tr>
+</table>
 
 <!-- GETTING STARTED -->
 
@@ -97,39 +134,28 @@ This section should list any major frameworks that you built your project using.
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-
-- npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Create a free [Mongo Atlas](https://www.mongodb.com/cloud/atlas) account and obtain your key.
+2. Obtain a free [New York Times](https://developer.nytimes.com/) API key.
+3. Obtain a free [Google Books](https://console.cloud.google.com/projectselector/apis/credentials) API key.
+4. Clone the repo
    ```sh
    git clone https://github.com/hratx-blue-ocean/Papercuts.git
    ```
-3. Install NPM packages
+5. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
+6. Enter your keys in the following form in a new file called `.env`
+   ```sh
+   MONGO_PASS=XXXXXXXX
+   NYT_KEY=XXXXXXX
+   GOOGLE_API_KEY=XXXXXXX
    ```
-
-<!-- USAGE EXAMPLES -->
-
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+7. Start the server and access Papercuts locally at `http://localhost:3000`
+   ```sh
+   npm start
+   ```
+   
 <!-- ROADMAP -->
 
 ## Roadmap
@@ -157,8 +183,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 
 ## Contact
-
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
 Project Link: [https://github.com/hratx-blue-ocean/Papercuts](https://github.com/hratx-blue-ocean/Papercuts)
 
