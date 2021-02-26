@@ -33,7 +33,7 @@ export default function Subscriptions() {
   return redirect ? (
     <Redirect to='/setting' />
   ) : (
-    <Container className='p-1 m-1'>
+    <Container className='p-5' >
       {error && (
         <Alert variant='danger' onClose={() => setError('')} dismissible>
           {error}

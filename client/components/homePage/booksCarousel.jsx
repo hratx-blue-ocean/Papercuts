@@ -7,12 +7,12 @@ const BookCarousel = ({ books, setPhoto, setModalBook, setShow }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 2
+      items: 8,
+      slidesToSlide: 1
     }
   };
   return (
-    <div className='p-3'>
+    <div className='p-3' style={{width: '95vw'}}>
       <Carousel
         swipeable
         draggable={false}
