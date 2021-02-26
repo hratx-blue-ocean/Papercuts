@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function mainProfilePage({ user }) {
   return (
-    <div id='profileMain'>
+    <div id='profileMain' className="p-5">
       <MyLibrary user={user} />
       <MyProfile user={user} />
     </div>

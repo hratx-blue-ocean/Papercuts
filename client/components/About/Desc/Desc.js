@@ -10,7 +10,7 @@ export const DescComp = () => {
             <h2 className={styles.title}>
               <span>A</span>bout Us
             </h2>
-            <p>
+            <p className='p-3'>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Explicabo minus quo, libero
               perferendis, error incidunt a aliquid delectus fugiat molestias, quasi voluptates
               corporis vitae quisquam repellendus ratione! Deleniti, repudiandae beatae? Lorem
