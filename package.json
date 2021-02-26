@@ -7,7 +7,7 @@
     "watch": "webpack --progress --watch",
     "server": "nodemon server/server.js",
     "test": "mocha server/test",
-    "start": "webpack && node server/server.js",
+    "start": "node server/server.js",
     "build": "webpack"
   },
   "keywords": [],
