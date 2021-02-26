@@ -21,7 +21,7 @@ export default function UserBookClubs({ user = { bookclubs: [] } }) {
   return (
     <>
       <div style={{ fontSize: '23px' }} className='userClubsHeader font-weight-bold'>
-        My's Book Clubs
+        My Book Clubs
       </div>
       <div className='userBookClubsBody'>
         {clubs &&

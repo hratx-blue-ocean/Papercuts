@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { BrightnessHighFill } from 'react-bootstrap-icons';
-
+import { LoginModal, RegisterModal } from '../loginRegisterModal.jsx';
+import logout from '../logout.js';
 import logo from '../../../../Docs/readMeImage/logo.png';
 import styles from './Header.module.css';
 
@@ -50,7 +51,16 @@ export const HeaderComp = ({ user }) => {
             <div className={styles.themeSwitcherBtn} onClick={switchTheme}>
               <BrightnessHighFill />
             </div>
-            <Button variant='outline-success'>Logout</Button>
+            {!user ? (
+              <>
+                <LoginModal />
+                <RegisterModal />
+              </>
+            ) : (
+              <Nav.Link variant='dark' onClick={logout}>
+                Logout
+              </Nav.Link>
+            )}
           </Navbar.Collapse>
         </Navbar>
       </div>

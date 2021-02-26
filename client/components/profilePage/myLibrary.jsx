@@ -17,7 +17,6 @@ export default function myLibrary({ user }) {
   useEffect(() => {
     user &&
       axios.get(`/user/book/${user._id}`).then((results) => {
-        console.log(results.data.library);
         setBooksInLibrary(results.data.library);
         setBooksShown(results.data.library);
       });
@@ -28,7 +27,6 @@ export default function myLibrary({ user }) {
     axios
       .get(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${searchInput}&maxResults=25`)
       .then((results) => {
-        console.log(results.data.items);
         let searchResults = results.data.items.map((book) => {
           let bookInfo = {};
           bookInfo.id = book.id;
