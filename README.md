@@ -58,7 +58,7 @@
 
 Papercuts is a full-stack web application for buying, browsing, and commenting on the latest books. The user can register an account and maintain their own library of books, as well as make friends, leave recommendations, and start/join book clubs!
 
-![Papercuts Home Page](/readme/home.png)
+![Papercuts Home Page](Docs/readMeImage/home.png)
 
 Key Features
 
@@ -72,7 +72,7 @@ Key Features
 
 ### Application login with proper authentication
 
-![Papercuts Login](/readme/login.png)
+![Papercuts Login](Docs/readMeImage/login.png)
 
 - Click Register to create a new account with the site.
 - Using sessions, you will only be asked to log in again once a week, for user convenience.
@@ -80,7 +80,7 @@ Key Features
 
 ### User Profile Page
 
-![Papercuts Login](/readme/profile.png)
+![Papercuts Login](Docs/readMeImage/profile.png)
 
 - In your user profile, you may browse your library of purchased books or search for new ones.
 - A gallery of recommended books will be available to you.
@@ -88,7 +88,7 @@ Key Features
 
 ### Book Clubs Page
 
-![Papercuts Login](/readme/book-clubs.png)
+![Papercuts Login](Docs/readMeImage/book-clubs.png)
 
 - On the book clubs page, you may browse the available book clubs and click to join or leave them.
 - Clicking on a club's image will take you to the detailed view, where the events, comments, and questionnaire are available.
@@ -96,7 +96,7 @@ Key Features
 
 ### Subscriptions Page
 
-![Papercuts Login](/readme/subscriptions.png)
+![Papercuts Login](Docs/readMeImage/subscriptions.png)
 
 - On the subscriptions page, you may choose a plan to subscribe to. This will require you to have payment info saved in the settings page.
 
