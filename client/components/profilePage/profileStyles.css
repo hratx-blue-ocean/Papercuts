@@ -16,7 +16,7 @@
 }
 
 .searchBooksInputs {
-  margin-right: 1%;
+  margin: 0 1% 1% 0;
 }
 #recommendBody {
   display: grid;
