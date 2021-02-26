@@ -65,11 +65,12 @@ export default function myLibrary({ user }) {
       <form onSubmit={searchBooks.bind(this)}>
         <input
           type='text'
+          className = 'searchBooksInputs'
           placeholder='Search books by author'
           onChange={(e) => setSearchInput(e.target.value)}
         />
-        <Button type='submit'>Submit</Button>
-        <Button
+        <Button className = 'searchBooksInputs' type='submit'>Submit</Button>
+        <Button className = 'searchBooksInputs'
           onClick={() => {
             setBooksShown(booksInLibrary);
           }}

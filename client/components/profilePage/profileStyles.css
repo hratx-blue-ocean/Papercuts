@@ -14,6 +14,10 @@
   max-height: 341px;
   padding: 0px 0px;
 }
+
+.searchBooksInputs {
+  margin-right: 1%;
+}
 #recommendBody {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
