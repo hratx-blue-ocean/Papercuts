@@ -40,7 +40,7 @@ const register_login = (req, res, next) => {
       if (err) {
         return res.status(400).send(err);
       }
-      return res.status(200).send(`Logged in as ${user.id}`);
+      return res.redirect('/');
     });
   })(req, res, next);
 };

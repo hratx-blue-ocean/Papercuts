@@ -9,47 +9,48 @@ const path = require('path');
 
 const hashPassword = (password, done) => {
   bcrypt.genSalt(12, (err, salt) => {
-    bcrypt.hash(password, salt, (err, hash) => {
-      if (err) done(err);
-      else done(null, hash);
-    });
+    if (err) done(err);
+    else {
+      bcrypt.hash(password, salt, (err, hash) => {
+        if (err) done(err);
+        else done(null, hash);
+      });
+    }
   });
 };
 
-router.get('/email/:email', (req, res) => {
-  let email = req.params.email;
-  let token = require('crypto').randomBytes(32).toString('hex');
+router.get('/email/:address', (req, res) => {
+  const email = req.params.address;
+  const token = require('crypto').randomBytes(32).toString('hex');
   User.updateOne({ email: email }, { $set: { token: token } })
     .then((data) => {
-      let transporter = nodemailer.createTransport({
+      const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
           user: 'papercutsbookstore@gmail.com',
-          pass: 'ILIKEpiez',
-        },
+          pass: 'ILIKEpiez'
+        }
       });
 
-      let mailOptions = {
+      const mailOptions = {
         from: 'papercutsbookstore@gmail.com',
         to: email,
         subject: 'Password Reset Requested',
         text: `Someone has requested a password reset for this account. If this was not you, ignore this email and your password will not be changed. If this was you, click the following link:\n ${
           process.env.SERVER_URL || 'localhost:3000'
-        }/reset/${token}`,
+        }/reset/${token}`
       };
 
       transporter.sendMail(mailOptions, (err, info) => {
         if (err) {
-          res.status(401).send('error sending email');
+          res.status(500).send('error sending email');
         } else {
-          console.log('Email sent: ' + info.response);
           res.send('Success');
         }
       });
     })
     .catch((err) => {
-      console.log(err);
-      res.status(401).send('No account with that email exists.');
+      res.status(404).send('No account with that email exists.');
     });
 });
 
@@ -59,35 +60,33 @@ router.get('/:token', (req, res) => {
       res.redirect(`/changePassword/${user._doc.email}/${user._doc.token}`);
     })
     .catch((err) => {
-      console.log(err);
+      res.status(404).send('No such token exists');
     });
 });
 
 router.post('/:email/:token/:password', (req, res) => {
-  console.log(req.params);
-  let newPassword = hashPassword(req.params.password, (err, result) => {
+  const { token, email, password } = req.params;
+  const newPassword = hashPassword(password, (err, hashedPassword) => {
     if (err) {
-      console.log(err);
+      res.status(500).send('Error hashing password');
       return;
     }
     User.updateOne(
-      { token: req.params.token, email: req.params.email },
+      { token, email },
       {
         $set: {
-          password: result,
-          token: null,
-        },
+          password: hashedPassword,
+          token: null
+        }
       }
     )
-      .then((result) => {
-        console.log(result);
-        if (result.n === 1) {
+      .then((dbResponse) => {
+        if (dbResponse.n === 1) {
           res.send('Password Changed');
-        } else res.send('Email/Token combination not found');
+        } else res.status(400).send('Email/Token combination not found');
       })
       .catch((err) => {
-        console.log(err);
-        res.status(400).send('Error changing password');
+        res.status(500).send('Error changing password');
       });
   });
 });
