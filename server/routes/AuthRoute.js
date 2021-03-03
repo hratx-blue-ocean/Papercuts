@@ -5,7 +5,8 @@ const User = require('../models/users.js');
 
 //handles registration and login
 router.post('/login', (req, res, next) => {
-  User.findOne({ email: req.query.email })
+  const { email } = req.body;
+  User.findOne({ email })
     .then((user) => {
       if (!user) {
         res.status(401).send('No account registered by that email');
@@ -17,7 +18,8 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/register', (req, res, next) => {
-  User.findOne({ email: req.query.email })
+  const { email } = req.body;
+  User.findOne({ email })
     .then((user) => {
       if (user) {
         res.status(401).send('Account already registered by that email');

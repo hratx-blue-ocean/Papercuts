@@ -64,8 +64,8 @@ router.get('/:token', (req, res) => {
     });
 });
 
-router.post('/:email/:token/:password', (req, res) => {
-  const { token, email, password } = req.params;
+router.post('/', (req, res) => {
+  const { token, email, password } = req.body.data;
   const newPassword = hashPassword(password, (err, hashedPassword) => {
     if (err) {
       res.status(500).send('Error hashing password');

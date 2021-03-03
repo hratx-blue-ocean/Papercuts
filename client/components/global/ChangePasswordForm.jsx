@@ -61,7 +61,7 @@ export const ChangePasswordForm = () => {
 
 const handleChangePassword = (email, token, password, setResponse) => {
   axios
-    .post(`/reset/${email}/${token}/${password}`)
+    .post(`/reset/`, { data: { email, token, password } })
     .then((res) => {
       setResponse(res.data);
       setTimeout(() => {
@@ -75,11 +75,15 @@ const handleChangePassword = (email, token, password, setResponse) => {
 
 const sendLogin = (email, password) => {
   axios
-    .post(`/api/auth/login?email=${email}&password=${password}`, null, {
-      withCredentials: true
-    })
+    .post(
+      `/api/auth/login`,
+      { email, password },
+      {
+        withCredentials: true
+      }
+    )
     .then(() => {
-      window.location.reload(false);
+      window.location.href = '/profile';
     })
     .catch((err) => {
       setErr(err.response.data.message);

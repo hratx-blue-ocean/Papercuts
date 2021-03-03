@@ -22,7 +22,6 @@ export default function myFriends() {
       });
     }
   }, [user]);
-
   return !user ? (
     <p></p>
   ) : (
@@ -31,7 +30,7 @@ export default function myFriends() {
         <div id='userHeader'>
           <h4>{user.username}</h4>
           {user.subscriptionTier && (
-            <div className='btn btn-outline-secondary'>{user.subscriptionTier}</div>
+            <div className='btn btn-outline-secondary'>{user.subscription.name}</div>
           )}
         </div>
         <br />

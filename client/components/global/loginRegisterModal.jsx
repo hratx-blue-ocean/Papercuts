@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form, Nav } from 'react-bootstrap';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 export const LoginModal = () => {
   const [show, setShow] = useState(false);
@@ -162,7 +163,6 @@ export const RegisterModal = () => {
               <Form.Control
                 onChange={(e) => {
                   setEmail(e.target.value);
-                  console.log(email);
                 }}
                 type='email'
                 placeholder='Enter email'
@@ -220,14 +220,18 @@ export const RegisterModal = () => {
   );
 };
 
-const sendLogin = (email, password, handleClose, setErr) => {
-  axios
-    .post(`/api/auth/login?email=${email}&password=${password}`, null, {
-      withCredentials: true,
-    })
+const sendLogin = (email, password, handleClose, setErr, cb) => {
+  return axios
+    .post(
+      `/api/auth/login`,
+      { email, password },
+      {
+        withCredentials: true
+      }
+    )
     .then(() => {
       handleClose();
-      window.location.reload(false);
+      window.location.href = '/profile';
     })
     .catch((err) => {
       setErr(err.response.data.message);
@@ -236,12 +240,16 @@ const sendLogin = (email, password, handleClose, setErr) => {
 
 const sendRegister = (email, password, handleClose, setErr) => {
   axios
-    .post(`/api/auth/register?email=${email}&password=${password}`, null, {
-      withCredentials: true,
-    })
+    .post(
+      `/api/auth/register`,
+      { email, password },
+      {
+        withCredentials: true
+      }
+    )
     .then(() => {
       handleClose();
-      window.location.reload(false);
+      window.location.href = '/profile';
     })
     .catch((err) => {
       setErr(err.response.data);

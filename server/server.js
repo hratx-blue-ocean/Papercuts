@@ -69,7 +69,6 @@ app.get('/checkauth', isAuthenticated, function (req, res) {
       res.status(200).send(req.user);
     })
     .catch((err) => {
-      console.log(err);
       res.status(400).send(req.user);
     });
 });
